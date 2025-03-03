@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Archives | Hexo</title>
+    <title>&lt;test&gt; | Hexo</title>
     <meta name="author" content="John Doe" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -37,6 +37,10 @@
 
 
 <script src="/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -150,54 +154,60 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            
-<div id="archives">
-    
-    <div id="timeline-wrap" ref="timeline">
+            <div class="article">
+    <div>
+        <h1>&lt;test&gt;</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/3/3
+        </span>
         
-        <div class="timeline" data-title="helloworld">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2025/3/2</div>
-                <a href="/2025/03/02/hello-world/">
-                    <h3>Hello World</h3>
-                </a>
-                <div class="info">
-                    
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="timeline" data-title="<e-ctfwriteup>">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2025/3/3</div>
-                <a href="/2025/03/03/E-CTF-Writeup/">
-                    <h3>&lt;E-CTF Writeup&gt;</h3>
-                </a>
-                <div class="info">
-                    
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="timeline" data-title="<test>">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2025/3/3</div>
-                <a href="/2025/03/03/test/">
-                    <h3>&lt;test&gt;</h3>
-                </a>
-                <div class="info">
-                    
-                    
-                </div>
-            </div>
-        </div>
         
     </div>
+    
+    <div class="content" v-pre>
+        <p>测试一下：</p>
+<p>c++的</p>
+<pre><code class="language-c++">#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+using namespace std;
+const int N = 1e6 + 5;
+int n, m, a[N], b[N];
+long long l, r = 1e10, c[N], sum, cnt;
+bool vis[N];
+queue&lt;int&gt; Q;
+</code></pre>
+<p>python的：</p>
+<pre><code class="language-python">import msoffcrypto
+import io
+ 
+encrypted_file = &quot;parts.xlsx&quot; 
+password_list = &quot;wordlist.txt&quot;  
+ 
+with open(password_list, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:
+    passwords = [line.strip() for line in f.readlines()]
+</code></pre>
+<p>java的：</p>
+<pre><code class="language-java">public class Main &#123;
+    public static void main(String[] args) &#123;
+        System.out.println(&quot;Hello, World!&quot;);
+    &#125;
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
 </div>
 
             <footer id="footer">
@@ -228,6 +238,12 @@
         
     </div>
     <script src="/js/main.js"></script>
+    
+    
+
+
+
+
     
 </body>
 </html>
