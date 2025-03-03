@@ -1,180 +1,74 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>&lt;E-CTF Writeup&gt; | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="E-CTF比赛 Write Up[TOC] 1. Cryptography（密码学）ASCII me anything but not the flag 根据它的提示，我们先将这段内容用ASCII解码，得到： 123456789108 100 111 109 123 85 99 49 122 95 106 53 95 79 111 51 95 88 52 116 95 48 109 95 51 1">
-<meta property="og:type" content="article">
-<meta property="og:title" content="&lt;E-CTF Writeup&gt;">
-<meta property="og:url" content="http://example.com/2025/03/03/E-CTF-Writeup/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="E-CTF比赛 Write Up[TOC] 1. Cryptography（密码学）ASCII me anything but not the flag 根据它的提示，我们先将这段内容用ASCII解码，得到： 123456789108 100 111 109 123 85 99 49 122 95 106 53 95 79 111 51 95 88 52 116 95 48 109 95 51 1">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202225828882.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203124929054.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203125756246.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202225852177.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202225920609.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203194946028.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203152026422.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202230145188.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203131647064.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202230203405.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202230223555.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203201915159.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204135903301.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203211406069.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203212118532.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203202025574.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203213912998.png">
-<meta property="og:image" content="http://example.com/CTF-win/%25E6%25AF%2594%25E8%25B5%259B/ECTF%2520(2025.01.24-26)/Stega_-_Definitely_not_in_the_PDF/world_flags.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203214621938.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203214807229.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/Stega_4_-_JB1804.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203215121088.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203215221250.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/B%25C3%25BCcking_Music_Cipher.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/cd0c1240e0a0120e05eb92e3e10f5a7.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202222812788.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/island.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/archer-baiyi/Picture/main/treasure.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202223215134.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202223724687.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/archer-baiyi/Picture/main/solved.bmp">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202224133450.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202224216072.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/flag.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203221019589.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/Stega_5_-_Silhouette_in_cyberpunk.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/Stega_5_-_Silhouette_in_cyberpunk1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/Stega_5_-_Silhouette_in_cyberpunk2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203232322334.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203234217593.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203234330717.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203234518981.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204111238767.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204111326784.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204111406843.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204111713246.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250203234546652.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204112053442.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/a.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113219584.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/archer-baiyi/Picture/main/OSINT_1_-_question-1.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204115324497.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113324647.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/OSINT_1_-_question-2.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204131332318.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204131614306.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204131846773.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204131937927.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113338645.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/OSINT_1_-_question-3.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204132411711.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204132537218.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204132638589.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113351088.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204133041579.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204133137356.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113405376.png">
-<meta property="og:image" content="http://example.com/CTF-win/%25E6%25AF%2594%25E8%25B5%259B/ECTF%2520(2025.01.24-26)/OSINT_1_-_question-5/PANO_20220408_134922.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204133815353.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113418057.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/OSINT_1_-_question-6.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/ectf_o6.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204134657214.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113429216.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204113832122.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/1.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204114154456.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250204114831304.png">
-<meta property="article:published_time" content="2025-03-02T23:17:07.000Z">
-<meta property="article:modified_time" content="2025-03-02T23:18:25.393Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202225828882.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
+    <meta charset="utf-8">
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <title>&lt;E-CTF Writeup&gt; | Hexo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon/favicon.ico">
+    
+<link rel="stylesheet" href="/css/main.css">
 
+    
+<link rel="stylesheet" href="/css/tagplugins.css">
+
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
+    
 <meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
+  <div class="blog-header">
+   <a id="menu-nav-icon"><img src="/image/menu.png"/></a>
+   <div class="nav-container">
+     <nav id="main-nav">
+       
+         <a class="main-nav-link" href="/">Home</a>
+       
+         <a class="main-nav-link" href="/archives">Archives</a>
+       
+     </nav>
+   </div>
+   <!--
+   <div id="search-form-wrap">
+     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+   </div>
+ -->
+    <h1 class="blog-title">Hexo</h1>
+    <p class="lead blog-description"></p>
+</div>
 
-      <div class="outer">
-        <section id="main"><article id="post-E-CTF-Writeup" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/03/03/E-CTF-Writeup/" class="article-date">
-  <time class="dt-published" datetime="2025-03-02T23:17:07.000Z" itemprop="datePublished">2025-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      &lt;E-CTF Writeup&gt;
+  <div id='main-part'>
+      <div class="main">
+<div class="blog-post">
+    <!-- Title -->
+    <h1 class="blog-post-title">
+        <a href="/2025/03/03/E-CTF-Writeup/">
+            <E-CTF Writeup>
+        </a>
     </h1>
-  
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        2025-03-03
+        
+    </p>
 
-      </header>
     
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="E-CTF比赛-Write-Up"><a href="#E-CTF比赛-Write-Up" class="headerlink" title="E-CTF比赛 Write Up"></a>E-CTF比赛 Write Up</h1><p>[TOC]</p>
+
+    <!-- Content -->
+    <h1 id="E-CTF比赛-Write-Up"><a href="#E-CTF比赛-Write-Up" class="headerlink" title="E-CTF比赛 Write Up"></a>E-CTF比赛 Write Up</h1><p>[TOC]</p>
 <h2 id="1-Cryptography（密码学）"><a href="#1-Cryptography（密码学）" class="headerlink" title="1. Cryptography（密码学）"></a>1. Cryptography（密码学）</h2><h3 id="ASCII-me-anything-but-not-the-flag"><a href="#ASCII-me-anything-but-not-the-flag" class="headerlink" title="ASCII me anything but not the flag"></a>ASCII me anything but not the flag</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202225828882.png" alt="image-20250202225828882"></p>
 <p>根据它的提示，我们先将这段内容用ASCII解码，得到：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">108 100 111 109 123 85 99 49 122 95 106 53 95 79 111 51 95 88 52 116 95 48 109 95 51 111 88 121 90 107 97 106 48 105 125 10 10 69 98 111 98 32 102 112 32 118 108 114 111 32 104 98 118 44 32 100 108 108 97 32 105 114 122 104 32 58 32 72 66 86 72 66 86 10 10 87 101 108 108 32 100 111 110 101 44 32 98 117 116 32 110 111 119 32 100 111 32 121 111 117 32 107 110 111 119 32 97 98 111 117 116 32 116 104 101 32 103 117 121 32 119 104 111 32 103 111 116 32 115 116 97 98 98 101 100 32 50 51 32 116 105 109 101 115 32 63</span><br><span class="line"></span><br><span class="line">-&gt;</span><br><span class="line"></span><br><span class="line">ldom&#123;Uc1z_j5_Oo3_X4t_0m_3oXyZkaj0i&#125;</span><br><span class="line"></span><br><span class="line">Ebob fp vlro hbv, dlla irzh : HBVHBV</span><br><span class="line"></span><br><span class="line">Well done, but now do you know about the guy who got stabbed 23 times ?</span><br></pre></td></tr></table></figure>
@@ -543,113 +437,87 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ectf&#123;digue_du_boutillon&#125;</span><br></pre></td></tr></table></figure>
 
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/03/E-CTF-Writeup/" data-id="cm7s964kf0000ukkjd8y18yc2" data-title="&lt;E-CTF Writeup&gt;" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2025/03/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
 
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
+    <!-- Social share choices -->
     
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li></ul>
-    </div>
+  <div id="social-share">
+    <a data-url="http://example.com/2025/03/03/E-CTF-Writeup/" target="_blank" rel="noopener" href="https://plus.google.com/share?url=" class="googleplus"><img src="/image/googleplusicon.png" alt=""/></a>
+    <a data-url="http://example.com/2025/03/03/E-CTF-Writeup/" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=" class="twitter"><img src="/image/twittericon.png" alt=""/></a>
+    <a data-url="http://example.com/2025/03/03/E-CTF-Writeup/" target="_blank" rel="noopener" href="http://pinterest.com/pin/create/button/?url=" class="pinterest"><img src="/image/pinteresticon.png" alt=""/></a>
+    <a data-url="http://example.com/2025/03/03/E-CTF-Writeup/" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=" class="facebook"><img src="/image/facebookicon.png" alt=""/></a>
   </div>
 
 
-  
+
+
+
+<!--
+
+
+https://www.facebook.com/sharer/sharer.php?u=http://example.com/2025/03/03/E-CTF-Writeup/
+http://example.com/2025/03/03/E-CTF-Writeup/
+-->
+
+
+
+    <hr />
+
+
+    <!-- Tags and Categories links -->
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/03/03/E-CTF-Writeup/">&lt;E-CTF Writeup&gt;</a>
-          </li>
-        
-          <li>
-            <a href="/2025/03/02/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    <!-- Comment using disqus -->
+    
 
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
+</div>
+</div>
 
 
   </div>
+  <!-- Footer -->
+  <div id="footer">
+  <div id="footer-social">
+    
+    
+    
+    
+    
+    
+</div>
+
+  <p id="footer-info">
+    &copy; 2025 John Doe<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> -
+    Theme <a href="https://github.com/Suolawangzai/hexo-theme-nebula" target="_blank">nebula</a>
+  </p>
+
+  <div id="busuanzi">
+    <span id="busuanzi_container_site_pv">
+      &hearts;
+    Total visits: <span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+  <!--
+  <div id="footer-info">
+    &copy; 2025 John Doe<br>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </div>
+-->
+</div>
+
+  <!-- After footer scripts -->
+  <!-- Disqus Comments -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/main.js"></script>
+
+
 </body>
+
 </html>
