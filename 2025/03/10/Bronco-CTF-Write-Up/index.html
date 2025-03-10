@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-10T12:28:52.000Z">
-<meta property="article:modified_time" content="2025-03-10T12:39:45.622Z">
+<meta property="article:modified_time" content="2025-03-10T19:37:02.729Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="writeup">
 <meta name="twitter:card" content="summary">
@@ -2275,7 +2275,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1741634639556),
+    lastupdate: new Date(1741635512734),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2709,7 +2709,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="Bronco-CTF-Write-Up"><a href="#Bronco-CTF-Write-Up" class="headerlink" title="Bronco CTF Write Up"></a>Bronco CTF Write Up</h1><h2 id="Beginner"><a href="#Beginner" class="headerlink" title="Beginner"></a>Beginner</h2><h3 id="Break-the-Battalion"><a href="#Break-the-Battalion" class="headerlink" title="Break the Battalion"></a>Break the Battalion</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/Break_the_Battalion.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/Lycorisby/Picture/main/Break_the_Battalion.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Break_the_Battalion"></p>
+    <h2 id="Beginner"><a href="#Beginner" class="headerlink" title="Beginner"></a>Beginner</h2><h3 id="Break-the-Battalion"><a href="#Break-the-Battalion" class="headerlink" title="Break the Battalion"></a>Break the Battalion</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/Break_the_Battalion.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/Lycorisby/Picture/main/Break_the_Battalion.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Break_the_Battalion"></p>
 <p>这道题我们会拿到一份ELF文件，我们用IDA打开它会看到</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250216231337295.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250216231337295.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250216231337295"></p>
 <p>可以发现，这个程序的核心内容是encrypt，所以我们查看一下它的内容：<br><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250216231507284.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250216231507284.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250216231507284"></p>
@@ -2926,7 +2926,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-10T13:39:45+01:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-10T20:37:02+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 10, 2025</p>
@@ -3014,17 +3014,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2025/03/10/%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BA%A4%E4%BA%92/'>
           <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>与服务器的交互</p>
-          <p class='content'>与服务器的交互使用socket.socket连接服务器socket 是 Python 标准库中的模块，用于进行 TCP&#x2F;UDP 连接。
-假设服务器地址是 example.com，端口是...</p>
+          <p class='content'>socket.socketsocket 是 Python 标准库中的模块，用于进行 TCP&#x2F;UDP 连接。
+假设服务器地址是 example.com，端口是 1234：
+1234567...</p>
         </a>
       
       
         <a class='next' href='/2025/03/10/X3ctf2025-Write-Up/'>
           <p class='title'>X3ctf2025 Write Up<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>x3ctf Write Up1. Miscp11n-trophy（签到题）:题目描述：
+          <p class='content'>1. Miscp11n-trophy（签到题）:题目描述：
 我们首先会得到这样一份证书：
 
-第一题签到题的答案就是证书下面正中间的“This certificate ...</p>
+第一题签到题的答案就是证书下面正中间的“This certificate does not grant...</p>
         </a>
       
     </div>
@@ -3635,7 +3636,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/writeup/","name":"writeup"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/10/Bronco-CTF-Write-Up/","name":"Bronco CTF Write Up"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Bronco CTF Write Up","description":"Bronco CTF比赛的题解，涉及方向：Crypto, Web, Reverse, Steg, Misc, Forensics","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/10/Bronco-CTF-Write-Up/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/10/Bronco-CTF-Write-Up/","wordCount":64,"datePublished":"2025-03-10T12:28:52.000Z","dateModified":"2025-03-10T12:39:45.622Z","articleSection":"writeup","keywords":"writeup","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/writeup/","name":"writeup"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/10/Bronco-CTF-Write-Up/","name":"Bronco CTF Write Up"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Bronco CTF Write Up","description":"Bronco CTF比赛的题解，涉及方向：Crypto, Web, Reverse, Steg, Misc, Forensics","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/10/Bronco-CTF-Write-Up/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/10/Bronco-CTF-Write-Up/","wordCount":64,"datePublished":"2025-03-10T12:28:52.000Z","dateModified":"2025-03-10T19:37:02.729Z","articleSection":"writeup","keywords":"writeup","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

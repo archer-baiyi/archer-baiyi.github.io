@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-10T12:25:08.000Z">
-<meta property="article:modified_time" content="2025-03-10T12:28:04.783Z">
+<meta property="article:modified_time" content="2025-03-10T19:37:16.310Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="writeup">
 <meta name="twitter:card" content="summary">
@@ -2275,7 +2275,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1741634639556),
+    lastupdate: new Date(1741635512734),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2709,7 +2709,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="x3ctf-Write-Up"><a href="#x3ctf-Write-Up" class="headerlink" title="x3ctf Write Up"></a>x3ctf Write Up</h1><h2 id="1-Misc"><a href="#1-Misc" class="headerlink" title="1. Misc"></a>1. Misc</h2><h3 id="p11n-trophy（签到题）"><a href="#p11n-trophy（签到题）" class="headerlink" title="p11n-trophy（签到题）:"></a>p11n-trophy（签到题）:</h3><p>题目描述：<br><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250127165738440.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250127165738440.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250127165738440"></p>
+    <h2 id="1-Misc"><a href="#1-Misc" class="headerlink" title="1. Misc"></a>1. Misc</h2><h3 id="p11n-trophy（签到题）"><a href="#p11n-trophy（签到题）" class="headerlink" title="p11n-trophy（签到题）:"></a>p11n-trophy（签到题）:</h3><p>题目描述：<br><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250127165738440.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250127165738440.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250127165738440"></p>
 <p>我们首先会得到这样一份证书：</p>
 <p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/trophy.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/Lycorisby/Picture/main/trophy.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="trophy"></p>
 <p>第一题签到题的答案就是证书下面正中间的“This certificate does not grant the rank of Master”。</p>
@@ -2785,7 +2785,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-10T13:28:04+01:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-10T20:37:16+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 10, 2025</p>
@@ -2873,16 +2873,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2025/03/10/Bronco-CTF-Write-Up/'>
           <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Bronco CTF Write Up</p>
-          <p class='content'>Bronco CTF Write UpBeginnerBreak the Battalion
+          <p class='content'>BeginnerBreak the Battalion
 这道题我们会拿到一份ELF文件，我们用IDA打开它会看到
 
-可以发现，这个程序的核心内容是encry...</p>
+可以发现，这个程序的核心内容是encrypt，所以我们查看一下它的内容：
+写一...</p>
         </a>
       
       
         <a class='next' href='/2025/03/09/%E5%93%88%E5%B8%8C%E5%8A%A0%E5%AF%86%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%8E%E7%A2%B0%E6%92%9E%E6%83%85%E5%86%B5/'>
           <p class='title'>哈希加密的长度与碰撞情况<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>哈希长度与碰撞情况以下是各种常见的哈希函数的长度及其碰撞情况汇总：
+          <p class='content'>以下是各种常见的哈希函数的长度及其碰撞情况汇总：
 
 
 
@@ -2898,7 +2899,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 128-bit
 MD5
 存在已知有效碰撞攻击
-...</p>
+2004 年
+19...</p>
         </a>
       
     </div>
@@ -3509,7 +3511,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/writeup/","name":"writeup"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/10/X3ctf2025-Write-Up/","name":"X3ctf2025 Write Up"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"X3ctf2025 Write Up","description":"x3ctf比赛的题解，涉及方向：Misc, Crypto","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/10/X3ctf2025-Write-Up/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/10/X3ctf2025-Write-Up/","wordCount":28,"datePublished":"2025-03-10T12:25:08.000Z","dateModified":"2025-03-10T12:28:04.783Z","articleSection":"writeup","keywords":"writeup","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/writeup/","name":"writeup"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/10/X3ctf2025-Write-Up/","name":"X3ctf2025 Write Up"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"X3ctf2025 Write Up","description":"x3ctf比赛的题解，涉及方向：Misc, Crypto","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/10/X3ctf2025-Write-Up/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/10/X3ctf2025-Write-Up/","wordCount":28,"datePublished":"2025-03-10T12:25:08.000Z","dateModified":"2025-03-10T19:37:16.310Z","articleSection":"writeup","keywords":"writeup","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

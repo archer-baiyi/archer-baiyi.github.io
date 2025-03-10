@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-02T23:17:07.000Z">
-<meta property="article:modified_time" content="2025-03-09T18:44:21.516Z">
+<meta property="article:modified_time" content="2025-03-10T19:37:09.488Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="writeup">
 <meta name="twitter:card" content="summary">
@@ -2275,7 +2275,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1741634639556),
+    lastupdate: new Date(1741635512734),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2709,7 +2709,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="E-CTF比赛-Write-Up"><a href="#E-CTF比赛-Write-Up" class="headerlink" title="E-CTF比赛 Write Up"></a>E-CTF比赛 Write Up</h1><h2 id="1-Cryptography（密码学）"><a href="#1-Cryptography（密码学）" class="headerlink" title="1. Cryptography（密码学）"></a>1. Cryptography（密码学）</h2><h3 id="ASCII-me-anything-but-not-the-flag"><a href="#ASCII-me-anything-but-not-the-flag" class="headerlink" title="ASCII me anything but not the flag"></a>ASCII me anything but not the flag</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202225828882.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202225828882.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250202225828882"></p>
+    <h2 id="1-Cryptography（密码学）"><a href="#1-Cryptography（密码学）" class="headerlink" title="1. Cryptography（密码学）"></a>1. Cryptography（密码学）</h2><h3 id="ASCII-me-anything-but-not-the-flag"><a href="#ASCII-me-anything-but-not-the-flag" class="headerlink" title="ASCII me anything but not the flag"></a>ASCII me anything but not the flag</h3><p><img src="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202225828882.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/Lycorisby/Picture/main/image-20250202225828882.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250202225828882"></p>
 <p>根据它的提示，我们先将这段内容用ASCII解码，得到：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">108 100 111 109 123 85 99 49 122 95 106 53 95 79 111 51 95 88 52 116 95 48 109 95 51 111 88 121 90 107 97 106 48 105 125 10 10 69 98 111 98 32 102 112 32 118 108 114 111 32 104 98 118 44 32 100 108 108 97 32 105 114 122 104 32 58 32 72 66 86 72 66 86 10 10 87 101 108 108 32 100 111 110 101 44 32 98 117 116 32 110 111 119 32 100 111 32 121 111 117 32 107 110 111 119 32 97 98 111 117 116 32 116 104 101 32 103 117 121 32 119 104 111 32 103 111 116 32 115 116 97 98 98 101 100 32 50 51 32 116 105 109 101 115 32 63</span><br><span class="line"></span><br><span class="line">-&gt;</span><br><span class="line"></span><br><span class="line">ldom&#123;Uc1z_j5_Oo3_X4t_0m_3oXyZkaj0i&#125;</span><br><span class="line"></span><br><span class="line">Ebob fp vlro hbv, dlla irzh : HBVHBV</span><br><span class="line"></span><br><span class="line">Well done, but now do you know about the guy who got stabbed 23 times ?</span><br></pre></td></tr></table></figure>
 
@@ -3100,10 +3100,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-09T19:44:21+01:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-10T20:37:09+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 9, 2025</p>
+    <p>更新于：Mar 10, 2025</p>
   </a>
 </div>
 
@@ -3188,7 +3188,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2025/03/09/%E5%93%88%E5%B8%8C%E5%8A%A0%E5%AF%86%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%8E%E7%A2%B0%E6%92%9E%E6%83%85%E5%86%B5/'>
           <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>哈希加密的长度与碰撞情况</p>
-          <p class='content'>哈希长度与碰撞情况以下是各种常见的哈希函数的长度及其碰撞情况汇总：
+          <p class='content'>以下是各种常见的哈希函数的长度及其碰撞情况汇总：
 
 
 
@@ -3204,7 +3204,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 128-bit
 MD5
 存在已知有效碰撞攻击
-...</p>
+2004 年
+19...</p>
         </a>
       
       
@@ -3816,7 +3817,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/writeup/","name":"writeup"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/03/E-CTF-Writeup/","name":"E-CTF比赛 Writeup"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"E-CTF比赛 Writeup","description":"E-CTF比赛的题解，涉及方向：Crypto, Web, Steg, Misc, Forensics, Osint","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/03/E-CTF-Writeup/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/03/E-CTF-Writeup/","wordCount":57,"datePublished":"2025-03-02T23:17:07.000Z","dateModified":"2025-03-09T18:44:21.516Z","articleSection":"writeup","keywords":"writeup","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/writeup/","name":"writeup"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/03/E-CTF-Writeup/","name":"E-CTF比赛 Writeup"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"E-CTF比赛 Writeup","description":"E-CTF比赛的题解，涉及方向：Crypto, Web, Steg, Misc, Forensics, Osint","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/03/E-CTF-Writeup/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/03/E-CTF-Writeup/","wordCount":57,"datePublished":"2025-03-02T23:17:07.000Z","dateModified":"2025-03-10T19:37:09.488Z","articleSection":"writeup","keywords":"writeup","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
