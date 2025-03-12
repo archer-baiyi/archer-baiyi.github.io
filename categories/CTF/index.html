@@ -2272,7 +2272,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1741720081274),
+    lastupdate: new Date(1741743241040),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2640,9 +2640,83 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/12/HTB-rev-Behind-the-Scenes/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/03/12/HTB-rev-Behind-the-Scenes/"  itemprop="url">
+        HTB_rev_Behind-the-Scenes
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        用010 Editor （或者Hex Editor之类的都行）打开源文件，将里面所有的 0F 0B  （即 ud2 ）改为 90 90  （90即NOP，是Machine Code中表示 无操作 (No Operation) 的命令），然后再用IDA打开文件即可看到完整的代码：
+123456789101112131415161718192021222324252627282930313233...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-03-12T02:22:42+01:00">2025-03-12</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/HTB/">HTB</a><span class="sep"></span><a class="category-link" href="/categories/CTF/HTB/Reverse-Engineering/">Reverse Engineering</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/HTB/" itemprop="url"><span itemprop="name">HTB</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/HTB/Reverse-Engineering/" itemprop="url"><span itemprop="name">Reverse Engineering</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/03/12/HTB-rev-Behind-the-Scenes/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -3054,12 +3128,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/CTF/" href="/categories/CTF/"
             active-action="action-categoriesCTF"
-            ><div class='name'>CTF</div><div class='badge'>(5)</div></a></li>
+            ><div class='name'>CTF</div><div class='badge'>(6)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/" href="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/"
             active-action="action-categoriesCTFCTFE5B08FE79FA5E8AF86"
             ><div class='name'>CTF小知识</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/CTF/HTB/" href="/categories/CTF/HTB/"
+            active-action="action-categoriesCTFHTB"
+            ><div class='name'>HTB</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/CTF/HTB/Reverse-Engineering/" href="/categories/CTF/HTB/Reverse-Engineering/"
+            active-action="action-categoriesCTFHTBReverse-Engineering"
+            ><div class='name'>Reverse Engineering</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/CTF/writeup/" href="/categories/CTF/writeup/"
@@ -3099,7 +3183,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-      <a href="/tags/Betriebssysteme-Operating-System-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 19px; color: #777">Betriebssysteme , Operating System, 操作系统</a> <a href="/tags/CTF-%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">CTF,哈希</a> <a href="/tags/Datenbank-Database-%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">Datenbank, Database, 数据库</a> <a href="/tags/socket-remote/" style="font-size: 14px; color: #999">socket,remote</a> <a href="/tags/writeup/" style="font-size: 24px; color: #555">writeup</a>
+      <a href="/tags/Betriebssysteme-Operating-System-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 19px; color: #777">Betriebssysteme , Operating System, 操作系统</a> <a href="/tags/CTF-%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">CTF,哈希</a> <a href="/tags/Datenbank-Database-%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">Datenbank, Database, 数据库</a> <a href="/tags/Reverse-Engineering/" style="font-size: 14px; color: #999">Reverse Engineering</a> <a href="/tags/socket-remote/" style="font-size: 14px; color: #999">socket,remote</a> <a href="/tags/writeup/" style="font-size: 24px; color: #555">writeup</a>
     </div>
   </section>
 
