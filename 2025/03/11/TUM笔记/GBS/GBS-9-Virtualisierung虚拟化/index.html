@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-11T17:17:37.000Z">
-<meta property="article:modified_time" content="2025-03-12T21:21:34.801Z">
+<meta property="article:modified_time" content="2025-03-15T22:17:01.648Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Betriebssysteme , Operating System, 操作系统">
 <meta name="twitter:card" content="summary">
@@ -2275,7 +2275,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1741814894529),
+    lastupdate: new Date(1742077249448),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2805,6 +2805,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><p><strong><code>Mount</code></strong>:</p>
 <p>isolieren Mount-Points des  Dateisystems 隔离文件系统挂载点，允许不同的 Namespace 看到不同的文件系统视图。</p>
 <p>（在 Linux 中，挂载点（Mount Point） 是指将一个文件系统连接到目录结构中的特定位置，使其内容可以通过该目录访问。）</p>
+<p>挂载类型 (Mount-Typ)：</p>
+<ul>
+<li><p><strong>Shared Mount</strong> 共享挂载：接收+传递</p>
+<p>该挂载点的 mount 和 umount 事件会在 Peer Group 之间传播。</p>
+<p>例如，在 Shared Mount 上挂载一个新目录，所有共享该挂载点的进程都会看到这个变更。</p>
+</li>
+<li><p><strong>Private Mount</strong> 私有挂载：不接收+不传递</p>
+<p>挂载点不会接收，也不会向对等组（Peer Groups）传递事件。 Der Mount-Point empfängt und leitet keine Events zu Peer Groups weiter.</p>
+</li>
+<li><p><strong>Slave Mount</strong> 从属挂载：接收+不传递</p>
+<p> Slave-Mount-Points empfangen Events von einer Master Peer Group.</p>
+</li>
+<li><p><strong>Unbinable Mount</strong> 不可绑定挂载：</p>
+<p>Ist ein Private Mount, der nicht gebunden (Bind Mount) werden kann. 不能被绑定的私人挂载。</p>
+<p>(Bind Mount指的是允许将一个目录或文件挂载到另一个位置，使其在多个路径下可见。)</p>
+</li>
+</ul>
+<p>Peer Groups（对等组）：Peer Group 是一组共享 mount 事件的挂载点，当一个 Shared Mount 被创建时，它会被添加到某个 Peer Group。所有 Peer Group 内的挂载点都会同步 mount 和 umount 事件。</p>
 </li>
 <li><p><strong><code>User</code></strong>:</p>
 <p>isolieren User- und Group-IDs 隔离用户 ID 和权限</p>
@@ -2814,6 +2832,52 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 </ul>
 <h4 id="Linux-Control-Groups-cgroups"><a href="#Linux-Control-Groups-cgroups" class="headerlink" title="Linux Control Groups (cgroups)"></a>Linux Control Groups (cgroups)</h4><p>主要负责**<code>限制</code>**。</p>
+<p>作用：</p>
+<ul>
+<li><p>cgroups unterteilen Prozesse in hierarchische Gruppen 将进程划分为层次化的组</p>
+<ul>
+<li>分配( Allozieren )和分发( verteilen )每一组的系统资源 （CPU, 内存等）</li>
+<li>资源由独立的 cgroup 子系统表示</li>
+<li>Jedes Subsystem verwaltet eine Hierarchie an Prozessgruppen</li>
+</ul>
+</li>
+<li><p>Accounting</p>
+<ul>
+<li>Überwacht Seiten, die von den Prozessgruppen verwendet werden 监控进程使用的内存</li>
+</ul>
+</li>
+<li><p>Kontrolle</p>
+<ul>
+<li>weiche Speichergrenzen</li>
+</ul>
+<p>  确保内存页会被回收（但不是强制的，即在系统压力下会优先释放，但不会立即强制回收）</p>
+<ul>
+<li>harte Speichergrenzen</li>
+</ul>
+<p>  会触发 Out-of-Memory-Killer</p>
+<ul>
+<li>所有该 cgroup 内的进程会被冻结。</li>
+<li>OOM Killer 可能会终止进程或调整内存限制。</li>
+<li>如果内存使用量下降到限制以下，进程可以恢复运行。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Secure-Computing-Mode-Seccomp"><a href="#Secure-Computing-Mode-Seccomp" class="headerlink" title="Secure Computing Mode (Seccomp)"></a>Secure Computing Mode (Seccomp)</h4><p>用于限制进程可以执行的系统调用（System Calls）。</p>
+<p>提供 3 种模式：</p>
+<ul>
+<li><p>Disabled：</p>
+<p>未启用，可以调用所有 System Call</p>
+</li>
+<li><p>Strict：</p>
+<p>只能调用4个：read(), write(), exit() 和 sigreturn()</p>
+<p>（sigreturn() 是一个 系统调用（syscall），用于 从信号处理程序（signal handler）返回到被中断的进程上下文。）</p>
+<p>调用其他的会触发SIGKILL信号。</p>
+</li>
+<li><p>Filter：</p>
+<p>只能使用被过滤过的System Call。</p>
+<p>Filter会基于Berkeley Packet Filter (BPF)。</p>
+</li>
+</ul>
 <h2 id="System-Virtual-Machines"><a href="#System-Virtual-Machines" class="headerlink" title="System Virtual Machines"></a>System Virtual Machines</h2><h2 id="CPU-Virtualisierung"><a href="#CPU-Virtualisierung" class="headerlink" title="CPU-Virtualisierung"></a>CPU-Virtualisierung</h2>
   </div>
   
@@ -2838,10 +2902,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-12T22:21:34+01:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-15T23:17:01+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 12, 2025</p>
+    <p>更新于：Mar 15, 2025</p>
   </a>
 </div>
 
@@ -2983,7 +3047,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Einfuhrung"><span class="toc-text">Einführung</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Interfaces"><span class="toc-text">Interfaces</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">虚拟运行环境的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Anforderungen-an-Virtualisierung-%E5%AF%B9%E8%99%9A%E6%8B%9F%E5%8C%96%E7%9A%84%E8%A6%81%E6%B1%82"><span class="toc-text">Anforderungen an Virtualisierung 对虚拟化的要求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OS-level-Virtualization"><span class="toc-text">OS-level-Virtualization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Container"><span class="toc-text">Container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bestandteile-von-Container-unter-Linux"><span class="toc-text">Bestandteile von Container unter Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Namespaces"><span class="toc-text">Namespaces</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Linux-Control-Groups-cgroups"><span class="toc-text">Linux Control Groups (cgroups)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System-Virtual-Machines"><span class="toc-text">System Virtual Machines</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU-Virtualisierung"><span class="toc-text">CPU-Virtualisierung</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Einfuhrung"><span class="toc-text">Einführung</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Interfaces"><span class="toc-text">Interfaces</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">虚拟运行环境的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Anforderungen-an-Virtualisierung-%E5%AF%B9%E8%99%9A%E6%8B%9F%E5%8C%96%E7%9A%84%E8%A6%81%E6%B1%82"><span class="toc-text">Anforderungen an Virtualisierung 对虚拟化的要求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OS-level-Virtualization"><span class="toc-text">OS-level-Virtualization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Container"><span class="toc-text">Container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bestandteile-von-Container-unter-Linux"><span class="toc-text">Bestandteile von Container unter Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Namespaces"><span class="toc-text">Namespaces</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Linux-Control-Groups-cgroups"><span class="toc-text">Linux Control Groups (cgroups)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Secure-Computing-Mode-Seccomp"><span class="toc-text">Secure Computing Mode (Seccomp)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#System-Virtual-Machines"><span class="toc-text">System Virtual Machines</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU-Virtualisierung"><span class="toc-text">CPU-Virtualisierung</span></a></li></ol>
   </div>
 </section>
 
@@ -3544,7 +3608,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/11/TUM笔记/GBS/GBS-9-Virtualisierung虚拟化/","name":"GBS-9-Virtualisierung虚拟化"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS-9-Virtualisierung虚拟化","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/11/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-9-Virtualisierung%E8%99%9A%E6%8B%9F%E5%8C%96/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/11/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-9-Virtualisierung%E8%99%9A%E6%8B%9F%E5%8C%96/","wordCount":10,"datePublished":"2025-03-11T17:17:37.000Z","dateModified":"2025-03-12T21:21:34.801Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme , Operating System, 操作系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/11/TUM笔记/GBS/GBS-9-Virtualisierung虚拟化/","name":"GBS-9-Virtualisierung虚拟化"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS-9-Virtualisierung虚拟化","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/11/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-9-Virtualisierung%E8%99%9A%E6%8B%9F%E5%8C%96/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/11/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-9-Virtualisierung%E8%99%9A%E6%8B%9F%E5%8C%96/","wordCount":10,"datePublished":"2025-03-11T17:17:37.000Z","dateModified":"2025-03-15T22:17:01.648Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme , Operating System, 操作系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
