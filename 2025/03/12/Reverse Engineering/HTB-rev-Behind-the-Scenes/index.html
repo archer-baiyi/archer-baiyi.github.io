@@ -5,8 +5,8 @@
   <meta name="Volantis" content="6.0.0-alpha.1">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/categories/ctf/htb/reverse-engineering/"/>
+  
+  <link rel="canonical" href="http://example.com/2025/03/12/reverse engineering/htb-rev-behind-the-scenes/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,18 +33,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Category: Reverse Engineering - Hexo</title>
-  <meta name="keywords" content="null">
+  <title>HTB_rev Behind the Scenes - Hexo</title>
+  <meta name="keywords" content="Reverse Engineering, HTB,null">
   <meta desc name="description" content="hi - John Doe - Hexo">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/categories/CTF/HTB/Reverse-Engineering/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB_rev Behind the Scenes">
+<meta property="og:url" content="http://example.com/2025/03/12/Reverse%20Engineering/HTB-rev-Behind-the-Scenes/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="hi">
+<meta property="og:description" content="用010 Editor （或者Hex Editor之类的都行）打开源文件，将里面所有的 0F 0B  （即 ud2 ）改为 90 90  （90即NOP，是Machine Code中表示 无操作 (No Operation) 的命令），然后再用IDA打开文件即可看到完整的代码： 123456789101112131415161718192021222324252627282930313233343">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-03-12T01:22:42.000Z">
+<meta property="article:modified_time" content="2025-03-16T21:39:33.062Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Reverse Engineering, HTB">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2264,7 +2267,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2272,7 +2275,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742077528898),
+    lastupdate: new Date(1742162202507),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2621,25 +2624,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/12/HTB-rev-Behind-the-Scenes/">
+  <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/12/Reverse Engineering/HTB-rev-Behind-the-Scenes/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2648,75 +2635,239 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="hi">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/12/HTB-rev-Behind-the-Scenes/"  itemprop="url">
-        HTB_rev_Behind-the-Scenes
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        用010 Editor （或者Hex Editor之类的都行）打开源文件，将里面所有的 0F 0B  （即 ud2 ）改为 90 90  （90即NOP，是Machine Code中表示 无操作 (No Operation) 的命令），然后再用IDA打开文件即可看到完整的代码：
-123456789101112131415161718192021222324252627282930313233...
-      
+    
+      <h1 class="title" itemprop="name headline">
+        HTB_rev Behind the Scenes
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="https://schema.org.cn/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  
+  
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Reverse-Engineering/">Reverse Engineering</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+        <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+      </span>
+    
+      <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+        <a href="/categories/CTF/Reverse-Engineering/" itemprop="url"><span itemprop="name">Reverse Engineering</span></a>
+      </span>
     
   </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-12T02:22:42+01:00">2025-03-12</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/HTB/">HTB</a><span class="sep"></span><a class="category-link" href="/categories/CTF/HTB/Reverse-Engineering/">Reverse Engineering</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/HTB/" itemprop="url"><span itemprop="name">HTB</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/HTB/Reverse-Engineering/" itemprop="url"><span itemprop="name">Reverse Engineering</span></a>
-            </span>
+
+
+
           
         
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-12T02:22:42+01:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 12, 2025</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
       </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <p>用010 Editor （或者Hex Editor之类的都行）打开源文件，将里面所有的 <code>0F 0B</code>  （即 <code>ud2</code> ）改为 <code>90 90</code>  （<code>90</code>即<code>NOP</code>，是Machine Code中表示 <code>无操作 (No Operation)</code> 的命令），然后再用IDA打开文件即可看到完整的代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __fastcall <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> **argv, <span class="type">const</span> <span class="type">char</span> **envp)</span></span><br><span class="line">{</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">sigaction</span> <span class="title">s</span>;</span> <span class="comment">// [rsp+10h] [rbp-A0h] BYREF</span></span><br><span class="line">  <span class="type">unsigned</span> __int64 v5; <span class="comment">// [rsp+A8h] [rbp-8h]</span></span><br><span class="line"></span><br><span class="line">  v5 = __readfsqword(<span class="number">0x28u</span>);</span><br><span class="line">  <span class="built_in">memset</span>(&amp;s, <span class="number">0</span>, <span class="keyword">sizeof</span>(s));</span><br><span class="line">  sigemptyset(&amp;s.sa_mask);</span><br><span class="line">  s.sa_handler = (<span class="type">__sighandler_t</span>)segill_sigaction;</span><br><span class="line">  s.sa_flags = <span class="number">4</span>;</span><br><span class="line">  sigaction(<span class="number">4</span>, &amp;s, <span class="number">0LL</span>);</span><br><span class="line">  <span class="keyword">if</span> ( argc == <span class="number">2</span> )</span><br><span class="line">  {</span><br><span class="line">    <span class="keyword">if</span> ( <span class="built_in">strlen</span>(argv[<span class="number">1</span>]) == <span class="number">12</span> )</span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">if</span> ( !<span class="built_in">strncmp</span>(argv[<span class="number">1</span>], <span class="string">"Itz"</span>, <span class="number">3uLL</span>) )</span><br><span class="line">      {</span><br><span class="line">        <span class="keyword">if</span> ( !<span class="built_in">strncmp</span>(argv[<span class="number">1</span>] + <span class="number">3</span>, <span class="string">"_0n"</span>, <span class="number">3uLL</span>) )</span><br><span class="line">        {</span><br><span class="line">          <span class="keyword">if</span> ( !<span class="built_in">strncmp</span>(argv[<span class="number">1</span>] + <span class="number">6</span>, <span class="string">"Ly_"</span>, <span class="number">3uLL</span>) )</span><br><span class="line">          {</span><br><span class="line">            <span class="keyword">if</span> ( !<span class="built_in">strncmp</span>(argv[<span class="number">1</span>] + <span class="number">9</span>, <span class="string">"UD2"</span>, <span class="number">3uLL</span>) )</span><br><span class="line">              <span class="built_in">printf</span>(<span class="string">"&gt; HTB{%s}\n"</span>, argv[<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">          }</span><br><span class="line">          <span class="keyword">else</span></span><br><span class="line">          {</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">          }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      {</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  {</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"./challenge &lt;password&gt;"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>所以flag为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTB{Itz_0nLy_UD2}</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/2025/03/12/HTB-rev-Behind-the-Scenes/' itemprop="url">
-            Read More
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-16T22:39:33+01:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Mar 16, 2025</p>
+  </a>
 </div>
 
-          </div>
         
       
-    
-  </section>
+        
+          
   
-    
+  
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Reverse-Engineering-HTB/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Reverse Engineering, HTB</p></a></div>
+  <span hidden itemprop="keywords">Reverse Engineering, HTB</span>
   
 
 
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/12/Reverse%20Engineering/HTB-rev-Behind-the-Scenes/&title=HTB_rev Behind the Scenes - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/12/Reverse%20Engineering/HTB-rev-Behind-the-Scenes/&title=HTB_rev Behind the Scenes - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/12/Reverse%20Engineering/HTB-rev-Behind-the-Scenes/&title=HTB_rev Behind the Scenes - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2025/03/16/Reverse%20Engineering/HTB-rev-Find-The-Easy-Pass/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>HTB_rev Find The Easy Pass</p>
+          <p class='content'>这道题会给我们一个exe文件，打开是一个判断输入的密码是否正确的软件：
+
+我们用IDA打开它，会发现并没有反编译出main()函数。所以我们随便输入一点内容试一下：
+会返回Wrong Passw...</p>
+        </a>
+      
+      
+        <a class='next' href='/2025/03/11/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-9-Virtualisierung%E8%99%9A%E6%8B%9F%E5%8C%96/'>
+          <p class='title'>GBS-9-Virtualisierung虚拟化<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>[toc]
+Einführung
+Abstraktionssichten: 复杂系统可以通过抽象层更好地描述。
+
+Fokus auf relevante Funktionalitäten
+
+抽象...</p>
+        </a>
+      
+    </div>
+  
+  <!-- 文章推荐 -->
+  
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+  
+
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="https://schema.org.cn/WPSideBar">
   
@@ -2725,141 +2876,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget blogger desktop mobile ">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://github.com/Lycorisby/pictures/raw/main/%E5%A3%81%E7%BA%B8/%E6%B4%BE%E5%A4%A7%E6%98%9F.jpeg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:aurora20000521@gmail.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/archer-baiyi"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/CTF/" href="/categories/CTF/"
-            active-action="action-categoriesCTF"
-            ><div class='name'>CTF</div><div class='badge'>(6)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/" href="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/"
-            active-action="action-categoriesCTFCTFE5B08FE79FA5E8AF86"
-            ><div class='name'>CTF小知识</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/CTF/HTB/" href="/categories/CTF/HTB/"
-            active-action="action-categoriesCTFHTB"
-            ><div class='name'>HTB</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/CTF/HTB/Reverse-Engineering/" href="/categories/CTF/HTB/Reverse-Engineering/"
-            active-action="action-categoriesCTFHTBReverse-Engineering"
-            ><div class='name'>Reverse Engineering</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/CTF/writeup/" href="/categories/CTF/writeup/"
-            active-action="action-categoriesCTFwriteup"
-            ><div class='name'>writeup</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"
-            active-action="action-categoriesTUME8AFBEE7A88BE7AC94E8AEB0"
-            ><div class='name'>TUM课程笔记</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/GBS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/GBS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
-            active-action="action-categoriesTUME8AFBEE7A88BE7AC94E8AEB0GBS-E6938DE4BD9CE7B3BBE7BB9F"
-            ><div class='name'>GBS 操作系统</div><div class='badge'>(2)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Betriebssysteme-Operating-System-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 19px; color: #777">Betriebssysteme , Operating System, 操作系统</a> <a href="/tags/CTF-%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">CTF,哈希</a> <a href="/tags/Datenbank-Database-%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">Datenbank, Database, 数据库</a> <a href="/tags/Reverse-Engineering/" style="font-size: 14px; color: #999">Reverse Engineering</a> <a href="/tags/socket-remote/" style="font-size: 14px; color: #999">socket,remote</a> <a href="/tags/writeup/" style="font-size: 24px; color: #555">writeup</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky">
+
+  
+  
+
+
+  
 
 </div>
 
@@ -2867,6 +2894,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <!-- Custom Files side end -->
 </aside>
+
 
 
         </div>
@@ -3415,7 +3443,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Reverse Engineering/","name":"Reverse Engineering"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/CTF/Reverse-Engineering/","name":"Reverse Engineering"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/12/Reverse Engineering/HTB-rev-Behind-the-Scenes/","name":"HTB_rev Behind the Scenes"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"HTB_rev Behind the Scenes","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/12/Reverse%20Engineering/HTB-rev-Behind-the-Scenes/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/12/Reverse%20Engineering/HTB-rev-Behind-the-Scenes/","wordCount":0,"datePublished":"2025-03-12T01:22:42.000Z","dateModified":"2025-03-16T21:39:33.062Z","articleSection":"CTF","keywords":"Reverse Engineering, HTB","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

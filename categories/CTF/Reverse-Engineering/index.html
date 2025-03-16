@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/categories/ctf/htb/"/>
+  <link rel="canonical" href="http://example.com/categories/ctf/reverse-engineering/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,13 +33,13 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Category: HTB - Hexo</title>
+  <title>Category: Reverse Engineering - Hexo</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="hi - John Doe - Hexo">
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/categories/CTF/HTB/index.html">
+<meta property="og:url" content="http://example.com/categories/CTF/Reverse-Engineering/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="hi">
 <meta property="og:locale" content="en_US">
@@ -2272,7 +2272,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742077528898),
+    lastupdate: new Date(1742162202507),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2632,6 +2632,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
       
     
     
@@ -2639,7 +2641,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/12/HTB-rev-Behind-the-Scenes/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/16/Reverse Engineering/HTB-rev-Find-The-Easy-Pass/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2657,8 +2659,82 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/12/HTB-rev-Behind-the-Scenes/"  itemprop="url">
-        HTB_rev_Behind-the-Scenes
+      <a href="/2025/03/16/Reverse%20Engineering/HTB-rev-Find-The-Easy-Pass/"  itemprop="url">
+        HTB_rev Find The Easy Pass
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        这道题会给我们一个exe文件，打开是一个判断输入的密码是否正确的软件：
+
+我们用IDA打开它，会发现并没有反编译出main()函数。所以我们随便输入一点内容试一下：
+会返回Wrong Password!字样。接着我们尝试用IDA搜索这段内容，会发现：
+
+
+点击第二个结果会跳转到：
+注意到它的上方有着”Goob Job. Congratulation”的字样，我们猜测这是输入成功后返回的内容，...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-03-16T22:39:15+01:00">2025-03-16</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Reverse-Engineering/">Reverse Engineering</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/Reverse-Engineering/" itemprop="url"><span itemprop="name">Reverse Engineering</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/03/16/Reverse%20Engineering/HTB-rev-Find-The-Easy-Pass/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/12/Reverse Engineering/HTB-rev-Behind-the-Scenes/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/03/12/Reverse%20Engineering/HTB-rev-Behind-the-Scenes/"  itemprop="url">
+        HTB_rev Behind the Scenes
       </a>
     </h2>
   
@@ -2677,25 +2753,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <time itemprop="dateCreated datePublished" datetime="2025-03-12T02:22:42+01:00">2025-03-12</time>
         
           <span class="dot"></span>
-          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/HTB/">HTB</a><span class="sep"></span><a class="category-link" href="/categories/CTF/HTB/Reverse-Engineering/">Reverse Engineering</a>
+          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Reverse-Engineering/">Reverse Engineering</a>
           
             <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
               <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
             </span>
           
             <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/HTB/" itemprop="url"><span itemprop="name">HTB</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/HTB/Reverse-Engineering/" itemprop="url"><span itemprop="name">Reverse Engineering</span></a>
+              <a href="/categories/CTF/Reverse-Engineering/" itemprop="url"><span itemprop="name">Reverse Engineering</span></a>
             </span>
           
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/03/12/HTB-rev-Behind-the-Scenes/' itemprop="url">
+          <a class='readmore' href='/2025/03/12/Reverse%20Engineering/HTB-rev-Behind-the-Scenes/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2793,7 +2865,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/CTF/" href="/categories/CTF/"
             active-action="action-categoriesCTF"
-            ><div class='name'>CTF</div><div class='badge'>(6)</div></a></li>
+            ><div class='name'>CTF</div><div class='badge'>(7)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/" href="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/"
@@ -2801,14 +2873,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             ><div class='name'>CTF小知识</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box child"
-            title="/categories/CTF/HTB/" href="/categories/CTF/HTB/"
-            active-action="action-categoriesCTFHTB"
-            ><div class='name'>HTB</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/CTF/HTB/Reverse-Engineering/" href="/categories/CTF/HTB/Reverse-Engineering/"
-            active-action="action-categoriesCTFHTBReverse-Engineering"
-            ><div class='name'>Reverse Engineering</div><div class='badge'>(1)</div></a></li>
+            title="/categories/CTF/Reverse-Engineering/" href="/categories/CTF/Reverse-Engineering/"
+            active-action="action-categoriesCTFReverse-Engineering"
+            ><div class='name'>Reverse Engineering</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/CTF/writeup/" href="/categories/CTF/writeup/"
@@ -2848,7 +2915,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-      <a href="/tags/Betriebssysteme-Operating-System-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 19px; color: #777">Betriebssysteme , Operating System, 操作系统</a> <a href="/tags/CTF-%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">CTF,哈希</a> <a href="/tags/Datenbank-Database-%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">Datenbank, Database, 数据库</a> <a href="/tags/Reverse-Engineering/" style="font-size: 14px; color: #999">Reverse Engineering</a> <a href="/tags/socket-remote/" style="font-size: 14px; color: #999">socket,remote</a> <a href="/tags/writeup/" style="font-size: 24px; color: #555">writeup</a>
+      <a href="/tags/Betriebssysteme-Operating-System-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 19px; color: #777">Betriebssysteme , Operating System, 操作系统</a> <a href="/tags/CTF-%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">CTF,哈希</a> <a href="/tags/Datenbank-Database-%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">Datenbank, Database, 数据库</a> <a href="/tags/Reverse-Engineering-HTB/" style="font-size: 19px; color: #777">Reverse Engineering, HTB</a> <a href="/tags/socket-remote/" style="font-size: 14px; color: #999">socket,remote</a> <a href="/tags/writeup/" style="font-size: 24px; color: #555">writeup</a>
     </div>
   </section>
 
@@ -3415,7 +3482,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/HTB/","name":"HTB"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Reverse Engineering/","name":"Reverse Engineering"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
