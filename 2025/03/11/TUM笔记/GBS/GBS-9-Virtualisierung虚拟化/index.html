@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-11T17:17:37.000Z">
-<meta property="article:modified_time" content="2025-03-18T10:12:36.256Z">
+<meta property="article:modified_time" content="2025-03-18T10:16:08.735Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Betriebssysteme , Operating System, 操作系统">
 <meta name="twitter:card" content="summary">
@@ -2275,7 +2275,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742292767446),
+    lastupdate: new Date(1742292980265),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2688,7 +2688,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-18T11:12:36+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-18T11:16:08+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 18, 2025</p>
@@ -2870,7 +2870,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>为了解决这个问题我们可以使用 <strong><code>Ballooning</code></strong> (“balloon driver”)：Gast-BS内部的软件与Hypervisor进行通信：（没有内存压力的虚拟机）释放内存（“气球放气”）；申请内存（”给气球充气“）。</p>
 <h3 id="I-O-虚拟化（I-O-Virtualisierung）"><a href="#I-O-虚拟化（I-O-Virtualisierung）" class="headerlink" title="I&#x2F;O 虚拟化（I&#x2F;O-Virtualisierung）"></a><strong>I&#x2F;O 虚拟化（I&#x2F;O-Virtualisierung）</strong></h3><p>介绍几种I&#x2F;O 虚拟化的技术：</p>
 <h4 id="完整虚拟化-仿真（Full-Virtualization-Emulation）"><a href="#完整虚拟化-仿真（Full-Virtualization-Emulation）" class="headerlink" title="完整虚拟化&#x2F;仿真（Full Virtualization&#x2F;Emulation）"></a><strong>完整虚拟化&#x2F;仿真（Full Virtualization&#x2F;Emulation）</strong></h4><p>Hypervisor管理所有 Guest VM 的I&#x2F;O请求，调度I&#x2F;O资源。</p>
-<p>Hypervisor 通过软件多路复用（<strong>multiplext</strong>）或仿真（emuliert）I&#x2F;O 设备。</p>
+<p>Hypervisor 通过软件多路复用（<strong><code>multiplext</code></strong>）或仿真（emuliert）I&#x2F;O 设备。</p>
 <p>Hypervisor会拦截Guest VM的I&#x2F;O请求，并将其转发到物理 I&#x2F;O 设备。</p>
 <p>优势：</p>
 <ul>
@@ -2884,10 +2884,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>如果 I&#x2F;O 设备完全仿真（Emulation），会产生较高的性能开销（<strong>Overhead</strong>）。</li>
 </ul>
 <h4 id="半虚拟化（Paravirtualization）"><a href="#半虚拟化（Paravirtualization）" class="headerlink" title="半虚拟化（Paravirtualization）"></a><strong>半虚拟化（Paravirtualization）</strong></h4><p>将 I&#x2F;O 设备驱动分为两部分</p>
-<p>使用<strong>拆分驱动架构（Split-Driver-Architektur）</strong> </p>
+<p>使用**<code>拆分驱动架构（Split-Driver-Architektur）</code>** </p>
 <ul>
-<li><strong>后端驱动（Backend-Treiber）</strong>：运行在 Hypervisor 或 I&#x2F;O 处理 VM 内，实际管理物理设备。</li>
-<li><strong>前端驱动（Frontend-Treiber）</strong>：运行在 Gast-BS 内，与后端驱动通信。</li>
+<li><strong><code>后端驱动（Backend-Treiber）</code></strong>：运行在 Hypervisor 或 I&#x2F;O 处理 VM 内，实际管理物理设备。</li>
+<li><strong><code>前端驱动（Frontend-Treiber）</code></strong>：运行在 Gast-BS 内，与后端驱动通信。</li>
 </ul>
 <p>优势：</p>
 <ul>
@@ -3769,7 +3769,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/11/TUM笔记/GBS/GBS-9-Virtualisierung虚拟化/","name":"GBS-9-Virtualisierung虚拟化"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS-9-Virtualisierung虚拟化","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/11/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-9-Virtualisierung%E8%99%9A%E6%8B%9F%E5%8C%96/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/11/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-9-Virtualisierung%E8%99%9A%E6%8B%9F%E5%8C%96/","wordCount":10,"datePublished":"2025-03-11T17:17:37.000Z","dateModified":"2025-03-18T10:12:36.256Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme , Operating System, 操作系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/11/TUM笔记/GBS/GBS-9-Virtualisierung虚拟化/","name":"GBS-9-Virtualisierung虚拟化"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS-9-Virtualisierung虚拟化","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/11/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-9-Virtualisierung%E8%99%9A%E6%8B%9F%E5%8C%96/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/11/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-9-Virtualisierung%E8%99%9A%E6%8B%9F%E5%8C%96/","wordCount":10,"datePublished":"2025-03-11T17:17:37.000Z","dateModified":"2025-03-18T10:16:08.735Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme , Operating System, 操作系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
