@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-19T19:56:10.000Z">
-<meta property="article:modified_time" content="2025-03-19T22:34:02.614Z">
+<meta property="article:modified_time" content="2025-03-20T10:09:24.779Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Rechnerarchitektur, 计算机体系结构, 汇编语言, RISC-V">
 <meta name="twitter:card" content="summary">
@@ -2275,7 +2275,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742423765029),
+    lastupdate: new Date(1742465384053),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2688,10 +2688,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-19T23:34:02+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-20T11:09:24+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 19, 2025</p>
+    <p>更新于：Mar 20, 2025</p>
   </a>
 </div>
 
@@ -2707,13 +2707,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>每一个ISA（Instruction Set Architecture）的指令都可以分为以下3大类：</p>
+    <h2 id="RISC-V-汇编语言"><a href="#RISC-V-汇编语言" class="headerlink" title="RISC-V 汇编语言"></a>RISC-V 汇编语言</h2><p>每一个ISA（Instruction Set Architecture）的指令都可以分为以下3大类：</p>
 <ol>
 <li><strong><code>算术和逻辑运算（Arithmetische und logische Operationen）</code></strong></li>
 <li><strong><code>数据传输（Datentransfer）</code></strong></li>
 <li><strong><code>程序控制 （Steuerung des Programmablaufs）：跳转和子程序调用（ Sprünge und Unterprogrammaufrufe）</code></strong></li>
 </ol>
-<h2 id="算术-Arithmetik"><a href="#算术-Arithmetik" class="headerlink" title="算术 Arithmetik"></a><strong>算术 Arithmetik</strong></h2><p><strong>加法</strong>：</p>
+<h3 id="算术-Arithmetik"><a href="#算术-Arithmetik" class="headerlink" title="算术 Arithmetik"></a><strong>算术 Arithmetik</strong></h3><p><strong>加法</strong>：</p>
 <p>a = b + c</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add a,b,c</span><br></pre></td></tr></table></figure>
 
@@ -2747,7 +2747,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<h2 id="逻辑运算-Logische-Operation"><a href="#逻辑运算-Logische-Operation" class="headerlink" title="逻辑运算 Logische Operation"></a><strong>逻辑运算 Logische Operation</strong></h2><p><strong>和</strong>：</p>
+<h3 id="逻辑运算-Logische-Operation"><a href="#逻辑运算-Logische-Operation" class="headerlink" title="逻辑运算 Logische Operation"></a><strong>逻辑运算 Logische Operation</strong></h3><p><strong>和</strong>：</p>
 <p>a = b AND c</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and a,b,c</span><br></pre></td></tr></table></figure>
 
@@ -2765,7 +2765,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<h2 id="数据传输（Datentransfer）"><a href="#数据传输（Datentransfer）" class="headerlink" title="数据传输（Datentransfer）"></a><strong>数据传输（Datentransfer）</strong></h2><p><strong>读取</strong>（Lesen vom Speicher）：</p>
+<h3 id="数据传输（Datentransfer）"><a href="#数据传输（Datentransfer）" class="headerlink" title="数据传输（Datentransfer）"></a><strong>数据传输（Datentransfer）</strong></h3><p><strong>读取</strong>（Lesen vom Speicher）：</p>
 <p>ld (load word)</p>
 <p>Format：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld destination, offset(base)</span><br></pre></td></tr></table></figure>
@@ -2789,7 +2789,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <p>Basisadresse (s0) zum Offset (8) addieren,  </p>
 <p>Adresse = ([Wert in s0] + 8)</p>
-<h2 id="跳转-Sprung"><a href="#跳转-Sprung" class="headerlink" title="跳转 Sprung"></a>跳转 Sprung</h2><p>无条件跳转：</p>
+<h3 id="跳转-Sprung"><a href="#跳转-Sprung" class="headerlink" title="跳转 Sprung"></a>跳转 Sprung</h3><p>无条件跳转：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">j imm</span><br><span class="line">jr reg, imm</span><br></pre></td></tr></table></figure>
 
 <p>第一个会跳转到PC = PC + imm</p>
@@ -2831,9 +2831,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<h2 id="子程序调用-Unterprogramme"><a href="#子程序调用-Unterprogramme" class="headerlink" title="子程序调用 Unterprogramme"></a>子程序调用 Unterprogramme</h2><p>Begriffe：</p>
-<p><strong>Caller（调用者）</strong>：调用函数的代码（如 <code>main()</code>）。</p>
-<p><strong>Callee（被调用者）</strong>：被调用的函数（如 <code>simple()</code>）。</p>
+<h3 id="子程序调用-Unterprogramme"><a href="#子程序调用-Unterprogramme" class="headerlink" title="子程序调用 Unterprogramme"></a>子程序调用 Unterprogramme</h3><p>Begriffe：</p>
+<p><strong>Caller（调用者）</strong>：调用函数的代码（如 main()）。</p>
+<p><strong>Callee（被调用者）</strong>：被调用的函数（如 simple()）。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jal reg, offset		#调用</span><br><span class="line">jr ra				#返回</span><br></pre></td></tr></table></figure>
 
 
@@ -2844,6 +2844,59 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>跟上面这段c代码等价的RISC-V Assembler（汇编）：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0x00000300	main:	jal  simple     # call</span><br><span class="line">0x00000304      	add  s0, s1, s2</span><br><span class="line">...             	...</span><br><span class="line"></span><br><span class="line">0x0000051c simple: 	jr ra     		# return</span><br></pre></td></tr></table></figure>
 
+
+
+
+
+<p>其他的伪命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv ra, rb</span><br></pre></td></tr></table></figure>
+
+<p>跟</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add ra,rb,x0</span><br><span class="line">addi ra,rb,x0</span><br></pre></td></tr></table></figure>
+
+<p>等价。</p>
+<h2 id="RISC-V-机器码-Machine-Code-Instrunction"><a href="#RISC-V-机器码-Machine-Code-Instrunction" class="headerlink" title="RISC-V 机器码 Machine Code/Instrunction"></a>RISC-V 机器码 Machine Code/Instrunction</h2><p>将汇编语言翻译成机器码主要依靠下面这2张表：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250320100807426.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250320100807426.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250320100807426"></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250320101142426.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250320101142426.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250320101142426"></p>
+<p>首先，所有的操作会被分成6个大类：</p>
+<ul>
+<li><strong>Register/register (R)</strong></li>
+<li><strong>Immediate (I)</strong></li>
+<li><strong>Upper immediate (U)</strong></li>
+<li><strong>Store (S)</strong></li>
+<li><strong>Branch (B)</strong> 条件跳转</li>
+<li><strong>Jump (J)</strong></li>
+</ul>
+<p>然后会通过funct3以及funct7确定具体操作。（funct7更多的是为了扩展的操作/功能。）</p>
+<p>rs1, rs2, rd存储的是寄存器的地址，而imm存储的则是立即数（immediate）的数值。其中rd是目标寄存器。</p>
+<p><strong>例子</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addi a1, a2,1</span><br></pre></td></tr></table></figure>
+
+<p>假设a1（rd），a2（rs1）的地址为00010，01010，</p>
+<p>因为addi指令的opcode和funct3为：0010011, 000 ，这行命令会翻译成以下的机器码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">imm[11:0]   | rs1   | funct3 | rd    | opcode</span><br><span class="line">------------|-------|--------|-------|--------</span><br><span class="line">000000000001| 01010 | 000    | 00010 | 0010011</span><br></pre></td></tr></table></figure>
+
+
+
+<p>S,T,J 那部分内容将imm的值拆成好几部分是为了其他内容的位置可以对齐，比如说rs2的位置都是第20-24bit。</p>
+<p>Branch和Jump都是跳转操作，所以会将imm（跳转地址）的第一位（符号位）imm[12]或者imm[20]放在开头，以确定是向后跳转还是向前。然后因为RISC-V的命令都是32位的，也就是4Byte，所以所有地址都是4的倍数，也就不需要imm[0]的信息了，因为imm[0]始终等于0。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="1-Register-s5-nullen-将寄存器s5的值设为0："><a href="#1-Register-s5-nullen-将寄存器s5的值设为0：" class="headerlink" title="1. Register s5 nullen 将寄存器s5的值设为0："></a><strong>1. Register s5 nullen 将寄存器s5的值设为0：</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov s5, 0</span><br><span class="line">#或者是</span><br><span class="line">li s5, 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Wert-in-Register-a1-nach-s3-kopieren-将s3的值复制到s1里："><a href="#2-Wert-in-Register-a1-nach-s3-kopieren-将s3的值复制到s1里：" class="headerlink" title="2. Wert in Register a1 nach s3 kopieren 将s3的值复制到s1里："></a><strong>2. Wert in Register a1 nach s3 kopieren 将s3的值复制到s1里：</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv s3, a1</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Dasunterste-Bit-von-a0-nach-t1-schreiben-restliche-Bits-sollen-0-sein-将-a0-的最低位写入-t1，其他位清零"><a href="#3-Dasunterste-Bit-von-a0-nach-t1-schreiben-restliche-Bits-sollen-0-sein-将-a0-的最低位写入-t1，其他位清零" class="headerlink" title="3. Dasunterste Bit von a0 nach t1 schreiben, restliche Bits sollen 0 sein 将 a0 的最低位写入 t1，其他位清零:"></a><strong>3. Dasunterste Bit von a0 nach t1 schreiben, restliche Bits sollen 0 sein 将 a0 的最低位写入 t1，其他位清零:</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">andi t1, a0, 1 </span><br></pre></td></tr></table></figure>
+
+<p>1在二进制中只有最后一位是1，其他位置都是0，所以a0的其他位置与0进行and操作都会得到0，而最后一位与1进行and操作会保留原本内容。</p>
+<h3 id="4-Register-s1-mit-Einsen-fullen-将寄存器-s1的值为全都是-1："><a href="#4-Register-s1-mit-Einsen-fullen-将寄存器-s1的值为全都是-1：" class="headerlink" title="4. Register s1 mit Einsen füllen 将寄存器 s1的值为全都是 1："></a><strong>4. Register s1 mit Einsen füllen 将寄存器 s1的值为全都是 1：</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">li s1, -1  </span><br></pre></td></tr></table></figure>
+
+<p>因为-1 的二进制表示全 1</p>
+<h3 id="5-Unterstes-Byte-von-t0-nach-a0-schreiben-Rest-unverandert-将-t0-的最低字节写入-a0，保持其余部分不变："><a href="#5-Unterstes-Byte-von-t0-nach-a0-schreiben-Rest-unverandert-将-t0-的最低字节写入-a0，保持其余部分不变：" class="headerlink" title="5. Unterstes Byte von t0 nach a0 schreiben, Rest unverändert 将 t0 的最低字节写入 a0，保持其余部分不变："></a><strong>5. Unterstes Byte von t0 nach a0 schreiben, Rest unverändert 将 t0 的最低字节写入 a0，保持其余部分不变：</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">andi a0, a0, -256  # 清除 a0 的最低字节 (0xFFFFFF00)</span><br><span class="line">or a0, a0, t0      # 直接合并 t0 低字节</span><br></pre></td></tr></table></figure>
+
+<p>-256的二进制表示为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1111 1111 1111 1111 1111 1111 0000 0000</span><br></pre></td></tr></table></figure>
+
+<p>最后一个Byte的内容都是0，所以将它与a0进行and操作可以清除a0的最后一个Byte的内容，前面的保留。</p>
+<p>然后将a0和t0直接进行or操作，会保留a0的前面部分，以及t0的最后一个Byte的内容。</p>
 
   </div>
   
@@ -2996,7 +3049,7 @@ Binärsyste...</p>
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF-Arithmetik"><span class="toc-text">算术 Arithmetik</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97-Logische-Operation"><span class="toc-text">逻辑运算 Logische Operation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%88Datentransfer%EF%BC%89"><span class="toc-text">数据传输（Datentransfer）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%B3%E8%BD%AC-Sprung"><span class="toc-text">跳转 Sprung</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8-Unterprogramme"><span class="toc-text">子程序调用 Unterprogramme</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="toc-text">RISC-V 汇编语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF-Arithmetik"><span class="toc-text">算术 Arithmetik</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97-Logische-Operation"><span class="toc-text">逻辑运算 Logische Operation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%88Datentransfer%EF%BC%89"><span class="toc-text">数据传输（Datentransfer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E8%BD%AC-Sprung"><span class="toc-text">跳转 Sprung</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8-Unterprogramme"><span class="toc-text">子程序调用 Unterprogramme</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RISC-V-%E6%9C%BA%E5%99%A8%E7%A0%81-Machine-Code-Instrunction"><span class="toc-text">RISC-V 机器码 Machine Code&#x2F;Instrunction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Register-s5-nullen-%E5%B0%86%E5%AF%84%E5%AD%98%E5%99%A8s5%E7%9A%84%E5%80%BC%E8%AE%BE%E4%B8%BA0%EF%BC%9A"><span class="toc-text">1. Register s5 nullen 将寄存器s5的值设为0：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Wert-in-Register-a1-nach-s3-kopieren-%E5%B0%86s3%E7%9A%84%E5%80%BC%E5%A4%8D%E5%88%B6%E5%88%B0s1%E9%87%8C%EF%BC%9A"><span class="toc-text">2. Wert in Register a1 nach s3 kopieren 将s3的值复制到s1里：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Dasunterste-Bit-von-a0-nach-t1-schreiben-restliche-Bits-sollen-0-sein-%E5%B0%86-a0-%E7%9A%84%E6%9C%80%E4%BD%8E%E4%BD%8D%E5%86%99%E5%85%A5-t1%EF%BC%8C%E5%85%B6%E4%BB%96%E4%BD%8D%E6%B8%85%E9%9B%B6"><span class="toc-text">3. Dasunterste Bit von a0 nach t1 schreiben, restliche Bits sollen 0 sein 将 a0 的最低位写入 t1，其他位清零:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Register-s1-mit-Einsen-fullen-%E5%B0%86%E5%AF%84%E5%AD%98%E5%99%A8-s1%E7%9A%84%E5%80%BC%E4%B8%BA%E5%85%A8%E9%83%BD%E6%98%AF-1%EF%BC%9A"><span class="toc-text">4. Register s1 mit Einsen füllen 将寄存器 s1的值为全都是 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Unterstes-Byte-von-t0-nach-a0-schreiben-Rest-unverandert-%E5%B0%86-t0-%E7%9A%84%E6%9C%80%E4%BD%8E%E5%AD%97%E8%8A%82%E5%86%99%E5%85%A5-a0%EF%BC%8C%E4%BF%9D%E6%8C%81%E5%85%B6%E4%BD%99%E9%83%A8%E5%88%86%E4%B8%8D%E5%8F%98%EF%BC%9A"><span class="toc-text">5. Unterstes Byte von t0 nach a0 schreiben, Rest unverändert 将 t0 的最低字节写入 a0，保持其余部分不变：</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3557,7 +3610,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/ERA-计算机体系结构/","name":"ERA 计算机体系结构"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/19/TUM笔记/ERA/RISC-V-汇编语言/","name":"RISC-V 汇编语言入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"RISC-V 汇编语言入门","description":"计算机体系结构基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/","wordCount":13,"datePublished":"2025-03-19T19:56:10.000Z","dateModified":"2025-03-19T22:34:02.614Z","articleSection":"TUM课程笔记","keywords":"Rechnerarchitektur, 计算机体系结构, 汇编语言, RISC-V","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/ERA-计算机体系结构/","name":"ERA 计算机体系结构"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/19/TUM笔记/ERA/RISC-V-汇编语言/","name":"RISC-V 汇编语言入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"RISC-V 汇编语言入门","description":"计算机体系结构基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/","wordCount":13,"datePublished":"2025-03-19T19:56:10.000Z","dateModified":"2025-03-20T10:09:24.779Z","articleSection":"TUM课程笔记","keywords":"Rechnerarchitektur, 计算机体系结构, 汇编语言, RISC-V","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
