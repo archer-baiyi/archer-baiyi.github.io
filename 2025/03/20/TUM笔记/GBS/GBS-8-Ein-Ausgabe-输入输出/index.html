@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-20T19:20:11.000Z">
-<meta property="article:modified_time" content="2025-03-21T09:49:44.332Z">
+<meta property="article:modified_time" content="2025-03-21T22:28:45.762Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Betriebssysteme, Operating System, 操作系统, 输入&#x2F;输出">
 <meta name="twitter:card" content="summary">
@@ -2275,7 +2275,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742550600457),
+    lastupdate: new Date(1742596142780),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2688,7 +2688,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-21T10:49:44+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-21T23:28:45+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 21, 2025</p>
@@ -2986,7 +2986,74 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><strong>主设备号（Major Device Number）</strong>：<strong>标识设备驱动程序</strong>（决定设备的驱动）。</li>
 <li><strong>次设备号（Minor Device Number）</strong>：要访问的<strong>具体设备</strong>。</li>
 </ul>
-<h2 id="设备例子"><a href="#设备例子" class="headerlink" title="设备例子"></a><strong>设备例子</strong></h2><h3 id="硬盘（Festplatten）"><a href="#硬盘（Festplatten）" class="headerlink" title="硬盘（Festplatten）"></a><strong>硬盘（Festplatten）</strong></h3>
+<h2 id="设备例子"><a href="#设备例子" class="headerlink" title="设备例子"></a><strong>设备例子</strong></h2><h3 id="（机械）硬盘（Festplatten，HDD）"><a href="#（机械）硬盘（Festplatten，HDD）" class="headerlink" title="（机械）硬盘（Festplatten，HDD）"></a><strong>（机械）硬盘（Festplatten，HDD）</strong></h3><p>机械硬盘属于Block-Gerät，有着以下构造：</p>
+<ul>
+<li>同心圆柱（Konzentrische Zylinder）</li>
+<li>堆叠的<strong>磁盘盘片</strong>（<strong>Platten</strong>, k 层），每张盘片的两面都可以读写（2k 面）。</li>
+<li>每张盘片上有多个<strong>磁道</strong>（<strong>Tracks</strong>），磁道的编号取决于 圆柱、盘片和面（Track &#x3D; f(Zylinder, Platte, Seite)）。</li>
+<li>每个磁道由多个<strong>扇区</strong>（<strong>Sektoren</strong>）组成，每个扇区大小为 512 字节。不过靠近磁盘中心的区域可能有更少的扇区（由于圆周较小）。</li>
+<li><strong>机械读写磁头</strong>（<strong>Schreib-&#x2F;Leseköpfe</strong>），每个盘片有两个读写磁头（上下各一个），总数为 2k。</li>
+</ul>
+<p>构造图示：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250321130511294.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250321130511294.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250321130511294"></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250321130906927.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250321130906927.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250321130906927"></p>
+<p>早期会用到3个参数来确定需要读写的具体位置：</p>
+<ol>
+<li>x Zylindernummer，Radius：确定是哪一个环；</li>
+<li>y Kopfnummer，Höhe：确定是哪一张盘片的哪一面；</li>
+<li>z Sektornummer pro Winkel：确定是哪个扇面；</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/Hard_drive_geometry_-_German_-_2019-05-29.svg.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/Hard_drive_geometry_-_German_-_2019-05-29.svg.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Hard_drive_geometry_-_German_-_2019-05-29.svg"></p>
+<p>由于早期 BIOS 和文件系统的设计的限制，只能访问有限的区域。</p>
+<p>所以现在一般都使用<strong>线性逻辑地址（lineare Adressierung logischer Blöcke）</strong>，即给每个Sector编号（0，1，2，3，…）。</p>
+<p>一个Sector里会包含以下信息：</p>
+<ul>
+<li>前导信息（Präambel）： 包含同步位、磁道号和扇区号</li>
+<li>数据（Daten）： 通常为512字节</li>
+<li>错误校正码（ECC）： Error Correcting Code</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250321201451040.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250321201451040.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250321201451040"></p>
+<p>Cylinder Skew: The offset distance from the start of the last track of the previous cylinder so that the head has time to seek from cylinder to cylinder and be at the start of the first track of the new cylinder.</p>
+<p>Head Skew: The offset distance from the start of the previous track so that the head has time to switch from top of platter to bottom of platter and be at the start of the new track.</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250321202751735.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250321202751735.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250321202751735"></p>
+<p>控制器通常一次读取整个磁道，这会需要足够的缓存来存储数据。但假如没有足够的缓存，则会采用交错的格式（ Formatierung mit Interleaving）：扇区不会按顺序排列的：1, 2, 3, 4, 5, 6, …, 15，而是交错排列的：1, 4, 7, 10, 13, 2, 5, 8, 11, 14, 3, 6, 9, 12, 15。这样子可以确保读取某个扇区 N ，将数据传输到主存后，扇区 N+1 会刚好移动到读写头下方，不需要再多等一圈。（因为磁盘好像是会一直转的）</p>
+<p>为了避免磁盘损坏影响硬盘功能，会使用RAIS-System。（详细内容见<a target="_blank" rel="noopener" href="https://archer-baiyi.github.io/2025/03/11/TUM%E7%AC%94%E8%AE%B0/Datenbank-%E7%AC%94%E8%AE%B0/">数据库的笔记</a>）</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250321210337675.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250321210337675.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250321210337675"></p>
+<p>读写磁头找到所需Sector的策略分3种：</p>
+<ol>
+<li>FCFS</li>
+<li>Shortest Seek First (SSF)</li>
+<li>Elevator algorithm (Fahrstuhl-Algorithmus)</li>
+</ol>
+<h3 id="固态硬盘（SSD）"><a href="#固态硬盘（SSD）" class="headerlink" title="固态硬盘（SSD）"></a><strong>固态硬盘（SSD）</strong></h3><p>SSD的全称为Solid State Drives，主要基于 (NAND) 闪存。</p>
+<p><strong>SSD的一些特点：</strong></p>
+<ul>
+<li><p>无机械部件（Keine beweglichen Teile）</p>
+<p>所以不会有机械磨损及其导致的故障，更耐振动、冲击等，访问速度更快。</p>
+</li>
+<li><p>仍然可能出现故障（Fehlfunktionen auch hier möglich），比如</p>
+<ul>
+<li>坏块，存储芯片故障（Bad blocks, Fehler in Speicherchips）</li>
+<li>反复读取可能影响相邻存储单元</li>
+<li>故障可能导致整个 SSD 无法读取</li>
+<li>数据恢复更加复杂</li>
+</ul>
+</li>
+<li><p>闪存写入次数有限（Flash-Speicher nur begrenzt oft schreibbar）</p>
+</li>
+<li><p>读取比写入快，顺序（sequentiell）写入比随机写入快</p>
+</li>
+</ul>
+<h4 id="SSD的基本工作原理"><a href="#SSD的基本工作原理" class="headerlink" title="SSD的基本工作原理"></a><strong>SSD的基本工作原理</strong></h4><p>SSD的初始状态是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11111111 11111111 11111111 ...</span><br></pre></td></tr></table></figure>
+
+<p>写入的话会将1改成0：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01000111 01000010 01010011 ...</span><br></pre></td></tr></table></figure>
+
+<p>但如果想修改的话，不能只是修改一位，而是需要将这一整块重置然后再写入。</p>
+<p>写入的大小最低为4KB，删除的大小最低为256KB，所以会导致所谓的**写入放大（Write Amplification）**的问题。</p>
+<p>解决方式：这部分我没看懂，等看懂了再写。</p>
+
   </div>
   
   
@@ -3139,7 +3206,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8%EF%BC%88Controller%EF%BC%89"><span class="toc-text">控制器（Controller）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92"><span class="toc-text">交互</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2"><span class="toc-text">数据交换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6-I-O%EF%BC%88Programmed-I-O%EF%BC%89"><span class="toc-text">程序控制 I&#x2F;O（Programmed I&#x2F;O）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%EF%BC%88Interrupts%EF%BC%89"><span class="toc-text">中断（Interrupts）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98%E8%AE%BF%E9%97%AE%EF%BC%88Direct-Memory-Access-DMA%EF%BC%89"><span class="toc-text">直接内存访问（Direct Memory Access, DMA）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BC%93%E5%86%B2%EF%BC%88Puffern-von-Daten%EF%BC%89"><span class="toc-text">数据缓冲（Puffern von Daten）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%EF%BC%88Gerate-Treiber%EF%BC%89"><span class="toc-text">设备驱动程序（Geräte-Treiber）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E6%97%A0%E5%85%B3%E7%9A%84%E8%BD%AF%E4%BB%B6%EF%BC%88Gerate-unabhangige-Software%EF%BC%89"><span class="toc-text">设备无关的软件（Geräte-unabhängige Software）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BA%A7%E8%BD%AF%E4%BB%B6%EF%BC%88User-Level-Software%EF%BC%89"><span class="toc-text">用户级软件（User-Level-Software）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%87%E8%84%B1%E6%9C%BA%EF%BC%88Spooling%EF%BC%89"><span class="toc-text">假脱机（Spooling）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UNIX-Linux%E9%87%8C%E7%9A%84%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86"><span class="toc-text">UNIX&#x2F;Linux里的设备管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E4%BE%8B%E5%AD%90"><span class="toc-text">设备例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98%EF%BC%88Festplatten%EF%BC%89"><span class="toc-text">硬盘（Festplatten）</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8%EF%BC%88Controller%EF%BC%89"><span class="toc-text">控制器（Controller）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92"><span class="toc-text">交互</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2"><span class="toc-text">数据交换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6-I-O%EF%BC%88Programmed-I-O%EF%BC%89"><span class="toc-text">程序控制 I&#x2F;O（Programmed I&#x2F;O）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%EF%BC%88Interrupts%EF%BC%89"><span class="toc-text">中断（Interrupts）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98%E8%AE%BF%E9%97%AE%EF%BC%88Direct-Memory-Access-DMA%EF%BC%89"><span class="toc-text">直接内存访问（Direct Memory Access, DMA）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BC%93%E5%86%B2%EF%BC%88Puffern-von-Daten%EF%BC%89"><span class="toc-text">数据缓冲（Puffern von Daten）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%EF%BC%88Gerate-Treiber%EF%BC%89"><span class="toc-text">设备驱动程序（Geräte-Treiber）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E6%97%A0%E5%85%B3%E7%9A%84%E8%BD%AF%E4%BB%B6%EF%BC%88Gerate-unabhangige-Software%EF%BC%89"><span class="toc-text">设备无关的软件（Geräte-unabhängige Software）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BA%A7%E8%BD%AF%E4%BB%B6%EF%BC%88User-Level-Software%EF%BC%89"><span class="toc-text">用户级软件（User-Level-Software）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%87%E8%84%B1%E6%9C%BA%EF%BC%88Spooling%EF%BC%89"><span class="toc-text">假脱机（Spooling）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UNIX-Linux%E9%87%8C%E7%9A%84%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86"><span class="toc-text">UNIX&#x2F;Linux里的设备管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E4%BE%8B%E5%AD%90"><span class="toc-text">设备例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E6%9C%BA%E6%A2%B0%EF%BC%89%E7%A1%AC%E7%9B%98%EF%BC%88Festplatten%EF%BC%8CHDD%EF%BC%89"><span class="toc-text">（机械）硬盘（Festplatten，HDD）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98%EF%BC%88SSD%EF%BC%89"><span class="toc-text">固态硬盘（SSD）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SSD%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">SSD的基本工作原理</span></a></li></ol></li></ol></li></ol>
   </div>
 </section>
 
@@ -3700,7 +3767,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/20/TUM笔记/GBS/GBS-8-Ein-Ausgabe-输入输出/","name":"GBS 8 Ein/Ausgabe 输入/输出"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 8 Ein/Ausgabe 输入/输出","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/20/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-8-Ein-Ausgabe-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/20/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-8-Ein-Ausgabe-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/","wordCount":10,"datePublished":"2025-03-20T19:20:11.000Z","dateModified":"2025-03-21T09:49:44.332Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme, Operating System, 操作系统, 输入/输出","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/20/TUM笔记/GBS/GBS-8-Ein-Ausgabe-输入输出/","name":"GBS 8 Ein/Ausgabe 输入/输出"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 8 Ein/Ausgabe 输入/输出","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/20/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-8-Ein-Ausgabe-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/20/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-8-Ein-Ausgabe-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/","wordCount":10,"datePublished":"2025-03-20T19:20:11.000Z","dateModified":"2025-03-21T22:28:45.762Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme, Operating System, 操作系统, 输入/输出","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
