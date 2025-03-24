@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-19T19:56:10.000Z">
-<meta property="article:modified_time" content="2025-03-23T20:54:58.775Z">
+<meta property="article:modified_time" content="2025-03-24T15:32:30.955Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Rechnerarchitektur, 计算机体系结构, 汇编语言, RISC-V">
 <meta name="twitter:card" content="summary">
@@ -2275,7 +2275,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742763313284),
+    lastupdate: new Date(1742830365395),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2688,10 +2688,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-23T21:54:58+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-24T16:32:30+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 23, 2025</p>
+    <p>更新于：Mar 24, 2025</p>
   </a>
 </div>
 
@@ -2708,12 +2708,190 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
     <p>[toc]</p>
+<h2 id="RISC-V-寄存器"><a href="#RISC-V-寄存器" class="headerlink" title="RISC-V 寄存器"></a><strong>RISC-V 寄存器</strong></h2><p>在 RISC-V 中，所有操作数（Operanden）都存储在寄存器中。</p>
+<p>RISC-V ISA 拥有 32 或 33 个（可见）寄存器，其中<kbd>x0</kbd>永远为零，而<kbd>x1</kbd> 到 <kbd>x31</kbd> 是通用<strong>整数寄存器</strong>，<kbd>f1</kbd> 到 <kbd>f31</kbd> 是 <strong>浮点寄存器</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>Register</th>
+<th>ABI Name</th>
+<th>Description</th>
+<th>Saver</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x0</td>
+<td>zero</td>
+<td>Hard-wired zero</td>
+<td>—</td>
+</tr>
+<tr>
+<td>x1</td>
+<td>ra</td>
+<td>Return address</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x2</td>
+<td>sp</td>
+<td>Stack pointer</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x3</td>
+<td>gp</td>
+<td>Global pointer</td>
+<td>—</td>
+</tr>
+<tr>
+<td>x4</td>
+<td>tp</td>
+<td>Thread pointer</td>
+<td>—</td>
+</tr>
+<tr>
+<td>x5–7</td>
+<td>t0–2</td>
+<td>Temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x8</td>
+<td>s0/fp</td>
+<td>Saved register/frame pointer</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x9</td>
+<td>s1</td>
+<td>Saved register</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x10–11</td>
+<td>a0–1</td>
+<td>Function arguments/return values</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x12–17</td>
+<td>a2–7</td>
+<td>Function arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x18–27</td>
+<td>s2–11</td>
+<td>Saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x28–31</td>
+<td>t3–6</td>
+<td>Temporaries</td>
+<td>Caller</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Register</th>
+<th>ABI Name</th>
+<th>Description</th>
+<th>Saver</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>f0–7</td>
+<td>ft0–7</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f8–9</td>
+<td>fs0–1</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f10–11</td>
+<td>fa0–1</td>
+<td>FP arguments/return values</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f12–17</td>
+<td>fa2–7</td>
+<td>FP arguments</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>f18–27</td>
+<td>fs2–11</td>
+<td>FP saved registers</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>f28–31</td>
+<td>ft8–11</td>
+<td>FP temporaries</td>
+<td>Caller</td>
+</tr>
+</tbody></table>
+<p>这里第一列的是每个寄存器的编号，而第二列则是附带语义的名字。一般在汇编代码中使用ABI name，便于理解和维护。</p>
+<p>关于Saver部分可以看下面这个表，会更直观一点：</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Meaning</th>
+<th>Saver</th>
+<th>Preserved across calls?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ra</td>
+<td>Return address</td>
+<td>Caller</td>
+<td>No</td>
+</tr>
+<tr>
+<td>sp</td>
+<td>Stack pointer</td>
+<td>Callee</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>t0 - t6</td>
+<td>Temporary registers</td>
+<td>Caller</td>
+<td>No</td>
+</tr>
+<tr>
+<td>s0 - s11</td>
+<td>Callee-saved registers</td>
+<td>Callee</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>a0 - a7</td>
+<td>Argument registers</td>
+<td>Caller</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<p>Caller指的是调用函数的一方（比如说main()），而Callee指的则是被调用的函数。</p>
+<p>如果一个register的Saver是Caller，则调用函数的一方（Caller）需要在调用函数前将这些寄存器里的值都存储好，以便被调用函数可以随意使用；</p>
+<p>如果一个register的Saver是Callee，则被调用函数需要确保这些寄存器的值在该函数结束后与之前一模一样。</p>
+<p>通俗一点来讲，前者是将自己的笔记本备份好之后借出去，借用方（Callee）可以随意使用；后者则是将笔记本借出去，但借用方必须确保拿到的时候是什么样子的还回去的时候也得是什么样子的。</p>
 <h2 id="RISC-V-汇编语言"><a href="#RISC-V-汇编语言" class="headerlink" title="RISC-V 汇编语言"></a><strong>RISC-V 汇编语言</strong></h2><p>每一个ISA（Instruction Set Architecture）的指令都可以分为以下3大类：</p>
 <ol>
 <li><strong><code>算术和逻辑运算（Arithmetische und logische Operationen）</code></strong></li>
 <li><strong><code>数据传输（Datentransfer）</code></strong></li>
 <li><strong><code>程序控制 （Steuerung des Programmablaufs）：跳转和子程序调用（ Sprünge und Unterprogrammaufrufe）</code></strong></li>
 </ol>
+<p>RISC-V 汇编指令一览：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250320100807426.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250320100807426.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250320100807426"></p>
 <h3 id="算术-Arithmetik"><a href="#算术-Arithmetik" class="headerlink" title="算术 Arithmetik"></a><strong>算术 Arithmetik</strong></h3><p><strong>加法</strong>：</p>
 <p>a = b + c</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add a,b,c</span><br></pre></td></tr></table></figure>
@@ -2913,21 +3091,43 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add ra,rb,x0</span><br><span class="line">addi ra,rb,x0</span><br></pre></td></tr></table></figure>
 
 <p>等价。</p>
-<h3 id="递归（Rekursion）"><a href="#递归（Rekursion）" class="headerlink" title="递归（Rekursion）"></a><strong>递归（Rekursion）</strong></h3><h4 id="普通递归"><a href="#普通递归" class="headerlink" title="普通递归"></a><strong>普通递归</strong></h4><p>拿阶乘举例，正常的递归是这样写的：</p>
+<h3 id="递归（Rekursion）"><a href="#递归（Rekursion）" class="headerlink" title="递归（Rekursion）"></a><strong>递归（Rekursion）</strong></h3><h4 id="普通递归"><a href="#普通递归" class="headerlink" title="普通递归"></a><strong>普通递归</strong></h4><p><strong>例子1：阶乘</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">factorial</span><span class="params">(<span class="type">int</span> n)</span> {</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>); <span class="comment">// （递归调用后还有乘法,所以是非尾递归）</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
-<p>对应的RISC-V（简化）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">factorial:</span><br><span class="line">    beqz a0, base_case</span><br><span class="line">    addi sp, sp, -16       # 分配栈空间</span><br><span class="line">    sw a0, 0(sp)           # 保存 n</span><br><span class="line">    addi a0, a0, -1</span><br><span class="line">    call factorial         # 正常调用 → 保存返回地址</span><br><span class="line">    lw t0, 0(sp)           # 恢复 n</span><br><span class="line">    mul a0, a0, t0         # n * result</span><br><span class="line">    addi sp, sp, 16</span><br><span class="line">    ret</span><br><span class="line"></span><br><span class="line">base_case:</span><br><span class="line">    li a0, 1</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
+<p>对应的RISC-V（n=4的情况示例）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">		_start:</span><br><span class="line">0x200		addi a0, zero, 4          # a0 = 4，计算 4 的阶乘（作为输入参数）</span><br><span class="line">0x204    	jal ra, magic             # 跳转调用 magic 函数（递归实现阶乘），返回地址存入 ra</span><br><span class="line">0x208    	ebreak                    # 程序断点（模拟器中用于停止执行）</span><br><span class="line"></span><br><span class="line">		magic:</span><br><span class="line">0x20c    	beq a0, zero, break       # 如果 a0 == 0，跳转到 break（0! = 1）</span><br><span class="line"></span><br><span class="line">0x210    	addi sp, sp, -8           # 分配栈空间：只保存 ra 和 a0，所以是2*4=8Bits</span><br><span class="line">0x214    	sw ra, 0(sp)              # 保存返回地址 ra 到栈顶</span><br><span class="line">0x218    	sw a0, 4(sp)              # 保存当前参数 a0（n）</span><br><span class="line">0x21c    	addi a0, a0, -1           # a0 = a0 - 1，准备递归调用 magic(n-1)</span><br><span class="line">0x220    	jal ra, magic             # 递归调用 magic(n-1)，返回值仍存在 a0 中</span><br><span class="line"></span><br><span class="line">0x224    	lw t0, 4(sp)              # 从栈中恢复原来的 a0（也就是 n）</span><br><span class="line">0x228    	mul a0, a0, t0            # a0 = a0 * n（也就是 n! = n * (n-1)!）</span><br><span class="line">0x22c    	lw ra, 0(sp)              # 恢复之前保存的返回地址</span><br><span class="line">0x230    	addi sp, sp, 8            # 回收栈空间</span><br><span class="line">0x234    	jalr zero, 0(ra)          # 返回调用者（函数返回）</span><br><span class="line"></span><br><span class="line">		break:</span><br><span class="line">0x238    	addi a0, zero, 1          # a0 = 1，返回 1（0! = 1）</span><br><span class="line">0x23c    	jalr zero, 0(ra)          # 返回调用者</span><br></pre></td></tr></table></figure>
 
-<p>这样子做会有个弊端：每次计算 <kbd>factorial(n)</kbd> 的值时需要先等 <kbd>factorial(n-1)</kbd>的计算结果先出来，而在等待期间需要将所有的 <kbd>n</kbd> 都给存起来，也就是说：</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">factorial</span>(<span class="number">3</span>)</span><br><span class="line">→ 需要等 <span class="built_in">factorial</span>(<span class="number">2</span>) 的结果</span><br><span class="line">    → 需要等 <span class="built_in">factorial</span>(<span class="number">1</span>) 的结果</span><br><span class="line">        → 需要等 <span class="built_in">factorial</span>(<span class="number">0</span>) 的结果</span><br><span class="line">            → 返回 <span class="number">1</span></span><br><span class="line"></span><br><span class="line">然后开始回溯计算：</span><br><span class="line"><span class="built_in">factorial</span>(<span class="number">1</span>): <span class="number">1</span> * <span class="number">1</span> = <span class="number">1</span></span><br><span class="line"><span class="built_in">factorial</span>(<span class="number">2</span>): <span class="number">2</span> * <span class="number">1</span> = <span class="number">2</span></span><br><span class="line"><span class="built_in">factorial</span>(<span class="number">3</span>): <span class="number">3</span> * <span class="number">2</span> = <span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+
+<p>由于每次计算 <kbd>factorial(n)</kbd> 的值时需要先等 <kbd>factorial(n-1)</kbd>的计算结果先出来，所以等待期间需要将所有的 <kbd>n</kbd> 都给存在stack里，也就是说：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">factorial</span>(<span class="number">4</span>)</span><br><span class="line">	→ 需要等<span class="built_in">factorial</span>(<span class="number">3</span>) 的结果</span><br><span class="line">		→ 需要等 <span class="built_in">factorial</span>(<span class="number">2</span>) 的结果</span><br><span class="line">    		→ 需要等 <span class="built_in">factorial</span>(<span class="number">1</span>) 的结果</span><br><span class="line">        		→ 需要等 <span class="built_in">factorial</span>(<span class="number">0</span>) 的结果</span><br><span class="line">            		→ 返回 <span class="number">1</span></span><br><span class="line"></span><br><span class="line">然后开始回溯计算：</span><br><span class="line"><span class="built_in">factorial</span>(<span class="number">1</span>): <span class="number">1</span> * <span class="number">1</span> = <span class="number">1</span></span><br><span class="line"><span class="built_in">factorial</span>(<span class="number">2</span>): <span class="number">2</span> * <span class="number">1</span> = <span class="number">2</span></span><br><span class="line"><span class="built_in">factorial</span>(<span class="number">3</span>): <span class="number">3</span> * <span class="number">2</span> = <span class="number">6</span></span><br><span class="line"><span class="built_in">factorial</span>(<span class="number">4</span>): <span class="number">4</span> * <span class="number">6</span> = <span class="number">24</span></span><br></pre></td></tr></table></figure>
 
 <p>而栈结构如下：</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">+--------------------+</span><br><span class="line">| return to <span class="built_in">fac</span>(<span class="number">3</span>)   |  ← 等待 n=<span class="number">3</span> 的乘法结果</span><br><span class="line">| n=<span class="number">3</span>                |</span><br><span class="line">+--------------------+</span><br><span class="line">| return to <span class="built_in">fac</span>(<span class="number">2</span>)   |  ← 等待 n=<span class="number">2</span> 的乘法结果</span><br><span class="line">| n=<span class="number">2</span>                |</span><br><span class="line">+--------------------+</span><br><span class="line">| return to <span class="built_in">fac</span>(<span class="number">1</span>)   |  ← 等待 n=<span class="number">1</span> 的乘法结果</span><br><span class="line">| n=<span class="number">1</span>                |</span><br><span class="line">+--------------------+</span><br><span class="line">| base case → return <span class="number">1</span> |</span><br><span class="line">+--------------------+</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">+--------------------+</span><br><span class="line">|		 <span class="number">0</span>x4		 |</span><br><span class="line">|		<span class="number">0</span>x208	 	 |</span><br><span class="line">+--------------------+</span><br><span class="line">|		 <span class="number">0</span>x3		 |</span><br><span class="line">|		<span class="number">0</span>x224	 	 |</span><br><span class="line">+--------------------+</span><br><span class="line">|		 <span class="number">0</span>x2		 |</span><br><span class="line">|		<span class="number">0</span>x224	 	 |</span><br><span class="line">+--------------------+</span><br><span class="line">|		 <span class="number">0</span>x1		 |</span><br><span class="line">|		<span class="number">0</span>x224	 	 |</span><br><span class="line">+--------------------+</span><br></pre></td></tr></table></figure>
 
-<p>这样一来，如果递归的次数较高，则会很容易导致Stack Overflow。</p>
-<p>为了解决这个问题，我们可以使用另一种递归方式：</p>
-<h4 id="尾递归（Tail-Rekursiob）"><a href="#尾递归（Tail-Rekursiob）" class="headerlink" title="尾递归（Tail Rekursiob）"></a><strong>尾递归（Tail Rekursiob）</strong></h4><p>还是拿阶乘举例，我们将代码优化成这样：</p>
+<p>返回的时候则是这样：<br>当a0=0的时候触发0x20c的beq，跳转到break，break执行完了会跳转到当前的ra（也就是stack最底下一行的0x224），然后进行这部分操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0x224    	lw t0, 4(sp)              # 从栈中恢复原来的 a0（也就是 n）</span><br><span class="line">0x228    	mul a0, a0, t0            # a0 = a0 * n（也就是 n! = n * (n-1)!）</span><br><span class="line">0x22c    	lw ra, 0(sp)              # 恢复之前保存的返回地址</span><br><span class="line">0x230    	addi sp, sp, 8            # 回收栈空间</span><br><span class="line">0x234    	jalr zero, 0(ra)          # 返回调用者（函数返回）</span><br></pre></td></tr></table></figure>
+
+<p>计算a0 = 1*1然后继续跳转到stack倒数第三行的0x224，重复下去知道跳转到0x208，触发断点。</p>
+<p><strong>例子2：最大公约数</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="title function_">ggT</span><span class="params">(<span class="type">unsigned</span> a, <span class="type">unsigned</span> b)</span> {</span><br><span class="line">    <span class="keyword">if</span> (a == b)</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (a &lt; b)</span><br><span class="line">        <span class="keyword">return</span> ggT(a, b - a);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> ggT(a - b, b);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>对应的RISC-V：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ggT:</span><br><span class="line">    beq a0, a1, finished     # 如果 a0 == a1，则跳转到 finished（返回结果）</span><br><span class="line">    bltu a0, a1, lt          # 如果 a0 &lt; a1，则跳转到 lt 标签（交换顺序）</span><br><span class="line">    sub a0, a0, a1           # 否则 a0 &gt; a1，执行 a0 = a0 - a1</span><br><span class="line">    j cont                   # 跳转到 cont，准备递归调用</span><br><span class="line"></span><br><span class="line">lt:</span><br><span class="line">    sub a1, a1, a0           # 执行 b = b - a （即 a1 = a1 - a0）</span><br><span class="line"></span><br><span class="line">cont:</span><br><span class="line">    addi sp, sp, -16         # 为返回地址创建栈空间（递归调用前保存返回地址）</span><br><span class="line">    sw ra, 0(sp)             # 保存返回地址</span><br><span class="line">    jal ra, ggT              # 递归调用 ggT（jump and link）</span><br><span class="line">    </span><br><span class="line">    lw ra, 0(sp)             # 恢复返回地址</span><br><span class="line">    addi sp, sp, 16          # 回收栈空间</span><br><span class="line">    jalr zero, 0(ra)         # 返回（跳转回上层调用）</span><br><span class="line">    </span><br><span class="line">finished:</span><br><span class="line">    jalr zero, 0(ra)         # 返回当前的 a0 作为结果</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>总结一下：</strong></p>
+<p>每个Recursive的函数递归部分会分成2部分：</p>
+<ol>
+<li>从当前n的情况跳转到n-1，保存当前n的值以及返回地址（即当前跳转命令的下一行的地址）</li>
+<li>读取返回地址并用当前已经计算出来的n-1的情况的值与n进行函数运算。</li>
+</ol>
+<p>相当于递减完了之后还得递增回来。</p>
+<p>注意，2个例子里分配的stack的大小是不一样的，这个主要是看ABI的具体要求，这里主要目的是示范而已。但不管大小如何，<strong>一定要保证分配的Stack大小和回收的大小是一致的。</strong></p>
+<h4 id="尾递归（Tail-Rekursiob）"><a href="#尾递归（Tail-Rekursiob）" class="headerlink" title="尾递归（Tail Rekursiob）"></a><strong>尾递归（Tail Rekursiob）</strong></h4><p>观察上面例子里stack存储的内容不难发现，如果递归的次数较高，则会很容易导致Stack Overflow。</p>
+<p>为了解决这个问题，我们可以使用另一种递归方式：<strong><code>尾递归（Tail Rekursiob）</code></strong></p>
+<p>还是拿阶乘举例，我们将代码优化成这样：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">factorial</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> acc = <span class="number">1</span>)</span> {</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> acc;</span><br><span class="line">    <span class="keyword">return</span> factorial(n - <span class="number">1</span>, n * acc); <span class="comment">// 尾调用</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>对应的RISC-V：</p>
@@ -3171,7 +3371,7 @@ Binärsyste...</p>
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="toc-text">RISC-V 汇编语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF-Arithmetik"><span class="toc-text">算术 Arithmetik</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97-Logische-Operation"><span class="toc-text">逻辑运算 Logische Operation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%88Datentransfer%EF%BC%89"><span class="toc-text">数据传输（Datentransfer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E8%BD%AC-Sprung"><span class="toc-text">跳转 Sprung</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8-Unterprogramme"><span class="toc-text">子程序调用 Unterprogramme</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%EF%BC%88Rekursion%EF%BC%89"><span class="toc-text">递归（Rekursion）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E9%80%92%E5%BD%92"><span class="toc-text">普通递归</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%BE%E9%80%92%E5%BD%92%EF%BC%88Tail-Rekursiob%EF%BC%89"><span class="toc-text">尾递归（Tail Rekursiob）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9C%89%E7%AB%8B%E5%8D%B3%E6%95%B0%EF%BC%88immediate%EF%BC%89%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-text">带有立即数（immediate）的命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RISC-V-%E6%9C%BA%E5%99%A8%E7%A0%81-Machine-Code-Instrunction"><span class="toc-text">RISC-V 机器码 Machine Code&#x2F;Instrunction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Register-s5-nullen-%E5%B0%86%E5%AF%84%E5%AD%98%E5%99%A8s5%E7%9A%84%E5%80%BC%E8%AE%BE%E4%B8%BA0%EF%BC%9A"><span class="toc-text">1. Register s5 nullen 将寄存器s5的值设为0：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Wert-in-Register-a1-nach-s3-kopieren-%E5%B0%86s3%E7%9A%84%E5%80%BC%E5%A4%8D%E5%88%B6%E5%88%B0s1%E9%87%8C%EF%BC%9A"><span class="toc-text">2. Wert in Register a1 nach s3 kopieren 将s3的值复制到s1里：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Dasunterste-Bit-von-a0-nach-t1-schreiben-restliche-Bits-sollen-0-sein-%E5%B0%86-a0-%E7%9A%84%E6%9C%80%E4%BD%8E%E4%BD%8D%E5%86%99%E5%85%A5-t1%EF%BC%8C%E5%85%B6%E4%BB%96%E4%BD%8D%E6%B8%85%E9%9B%B6"><span class="toc-text">3. Dasunterste Bit von a0 nach t1 schreiben, restliche Bits sollen 0 sein 将 a0 的最低位写入 t1，其他位清零:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Register-s1-mit-Einsen-fullen-%E5%B0%86%E5%AF%84%E5%AD%98%E5%99%A8-s1%E7%9A%84%E5%80%BC%E4%B8%BA%E5%85%A8%E9%83%BD%E6%98%AF-1%EF%BC%9A"><span class="toc-text">4. Register s1 mit Einsen füllen 将寄存器 s1的值为全都是 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Unterstes-Byte-von-t0-nach-a0-schreiben-Rest-unverandert-%E5%B0%86-t0-%E7%9A%84%E6%9C%80%E4%BD%8E%E5%AD%97%E8%8A%82%E5%86%99%E5%85%A5-a0%EF%BC%8C%E4%BF%9D%E6%8C%81%E5%85%B6%E4%BD%99%E9%83%A8%E5%88%86%E4%B8%8D%E5%8F%98%EF%BC%9A"><span class="toc-text">5. Unterstes Byte von t0 nach a0 schreiben, Rest unverändert 将 t0 的最低字节写入 a0，保持其余部分不变：</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RISC-V-%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">RISC-V 寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="toc-text">RISC-V 汇编语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF-Arithmetik"><span class="toc-text">算术 Arithmetik</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97-Logische-Operation"><span class="toc-text">逻辑运算 Logische Operation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%88Datentransfer%EF%BC%89"><span class="toc-text">数据传输（Datentransfer）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E8%BD%AC-Sprung"><span class="toc-text">跳转 Sprung</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8-Unterprogramme"><span class="toc-text">子程序调用 Unterprogramme</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%EF%BC%88Rekursion%EF%BC%89"><span class="toc-text">递归（Rekursion）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E9%80%92%E5%BD%92"><span class="toc-text">普通递归</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%BE%E9%80%92%E5%BD%92%EF%BC%88Tail-Rekursiob%EF%BC%89"><span class="toc-text">尾递归（Tail Rekursiob）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9C%89%E7%AB%8B%E5%8D%B3%E6%95%B0%EF%BC%88immediate%EF%BC%89%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-text">带有立即数（immediate）的命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RISC-V-%E6%9C%BA%E5%99%A8%E7%A0%81-Machine-Code-Instrunction"><span class="toc-text">RISC-V 机器码 Machine Code&#x2F;Instrunction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Register-s5-nullen-%E5%B0%86%E5%AF%84%E5%AD%98%E5%99%A8s5%E7%9A%84%E5%80%BC%E8%AE%BE%E4%B8%BA0%EF%BC%9A"><span class="toc-text">1. Register s5 nullen 将寄存器s5的值设为0：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Wert-in-Register-a1-nach-s3-kopieren-%E5%B0%86s3%E7%9A%84%E5%80%BC%E5%A4%8D%E5%88%B6%E5%88%B0s1%E9%87%8C%EF%BC%9A"><span class="toc-text">2. Wert in Register a1 nach s3 kopieren 将s3的值复制到s1里：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Dasunterste-Bit-von-a0-nach-t1-schreiben-restliche-Bits-sollen-0-sein-%E5%B0%86-a0-%E7%9A%84%E6%9C%80%E4%BD%8E%E4%BD%8D%E5%86%99%E5%85%A5-t1%EF%BC%8C%E5%85%B6%E4%BB%96%E4%BD%8D%E6%B8%85%E9%9B%B6"><span class="toc-text">3. Dasunterste Bit von a0 nach t1 schreiben, restliche Bits sollen 0 sein 将 a0 的最低位写入 t1，其他位清零:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Register-s1-mit-Einsen-fullen-%E5%B0%86%E5%AF%84%E5%AD%98%E5%99%A8-s1%E7%9A%84%E5%80%BC%E4%B8%BA%E5%85%A8%E9%83%BD%E6%98%AF-1%EF%BC%9A"><span class="toc-text">4. Register s1 mit Einsen füllen 将寄存器 s1的值为全都是 1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Unterstes-Byte-von-t0-nach-a0-schreiben-Rest-unverandert-%E5%B0%86-t0-%E7%9A%84%E6%9C%80%E4%BD%8E%E5%AD%97%E8%8A%82%E5%86%99%E5%85%A5-a0%EF%BC%8C%E4%BF%9D%E6%8C%81%E5%85%B6%E4%BD%99%E9%83%A8%E5%88%86%E4%B8%8D%E5%8F%98%EF%BC%9A"><span class="toc-text">5. Unterstes Byte von t0 nach a0 schreiben, Rest unverändert 将 t0 的最低字节写入 a0，保持其余部分不变：</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3732,7 +3932,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/ERA-计算机体系结构/","name":"ERA 计算机体系结构"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/19/TUM笔记/ERA/RISC-V-汇编语言入门/","name":"RISC-V 汇编语言入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"RISC-V 汇编语言入门","description":"计算机体系结构基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/","wordCount":13,"datePublished":"2025-03-19T19:56:10.000Z","dateModified":"2025-03-23T20:54:58.775Z","articleSection":"TUM课程笔记","keywords":"Rechnerarchitektur, 计算机体系结构, 汇编语言, RISC-V","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/ERA-计算机体系结构/","name":"ERA 计算机体系结构"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/19/TUM笔记/ERA/RISC-V-汇编语言入门/","name":"RISC-V 汇编语言入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"RISC-V 汇编语言入门","description":"计算机体系结构基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/","wordCount":13,"datePublished":"2025-03-19T19:56:10.000Z","dateModified":"2025-03-24T15:32:30.955Z","articleSection":"TUM课程笔记","keywords":"Rechnerarchitektur, 计算机体系结构, 汇编语言, RISC-V","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
