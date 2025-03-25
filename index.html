@@ -2272,7 +2272,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742892802087),
+    lastupdate: new Date(1742924831659),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2727,9 +2727,153 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/25/ACM/Codeforce/Codeforce-Team/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/03/25/ACM/Codeforce/Codeforce-Team/"  itemprop="url">
+        Codeforce - Team
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        题目描述
+一共有 n 道题目，而对于每道题，他们会选择是否去做这题：只有当三个人中至少有两个人对这题有把握时，他们才会决定去做。
+思路直接计算每行的和是否大于等于2。
+代码Python123456789n = int(input())  count = 0   for _ in range(n):    a, b, c = map(int, input().split())    if a ...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-03-25T18:42:06+01:00">2025-03-25</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/ACM/">ACM</a><span class="sep"></span><a class="category-link" href="/categories/ACM/Codeforce/">Codeforce</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/ACM/" itemprop="url"><span itemprop="name">ACM</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/ACM/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/03/25/ACM/Codeforce/Codeforce-Team/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/25/ACM/Codeforce/Codeforce-A-Way-Too-Long-Words/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/03/25/ACM/Codeforce/Codeforce-A-Way-Too-Long-Words/"  itemprop="url">
+        Codeforce - Way Too Long Words 题解
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        题目描述
+简单来讲就是需要”简化“长单词。
+思路先判断单词长度。如果小于等于10就不用管，如果超过10，则写成：首字母 + 中间的字母数量 + 末尾字母。
+代码Python1234567n = int(input())for _ in range(n):    word = input()    if len(word) &gt; 10:        print(word[0] + str...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-03-25T18:28:41+01:00">2025-03-25</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/ACM/">ACM</a><span class="sep"></span><a class="category-link" href="/categories/ACM/Codeforce/">Codeforce</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/ACM/" itemprop="url"><span itemprop="name">ACM</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/ACM/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/03/25/ACM/Codeforce/Codeforce-A-Way-Too-Long-Words/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -3263,136 +3407,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/11/TUM笔记/Datenbank/Datenbank-笔记/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/11/TUM%E7%AC%94%E8%AE%B0/Datenbank/Datenbank-%E7%AC%94%E8%AE%B0/"  itemprop="url">
-        Datenbank 笔记
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      数据库基础相关笔记
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-11T11:37:03+01:00">2025-03-11</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">TUM课程笔记</a><span class="sep"></span><a class="category-link" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Dantenbank-%E6%95%B0%E6%8D%AE%E5%BA%93/">Dantenbank 数据库</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url"><span itemprop="name">TUM课程笔记</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Dantenbank-%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url"><span itemprop="name">Dantenbank 数据库</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/11/TUM%E7%AC%94%E8%AE%B0/Datenbank/Datenbank-%E7%AC%94%E8%AE%B0/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/10/与服务器的交互/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/10/%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BA%A4%E4%BA%92/"  itemprop="url">
-        与服务器的交互
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      使用socket.socket()与remote（）连接服务器
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-10T20:22:29+01:00">2025-03-10</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/">CTF小知识</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/" itemprop="url"><span itemprop="name">CTF小知识</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/10/%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BA%A4%E4%BA%92/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -3489,6 +3503,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <ul class="entry navigation">
         
           <li><a class="flat-box"
+            title="/categories/ACM/" href="/categories/ACM/"
+            active-action="action-categoriesACM"
+            ><div class='name'>ACM</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/ACM/Codeforce/" href="/categories/ACM/Codeforce/"
+            active-action="action-categoriesACMCodeforce"
+            ><div class='name'>Codeforce</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/CTF/" href="/categories/CTF/"
             active-action="action-categoriesCTF"
             ><div class='name'>CTF</div><div class='badge'>(7)</div></a></li>
@@ -3551,7 +3575,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-      <a href="/tags/Betriebssysteme-Operating-System-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">Betriebssysteme, Operating System, 操作系统</a> <a href="/tags/Betriebssysteme-Operating-System-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">Betriebssysteme, Operating System, 操作系统, 文件系统</a> <a href="/tags/Betriebssysteme-Operating-System-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%99%9A%E6%8B%9F%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA-container/" style="font-size: 14px; color: #999">Betriebssysteme, Operating System, 操作系统, 虚拟化, 虚拟机, container</a> <a href="/tags/Betriebssysteme-Operating-System-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA/" style="font-size: 14px; color: #999">Betriebssysteme, Operating System, 操作系统, 输入/输出</a> <a href="/tags/CTF-%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">CTF,哈希</a> <a href="/tags/Datenbank-Database-%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/" style="font-size: 14px; color: #999">Datenbank, Database, 数据库, SQL</a> <a href="/tags/Rechnerarchitektur-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 14px; color: #999">Rechnerarchitektur, 计算机体系结构</a> <a href="/tags/Rechnerarchitektur-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80-RISC-V/" style="font-size: 14px; color: #999">Rechnerarchitektur, 计算机体系结构, 汇编语言, RISC-V</a> <a href="/tags/Reverse-Engineering-HTB/" style="font-size: 19px; color: #777">Reverse Engineering, HTB</a> <a href="/tags/socket-remote/" style="font-size: 14px; color: #999">socket,remote</a> <a href="/tags/writeup/" style="font-size: 24px; color: #555">writeup</a>
+      <a href="/tags/ACM/" style="font-size: 19px; color: #777">ACM</a> <a href="/tags/Betriebssysteme-Operating-System-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">Betriebssysteme, Operating System, 操作系统</a> <a href="/tags/Betriebssysteme-Operating-System-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">Betriebssysteme, Operating System, 操作系统, 文件系统</a> <a href="/tags/Betriebssysteme-Operating-System-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%99%9A%E6%8B%9F%E5%8C%96-%E8%99%9A%E6%8B%9F%E6%9C%BA-container/" style="font-size: 14px; color: #999">Betriebssysteme, Operating System, 操作系统, 虚拟化, 虚拟机, container</a> <a href="/tags/Betriebssysteme-Operating-System-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA/" style="font-size: 14px; color: #999">Betriebssysteme, Operating System, 操作系统, 输入/输出</a> <a href="/tags/CTF-%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">CTF,哈希</a> <a href="/tags/Datenbank-Database-%E6%95%B0%E6%8D%AE%E5%BA%93-SQL/" style="font-size: 14px; color: #999">Datenbank, Database, 数据库, SQL</a> <a href="/tags/Rechnerarchitektur-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 14px; color: #999">Rechnerarchitektur, 计算机体系结构</a> <a href="/tags/Rechnerarchitektur-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80-RISC-V/" style="font-size: 14px; color: #999">Rechnerarchitektur, 计算机体系结构, 汇编语言, RISC-V</a> <a href="/tags/Reverse-Engineering-HTB/" style="font-size: 19px; color: #777">Reverse Engineering, HTB</a> <a href="/tags/socket-remote/" style="font-size: 14px; color: #999">socket,remote</a> <a href="/tags/writeup/" style="font-size: 24px; color: #555">writeup</a>
     </div>
   </section>
 
