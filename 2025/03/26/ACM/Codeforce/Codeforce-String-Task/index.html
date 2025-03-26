@@ -5,8 +5,8 @@
   <meta name="Volantis" content="6.0.0-alpha.1">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/tags/htb/"/>
+  
+  <link rel="canonical" href="http://example.com/2025/03/26/acm/codeforce/codeforce-string-task/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,18 +33,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Tag: HTB - Hexo</title>
-  <meta name="keywords" content="null">
+  <title>Codeforce-String Task - Hexo</title>
+  <meta name="keywords" content="ACM,null">
   <meta desc name="description" content="hi - John Doe - Hexo">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/tags/HTB/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforce-String Task">
+<meta property="og:url" content="http://example.com/2025/03/26/ACM/Codeforce/Codeforce-String-Task/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="hi">
+<meta property="og:description" content="题目描述 思路代码Python1234567891011121314word &#x3D; input()V &#x3D; [&quot;A&quot;, &quot;O&quot;, &quot;Y&quot;, &quot;E&quot;, &quot;U&quot;, &quot;I&quot;]# deletes all the vowelsword &#x3D; &#39;&#39;.join(c for c in word if c.upper() not in V)# replaces all uppercase consonants with">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-03-26T13:02:00.000Z">
+<meta property="article:modified_time" content="2025-03-26T13:04:15.209Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ACM">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2264,7 +2267,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2621,27 +2624,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/16/Reverse Engineering/HTB-rev-Find-The-Easy-Pass/">
+  <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/26/ACM/Codeforce/Codeforce-String-Task/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2650,145 +2635,215 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="hi">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/16/Reverse%20Engineering/HTB-rev-Find-The-Easy-Pass/"  itemprop="url">
-        HTB_rev Find The Easy Pass
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        这道题会给我们一个exe文件，打开是一个判断输入的密码是否正确的软件：
-
-我们用IDA打开它，会发现并没有反编译出main()函数。所以我们随便输入一点内容试一下：
-会返回Wrong Password!字样。接着我们尝试用IDA搜索这段内容，会发现：
-
-
-点击第二个结果会跳转到：
-注意到它的上方有着”Goob Job. Congratulation”的字样，我们猜测这是输入成功后返回的内容，...
-      
+    
+      <h1 class="title" itemprop="name headline">
+        Codeforce-String Task
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+  
+  
+  
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/ACM/">ACM</a><span class="sep"></span><a class="category-link" href="/categories/ACM/Codeforce/">Codeforce</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+        <a href="/categories/ACM/" itemprop="url"><span itemprop="name">ACM</span></a>
+      </span>
+    
+      <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+        <a href="/categories/ACM/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
+      </span>
     
   </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-16T22:39:15+01:00">2025-03-16</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Reverse-Engineering/">Reverse Engineering</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/Reverse-Engineering/" itemprop="url"><span itemprop="name">Reverse Engineering</span></a>
-            </span>
+
+
+
           
         
+          
+            
+  
+  
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/ACM/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>ACM</p></a></div>
+  <span hidden itemprop="keywords">ACM</span>
+  
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-26T14:04:15+01:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Mar 26, 2025</p>
+  </a>
+</div>
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
       </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250326140242162.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250326140242162.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250326140242162"></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a><strong>思路</strong></h2><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a><strong>Python</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">word = <span class="built_in">input</span>()</span><br><span class="line"></span><br><span class="line">V = [<span class="string">"A"</span>, <span class="string">"O"</span>, <span class="string">"Y"</span>, <span class="string">"E"</span>, <span class="string">"U"</span>, <span class="string">"I"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># deletes all the vowels</span></span><br><span class="line">word = <span class="string">''</span>.join(c <span class="keyword">for</span> c <span class="keyword">in</span> word <span class="keyword">if</span> c.upper() <span class="keyword">not</span> <span class="keyword">in</span> V)</span><br><span class="line"></span><br><span class="line"><span class="comment"># replaces all uppercase consonants with corresponding lowercase ones.</span></span><br><span class="line">word = word.lower()</span><br><span class="line"></span><br><span class="line"><span class="comment"># inserts a character "." before each consonant,</span></span><br><span class="line">word = <span class="string">''</span>.join(<span class="string">'.'</span> + c <span class="keyword">for</span> c <span class="keyword">in</span> word)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(word)</span><br></pre></td></tr></table></figure>
+
+<p>优化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">word = <span class="built_in">input</span>()</span><br><span class="line"></span><br><span class="line">V = [<span class="string">"A"</span>, <span class="string">"O"</span>, <span class="string">"Y"</span>, <span class="string">"E"</span>, <span class="string">"U"</span>, <span class="string">"I"</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">''</span>.join(<span class="string">'.'</span> + c.lower() <span class="keyword">for</span> c <span class="keyword">in</span> word <span class="keyword">if</span> c.upper() <span class="keyword">not</span> <span class="keyword">in</span> V))</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="C"><a href="#C" class="headerlink" title="C"></a><strong>C</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="CPP"><a href="#CPP" class="headerlink" title="CPP"></a><strong>CPP</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/2025/03/16/Reverse%20Engineering/HTB-rev-Find-The-Easy-Pass/' itemprop="url">
-            Read More
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-26T14:02:00+01:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 26, 2025</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/12/Reverse Engineering/HTB-rev-Behind-the-Scenes/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/12/Reverse%20Engineering/HTB-rev-Behind-the-Scenes/"  itemprop="url">
-        HTB_rev Behind the Scenes
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        用010 Editor （或者Hex Editor之类的都行）打开源文件，将里面所有的 0F 0B  （即 ud2 ）改为 90 90  （90即NOP，是Machine Code中表示 无操作 (No Operation) 的命令），然后再用IDA打开文件即可看到完整的代码：
-123456789101112131415161718192021222324252627282930313233...
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/26/ACM/Codeforce/Codeforce-String-Task/&title=Codeforce-String Task - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/26/ACM/Codeforce/Codeforce-String-Task/&title=Codeforce-String Task - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/26/ACM/Codeforce/Codeforce-String-Task/&title=Codeforce-String Task - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time itemprop="dateCreated datePublished" datetime="2025-03-12T02:22:42+01:00">2025-03-12</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Reverse-Engineering/">Reverse Engineering</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/Reverse-Engineering/" itemprop="url"><span itemprop="name">Reverse Engineering</span></a>
-            </span>
-          
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2025/03/12/Reverse%20Engineering/HTB-rev-Behind-the-Scenes/' itemprop="url">
-            Read More
-          </a>
-        </div>
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2025/03/26/ACM/Codeforce/Codeforce-Domino-piling/'>
+          <p class='title'>Codeforce-Domino piling<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>题目描述
+思路代码Python1234567891011121314151617181920212223242526272829303132333435363738394041424344def...</p>
+        </a>
       
     </div>
   
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
+  <!-- 文章推荐 -->
   
-    
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
   
 
 
-    
-  
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="https://schema.org.cn/WPSideBar">
   
@@ -2797,156 +2852,31 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget blogger desktop mobile ">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://github.com/Lycorisby/pictures/raw/main/%E5%A3%81%E7%BA%B8/%E6%B4%BE%E5%A4%A7%E6%98%9F.jpeg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:aurora20000521@gmail.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/archer-baiyi"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/ACM/" href="/categories/ACM/"
-            active-action="action-categoriesACM"
-            ><div class='name'>ACM</div><div class='badge'>(6)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/ACM/Codeforce/" href="/categories/ACM/Codeforce/"
-            active-action="action-categoriesACMCodeforce"
-            ><div class='name'>Codeforce</div><div class='badge'>(6)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/CTF/" href="/categories/CTF/"
-            active-action="action-categoriesCTF"
-            ><div class='name'>CTF</div><div class='badge'>(7)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/" href="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/"
-            active-action="action-categoriesCTFCTFE5B08FE79FA5E8AF86"
-            ><div class='name'>CTF小知识</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/CTF/Reverse-Engineering/" href="/categories/CTF/Reverse-Engineering/"
-            active-action="action-categoriesCTFReverse-Engineering"
-            ><div class='name'>Reverse Engineering</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/CTF/writeup/" href="/categories/CTF/writeup/"
-            active-action="action-categoriesCTFwriteup"
-            ><div class='name'>writeup</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"
-            active-action="action-categoriesTUME8AFBEE7A88BE7AC94E8AEB0"
-            ><div class='name'>TUM课程笔记</div><div class='badge'>(7)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Dantenbank-%E6%95%B0%E6%8D%AE%E5%BA%93/" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Dantenbank-%E6%95%B0%E6%8D%AE%E5%BA%93/"
-            active-action="action-categoriesTUME8AFBEE7A88BE7AC94E8AEB0Dantenbank-E695B0E68DAEE5BA93"
-            ><div class='name'>Dantenbank 数据库</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ERA-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ERA-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"
-            active-action="action-categoriesTUME8AFBEE7A88BE7AC94E8AEB0ERA-E8AEA1E7AE97E69CBAE4BD93E7B3BBE7BB93E69E84"
-            ><div class='name'>ERA 计算机体系结构</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/GBS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/GBS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
-            active-action="action-categoriesTUME8AFBEE7A88BE7AC94E8AEB0GBS-E6938DE4BD9CE7B3BBE7BB9F"
-            ><div class='name'>GBS 操作系统</div><div class='badge'>(4)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/ACM/" style="font-size: 24px; color: #555">ACM</a> <a href="/tags/Betriebssysteme/" style="font-size: 21.5px; color: #666">Betriebssysteme</a> <a href="/tags/CTF/" style="font-size: 14px; color: #999">CTF</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/Database/" style="font-size: 14px; color: #999">Database</a> <a href="/tags/Datenbank/" style="font-size: 14px; color: #999">Datenbank</a> <a href="/tags/HTB/" style="font-size: 16.5px; color: #888">HTB</a> <a href="/tags/Operating-System/" style="font-size: 21.5px; color: #666">Operating System</a> <a href="/tags/RISC-V/" style="font-size: 14px; color: #999">RISC-V</a> <a href="/tags/Rechnerarchitektur/" style="font-size: 16.5px; color: #888">Rechnerarchitektur</a> <a href="/tags/Reverse-Engineering/" style="font-size: 16.5px; color: #888">Reverse Engineering</a> <a href="/tags/SQL/" style="font-size: 14px; color: #999">SQL</a> <a href="/tags/container/" style="font-size: 14px; color: #999">container</a> <a href="/tags/remote/" style="font-size: 14px; color: #999">remote</a> <a href="/tags/socket/" style="font-size: 14px; color: #999">socket</a> <a href="/tags/writeup/" style="font-size: 19px; color: #777">writeup</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">哈希</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 21.5px; color: #666">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">数据库</a> <a href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">文件系统</a> <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 14px; color: #999">汇编语言</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/" style="font-size: 14px; color: #999">虚拟化</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 16.5px; color: #888">计算机体系结构</a> <a href="/tags/%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA/" style="font-size: 14px; color: #999">输入/输出</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky">
+
+  
+  
+
+
+<section class="widget toc-wrapper desktop mobile" id="toc-div" >
+  
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Python"><span class="toc-text">Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C"><span class="toc-text">C</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPP"><span class="toc-text">CPP</span></a></li></ol></li></ol>
+  </div>
+</section>
+
+  
 
 </div>
 
@@ -2954,6 +2884,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <!-- Custom Files side end -->
 </aside>
+
 
 
         </div>
@@ -3502,7 +3433,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/tags/HTB/","name":"HTB"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/ACM/","name":"ACM"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/ACM/Codeforce/","name":"Codeforce"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/26/ACM/Codeforce/Codeforce-String-Task/","name":"Codeforce-String Task"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Codeforce-String Task","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/26/ACM/Codeforce/Codeforce-String-Task/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/26/ACM/Codeforce/Codeforce-String-Task/","wordCount":0,"datePublished":"2025-03-26T13:02:00.000Z","dateModified":"2025-03-26T13:04:15.209Z","articleSection":"ACM","keywords":"ACM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

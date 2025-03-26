@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-24T20:53:38.000Z">
-<meta property="article:modified_time" content="2025-03-25T19:30:08.397Z">
+<meta property="article:modified_time" content="2025-03-26T16:24:54.421Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Betriebssysteme">
 <meta property="article:tag" content="Operating System">
@@ -2278,7 +2278,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1742978281290),
+    lastupdate: new Date(1743006306415),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2691,10 +2691,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-25T20:30:08+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-26T17:24:54+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 25, 2025</p>
+    <p>更新于：Mar 26, 2025</p>
   </a>
 </div>
 
@@ -2710,7 +2710,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="Einfuhrung"><a href="#Einfuhrung" class="headerlink" title="Einführung"></a><strong>Einführung</strong></h2><p>首先我们需要先明确为什么需要文件系统：</p>
+    <p>[toc]</p>
+<h2 id="Einfuhrung"><a href="#Einfuhrung" class="headerlink" title="Einführung"></a><strong>Einführung</strong></h2><p>首先我们需要先明确为什么需要文件系统：</p>
 <ul>
 <li>进程在运行期间只能使用其虚拟地址空间来存储数据：容量有限。</li>
 <li>当进程结束时，其虚拟地址空间中的数据会丢失：无法实现持久的、长期的数据存储。</li>
@@ -2757,7 +2758,71 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>进程可以通过系统调用来创建、写入、读取和删除文件。（erstellen, schreiben,  lesen, löschen）</li>
 <li>文件不仅被用户程序使用，也被系统软件使用。（ Dateien werden sowohl von Benutzerprogrammen als auch von der  Systemsoftware verwendet）</li>
 </ul>
-<h2 id="文件-（Dateien）"><a href="#文件-（Dateien）" class="headerlink" title="文件 （Dateien）"></a><strong>文件 （Dateien）</strong></h2><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a><strong>例子</strong></h2><h3 id="Linux的ext2"><a href="#Linux的ext2" class="headerlink" title="Linux的ext2"></a><strong>Linux的ext2</strong></h3><h3 id="Linux的ext4"><a href="#Linux的ext4" class="headerlink" title="Linux的ext4"></a><strong>Linux的ext4</strong></h3>
+<h2 id="文件-（Dateien）"><a href="#文件-（Dateien）" class="headerlink" title="文件 （Dateien）"></a><strong>文件 （Dateien）</strong></h2><p>文件作为被管理的单位（zu verwaltende Einheiten），可以被不同的进程使用。所有文件都必须有名字，没有统一的命名规则。一般情况下名字会由2部分组成：名字（Name）和扩展名（Extension）。而有些系统（比如说Windows）会解析扩展名，有些则不会（比如UNIX）。</p>
+<p>文件可以采用三种不同的结构方式：</p>
+<ol>
+<li><p><strong>非结构化（Unstrukturiert）</strong></p>
+<p>操作系统只把文件当作一串字节（eine Folge von Bytes）（适用于 UNIX 和 Windows）来看待，它不会尝试去理解文件里面到底是什么内容。</p>
+<p>优点：用户程序有更大的灵活性</p>
+</li>
+<li><p><strong>固定大小记录的序列（Sequenzen von Einträgen fester Größe）</strong></p>
+</li>
+</ol>
+<p>   每条记录有固定的大小和结构，比如每行只能写 80 个字符。现代的操作系统已经很少使用这种方式了。</p>
+<ol start="3">
+<li><strong>具有不同大小记录的树结构（Ein Baum mit Einträgen unterschiedlicher Größe）</strong></li>
+</ol>
+<p>   每条记录都有一个Key，这些Key都是有序存储的。适合在大型计算机的操作系统（Großrechner-BS ）中用于处理大量数据。</p>
+<h3 id="文件类型（Dateitypen）"><a href="#文件类型（Dateitypen）" class="headerlink" title="文件类型（Dateitypen）"></a><strong>文件类型（Dateitypen）</strong></h3><p>操作系统支持多种文件类型：</p>
+<ul>
+<li><p><strong>普通文件（ Dateien，regular files）</strong>：</p>
+<p>包含用户数据的文件，比如说：</p>
+<ul>
+<li>文本文件（Text-Dateien）： Bestehen aus Zeilen, die durch carriage return （回车符，<kbd>\r</kbd>）und&#x2F;oder  linefeed Zeichen（换行符，<kbd>\n</kbd>） abgeschlossen sind.</li>
+<li>二进制文件（Binärdateien）：具有特定格式，比如说可执行文件、压缩包等。</li>
+</ul>
+</li>
+<li><p><strong>目录（Verzeichnisse，directories）</strong>：</p>
+<p>是用于组织和管理文件系统中结构的<strong>系统文件</strong>。</p>
+</li>
+<li><p><strong>块设备文件（Block Special Files）</strong></p>
+</li>
+<li><p><strong>字符设备文件（Character Special Files）</strong></p>
+</li>
+</ul>
+<p>在linux种可以用 <kbd>ls -l</kbd> 来查看文件类型：</p>
+<table>
+<thead>
+<tr>
+<th>第一位字符</th>
+<th>文件类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-</td>
+<td>普通文件</td>
+</tr>
+<tr>
+<td>d</td>
+<td>目录</td>
+</tr>
+<tr>
+<td>c</td>
+<td>块设备文件</td>
+</tr>
+<tr>
+<td>b</td>
+<td>字符设备文件</td>
+</tr>
+</tbody></table>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x 2 user user 4096 Mar 26  test_folder</span><br><span class="line">-rw-r--r-- 1 user user 1234 Mar 26  notes.txt</span><br><span class="line">crw-rw---- 1 root tty 4, 0 Mar 26  /dev/tty0</span><br><span class="line">brw-rw---- 1 root disk 8, 0 Mar 26  /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p>可执行文件的结构：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250326171824236.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250326171824236.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250326171824236"></p>
+<p>压缩文件的结构：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250326171849063.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250326171849063.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250326171849063"></p>
+<h3 id="文件访问方式（Dateizugriff）"><a href="#文件访问方式（Dateizugriff）" class="headerlink" title="文件访问方式（Dateizugriff）"></a><strong>文件访问方式（Dateizugriff）</strong></h3><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a><strong>例子</strong></h2><h3 id="Linux的ext2"><a href="#Linux的ext2" class="headerlink" title="Linux的ext2"></a><strong>Linux的ext2</strong></h3><h3 id="Linux的ext4"><a href="#Linux的ext4" class="headerlink" title="Linux的ext4"></a><strong>Linux的ext4</strong></h3>
   </div>
   
   
@@ -2922,7 +2987,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Einfuhrung"><span class="toc-text">Einführung</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98"><span class="toc-text">硬盘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6-%EF%BC%88Dateien%EF%BC%89"><span class="toc-text">文件 （Dateien）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%9A%84ext2"><span class="toc-text">Linux的ext2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%9A%84ext4"><span class="toc-text">Linux的ext4</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Einfuhrung"><span class="toc-text">Einführung</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98"><span class="toc-text">硬盘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6-%EF%BC%88Dateien%EF%BC%89"><span class="toc-text">文件 （Dateien）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%EF%BC%88Dateitypen%EF%BC%89"><span class="toc-text">文件类型（Dateitypen）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%96%B9%E5%BC%8F%EF%BC%88Dateizugriff%EF%BC%89"><span class="toc-text">文件访问方式（Dateizugriff）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%9A%84ext2"><span class="toc-text">Linux的ext2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%9A%84ext4"><span class="toc-text">Linux的ext4</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3483,7 +3548,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/24/TUM笔记/GBS/GBS-7-Dateisystem-文件系统/","name":"GBS 7 Dateisystem 文件系统"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 7 Dateisystem 文件系统","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/24/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-7-Dateisystem-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/24/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-7-Dateisystem-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/","wordCount":10,"datePublished":"2025-03-24T20:53:38.000Z","dateModified":"2025-03-25T19:30:08.397Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,操作系统,文件系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/24/TUM笔记/GBS/GBS-7-Dateisystem-文件系统/","name":"GBS 7 Dateisystem 文件系统"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 7 Dateisystem 文件系统","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/24/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-7-Dateisystem-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/24/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-7-Dateisystem-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/","wordCount":10,"datePublished":"2025-03-24T20:53:38.000Z","dateModified":"2025-03-26T16:24:54.421Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,操作系统,文件系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
