@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2025/03/25/acm/codeforce/codeforce-a-way-too-long-words/"/>
+  <link rel="canonical" href="http://example.com/2025/03/27/acm/codeforce/1000/codeforce-lucky-division/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Codeforce - Way Too Long Words 题解 - Hexo</title>
+  <title>Codeforce Lucky Division - Hexo</title>
   <meta name="keywords" content="ACM,null">
   <meta desc name="description" content="hi - John Doe - Hexo">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforce - Way Too Long Words 题解">
-<meta property="og:url" content="http://example.com/2025/03/25/ACM/Codeforce/Codeforce-A-Way-Too-Long-Words/index.html">
+<meta property="og:title" content="Codeforce Lucky Division">
+<meta property="og:url" content="http://example.com/2025/03/27/ACM/Codeforce/1000/Codeforce-Lucky-Division/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述 简单来讲就是需要”简化“长单词。 思路先判断单词长度。如果小于等于10就不用管，如果超过10，则写成：首字母 + 中间的字母数量 + 末尾字母。 代码Python1234567n &#x3D; int(input())for _ in range(n):    word &#x3D; input()    if len(word) &gt; 10:        print(word[0] + str(le">
+<meta property="og:description" content="题目描述 思路写2个函数，第一个判断一个数是否是（严格的）lucky number，第二个函数遍历所有的lucky number判断是否是当前n的因数。 代码C++12345678910111213141516171819202122232425262728293031#include &lt;iostream&gt;#include &lt;string&gt;using namespace s">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-03-25T17:28:41.000Z">
-<meta property="article:modified_time" content="2025-03-26T22:49:27.716Z">
+<meta property="article:published_time" content="2025-03-27T12:06:28.000Z">
+<meta property="article:modified_time" content="2025-03-27T12:10:16.913Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="ACM">
 <meta name="twitter:card" content="summary">
@@ -2275,7 +2275,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743029721901),
+    lastupdate: new Date(1743077998799),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2626,7 +2626,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/25/ACM/Codeforce/Codeforce-A-Way-Too-Long-Words/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/27/ACM/Codeforce/1000/Codeforce-Lucky-Division/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2647,7 +2647,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        Codeforce - Way Too Long Words 题解
+        Codeforce Lucky Division
       </h1>
       <div class='new-meta-box'>
         
@@ -2658,7 +2658,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/ACM/">ACM</a><span class="sep"></span><a class="category-link" href="/categories/ACM/Codeforce/">Codeforce</a>
+    <a class="category-link" href="/categories/ACM/">ACM</a><span class="sep"></span><a class="category-link" href="/categories/ACM/Codeforce/">Codeforce</a><span class="sep"></span><a class="category-link" href="/categories/ACM/Codeforce/1000/">1000</a>
     
       <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
         <a href="/categories/ACM/" itemprop="url"><span itemprop="name">ACM</span></a>
@@ -2666,6 +2666,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
         <a href="/categories/ACM/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
+      </span>
+    
+      <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+        <a href="/categories/ACM/Codeforce/1000/" itemprop="url"><span itemprop="name">1000</span></a>
       </span>
     
   </div>
@@ -2688,10 +2692,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-26T23:49:27+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-27T13:10:16+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 26, 2025</p>
+    <p>更新于：Mar 27, 2025</p>
   </a>
 </div>
 
@@ -2707,19 +2711,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250325183033449.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250325183033449.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250325183033449"></p>
-<p>简单来讲就是需要”简化“长单词。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a><strong>思路</strong></h2><p>先判断单词长度。如果小于等于10就不用管，如果超过10，则写成：首字母 + 中间的字母数量 + 末尾字母。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a><strong>Python</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    word = <span class="built_in">input</span>()</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(word) &gt; <span class="number">10</span>:</span><br><span class="line">        <span class="built_in">print</span>(word[<span class="number">0</span>] + <span class="built_in">str</span>(<span class="built_in">len</span>(word) - <span class="number">2</span>) + word[-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(word)</span><br></pre></td></tr></table></figure>
+    <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327130846869.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327130846869.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250327130846869"></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a><strong>思路</strong></h2><p>写2个函数，第一个判断一个数是否是（严格的）lucky number，第二个函数遍历所有的lucky number判断是否是当前n的因数。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><h3 id="C"><a href="#C" class="headerlink" title="C++"></a><strong>C++</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断一个数字是否是 lucky number（只含有 4 或 7）</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">is_lucky</span><span class="params">(<span class="type">int</span> num)</span> </span>{</span><br><span class="line">    string s = <span class="built_in">to_string</span>(num);      <span class="comment">// 比如说会把47转成"47"</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c : s) {              <span class="comment">// 会遍历string中的每个字母</span></span><br><span class="line">        <span class="keyword">if</span> (c != <span class="string">'4'</span> &amp;&amp; c != <span class="string">'7'</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断是否是 almost lucky number</span></span><br><span class="line"><span class="function">string <span class="title">is_almost_lucky</span><span class="params">(<span class="type">int</span> n)</span> </span>{</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) {</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">is_lucky</span>(i) &amp;&amp; n % i == <span class="number">0</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"YES"</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"NO"</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">is_almost_lucky</span>(n) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="C"><a href="#C" class="headerlink" title="C"></a><strong>C</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> {</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="type">char</span> word[<span class="number">101</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) {</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, word);</span><br><span class="line">        <span class="type">int</span> len = <span class="built_in">strlen</span>(word);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (len &gt; <span class="number">10</span>) {</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%c%d%c\n"</span>, word[<span class="number">0</span>], len - <span class="number">2</span>, word[len - <span class="number">1</span>]);</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, word);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a><strong>C++</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    string word;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) {</span><br><span class="line">        cin &gt;&gt; word;</span><br><span class="line">        <span class="type">int</span> len = word.<span class="built_in">length</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (len &gt; <span class="number">10</span>) {</span><br><span class="line">            cout &lt;&lt; word[<span class="number">0</span>] &lt;&lt; len - <span class="number">2</span> &lt;&lt; word[len - <span class="number">1</span>] &lt;&lt; endl;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            cout &lt;&lt; word &lt;&lt; endl;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a><strong>Python</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">is_lucky</span>(<span class="params">num</span>):</span><br><span class="line">    <span class="comment"># 判断一个数字是不是 lucky number（只含 4 或 7）</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">all</span>(c <span class="keyword">in</span> <span class="string">'47'</span> <span class="keyword">for</span> c <span class="keyword">in</span> <span class="built_in">str</span>(num))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_almost_lucky</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="comment"># 枚举 1 到 n 的所有 lucky number</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> is_lucky(i) <span class="keyword">and</span> n % i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"YES"</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"NO"</span></span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="built_in">print</span>(is_almost_lucky(n))</span><br></pre></td></tr></table></figure>
 
   </div>
   
@@ -2744,10 +2742,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-25T18:28:41+01:00">
+          <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-27T13:06:28+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Mar 25, 2025</p>
+    <p>发布于：Mar 27, 2025</p>
   </a>
 </div>
 
@@ -2761,7 +2759,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/25/ACM/Codeforce/Codeforce-A-Way-Too-Long-Words/&title=Codeforce - Way Too Long Words 题解 - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/27/ACM/Codeforce/1000/Codeforce-Lucky-Division/&title=Codeforce Lucky Division - Hexo&summary="
           
           >
           
@@ -2773,7 +2771,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/25/ACM/Codeforce/Codeforce-A-Way-Too-Long-Words/&title=Codeforce - Way Too Long Words 题解 - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/27/ACM/Codeforce/1000/Codeforce-Lucky-Division/&title=Codeforce Lucky Division - Hexo&summary="
           
           >
           
@@ -2785,7 +2783,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/25/ACM/Codeforce/Codeforce-A-Way-Too-Long-Words/&title=Codeforce - Way Too Long Words 题解 - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/27/ACM/Codeforce/1000/Codeforce-Lucky-Division/&title=Codeforce Lucky Division - Hexo&summary="
           
           >
           
@@ -2818,22 +2816,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/03/25/ACM/Codeforce/Codeforce-Team/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Codeforce - Team</p>
+        <a class='prev' href='/2025/03/27/ACM/Codeforce/1000/Codeforce-Chat-room/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Codeforce Chat room</p>
           <p class='content'>题目描述
-一共有 n 道题目，而对于每道题，他们会选择是否去做这题：只有当三个人中至少有两个人对这题有把握时，他们才会决定去做。
-思路直接计算每行的和是否大于等于2。
-代码Python12345...</p>
+思路利用一个index/指针来逐个匹配目标字符串 “hello”。从j=0开始，如果找到了j就加一。如果最后j=5的话就说明找到了。
+代码C++12345678910111213141...</p>
         </a>
       
       
-        <a class='next' href='/2025/03/24/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-7-Dateisystem-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/'>
-          <p class='title'>GBS 7 Dateisystem 文件系统<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>[toc]
-Einführung首先我们需要先明确为什么需要文件系统：
-
-进程在运行期间只能使用其虚拟地址空间来存储数据：容量有限。
-当进程结束时，其虚拟地址空间中的数据会丢失：无法实现持久的、...</p>
+        <a class='next' href='/2025/03/26/%E7%BC%96%E7%A8%8B/Cpp-%E5%85%A5%E9%97%A8/'>
+          <p class='title'>C++ 入门<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Hello World老规矩还是先见识一下输出“Hello World!”：
+12345678#include &lt;iostream&gt;using namespace std;int m...</p>
         </a>
       
     </div>
@@ -2883,7 +2877,7 @@ Einführung首先我们需要先明确为什么需要文件系统：
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Python"><span class="toc-text">Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C"><span class="toc-text">C</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-1"><span class="toc-text">C++</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C"><span class="toc-text">C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python"><span class="toc-text">Python</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3444,7 +3438,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/ACM/","name":"ACM"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/ACM/Codeforce/","name":"Codeforce"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/25/ACM/Codeforce/Codeforce-A-Way-Too-Long-Words/","name":"Codeforce - Way Too Long Words 题解"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Codeforce - Way Too Long Words 题解","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/25/ACM/Codeforce/Codeforce-A-Way-Too-Long-Words/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/25/ACM/Codeforce/Codeforce-A-Way-Too-Long-Words/","wordCount":0,"datePublished":"2025-03-25T17:28:41.000Z","dateModified":"2025-03-26T22:49:27.716Z","articleSection":"ACM","keywords":"ACM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/ACM/","name":"ACM"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/ACM/Codeforce/","name":"Codeforce"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/ACM/Codeforce/1000/","name":"1000"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/27/ACM/Codeforce/1000/Codeforce-Lucky-Division/","name":"Codeforce Lucky Division"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Codeforce Lucky Division","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/27/ACM/Codeforce/1000/Codeforce-Lucky-Division/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/27/ACM/Codeforce/1000/Codeforce-Lucky-Division/","wordCount":0,"datePublished":"2025-03-27T12:06:28.000Z","dateModified":"2025-03-27T12:10:16.913Z","articleSection":"ACM","keywords":"ACM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
