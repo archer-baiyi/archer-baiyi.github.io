@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2025/03/09/哈希加密的长度与碰撞情况/"/>
+  <link rel="canonical" href="http://example.com/2025/03/16/ctf/reverse engineering/htb-rev-find-the-easy-pass/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,22 +33,22 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>哈希加密的长度与碰撞情况 - Hexo</title>
-  <meta name="keywords" content="CTF,哈希,null">
-  <meta desc name="description" content="常见的哈希函数的长度及其碰撞情况汇总 - John Doe - Hexo">
+  <title>HTB_rev Find The Easy Pass - Hexo</title>
+  <meta name="keywords" content="Reverse Engineering,HTB,null">
+  <meta desc name="description" content="hi - John Doe - Hexo">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="哈希加密的长度与碰撞情况">
-<meta property="og:url" content="http://example.com/2025/03/09/%E5%93%88%E5%B8%8C%E5%8A%A0%E5%AF%86%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%8E%E7%A2%B0%E6%92%9E%E6%83%85%E5%86%B5/index.html">
+<meta property="og:title" content="HTB_rev Find The Easy Pass">
+<meta property="og:url" content="http://example.com/2025/03/16/CTF/Reverse%20Engineering/HTB-rev-Find-The-Easy-Pass/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="常见的哈希函数的长度及其碰撞情况汇总">
+<meta property="og:description" content="这道题会给我们一个exe文件，打开是一个判断输入的密码是否正确的软件：  我们用IDA打开它，会发现并没有反编译出main()函数。所以我们随便输入一点内容试一下： 会返回Wrong Password!字样。接着我们尝试用IDA搜索这段内容，会发现：   点击第二个结果会跳转到： 注意到它的上方有着”Goob Job. Congratulation”的字样，我们猜测这是输入成功后返回的内容，所以我">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-03-09T18:36:57.000Z">
-<meta property="article:modified_time" content="2025-03-25T19:31:13.791Z">
+<meta property="article:published_time" content="2025-03-16T21:39:15.000Z">
+<meta property="article:modified_time" content="2025-03-25T19:32:29.077Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="CTF">
-<meta property="article:tag" content="哈希">
+<meta property="article:tag" content="Reverse Engineering">
+<meta property="article:tag" content="HTB">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2276,7 +2276,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743077998799),
+    lastupdate: new Date(1743105176101),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2627,7 +2627,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/09/哈希加密的长度与碰撞情况/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/16/CTF/Reverse Engineering/HTB-rev-Find-The-Easy-Pass/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2648,7 +2648,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        哈希加密的长度与碰撞情况
+        HTB_rev Find The Easy Pass
       </h1>
       <div class='new-meta-box'>
         
@@ -2659,14 +2659,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/">CTF小知识</a>
+    <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Reverse-Engineering/">Reverse Engineering</a>
     
       <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
         <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
       </span>
     
       <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-        <a href="/categories/CTF/CTF%E5%B0%8F%E7%9F%A5%E8%AF%86/" itemprop="url"><span itemprop="name">CTF小知识</span></a>
+        <a href="/categories/CTF/Reverse-Engineering/" itemprop="url"><span itemprop="name">Reverse Engineering</span></a>
       </span>
     
   </div>
@@ -2681,15 +2681,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CTF/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>CTF</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%93%88%E5%B8%8C/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>哈希</p></a></div>
-  <span hidden itemprop="keywords">CTF 哈希</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Reverse-Engineering/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Reverse Engineering</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/HTB/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>HTB</p></a></div>
+  <span hidden itemprop="keywords">Reverse Engineering HTB</span>
   
 
 
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-25T20:31:13+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-25T20:32:29+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 25, 2025</p>
@@ -2708,100 +2708,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>以下是各种常见的哈希函数的长度及其碰撞情况汇总：</p>
-<table>
-<thead>
-<tr>
-<th>哈希长度 (bit)</th>
-<th>常见算法</th>
-<th>碰撞情况</th>
-<th>碰撞年份</th>
-<th>发明年份</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>128-bit</strong></td>
-<td>MD5</td>
-<td>存在已知有效碰撞攻击</td>
-<td>2004 年</td>
-<td>1992 年</td>
-<td>已过时，不推荐使用</td>
-</tr>
-<tr>
-<td><strong>160-bit</strong></td>
-<td>SHA-0, SHA-1, RIPEMD-160</td>
-<td>SHA-0: 存在已知有效碰撞攻击</td>
-<td>SHA-0: 2004 年</td>
-<td>SHA-0: 1993 年</td>
-<td>SHA-0: 已弃用，不推荐使用</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>SHA-1: 存在已知有效碰撞攻击</td>
-<td>SHA-1: 2017 年</td>
-<td>SHA-1: 1995 年</td>
-<td>已过时，不推荐使用</td>
-</tr>
-<tr>
-<td><strong>256-bit</strong></td>
-<td>SHA-256, SHA-3-256</td>
-<td>暂无已知有效碰撞攻击</td>
-<td>-</td>
-<td>SHA-256: 2001 年</td>
-<td>安全，广泛使用</td>
-</tr>
-<tr>
-<td><strong>384-bit</strong></td>
-<td>SHA-384</td>
-<td>暂无已知有效碰撞攻击</td>
-<td>-</td>
-<td>2001 年</td>
-<td>安全，高安全性需求</td>
-</tr>
-<tr>
-<td><strong>512-bit</strong></td>
-<td>SHA-512, SHA-3-512</td>
-<td>暂无已知有效碰撞攻击</td>
-<td>-</td>
-<td>SHA-512: 2001 年</td>
-<td>非常安全，高性能需求</td>
-</tr>
-</tbody></table>
-<h2 id="碰撞情况说明"><a href="#碰撞情况说明" class="headerlink" title="碰撞情况说明"></a>碰撞情况说明</h2><ul>
-<li><p><strong>128-bit (MD5)</strong>:</p>
-<ul>
-<li>MD5 是一种输出为 128 位的哈希算法，但由于其设计的安全性不足，早在 2004 年就被发现可以有效制造碰撞。</li>
-<li>MD5 于 1992 年被发明，不适合任何需要密码学安全性的场景，仅可用于低安全性完整性校验。</li>
-</ul>
-</li>
-<li><p><strong>160-bit (SHA-0, SHA-1, RIPEMD-160)</strong>:</p>
-<ul>
-<li>SHA-0 是 SHA 系列的初代版本，存在严重的设计缺陷，在 2004 年被证明可以制造碰撞。SHA-0 于 1993 年发明。</li>
-<li>SHA-1 作为输出 160 位的主流算法，在 2017 年被证实可以通过理论和实践攻击制造碰撞。SHA-1 于 1995 年发明。</li>
-<li>RIPEMD-160 虽尚未有公开的碰撞记录，但不如更高位算法安全。</li>
-</ul>
-</li>
-<li><p><strong>256-bit (SHA-256, SHA-3-256)</strong>:</p>
-<ul>
-<li>目前没有已知的碰撞攻击。</li>
-<li>SHA-256 于 2001 年被发明，适合绝大多数场景，如数字签名、区块链和数据完整性验证。</li>
-</ul>
-</li>
-<li><p><strong>384-bit (SHA-384)</strong>:</p>
-<ul>
-<li>为高安全需求设计，未有任何已知的碰撞攻击。</li>
-<li>SHA-384 于 2001 年发明，适用于密钥交换、长时间数据存储等高安全性应用。</li>
-</ul>
-</li>
-<li><p><strong>512-bit (SHA-512, SHA-3-512)</strong>:</p>
-<ul>
-<li>提供极高的安全性，特别适用于对抗潜在的量子计算威胁。</li>
-<li>SHA-512 于 2001 年发明，性能消耗较高，适合长期存储的场景。</li>
-</ul>
-</li>
-</ul>
+    <p>这道题会给我们一个exe文件，打开是一个判断输入的密码是否正确的软件：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316224150923.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316224150923.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250316224150923"></p>
+<p>我们用IDA打开它，会发现并没有反编译出main()函数。所以我们随便输入一点内容试一下：<br><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316224312429.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316224312429.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250316224312429"></p>
+<p>会返回<code>Wrong Password!</code>字样。接着我们尝试用IDA搜索这段内容，会发现：<br><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316224608897.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316224608897.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250316224608897"></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316224625533.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316224625533.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250316224625533"></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316224644181.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316224644181.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250316224644181"></p>
+<p>点击第二个结果会跳转到：<br><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316224759488.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316224759488.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250316224759488"></p>
+<p>注意到它的上方有着”Goob Job. Congratulation”的字样，我们猜测这是输入成功后返回的内容，所以我们点击它下方 <code>XREF </code>的内容，查看这个变量在哪里被调用过，通过反汇编会得到以下内容：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> __fastcall <span class="title">TForm1_Button1Click</span><span class="params">(<span class="type">int</span> a1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">int</span> v2; <span class="comment">// ecx</span></span><br><span class="line">  <span class="type">int</span> v3; <span class="comment">// edx</span></span><br><span class="line">  <span class="type">char</span> v4; <span class="comment">// zf</span></span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> v6[<span class="number">2</span>]; <span class="comment">// [esp-Ch] [ebp-38h] BYREF</span></span><br><span class="line">  <span class="type">int</span> *v7; <span class="comment">// [esp-4h] [ebp-30h]</span></span><br><span class="line">  <span class="type">int</span> v8; <span class="comment">// [esp+4h] [ebp-28h] BYREF</span></span><br><span class="line">  <span class="type">int</span> v9; <span class="comment">// [esp+8h] [ebp-24h] BYREF</span></span><br><span class="line">  <span class="type">int</span> v10; <span class="comment">// [esp+Ch] [ebp-20h] BYREF</span></span><br><span class="line">  <span class="type">int</span> v11; <span class="comment">// [esp+10h] [ebp-1Ch] BYREF</span></span><br><span class="line">  <span class="type">int</span> v12; <span class="comment">// [esp+14h] [ebp-18h] BYREF</span></span><br><span class="line">  <span class="type">int</span> v13; <span class="comment">// [esp+18h] [ebp-14h] BYREF</span></span><br><span class="line">  <span class="type">int</span> v14; <span class="comment">// [esp+1Ch] [ebp-10h] BYREF</span></span><br><span class="line">  <span class="type">int</span> v15; <span class="comment">// [esp+20h] [ebp-Ch] BYREF</span></span><br><span class="line">  <span class="type">int</span> v16; <span class="comment">// [esp+24h] [ebp-8h] BYREF</span></span><br><span class="line">  <span class="type">int</span> v17; <span class="comment">// [esp+28h] [ebp-4h] BYREF</span></span><br><span class="line">  <span class="type">int</span> savedregs; <span class="comment">// [esp+2Ch] [ebp+0h] BYREF</span></span><br><span class="line"></span><br><span class="line">  v7 = &amp;savedregs;</span><br><span class="line">  v6[<span class="number">1</span>] = (<span class="type">unsigned</span> <span class="type">int</span>)&amp;loc_454171;</span><br><span class="line">  v6[<span class="number">0</span>] = (<span class="type">unsigned</span> <span class="type">int</span>)<span class="built_in">NtCurrentTeb</span>()-&gt;NtTib.ExceptionList;</span><br><span class="line">  __writefsdword(<span class="number">0</span>, (<span class="type">unsigned</span> <span class="type">int</span>)v6);</span><br><span class="line">  <span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v16, &amp;str_f[<span class="number">1</span>])</span></span>;</span><br><span class="line">  <span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v15, &amp;str_o[<span class="number">1</span>])</span></span>;</span><br><span class="line">  <span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v14, &amp;str_r[<span class="number">1</span>])</span></span>;</span><br><span class="line">  <span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v13, &amp;<span class="type">str_t</span>[<span class="number">1</span>])</span></span>;</span><br><span class="line">  <span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v12, &amp;str_r[<span class="number">1</span>])</span></span>;</span><br><span class="line">  <span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v11, &amp;str_a[<span class="number">1</span>])</span></span>;</span><br><span class="line">  <span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v10, &amp;str_n[<span class="number">1</span>])</span></span>;</span><br><span class="line">  <span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v9, &amp;str___13[<span class="number">1</span>])</span></span>;</span><br><span class="line">  <span class="function">System::__linkproc__ <span class="title">LStrCatN</span><span class="params">(&amp;v17, <span class="number">8</span>, v2, v15, v14, v13, v12, v11, v10, v9)</span></span>;</span><br><span class="line">  Controls::TControl::<span class="built_in">GetText</span>(*(Controls::TControl **)(a1 + <span class="number">760</span>));</span><br><span class="line">  <span class="function">System::__linkproc__ <span class="title">LStrCmp</span><span class="params">(v8, v17)</span></span>;</span><br><span class="line">  <span class="keyword">if</span> ( v4 )</span><br><span class="line">    Dialogs::<span class="built_in">ShowMessage</span>((Dialogs *)&amp;str_Good_Job__Congr[<span class="number">1</span>], v3);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    Dialogs::<span class="built_in">ShowMessage</span>((Dialogs *)&amp;str_Wrong_Password_[<span class="number">1</span>], v3);</span><br><span class="line">  __writefsdword(<span class="number">0</span>, v6[<span class="number">0</span>]);</span><br><span class="line">  v7 = (<span class="type">int</span> *)&amp;loc_454178;</span><br><span class="line">  <span class="function">System::__linkproc__ <span class="title">LStrClr</span><span class="params">(&amp;v8)</span></span>;</span><br><span class="line">  <span class="keyword">return</span> System::__linkproc__ <span class="built_in">LStrArrayClr</span>(&amp;v9, <span class="number">9</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码的主要逻辑是将这些赋值变量</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v16, &amp;str_f[<span class="number">1</span>])</span></span>;</span><br><span class="line"><span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v15, &amp;str_o[<span class="number">1</span>])</span></span>;</span><br><span class="line"><span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v14, &amp;str_r[<span class="number">1</span>])</span></span>;</span><br><span class="line"><span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v13, &amp;<span class="type">str_t</span>[<span class="number">1</span>])</span></span>;</span><br><span class="line"><span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v12, &amp;str_r[<span class="number">1</span>])</span></span>;</span><br><span class="line"><span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v11, &amp;str_a[<span class="number">1</span>])</span></span>;</span><br><span class="line"><span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v10, &amp;str_n[<span class="number">1</span>])</span></span>;</span><br><span class="line"><span class="function">System::__linkproc__ <span class="title">LStrLAsg</span><span class="params">(&amp;v9, &amp;str___13[<span class="number">1</span>])</span></span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>拼接成一个新的字符串 <code>v17</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">System::__linkproc__ <span class="title">LStrCatN</span><span class="params">(&amp;v17, <span class="number">8</span>, v2, v15, v14, v13, v12, v11, v10, v9)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>然后比较输入的字符串与<code>v17</code>。所以我们只需要查看那些赋值字符串的具体值便可得到密码：<psw>fortran!</psw><br><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316225333334.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316225333334.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250316225333334"></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316225529236.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250316225529236.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250316225529236"></p>
+<p>按照题目要求flag内容为：<psw>HTB{fortran!}</psw>。</p>
 
   </div>
   
@@ -2826,10 +2751,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-09T19:36:57+01:00">
+          <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-16T22:39:15+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Mar 9, 2025</p>
+    <p>发布于：Mar 16, 2025</p>
   </a>
 </div>
 
@@ -2843,7 +2768,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/09/%E5%93%88%E5%B8%8C%E5%8A%A0%E5%AF%86%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%8E%E7%A2%B0%E6%92%9E%E6%83%85%E5%86%B5/&title=哈希加密的长度与碰撞情况 - Hexo&summary=常见的哈希函数的长度及其碰撞情况汇总"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/16/CTF/Reverse%20Engineering/HTB-rev-Find-The-Easy-Pass/&title=HTB_rev Find The Easy Pass - Hexo&summary="
           
           >
           
@@ -2855,7 +2780,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/09/%E5%93%88%E5%B8%8C%E5%8A%A0%E5%AF%86%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%8E%E7%A2%B0%E6%92%9E%E6%83%85%E5%86%B5/&title=哈希加密的长度与碰撞情况 - Hexo&summary=常见的哈希函数的长度及其碰撞情况汇总"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/16/CTF/Reverse%20Engineering/HTB-rev-Find-The-Easy-Pass/&title=HTB_rev Find The Easy Pass - Hexo&summary="
           
           >
           
@@ -2867,7 +2792,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/09/%E5%93%88%E5%B8%8C%E5%8A%A0%E5%AF%86%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%8E%E7%A2%B0%E6%92%9E%E6%83%85%E5%86%B5/&title=哈希加密的长度与碰撞情况 - Hexo&summary=常见的哈希函数的长度及其碰撞情况汇总"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/16/CTF/Reverse%20Engineering/HTB-rev-Find-The-Easy-Pass/&title=HTB_rev Find The Easy Pass - Hexo&summary="
           
           >
           
@@ -2900,20 +2825,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/03/10/Writeup/X3ctf2025-Write-Up/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>X3ctf2025 Write Up</p>
-          <p class='content'>1. Miscp11n-trophy（签到题）:题目描述：
-我们首先会得到这样一份证书：
-
-第一题签到题的答案就是证书下面正中间的“This certificate does not grant...</p>
+        <a class='prev' href='/2025/03/18/TUM%E7%AC%94%E8%AE%B0/ERA/ERA-1-Einfuhrung-und-Datenreprasentation/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>1 Einführung und Datenrepräsentation</p>
+          <p class='content'>Einführung in die Rechnerarchitektur (ERA)DatendarstellungenZahlensystemeDezimalsystem
+Binärsyste...</p>
         </a>
       
       
-        <a class='next' href='/2025/03/03/Writeup/E-CTF-Writeup/'>
-          <p class='title'>E-CTF比赛 Writeup<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1. Cryptography（密码学）ASCII me anything but not the flag
-根据它的提示，我们先将这段内容用ASCII解码，得到：
-123456789108 1...</p>
+        <a class='next' href='/2025/03/12/CTF/Reverse%20Engineering/HTB-rev-Behind-the-Scenes/'>
+          <p class='title'>HTB_rev Behind the Scenes<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>用010 Editor （或者Hex Editor之类的都行）打开源文件，将里面所有的 0F 0B  （即 ud2 ）改为 90 90  （90即NOP，是Machine Code中表示 无操作...</p>
         </a>
       
     </div>
@@ -2952,20 +2873,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
 
-
-<section class="widget toc-wrapper desktop mobile" id="toc-div" >
-  
-  <header>
-    
-      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
-    
-  </header>
-
-
-  <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A2%B0%E6%92%9E%E6%83%85%E5%86%B5%E8%AF%B4%E6%98%8E"><span class="toc-text">碰撞情况说明</span></a></li></ol>
-  </div>
-</section>
 
   
 
@@ -3524,7 +3431,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/CTF/CTF小知识/","name":"CTF小知识"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/09/哈希加密的长度与碰撞情况/","name":"哈希加密的长度与碰撞情况"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"哈希加密的长度与碰撞情况","description":"常见的哈希函数的长度及其碰撞情况汇总","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/09/%E5%93%88%E5%B8%8C%E5%8A%A0%E5%AF%86%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%8E%E7%A2%B0%E6%92%9E%E6%83%85%E5%86%B5/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/09/%E5%93%88%E5%B8%8C%E5%8A%A0%E5%AF%86%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%8E%E7%A2%B0%E6%92%9E%E6%83%85%E5%86%B5/","wordCount":18,"datePublished":"2025-03-09T18:36:57.000Z","dateModified":"2025-03-25T19:31:13.791Z","articleSection":"CTF","keywords":"CTF,哈希","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/CTF/Reverse-Engineering/","name":"Reverse Engineering"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/16/CTF/Reverse Engineering/HTB-rev-Find-The-Easy-Pass/","name":"HTB_rev Find The Easy Pass"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"http://example.com/","keywords":null,"description":"hi","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"HTB_rev Find The Easy Pass","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/16/CTF/Reverse%20Engineering/HTB-rev-Find-The-Easy-Pass/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/16/CTF/Reverse%20Engineering/HTB-rev-Find-The-Easy-Pass/","wordCount":0,"datePublished":"2025-03-16T21:39:15.000Z","dateModified":"2025-03-25T19:32:29.077Z","articleSection":"CTF","keywords":"Reverse Engineering,HTB","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
