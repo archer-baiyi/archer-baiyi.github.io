@@ -48,7 +48,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-24T20:53:38.000Z">
-<meta property="article:modified_time" content="2025-03-29T09:53:18.201Z">
+<meta property="article:modified_time" content="2025-03-29T18:14:39.974Z">
 <meta property="article:tag" content="Betriebssysteme">
 <meta property="article:tag" content="Operating System">
 <meta property="article:tag" content="操作系统">
@@ -2280,7 +2280,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743242012839),
+    lastupdate: new Date(1743280319961),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2693,7 +2693,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-29T10:53:18+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-29T19:14:39+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 29, 2025</p>
@@ -2741,13 +2741,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 <p>常见的文件系统有：</p>
 <ul>
-<li><p>FAT-16&#x2F;32 (DOS)</p>
+<li><p>FAT-16/32 (DOS)</p>
 <p>老式的微软文件系统</p>
 </li>
 <li><p>NTFS (Windows NT)</p>
 <p>微软当前主流的文件系统</p>
 </li>
-<li><p>Ext2&#x2F;3&#x2F;4 (Linux)</p>
+<li><p>Ext2/3/4 (Linux)</p>
 <p>Linux 系统中广泛使用的文件系统系列（Ext4是目前主流）</p>
 </li>
 </ul>
@@ -2769,19 +2769,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>优点：用户程序有更大的灵活性</p>
 </li>
 <li><p><strong>固定大小记录的序列（Sequenzen von Einträgen fester Größe）</strong></p>
+<p>每条记录有固定的大小和结构，比如每行只能写 80 个字符。现代的操作系统已经很少使用这种方式了。</p>
+</li>
+<li><p><strong>具有不同大小记录的树结构（Ein Baum mit Einträgen unterschiedlicher Größe）</strong></p>
+<p>每条记录都有一个Key，这些Key都是有序存储的。适合在大型计算机的操作系统（Großrechner-BS ）中用于处理大量数据。</p>
 </li>
 </ol>
-<p>   每条记录有固定的大小和结构，比如每行只能写 80 个字符。现代的操作系统已经很少使用这种方式了。</p>
-<ol start="3">
-<li><strong>具有不同大小记录的树结构（Ein Baum mit Einträgen unterschiedlicher Größe）</strong></li>
-</ol>
-<p>   每条记录都有一个Key，这些Key都是有序存储的。适合在大型计算机的操作系统（Großrechner-BS ）中用于处理大量数据。</p>
 <h3 id="文件类型（Dateitypen）"><a href="#文件类型（Dateitypen）" class="headerlink" title="文件类型（Dateitypen）"></a><strong>文件类型（Dateitypen）</strong></h3><p>操作系统支持多种文件类型：</p>
 <ul>
 <li><p><strong>普通文件（ Dateien，regular files）</strong>：</p>
 <p>包含用户数据的文件，比如说：</p>
 <ul>
-<li>文本文件（Text-Dateien）： Bestehen aus Zeilen, die durch carriage return （回车符，<kbd>\r</kbd>）und&#x2F;oder  linefeed Zeichen（换行符，<kbd>\n</kbd>） abgeschlossen sind.</li>
+<li>文本文件（Text-Dateien）： Bestehen aus Zeilen, die durch carriage return （回车符，<kbd>\r</kbd>）und/oder  linefeed Zeichen（换行符，<kbd>\n</kbd>） abgeschlossen sind.</li>
 <li>二进制文件（Binärdateien）：具有特定格式，比如说可执行文件、压缩包等。</li>
 </ul>
 </li>
@@ -2794,6 +2793,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 </ul>
 <p>在linux种可以用 <kbd>ls -l</kbd> 来查看文件类型：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2801,7 +2801,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <th>文件类型</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-</td>
 <td>普通文件</td>
 </tr>
@@ -2817,10 +2818,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <td>b</td>
 <td>字符设备文件</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x 2 user user 4096 Mar 26  test_folder</span><br><span class="line">-rw-r--r-- 1 user user 1234 Mar 26  notes.txt</span><br><span class="line">crw-rw---- 1 root tty 4, 0 Mar 26  /dev/tty0</span><br><span class="line">brw-rw---- 1 root disk 8, 0 Mar 26  /dev/sda</span><br></pre></td></tr></table></figure>
-
 <p>可执行文件的结构：</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250326171824236.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250326171824236.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250326171824236"></p>
 <p>压缩文件的结构：</p>
@@ -2831,8 +2833,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h4 id="随机访问（Random-access）"><a href="#随机访问（Random-access）" class="headerlink" title="随机访问（Random-access）"></a><strong>随机访问（Random-access）</strong></h4><p>进程可以按<strong>任意顺序</strong>读取文件中的字节（或记录），在数据库系统中尤其重要（快速定位记录）。</p>
 <p>UNIX 系统中，<kbd>lseek</kbd> 系统调用可以改变“读写指针”位置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lseek(fd, 1024, SEEK_SET);</span><br></pre></td></tr></table></figure>
-
 <p>fd是文件描述符，1024是偏移量（offset）（单位是Byte），SEEK_SET 则是定位方式，有几种选择：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -2840,7 +2842,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>SEEK_SET</td>
 <td>从<strong>文件开头</strong>开始偏移 offset 字节</td>
 </tr>
@@ -2852,14 +2855,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <td>SEEK_END</td>
 <td>从<strong>文件末尾</strong>开始偏移 （offset需要调整为负数）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>例子：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    <span class="type">int</span> fd;                 <span class="comment">// 文件描述符</span></span><br><span class="line">    <span class="type">char</span> buf[<span class="number">128</span>];          <span class="comment">// 缓冲区，用于读取128字节内容</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打开文件 &quot;myfile.txt&quot;，只读方式</span></span><br><span class="line">    fd = open(<span class="string">&quot;myfile.txt&quot;</span>, O_RDONLY);</span><br><span class="line">    <span class="keyword">if</span> (fd &lt; <span class="number">0</span>)             <span class="comment">// 如果打开失败，退出</span></span><br><span class="line">        <span class="keyword">return</span> EXIT_FAILURE;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将文件读写位置移动到从文件头开始的第1024个字节</span></span><br><span class="line">    <span class="keyword">if</span> (lseek(fd, <span class="number">1024</span>, SEEK_SET) &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> EXIT_FAILURE;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从当前位置读取128字节到缓冲区buf中</span></span><br><span class="line">    <span class="keyword">if</span> (read(fd, buf, <span class="number">128</span>) &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> EXIT_FAILURE;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印读取到的内容</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, buf);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 关闭文件</span></span><br><span class="line">    close(fd);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 正常退出</span></span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
 <h3 id="文件属性（Dateiattribute）"><a href="#文件属性（Dateiattribute）" class="headerlink" title="文件属性（Dateiattribute）"></a><strong>文件属性（Dateiattribute）</strong></h3><p>每份文件除了文件名和文件内容外还会附带一些其他信息：元信息（Meta-Informationen）。</p>
 <p>元信息包含：</p>
 <ul>
@@ -2878,30 +2878,26 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ul>
 <li><p>创建和删除文件</p>
 <ul>
-<li><kbd>open</kbd> （**打开**）:
-
+<li><p><kbd>open</kbd> （<strong>打开</strong>）:</p>
 <p>在访问一个文件之前，必须先打开它。这会让操作系统把文件属性和其他信息加载到内存中，方便快速处理。<kbd>open()</kbd> 系统调用<strong>返回一个文件描述符（file descriptor）</strong>，这是一个小的整数，用来标识这个打开的文件。</p>
 </li>
-<li><kbd>unlink</kbd> （**删除**）</li>
+<li><p><kbd>unlink</kbd> （<strong>删除</strong>）</p>
+</li>
 </ul>
 </li>
 <li><p>后续对文件的访问（通过文件描述符）</p>
 <ul>
-<li><kbd>close</kbd> （**关闭**）
-
+<li><p><kbd>close</kbd> （<strong>关闭</strong>）</p>
 <p>使用文件描述符来关闭文件，释放内部数据结构资源。</p>
 </li>
-<li><kbd>read</kbd> （**读取**）
-
+<li><p><kbd>read</kbd> （<strong>读取</strong>）</p>
 <p><strong>指定要读取的数据以及一个缓冲区（buffer）</strong>，读取的内容将被放入该缓冲区。</p>
 <p>一定要提前创建一个缓冲区！</p>
 </li>
-<li><kbd>write</kbd> （**写入**）
-
+<li><p><kbd>write</kbd> （<strong>写入</strong>）</p>
 <p>将数据写入到当前文件指针所在的位置，注意原有数据可能会被覆盖。</p>
 </li>
-<li><kbd>seek</kbd> （**定位**）
-
+<li><p><kbd>seek</kbd> （<strong>定位</strong>）</p>
 <p>移动文件指针到指定位置（之后可以从该位置读取或写入）。（见上面随机访问那里的例子）</p>
 </li>
 </ul>
@@ -2909,9 +2905,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 <p>代码例子：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span>     </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fcntl.h&gt;</span>      <span class="comment">// 包含 open() 的相关定义和文件权限</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span>     <span class="comment">// 包含 read(), write(), close() 的声明</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BUF_SIZE 4096   <span class="comment">// 定义缓冲区的大小</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    <span class="type">int</span> fd_in, fd_out, count;     <span class="comment">// 2个文件描述符 和 读写字节数计数器</span></span><br><span class="line">    <span class="type">char</span> buf[BUF_SIZE];           <span class="comment">// 缓冲区</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果参数个数不为3（程序名 + 输入文件 + 输出文件），则失败退出</span></span><br><span class="line">    <span class="keyword">if</span> (argc != <span class="number">3</span>) <span class="keyword">return</span> EXIT_FAILURE;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打开输入文件，只读模式（O_RDONLY）</span></span><br><span class="line">    <span class="keyword">if</span> ((fd_in = open(argv[<span class="number">1</span>], O_RDONLY)) == <span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> EXIT_FAILURE;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打开或创建输出文件，只写模式，权限为用户可读写（rw- --- ---）</span></span><br><span class="line">    <span class="keyword">if</span> ((fd_out = open(argv[<span class="number">2</span>], O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR)) == <span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> EXIT_FAILURE;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 读取输入文件的内容并写入到输出文件中，直到读完</span></span><br><span class="line">    <span class="keyword">while</span> ((count = read(fd_in, buf, BUF_SIZE)) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// 如果写入失败或未能写入全部内容，返回失败</span></span><br><span class="line">        <span class="keyword">if</span> (write(fd_out, buf, count) &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> EXIT_FAILURE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 关闭两个文件描述符</span></span><br><span class="line">    close(fd_in);</span><br><span class="line">    close(fd_out);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> EXIT_SUCCESS;  <span class="comment">// 成功结束程序</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="目录（Verzeichnisse）"><a href="#目录（Verzeichnisse）" class="headerlink" title="目录（Verzeichnisse）"></a><strong>目录（Verzeichnisse）</strong></h3><p>文件系统通过目录来组织文件。而目录本质上是一个特殊的文件，它只包含管理信息（比如：文件名、路径、指针等）。目录使文件系统支持层级管理（hierarchische Verwaltung），让结构更清晰、查找更高效。</p>
 <p>下面这两种是比较常见的目录结构：</p>
 <p>1. <strong><code>单层目录结构（Single-Level Verzeichnisstrukturen）</code></strong></p>
@@ -2925,37 +2918,31 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h3 id="路径名（Pfadnamen）"><a href="#路径名（Pfadnamen）" class="headerlink" title="路径名（Pfadnamen）"></a><strong>路径名（Pfadnamen）</strong></h3><p>路径名是为了在树状结构的文件系统中为文件命名，一般分3种：</p>
 <p>1. <strong><code>绝对路径名（Absolute Pfadnamen）</code></strong></p>
 <p>路径从<strong>根目录</strong>（Root-Verzeichnis）开始，一直到目标文件。</p>
-<p>注意：UNIX&#x2F;Linux 中用 <kbd>/</kbd> ，Windows 中用 <kbd>\</kbd> 。</p>
+<p>注意：UNIX/Linux 中用 <kbd>/</kbd> ，Windows 中用 <kbd>\</kbd> 。</p>
 <p>例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/tum/git/gbs/uebungsbetrieb/ws18/09/c-files/mem.c</span><br></pre></td></tr></table></figure>
-
 <p>2. <strong><code>相对路径名（Relative Pfadnamen）</code></strong></p>
 <p>路径是相对于当前工作目录（Current Working Directory）而言的。</p>
 <p>比如当前路径是</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/tum/git/gbs/uebungsbetrieb/ws18/09</span><br></pre></td></tr></table></figure>
-
-<p>的时候，就可以这样引用文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blatt09.pdf</span><br><span class="line">或者</span><br><span class="line">c-files/mem.c</span><br></pre></td></tr></table></figure>
-
+<p>的时候，就可以这样引用文件：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blatt09.pdf</span><br><span class="line">或者</span><br><span class="line">c-files/mem.c</span><br></pre></td></tr></table></figure></p>
 <p>3. <strong>特殊路径</strong></p>
 <kbd>.</kbd> 表示当前目录，<kbd>..</kbd> 表示上一级目录。
 
-<p>例子：</p>
-<p>假设当前路径是</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ws18/09/</span><br></pre></td></tr></table></figure>
+例子：
 
+假设当前路径是
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ws18/09/</span><br></pre></td></tr></table></figure>
 <p>可以用</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp ../08/gbsuebung.cls .</span><br><span class="line"># 从当前目录的上一级目录中的 08 子目录里，复制 gbsuebung.cls 文件到当前目录中</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a><strong>文件系统</strong></h2><p>从现在开始我们从实现角度（Implementierungs-Sicht）来了解文件系统：它内部是如何实现各种功能的。</p>
 <h3 id="文件系统布局（Dateisystem-Layout）"><a href="#文件系统布局（Dateisystem-Layout）" class="headerlink" title="文件系统布局（Dateisystem-Layout）"></a><strong>文件系统布局（Dateisystem-Layout）</strong></h3><p>硬盘会被划分为多个分区（Partitionen），每个分区可以独立存储一个文件系统，彼此之间互不影响。</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327234928324.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250327234928324.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250327234928324"></p>
-<p>位于 Sektor 0 的是**<code>主引导记录（MBR，Master Boot Record）</code><strong>。里面存储了一个</strong><code>分区表（Partitions-Tabelle）</code>**，用于纪录每个分区的起始和结束地址。</p>
+<p>位于 Sektor 0 的是<strong><code>主引导记录（MBR，Master Boot Record）</code></strong>。里面存储了一个<strong><code>分区表（Partitions-Tabelle）</code></strong>，用于纪录每个分区的起始和结束地址。</p>
 <p>在启动电脑时（Booten），BIOS（或现代的 UEFI）会读取 MBR，执行 MBR 程序，然后根据分区表（Partitions-Tabelle）定位到活动分区（aktiven Partition），读取并执行该分区的第一个块 Boot Block 中的代码，引导操作系统加载。</p>
 <p>每个分区内部的结构会随着文件系统的不同而变化。</p>
-<p>上面图片里展示的是UNIX&#x2F;Linux中文件系统的例子：</p>
+<p>上面图片里展示的是UNIX/Linux中文件系统的例子：</p>
 <ul>
 <li><p><strong><code>超级块（Superblock）</code></strong></p>
 <p>存储关于整个文件系统的关键信息，包括 Magic Number（识别文件系统类型的标识）, Anzahl der Blöcke, etc.</p>
@@ -3012,7 +2999,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h5 id="FAT-文件分配表（Linked-List-Allocation-mit-File-Allocation-Table）"><a href="#FAT-文件分配表（Linked-List-Allocation-mit-File-Allocation-Table）" class="headerlink" title="FAT 文件分配表（Linked List Allocation mit File Allocation Table）"></a><strong>FAT 文件分配表（Linked List Allocation mit File Allocation Table）</strong></h5><p>我们现在将所有指针集中存储在一张表中（FAT），放在主存（Hauptspeicher）中管理。</p>
 <p>例子：</p>
 <p>我们现在有2份文件：</p>
-<p>A：4, 7, 2, 10, 12 (-1 &#x3D; Ende der Liste)</p>
+<p>A：4, 7, 2, 10, 12 (-1 = Ende der Liste)</p>
 <p>B: 6, 3, 11, 14 (-1)</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250328100244438.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250328100244438.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250328100244438"></p>
 <p><strong>优点</strong>：</p>
@@ -3082,7 +3069,45 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 </ol>
 <p>软链接类似于Windows里的快捷方式，但并不完全一样。软连接是文件系统级别支持，而快捷方式则是应用层支持。这意味着系统层面会自动解析软链接，但是Windows里的快捷方式需要Shell或资源管理器解析。</p>
-<h4 id="日志文件系统（Journaling-Dateisysteme）"><a href="#日志文件系统（Journaling-Dateisysteme）" class="headerlink" title="日志文件系统（Journaling-Dateisysteme）"></a><strong>日志文件系统（Journaling-Dateisysteme）</strong></h4><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a><strong>例子</strong></h2><h3 id="Linux的ext2"><a href="#Linux的ext2" class="headerlink" title="Linux的ext2"></a><strong>Linux的ext2</strong></h3><h3 id="Linux的ext4"><a href="#Linux的ext4" class="headerlink" title="Linux的ext4"></a><strong>Linux的ext4</strong></h3>
+<h3 id="日志文件系统（Journaling-Dateisysteme）"><a href="#日志文件系统（Journaling-Dateisysteme）" class="headerlink" title="日志文件系统（Journaling-Dateisysteme）"></a><strong>日志文件系统（Journaling-Dateisysteme）</strong></h3><p>主要是为了保证系统崩溃后的数据一致性，类似于Datenbank里的Transaktionsverwaltung。</p>
+<p>在 UNIX 下删除一个文件需要3个步骤：</p>
+<ol>
+<li>从目录中移除文件的目录项（Entferne die Datei aus ihrem Verzeichnis）</li>
+<li>将文件对应的 i-node 释放（Gib den i-node in den Pool der freien i-nodes frei）</li>
+<li>将文件占用的磁盘数据块标记为“可用”（Markiere alle von der Datei belegten Festplatten Blöcke als frei）</li>
+</ol>
+<p>但如果在某一步结束后系统发生了崩溃，就会导致很严重的问题，比如说数据丢失或者是空间泄露。</p>
+<p>所以我们需要<strong><code>日志文件系统（Journaling-Dateisysteme）</code></strong>来预防这些问题：会先将所有对文件系统的更改操作记录在日志区域（Journal）中，然后才实际执行。这样一来所有操作都可以从日志中恢复或重做，确保一致性。</p>
+<p><strong>具体操作流程：</strong></p>
+<ol>
+<li><p>首先创建一个日志条目，描述即将执行的三项操作。（Erstellen eines Log-Eintrags, der die drei Operationen beschreibt）</p>
+</li>
+<li><p>将该日志写入磁盘的日志区。（Speicherung in Journal auf der Platte）</p>
+<p>然后需要重新读取日志内容以确认是否正确写入。</p>
+</li>
+<li><p>执行实际的3步操作。（Ausführen der drei Operationen）</p>
+</li>
+<li><p>每完成一步操作，都在磁盘上记录一次“进度”，表示该操作已完成。（Abschluss jeder Operation auf der Platte vermerkt: Fortschrittsbericht）</p>
+</li>
+<li><p>三个操作都成功完成后，删除日志条目。</p>
+</li>
+</ol>
+<p>然后在系统重启或者发生崩溃后会进行以下操作：</p>
+<ol>
+<li>首先检查日志内容。（Inspektion des Journals）</li>
+<li>如果发现某个操作没执行完，那么会重新执行所有操作。</li>
+</ol>
+<p>只不过这些都一个共同的前提：所有操作必须是<strong><code>幂等的（idempotent）</code></strong>，即进行1次操作与进行n次（相同的）操作得到的结果是一样的。</p>
+<p>例子：</p>
+<ol>
+<li><p>将一块Block标记成frei：是idempotent的。</p>
+</li>
+<li><p>把空闲块简单地加到“空闲块列表末尾”：不是idempotent的，需要改成</p>
+<p>先检查一下块n是否已经在空闲列表中，如果没有，再加入。</p>
+</li>
+</ol>
+<p>还有一个办法也可以提高文件系统的可靠性（Erhöhung der Zuverlässigkeit）：把多个操作包装成一个原子事务（atomaren Transaktion，即 ganz oder gar nicht）。</p>
+<h3 id="虚拟文件系统（Virtual-File-System，VFS）"><a href="#虚拟文件系统（Virtual-File-System，VFS）" class="headerlink" title="虚拟文件系统（Virtual File System，VFS）"></a><strong>虚拟文件系统（Virtual File System，VFS）</strong></h3><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a><strong>例子</strong></h2><h3 id="Linux的ext2"><a href="#Linux的ext2" class="headerlink" title="Linux的ext2"></a><strong>Linux的ext2</strong></h3><h3 id="Linux的ext4"><a href="#Linux的ext4" class="headerlink" title="Linux的ext4"></a><strong>Linux的ext4</strong></h3>
   </div>
   
   
@@ -3247,7 +3272,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Einfuhrung"><span class="toc-number">1.</span> <span class="toc-text">Einführung</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98"><span class="toc-number">1.1.</span> <span class="toc-text">硬盘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6-%EF%BC%88Dateien%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">文件 （Dateien）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%EF%BC%88Dateitypen%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">文件类型（Dateitypen）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%96%B9%E5%BC%8F%EF%BC%88Dateizugriff%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">文件访问方式（Dateizugriff）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%AE%BF%E9%97%AE%EF%BC%88Sequential-access%EF%BC%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">顺序访问（Sequential access）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%EF%BC%88Random-access%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">随机访问（Random-access）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%EF%BC%88Dateiattribute%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">文件属性（Dateiattribute）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%EF%BC%88Datei-Operationen%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">文件操作（Datei-Operationen）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%EF%BC%88Verzeichnisse%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">目录（Verzeichnisse）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E5%90%8D%EF%BC%88Pfadnamen%EF%BC%89"><span class="toc-number">2.6.</span> <span class="toc-text">路径名（Pfadnamen）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">文件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B8%83%E5%B1%80%EF%BC%88Dateisystem-Layout%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">文件系统布局（Dateisystem-Layout）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%AD%98%E5%82%A8%E4%B8%8E%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%EF%BC%88Implementierung-von-Dateien%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">文件的存储与实现方式（Implementierung von Dateien）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D%EF%BC%88Contiguous-Allocation%EF%BC%89"><span class="toc-number">3.2.1.</span> <span class="toc-text">连续分配（Contiguous Allocation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E5%88%86%E9%85%8D%EF%BC%88Linked-List-Allocation%EF%BC%89"><span class="toc-number">3.2.2.</span> <span class="toc-text">链式分配（Linked List Allocation）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#FAT-%E6%96%87%E4%BB%B6%E5%88%86%E9%85%8D%E8%A1%A8%EF%BC%88Linked-List-Allocation-mit-File-Allocation-Table%EF%BC%89"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">FAT 文件分配表（Linked List Allocation mit File Allocation Table）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#i-nodes%EF%BC%88%E7%B4%A2%E5%BC%95%E8%8A%82%E7%82%B9%EF%BC%89"><span class="toc-number">3.2.3.</span> <span class="toc-text">i-nodes（索引节点）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%EF%BC%88Verzeichnissen%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">目录（Verzeichnissen）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">3.3.1.</span> <span class="toc-text">文件属性的存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">3.3.2.</span> <span class="toc-text">文件名的存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%EF%BC%88Links%EF%BC%89"><span class="toc-number">3.3.3.</span> <span class="toc-text">链接（Links）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%88Journaling-Dateisysteme%EF%BC%89"><span class="toc-number">3.3.4.</span> <span class="toc-text">日志文件系统（Journaling-Dateisysteme）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">4.</span> <span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%9A%84ext2"><span class="toc-number">4.1.</span> <span class="toc-text">Linux的ext2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%9A%84ext4"><span class="toc-number">4.2.</span> <span class="toc-text">Linux的ext4</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Einfuhrung"><span class="toc-number">1.</span> <span class="toc-text">Einführung</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98"><span class="toc-number">1.1.</span> <span class="toc-text">硬盘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6-%EF%BC%88Dateien%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">文件 （Dateien）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%EF%BC%88Dateitypen%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">文件类型（Dateitypen）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%96%B9%E5%BC%8F%EF%BC%88Dateizugriff%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">文件访问方式（Dateizugriff）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%AE%BF%E9%97%AE%EF%BC%88Sequential-access%EF%BC%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">顺序访问（Sequential access）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%EF%BC%88Random-access%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">随机访问（Random-access）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%EF%BC%88Dateiattribute%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">文件属性（Dateiattribute）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%EF%BC%88Datei-Operationen%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">文件操作（Datei-Operationen）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%EF%BC%88Verzeichnisse%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">目录（Verzeichnisse）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E5%90%8D%EF%BC%88Pfadnamen%EF%BC%89"><span class="toc-number">2.6.</span> <span class="toc-text">路径名（Pfadnamen）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">文件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B8%83%E5%B1%80%EF%BC%88Dateisystem-Layout%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">文件系统布局（Dateisystem-Layout）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%AD%98%E5%82%A8%E4%B8%8E%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%EF%BC%88Implementierung-von-Dateien%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">文件的存储与实现方式（Implementierung von Dateien）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D%EF%BC%88Contiguous-Allocation%EF%BC%89"><span class="toc-number">3.2.1.</span> <span class="toc-text">连续分配（Contiguous Allocation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E5%88%86%E9%85%8D%EF%BC%88Linked-List-Allocation%EF%BC%89"><span class="toc-number">3.2.2.</span> <span class="toc-text">链式分配（Linked List Allocation）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#FAT-%E6%96%87%E4%BB%B6%E5%88%86%E9%85%8D%E8%A1%A8%EF%BC%88Linked-List-Allocation-mit-File-Allocation-Table%EF%BC%89"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">FAT 文件分配表（Linked List Allocation mit File Allocation Table）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#i-nodes%EF%BC%88%E7%B4%A2%E5%BC%95%E8%8A%82%E7%82%B9%EF%BC%89"><span class="toc-number">3.2.3.</span> <span class="toc-text">i-nodes（索引节点）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%EF%BC%88Verzeichnissen%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">目录（Verzeichnissen）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">3.3.1.</span> <span class="toc-text">文件属性的存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">3.3.2.</span> <span class="toc-text">文件名的存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%EF%BC%88Links%EF%BC%89"><span class="toc-number">3.3.3.</span> <span class="toc-text">链接（Links）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%88Journaling-Dateisysteme%EF%BC%89"><span class="toc-number">3.4.</span> <span class="toc-text">日志文件系统（Journaling-Dateisysteme）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%88Virtual-File-System%EF%BC%8CVFS%EF%BC%89"><span class="toc-number">3.5.</span> <span class="toc-text">虚拟文件系统（Virtual File System，VFS）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">4.</span> <span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%9A%84ext2"><span class="toc-number">4.1.</span> <span class="toc-text">Linux的ext2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%9A%84ext4"><span class="toc-number">4.2.</span> <span class="toc-text">Linux的ext4</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3808,7 +3833,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/24/TUM笔记/GBS/GBS-7-Dateisystem-文件系统/","name":"GBS 7 Dateisystem 文件系统"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 7 Dateisystem 文件系统","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/24/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-7-Dateisystem-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/24/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-7-Dateisystem-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/","wordCount":10,"datePublished":"2025-03-24T20:53:38.000Z","dateModified":"2025-03-29T09:53:18.201Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,操作系统,文件系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/24/TUM笔记/GBS/GBS-7-Dateisystem-文件系统/","name":"GBS 7 Dateisystem 文件系统"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 7 Dateisystem 文件系统","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/24/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-7-Dateisystem-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/24/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-7-Dateisystem-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/","wordCount":10,"datePublished":"2025-03-24T20:53:38.000Z","dateModified":"2025-03-29T18:14:39.974Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,操作系统,文件系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

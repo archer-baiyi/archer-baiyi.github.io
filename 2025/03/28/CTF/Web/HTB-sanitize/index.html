@@ -37,23 +37,23 @@
   <!-- feed -->
   <!-- 页面元数据 -->
   <title>HTB-sanitize - Hexo</title>
-  <meta name="keywords" content="HTB,Web,Injection,SQL Injection,SQL,null">
+  <meta name="keywords" content="SQL,HTB,Web,Injection,SQL Injection,null">
   <meta desc name="description" content="hi - null - Hexo">
   
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTB-sanitize">
 <meta property="og:url" content="https://archer-baiyi.github.io/2025/03/28/CTF/Web/HTB-sanitize/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述 （无附件） 观察打开网页：  随便输入个username和password会看到下方有一段SQL代码：  渗透猜测网页的登录逻辑是这样的：如果当前select成功（也就是说能在数据库里找到当前输入的账号信息），那么就可以登录成功。 所以直接SQL Injection，在username一栏输入 1admin&#x27; --  ，然后password那一栏输入任意内容（比如说1），就可以">
+<meta property="og:description" content="题目描述 （无附件） 观察打开网页：  随便输入个username和password会看到下方有一段SQL代码：  渗透猜测网页的登录逻辑是这样的：如果当前select成功（也就是说能在数据库里找到当前输入的账号信息），那么就可以登录成功。 所以直接SQL Injection，在username一栏输入 1admin&#x27; -- ，然后password那一栏输入任意内容（比如说1），就可以得">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-28T19:12:23.000Z">
 <meta property="article:modified_time" content="2025-03-28T19:22:00.301Z">
+<meta property="article:tag" content="SQL">
 <meta property="article:tag" content="HTB">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="Injection">
 <meta property="article:tag" content="SQL Injection">
-<meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2281,7 +2281,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743242012839),
+    lastupdate: new Date(1743280319961),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2686,8 +2686,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/HTB/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>HTB</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Web/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Web</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Injection/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Injection</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/SQL-Injection/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>SQL Injection</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/SQL/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>SQL</p></a></div>
-  <span hidden itemprop="keywords">HTB Web Injection SQL Injection SQL</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/SQL/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>SQL</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/HTB/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>HTB</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Web/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Web</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Injection/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Injection</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/SQL-Injection/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>SQL Injection</p></a></div>
+  <span hidden itemprop="keywords">SQL HTB Web Injection SQL Injection</span>
   
 
 
@@ -2722,7 +2722,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h2 id="渗透"><a href="#渗透" class="headerlink" title="渗透"></a>渗透</h2><p>猜测网页的登录逻辑是这样的：如果当前select成功（也就是说能在数据库里找到当前输入的账号信息），那么就可以登录成功。</p>
 <p>所以直接SQL Injection，在username一栏输入</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27; --</span><br></pre></td></tr></table></figure>
-
 <p>，然后password那一栏输入任意内容（比如说1），就可以得到flag：<psw>HTB{SQL_1nj3ct1ng_my_w4y_0utta_h3r3}</psw></p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250328201841519.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250328201841519.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250328201841519"></p>
 
@@ -2841,8 +2840,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 当点击了下面那个按钮之后网页的url会增加一个参数：
 
 1/?format=r
-
-因为给的附件比较多，所以直接挨个搜索“format”，可以确定下来2份相...</p>
+因为给的附件比较多，所以直接挨个搜索“format”，可以确定下来2份相关...</p>
         </a>
       
     </div>
@@ -3453,7 +3451,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Web/","name":"Web"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/28/CTF/Web/HTB-sanitize/","name":"HTB-sanitize"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"HTB-sanitize","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/28/CTF/Web/HTB-sanitize/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/28/CTF/Web/HTB-sanitize/","wordCount":0,"datePublished":"2025-03-28T19:12:23.000Z","dateModified":"2025-03-28T19:22:00.301Z","articleSection":"CTF","keywords":"HTB,Web,Injection,SQL Injection,SQL","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Web/","name":"Web"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/28/CTF/Web/HTB-sanitize/","name":"HTB-sanitize"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"HTB-sanitize","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/28/CTF/Web/HTB-sanitize/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/28/CTF/Web/HTB-sanitize/","wordCount":0,"datePublished":"2025-03-28T19:12:23.000Z","dateModified":"2025-03-28T19:22:00.301Z","articleSection":"CTF","keywords":"SQL,HTB,Web,Injection,SQL Injection","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

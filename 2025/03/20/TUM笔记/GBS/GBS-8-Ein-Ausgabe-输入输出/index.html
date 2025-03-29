@@ -2280,7 +2280,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743242012839),
+    lastupdate: new Date(1743280319961),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2727,7 +2727,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ul>
 <li><strong>串行</strong>数据传输（serieller Datentransfer）：指每次传输一个比特数据，并连续进行以上单次过程的通信方式；</li>
 <li><strong>不可寻址</strong>的；</li>
-<li>发送和&#x2F;或接收<strong>字符流</strong>（<strong>Zeichenströme</strong>）；</li>
+<li>发送和/或接收<strong>字符流</strong>（<strong>Zeichenströme</strong>）；</li>
 </ul>
 <p>例子：鼠标，键盘，打印机。</p>
 </li>
@@ -2737,13 +2737,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ol>
 <p>拿键盘举例，我们每次敲击按键了之后它都会将这个信息直接传输到电脑，而不是等我们输入了一长串内容之后再将这段内容一起发送给电脑，所以是serieller Datentransfer。而与serieller Datentransfer相对的则是parallele Datenübertragung。</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/langde-1280px-Serial_and_Parallel_Data_Transmission.svg.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/langde-1280px-Serial_and_Parallel_Data_Transmission.svg.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="串行与并行数据传输"></p>
-<p>E&#x2F;A System 的<strong>分层结构</strong>：</p>
+<p>E/A System 的<strong>分层结构</strong>：</p>
 <ol>
 <li><strong><code>控制器（Controller）</code></strong>：设备硬件的一部分；作为<strong>CPU和设备之间的接口</strong>。</li>
 <li><strong><code>中断处理程序（Interrupt-Handler）</code></strong>：处理设备的反馈信息（中断）。</li>
 <li><strong><code>设备驱动程序（Gerätetreiber）</code></strong>：执行<strong>与设备相关的控制软件</strong>；驱动程序通过控制器访问设备。</li>
 <li><strong><code>设备无关软件（Geräteunabhängige Software）</code></strong>：分配设备、<strong>数据缓冲</strong>等功能。</li>
-<li><strong><code>用户级软件（User-Level-Software）</code></strong>：用于<strong>输入&#x2F;输出（E&#x2F;A）<strong>的库函数，例如</strong>假脱机（Spooling）</strong>。</li>
+<li><strong><code>用户级软件（User-Level-Software）</code></strong>：用于<strong>输入/输出（E/A）</strong>的库函数，例如<strong>假脱机（Spooling）</strong>。</li>
 </ol>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250320231752723.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250320231752723.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250320231752723"></p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250320231735315.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250320231735315.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250320231735315"></p>
@@ -2758,7 +2758,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><p><strong>设备驱动程序</strong>：HP 打印机驱动程序</p>
 <p>点击“打印”时，驱动程序会把文本或图像转换成 HP 打印机能理解的格式（如 PCL、PostScript），然后发送给打印机。</p>
 </li>
-<li><p><strong>设备无关软件</strong>：Windows&#x2F;Linux 的打印管理系统</p>
+<li><p><strong>设备无关软件</strong>：Windows/Linux 的打印管理系统</p>
 <p>这层软件不依赖于具体的打印机品牌，而是为所有打印设备提供统一的管理功能，如：</p>
 <ul>
 <li>排队管理（多个打印任务排队执行）</li>
@@ -2770,7 +2770,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ol>
 <p>接下来我们看一下每一层的具体功能：</p>
 <h2 id="控制器（Controller）"><a href="#控制器（Controller）" class="headerlink" title="控制器（Controller）"></a><strong>控制器（Controller）</strong></h2><p>什么是控制器？</p>
-<p>输入&#x2F;输出设备（E&#x2F;A-Geräte） 由机械组件和电子组件组成，其中电子组件就是设**<code>设备控制器（Geräte-Controller）</code>**。它是连接 CPU 和外部设备的桥梁。</p>
+<p>输入/输出设备（E/A-Geräte） 由机械组件和电子组件组成，其中电子组件就是设<strong><code>设备控制器（Geräte-Controller）</code></strong>。它是连接 CPU 和外部设备的桥梁。</p>
 <p>Controller besitzt Hardware-Schnittstelle zum Gerät.</p>
 <p>控制器包含寄存器（Register），用于与 CPU 进行通信：</p>
 <ul>
@@ -2788,16 +2788,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 <h3 id="交互"><a href="#交互" class="headerlink" title="交互"></a><strong>交互</strong></h3><p>计算机与设备控制器（Controller）<strong>交互</strong>主要有两种方式：</p>
 <ol>
-<li><p><strong>I&#x2F;O-Ports</strong>：</p>
-<p>早期计算机使用 I&#x2F;O 指令和I&#x2F;O 端口与设备通信。</p>
+<li><p><strong>I/O-Ports</strong>：</p>
+<p>早期计算机使用 I/O 指令和I/O 端口与设备通信。</p>
 </li>
-<li><p><strong>Memory-Mapped I&#x2F;O</strong>：</p>
-<p>将设备的寄存器直接映射到系统内存地址空间，这样 CPU 可以通过普通的 LOAD&#x2F;STORE 指令来访问设备。</p>
+<li><p><strong>Memory-Mapped I/O</strong>：</p>
+<p>将设备的寄存器直接映射到系统内存地址空间，这样 CPU 可以通过普通的 LOAD/STORE 指令来访问设备。</p>
 </li>
 </ol>
-<p>早期的计算机需要<strong>手动设置</strong>设备地址，使用 <strong>跳线（Jumper）</strong> 或 <strong>DIP 开关</strong>。而现代设备支持 <strong>Plug &amp; Play</strong>，系统能够<strong>自动分配</strong> I&#x2F;O 端口地址 和 中断（IRQ）。</p>
+<p>早期的计算机需要<strong>手动设置</strong>设备地址，使用 <strong>跳线（Jumper）</strong> 或 <strong>DIP 开关</strong>。而现代设备支持 <strong>Plug &amp; Play</strong>，系统能够<strong>自动分配</strong> I/O 端口地址 和 中断（IRQ）。</p>
 <h3 id="数据交换"><a href="#数据交换" class="headerlink" title="数据交换"></a><strong>数据交换</strong></h3><p>第一种方法：</p>
-<h4 id="程序控制-I-O（Programmed-I-O）"><a href="#程序控制-I-O（Programmed-I-O）" class="headerlink" title="程序控制 I&#x2F;O（Programmed I&#x2F;O）"></a><strong>程序控制 I&#x2F;O（Programmed I&#x2F;O）</strong></h4><p>CPU会直接控制与设备的交互。</p>
+<h4 id="程序控制-I-O（Programmed-I-O）"><a href="#程序控制-I-O（Programmed-I-O）" class="headerlink" title="程序控制 I/O（Programmed I/O）"></a><strong>程序控制 I/O（Programmed I/O）</strong></h4><p>CPU会直接控制与设备的交互。</p>
 <p>比如说向打印机发送数据需要进行以下<strong>步骤</strong>：</p>
 <ul>
 <li>将数据复制到内核</li>
@@ -2811,13 +2811,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>这样做的坏处非常显而易见：<strong>忙等待（Busy Waiting）</strong>。CPU会被卡死在这里不能完成其他的任务。</p>
 <p>代码示例：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">copy_from_user(buffer, p, count)</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">    <span class="keyword">while</span> (*printer_status_reg != READY);  <span class="comment">// 忙等待</span></span><br><span class="line">    *printer_data_register = p[i];         <span class="comment">// 只发送一个字符</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <p>更好的办法：</p>
 <h4 id="中断（Interrupts）"><a href="#中断（Interrupts）" class="headerlink" title="中断（Interrupts）"></a><strong>中断（Interrupts）</strong></h4><p>流程如下：</p>
 <ul>
-<li><p>设备通过信号通知CPU，表明其I&#x2F;O操作已完成。</p>
+<li><p>设备通过信号通知CPU，表明其I/O操作已完成。</p>
 </li>
 <li><p>中断控制器（Interrupt Controller Chip）识别信号，并通知CPU。</p>
 </li>
@@ -2828,32 +2825,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 <li><p>中断处理程序（Handler） 执行完成后便会通知操作系统。</p>
 </li>
-<li><p>操作系统将等待（wartenden）I&#x2F;O 的进程恢复到可运行状态（rechenwillig）。</p>
+<li><p>操作系统将等待（wartenden）I/O 的进程恢复到可运行状态（rechenwillig）。</p>
 </li>
 </ul>
 <p>这个<strong>流程</strong>可以分为2部分：</p>
 <ol>
 <li>同步系统调用（Systemcall）<ul>
-<li>传递 I&#x2F;O 参数，启动 I&#x2F;O 操作。</li>
-<li>调用后，进程进入睡眠状态（等待 I&#x2F;O 完成），释放 CPU。</li>
+<li>传递 I/O 参数，启动 I/O 操作。</li>
+<li>调用后，进程进入睡眠状态（等待 I/O 完成），释放 CPU。</li>
 </ul>
 </li>
 <li>Interrupt-Handler<ul>
-<li>逐步处理 I&#x2F;O 操作。</li>
-<li>I&#x2F;O 完成后，唤醒等待的进程。</li>
+<li>逐步处理 I/O 操作。</li>
+<li>I/O 完成后，唤醒等待的进程。</li>
 </ul>
 </li>
 </ol>
 <p>代码示例：</p>
 <p>1. Systemcall：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">copy_from_user(buffer, p, count);  <span class="comment">// 从用户空间复制数据到内核</span></span><br><span class="line">enable_interrupts();               <span class="comment">// 允许中断</span></span><br><span class="line"><span class="keyword">while</span> (*printer_status_reg != READY); <span class="comment">// 轮询等待打印机准备就绪</span></span><br><span class="line">*printer_data_register = p[<span class="number">0</span>];      <span class="comment">// 发送第一个字符到打印机</span></span><br><span class="line">scheduler();                        <span class="comment">// 调度其他进程</span></span><br></pre></td></tr></table></figure>
-
 <p>2. Interrupt-Handler：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (count == <span class="number">0</span>) &#123;  </span><br><span class="line">    unblock_user();  <span class="comment">// 唤醒等待的进程</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    *printer_data_register = p[i];  <span class="comment">// 发送下一个字符</span></span><br><span class="line">    count = count - <span class="number">1</span>;</span><br><span class="line">    i = i + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">acknowledge_interrupt();  <span class="comment">// 确认中断已处理</span></span><br><span class="line">return_from_interrupt();</span><br></pre></td></tr></table></figure>
-
-
-
-<p>用这个方法的话CPU 可在 I&#x2F;O 期间执行其他任务，不需要一直等待。但是会一直触发Interrupt，可能会影响性能。</p>
+<p>用这个方法的话CPU 可在 I/O 期间执行其他任务，不需要一直等待。但是会一直触发Interrupt，可能会影响性能。</p>
 <p>所以此之上还有一种更好的办法：</p>
 <h4 id="直接内存访问（Direct-Memory-Access-DMA）"><a href="#直接内存访问（Direct-Memory-Access-DMA）" class="headerlink" title="直接内存访问（Direct Memory Access, DMA）"></a><strong>直接内存访问（Direct Memory Access, DMA）</strong></h4><p>使用 DMA 控制器，<strong>允许直接访问内存</strong>，而<strong>无需 CPU 介入</strong>。可以有效解决通过寄存器作为中间存储器传输数据消耗大量 CPU 计算周期的问题。</p>
 <p>传输<strong>流程</strong>：</p>
@@ -2871,7 +2864,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>缓存分以下几种类型：</p>
 <ol>
 <li><p><strong><code>无缓冲（Ohne Puffer）</code></strong>：</p>
-<p>用户进程必须自己存储 I&#x2F;O 数据，并且数据必须始终驻留在进程的内存中，直到 I&#x2F;O 操作完成。</p>
+<p>用户进程必须自己存储 I/O 数据，并且数据必须始终驻留在进程的内存中，直到 I/O 操作完成。</p>
 </li>
 <li><p><strong><code>简单缓冲（Einfacher Puffer）</code></strong>：</p>
 <p>进程仍然必须快速取走数据，否则缓冲区会满，影响数据流。</p>
@@ -2907,11 +2900,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ul>
 <li><strong>定义</strong>设备并向操作系统注册，并<strong>激活</strong>设备。（<strong>definiert</strong> das Gerät gegenüber dem BS, <strong>aktiviert</strong> das Gerät）</li>
 <li>在系统启动时<strong>初始化</strong>控制器和设备。（<strong>initialisiert</strong> den Controller und das Gerät beim Systemstart）</li>
-<li><strong>转换</strong>I&#x2F;O 请求，使其变为设备可理解的指令。（<strong>wandelt</strong> E&#x2F;A-Anforderungen in gerätespezifische Befehle um）</li>
+<li><strong>转换</strong>I/O 请求，使其变为设备可理解的指令。（<strong>wandelt</strong> E/A-Anforderungen in gerätespezifische Befehle um）</li>
 <li><strong>响应</strong>（来自设备或控制器的）硬件信号。（<strong>antwortet</strong> auf Hardwaresignale des Geräts bzw. des Controllers）（比如说 Interrupt handling）</li>
 <li><strong>报告</strong>设备和控制器的<strong>错误</strong>（错误检测和日志记录）。（<strong>meldet</strong> Geräte- und Controller-<strong>Fehler</strong>）</li>
-<li><strong>传输</strong>设备与操作系统之间的<strong>数据</strong>和<strong>状态信息</strong>。（<strong>überträgt</strong> <strong>Daten</strong> und <strong>Zustandsinformation</strong> vom&#x2F;zum Gerät）</li>
-<li><strong>缓冲</strong>输入&#x2F;输出数据，优化数据传输性能。（提供Buffer）（<strong>puffert</strong> Daten bei Ein- und Ausgabe）</li>
+<li><strong>传输</strong>设备与操作系统之间的<strong>数据</strong>和<strong>状态信息</strong>。（<strong>überträgt</strong> <strong>Daten</strong> und <strong>Zustandsinformation</strong> vom/zum Gerät）</li>
+<li><strong>缓冲</strong>输入/输出数据，优化数据传输性能。（提供Buffer）（<strong>puffert</strong> Daten bei Ein- und Ausgabe）</li>
 </ul>
 <p><strong>设备驱动是如何与设备控制器协作的？</strong></p>
 <ul>
@@ -2935,36 +2928,31 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>比如说块设备（Blockgerät）使用的块大小（Blockgröße）</p>
 </li>
 </ul>
-<h2 id="用户级软件（User-Level-Software）"><a href="#用户级软件（User-Level-Software）" class="headerlink" title="用户级软件（User-Level-Software）"></a><strong>用户级软件（User-Level-Software）</strong></h2><p>系统库（Systembibliothek）通常会直接给用户提供E&#x2F;A的编程接口。</p>
+<h2 id="用户级软件（User-Level-Software）"><a href="#用户级软件（User-Level-Software）" class="headerlink" title="用户级软件（User-Level-Software）"></a><strong>用户级软件（User-Level-Software）</strong></h2><p>系统库（Systembibliothek）通常会直接给用户提供E/A的编程接口。</p>
 <p>比如说：</p>
 <ul>
-<li><kbd>open()</kbd>：
-
+<li><p><kbd>open()</kbd>：</p>
 <p>打开设备的逻辑通道，返回一个 文件描述符（Descriptor 或 Handle），供后续操作使用。</p>
 </li>
-<li><kbd>read()</kbd>：
-
+<li><p><kbd>read()</kbd>：</p>
 <p>从设备读取数据，返回指定数量的字节流（Bytestream）。</p>
 </li>
-<li><kbd>close()</kbd>：
-
+<li><p><kbd>close()</kbd>：</p>
 <p>关闭先前打开的通道，释放相关的系统资源。</p>
 </li>
-<li><kbd>write()</kbd>：
-
+<li><p><kbd>write()</kbd>：</p>
 <p>向设备写入数据，发送指定数量的字节到设备。</p>
 </li>
-<li><kbd>ioctl()</kbd>：
-
+<li><p><kbd>ioctl()</kbd>：</p>
 <p>改变设备的操作模式，比如调整串行端口的传输速率或者是修改设备的控制参数</p>
 </li>
 </ul>
 <p>除了这些标准库函数，还有：</p>
-<h3 id="假脱机（Spooling）"><a href="#假脱机（Spooling）" class="headerlink" title="假脱机（Spooling）"></a><strong>假脱机（Spooling）</strong></h3><p>由于在现实生活中，我们经常会有多个进程同时提交I&#x2F;O请求，比如说用一台打印机打印多份文件。这个时候就需要想办法协调资源的使用，避免出现冲突。</p>
+<h3 id="假脱机（Spooling）"><a href="#假脱机（Spooling）" class="headerlink" title="假脱机（Spooling）"></a><strong>假脱机（Spooling）</strong></h3><p>由于在现实生活中，我们经常会有多个进程同时提交I/O请求，比如说用一台打印机打印多份文件。这个时候就需要想办法协调资源的使用，避免出现冲突。</p>
 <p>什么是 Spooling？</p>
-<p><strong>Spooling（Simultaneous Peripheral Operations Online，同步外设操作）</strong> 是一种用于管理**独占（）exklusiv nutzbar)**设备（如打印机）访问的缓冲机制。</p>
+<p><strong>Spooling（Simultaneous Peripheral Operations Online，同步外设操作）</strong> 是一种用于管理<strong>独占（）exklusiv nutzbar)</strong>设备（如打印机）访问的缓冲机制。</p>
 <p>在这个机制下，进程不会直接访问设备，而是将任务交给 Spooler Daemon（假脱机守护进程） 处理。只有 Spooler Daemon 会直接与设备驱动程序交互，确保设备顺序执行任务。用户进程的任务先存入 Spooling 目录（缓冲区），然后按顺序执行。</p>
-<h2 id="UNIX-Linux里的设备管理"><a href="#UNIX-Linux里的设备管理" class="headerlink" title="UNIX&#x2F;Linux里的设备管理"></a><strong>UNIX&#x2F;Linux里的设备管理</strong></h2><p>在UNIX&#x2F;Linux里，我们需要通过文件系统访问 I&#x2F;O 设备（因为“Everything is a file”）：</p>
+<h2 id="UNIX-Linux里的设备管理"><a href="#UNIX-Linux里的设备管理" class="headerlink" title="UNIX/Linux里的设备管理"></a><strong>UNIX/Linux里的设备管理</strong></h2><p>在UNIX/Linux里，我们需要通过文件系统访问 I/O 设备（因为“Everything is a file”）：</p>
 <ul>
 <li>在访问设备前，必须先打开它 <kbd>open</kbd>。</li>
 <li>不同设备支持额外的文件系统操作，如读写、状态查询等。</li>
@@ -2975,7 +2963,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ul>
 <li><kbd>/dev/tty0</kbd>：物理串行接口（终端）。</li>
 <li><kbd>/dev/USBtty1</kbd>：抽象串行接口（USB 串口设备）。</li>
-<li><kbd>/dev/sd0</kbd>：硬盘设备（`sd` 代表 SCSI 磁盘）。</li>
+<li><kbd>/dev/sd0</kbd>：硬盘设备（<code>sd</code> 代表 SCSI 磁盘）。</li>
 <li><kbd>/dev/null</kbd>：伪设备，写入的数据会被丢弃。</li>
 <li><kbd>/dev/zero</kbd>：伪设备，读取时返回无限的 0 字节。</li>
 </ul>
@@ -2995,9 +2983,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ul>
 <li>同心圆柱（Konzentrische Zylinder）</li>
 <li>堆叠的<strong>磁盘盘片</strong>（<strong>Platten</strong>, k 层），每张盘片的两面都可以读写（2k 面）。</li>
-<li>每张盘片上有多个<strong>磁道</strong>（<strong>Tracks</strong>），磁道的编号取决于 圆柱、盘片和面（Track &#x3D; f(Zylinder, Platte, Seite)）。</li>
+<li>每张盘片上有多个<strong>磁道</strong>（<strong>Tracks</strong>），磁道的编号取决于 圆柱、盘片和面（Track = f(Zylinder, Platte, Seite)）。</li>
 <li>每个磁道由多个<strong>扇区</strong>（<strong>Sektoren</strong>）组成，每个扇区大小为 512 字节。不过靠近磁盘中心的区域可能有更少的扇区（由于圆周较小）。</li>
-<li><strong>机械读写磁头</strong>（<strong>Schreib-&#x2F;Leseköpfe</strong>），每个盘片有两个读写磁头（上下各一个），总数为 2k。</li>
+<li><strong>机械读写磁头</strong>（<strong>Schreib-/Leseköpfe</strong>），每个盘片有两个读写磁头（上下各一个），总数为 2k。</li>
 </ul>
 <p>构造图示：</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250321130511294.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250321130511294.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250321130511294"></p>
@@ -3051,12 +3039,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 <h4 id="SSD的基本工作原理"><a href="#SSD的基本工作原理" class="headerlink" title="SSD的基本工作原理"></a><strong>SSD的基本工作原理</strong></h4><p>SSD的初始状态是：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11111111 11111111 11111111 ...</span><br></pre></td></tr></table></figure>
-
 <p>写入的话会将1改成0：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01000111 01000010 01010011 ...</span><br></pre></td></tr></table></figure>
-
 <p>但如果想修改的话，不能只是修改一位，而是需要将这一整块重置然后再写入。</p>
-<p>写入的大小最低为4KB，删除的大小最低为256KB，所以会导致所谓的**写入放大（Write Amplification）**的问题。</p>
+<p>写入的大小最低为4KB，删除的大小最低为256KB，所以会导致所谓的<strong>写入放大（Write Amplification）</strong>的问题。</p>
 <p>解决方式：这部分我没看懂，等看懂了再写。</p>
 <h3 id="时钟（Uhr-）"><a href="#时钟（Uhr-）" class="headerlink" title="时钟（Uhr,）"></a>时钟（Uhr,）</h3><p>时钟会持续性计时。</p>
 <p>硬件时钟（Hardware-Uhr (Chip)）的构成：</p>
@@ -3074,7 +3060,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>可以通过软件来控制Interrupt的频率。</p>
 </li>
 </ul>
-<p>时钟&#x2F;定时器的<strong>任务</strong>：</p>
+<p>时钟/定时器的<strong>任务</strong>：</p>
 <ul>
 <li>管理时间和日期（<strong>Tageszeit</strong> und <strong>Datum</strong> verwalten）</li>
 <li>中断和切换进程（<strong>调度</strong>）（Prozesse unterbrechen und umschalten (<strong>Scheduling</strong>)）</li>
@@ -3096,9 +3082,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>它的缺点也很明显，就是延迟，不过大部分情况下都是可以接受的。</p>
 </li>
 </ol>
-<h3 id="终端（Terminals）"><a href="#终端（Terminals）" class="headerlink" title="终端（Terminals）"></a>终端（Terminals）</h3><p>终端是如何通过驱动程序将用户输入&#x2F;输出转化为系统能够理解的数据流的：</p>
+<h3 id="终端（Terminals）"><a href="#终端（Terminals）" class="headerlink" title="终端（Terminals）"></a>终端（Terminals）</h3><p>终端是如何通过驱动程序将用户输入/输出转化为系统能够理解的数据流的：</p>
 <ul>
-<li>上层：提供一个统一接口给操作系统的输入&#x2F;输出子系统（Einheitliche Schnittstelle zum E&#x2F;A-Subsystem des BS）</li>
+<li>上层：提供一个统一接口给操作系统的输入/输出子系统（Einheitliche Schnittstelle zum E/A-Subsystem des BS）</li>
 <li>中层：解析输入和构造输出内容（Bearbeitungsmodul für Ein- und Ausgaben）</li>
 <li>下层：与不同的物理硬件设备直接对应（Abbildung verschiedene physische Geräte），比如鼠标、显卡。</li>
 </ul>

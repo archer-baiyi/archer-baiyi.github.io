@@ -2282,7 +2282,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743242012839),
+    lastupdate: new Date(1743280319961),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2723,7 +2723,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>使得每一层可以独立开发和实现，并且高层系统只需要与接口交互，而不需要了解底层实现。</p>
 </li>
 <li><p>z.B. Systemcalls: Implementierung durch Interface verborgen ：</p>
-<p>只需要直接用read(), write()这些命令，不需要关注&#x2F;知道这些调用在内核中的具体实现。</p>
+<p>只需要直接用read(), write()这些命令，不需要关注/知道这些调用在内核中的具体实现。</p>
 </li>
 </ul>
 </li>
@@ -2739,9 +2739,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>Interface zwischen <strong><code>Anwendungen</code></strong> und dem <strong><code>Betriebssystem</code></strong> 是应用程序与操作系统之间的接口</p>
 <p>besteht aus dem <strong><code>System Call Interface</code></strong> und der <strong><code>User ISA</code></strong></p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250311190649137.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250311190649137.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250311190649137"></p>
+<p>Die Sicht auf das System hängt von der Software-Perspektive ab：</p>
 </li>
 </ul>
-<p> Die Sicht auf das System hängt von der Software-Perspektive ab：</p>
 <p>如果是开发操作系统的话，则需要考虑操作系统与硬件的交互接口（isa）；</p>
 <p>而如果是开发普通软件的话，则更关注软件与操作系统的接口（abi），相当于通过操作系统来访问硬件。</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/3-s2.0-B978012809641300003X-gr005.jpg" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/3-s2.0-B978012809641300003X-gr005.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="isa, abi, api"></p>
@@ -2762,13 +2762,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 </ul>
 <h3 id="Anforderungen-an-Virtualisierung-对虚拟化的要求"><a href="#Anforderungen-an-Virtualisierung-对虚拟化的要求" class="headerlink" title="Anforderungen an Virtualisierung 对虚拟化的要求"></a><strong>Anforderungen an Virtualisierung 对虚拟化的要求</strong></h3><ul>
-<li><p><strong><code>Equivalences</code></strong> &#x2F; <strong><code>Fidelity</code></strong>：<strong><code>等效性</code></strong></p>
+<li><p><strong><code>Equivalences</code></strong> / <strong><code>Fidelity</code></strong>：<strong><code>等效性</code></strong></p>
 <p>虚拟化应该让操作系统和应用程序无需特殊修改（或者最小程度的改动）便可以在虚拟机上运行。</p>
 </li>
-<li><p><strong><code>Resource Control</code></strong> &#x2F; <strong><code>Safety (Isolation)</code></strong>： <strong><code>隔离性</code></strong></p>
+<li><p><strong><code>Resource Control</code></strong> / <strong><code>Safety (Isolation)</code></strong>： <strong><code>隔离性</code></strong></p>
 <p>必须确保虚拟机（的资源）彼此不会影响；Hypervisor需要控制所有底层资源</p>
 </li>
-<li><p><strong><code>Efficiency</code></strong> &#x2F; <strong><code>Performance</code></strong>：<strong><code>性能</code></strong></p>
+<li><p><strong><code>Efficiency</code></strong> / <strong><code>Performance</code></strong>：<strong><code>性能</code></strong></p>
 <p>大部分指令应该直接在硬件上执行</p>
 </li>
 </ul>
@@ -2787,9 +2787,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>物理硬件资源可以更好（更灵活）地分配和利用。</p>
 </li>
 </ol>
-<h3 id="Hypervisor-Virtual-Machine-Monitor-VMM-虚拟机监控器"><a href="#Hypervisor-Virtual-Machine-Monitor-VMM-虚拟机监控器" class="headerlink" title="Hypervisor &#x2F; Virtual Machine Monitor (VMM) 虚拟机监控器"></a><strong>Hypervisor &#x2F; Virtual Machine Monitor (VMM) 虚拟机监控器</strong></h3><p>Hypervisor负责给操作系统提供运行环境，通常会分为2类：</p>
+<h3 id="Hypervisor-Virtual-Machine-Monitor-VMM-虚拟机监控器"><a href="#Hypervisor-Virtual-Machine-Monitor-VMM-虚拟机监控器" class="headerlink" title="Hypervisor / Virtual Machine Monitor (VMM) 虚拟机监控器"></a><strong>Hypervisor / Virtual Machine Monitor (VMM) 虚拟机监控器</strong></h3><p>Hypervisor负责给操作系统提供运行环境，通常会分为2类：</p>
 <ul>
-<li><p><strong><code>Typ 1</code></strong> Hypervisor &#x2F;Bare-Metal-Hypervisor  （<strong><code>裸机式</code></strong>）</p>
+<li><p><strong><code>Typ 1</code></strong> Hypervisor /Bare-Metal-Hypervisor  （<strong><code>裸机式</code></strong>）</p>
 <p>直接在物理硬件上运行容器，没有额外虚拟化层的存在。这种方式的主要优点在于性能的极致优化，因为没有虚拟化带来的开销。</p>
 <p>比如 Xen, Hyper-V, VMware ESX。</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250317202711835.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250317202711835.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250317202711835"></p>
@@ -2797,17 +2797,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><p><strong><code>Typ 2</code></strong> Hypervisor （<strong><code>托管式</code></strong>）</p>
 <p>依赖于宿主操作系统的服务（ Verwendet Dienste des Host-BS）。</p>
 <p>比如  KVM, VirtualBox, VMware Workstation。</p>
-<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250317202711835.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250317202711835.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250317202711835.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250317202711835.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""></p>
 </li>
 </ul>
 <p>Hypervisor实现了一个虚拟的 ISA，同样分User- 和 System-ISA。</p>
-<p>Hypervisor虚拟化整个物理机器，并且提供虚拟化硬件作为借口让Gast-BS可以在上面运行。可以使得Gast-BS以为&#x2F;产生错觉（Illusion）自己对硬件拥有完整的控制权。但实际上对于Hypervisor来说，Gast-BS就只是个软件而已。</p>
+<p>Hypervisor虚拟化整个物理机器，并且提供虚拟化硬件作为借口让Gast-BS可以在上面运行。可以使得Gast-BS以为/产生错觉（Illusion）自己对硬件拥有完整的控制权。但实际上对于Hypervisor来说，Gast-BS就只是个软件而已。</p>
 <p>这样做的好处就是一个虚拟机可以运行任意操作系统，并且可以同时运行多个相同或不同的操作系统。</p>
 <p>Hypervisor 负责控制和虚拟化系统的硬件资源：</p>
 <ul>
 <li>CPU 虚拟化（CPU-Virtualisierung）</li>
 <li>内存虚拟化（Speicher-Virtualisierung）</li>
-<li>I&#x2F;O 虚拟化（I&#x2F;O-Virtualisierung）</li>
+<li>I/O 虚拟化（I/O-Virtualisierung）</li>
 </ul>
 <p>并需要确保Gast-BS不能访问未分配给它的资源。</p>
 <h3 id="CPU-虚拟化（CPU-Virtualisierung）"><a href="#CPU-虚拟化（CPU-Virtualisierung）" class="headerlink" title="CPU 虚拟化（CPU-Virtualisierung）"></a><strong>CPU 虚拟化（CPU-Virtualisierung）</strong></h3><p>CPU 的虚拟化方法一般是分以下3种：</p>
@@ -2818,7 +2818,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 <li><p><strong><code>二进制翻译（Binary Translation）</code></strong>：</p>
 <p>可以运行<strong>未经修改</strong>的操作系统，甚至可以在不同架构上运行（例如 x86 上模拟 ARM）。</p>
-<p>Hypervisor会解释&#x2F;模拟Gast-BS的部分二进制代码，所以会导致<strong>性能开销（Performance-Overhead）</strong></p>
+<p>Hypervisor会解释/模拟Gast-BS的部分二进制代码，所以会导致<strong>性能开销（Performance-Overhead）</strong></p>
 <p>这种Hypervisor的实现非常复杂。</p>
 </li>
 <li><p><strong><code>硬件辅助虚拟化（Hardware-assisted Virtualization）</code></strong></p>
@@ -2839,7 +2839,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>其中又分为</p>
 <ol>
 <li><strong><code>控制敏感指令（Control-Sensitive Instructions）</code></strong>：将修改系统配置（例如 修改页表（Page Tables））</li>
-<li>与**<code>行为敏感指令（Behaviour-Sensitive Instructions）</code>**：这些指令在不同模式下（用户模式 vs. 系统模式）的行为也是不同的。</li>
+<li>与<strong><code>行为敏感指令（Behaviour-Sensitive Instructions）</code></strong>：这些指令在不同模式下（用户模式 vs. 系统模式）的行为也是不同的。</li>
 </ol>
 </li>
 <li><p><strong><code>无害指令（Innocuous Instructions）</code></strong>：</p>
@@ -2872,27 +2872,27 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250317225240416.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250317225240416.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250317225240416"></p>
 <h4 id="虚拟机的内存管理"><a href="#虚拟机的内存管理" class="headerlink" title="虚拟机的内存管理"></a><strong>虚拟机的内存管理</strong></h4><p>跟进程管理的内存分配问题类似，我们也需要考虑该给每台虚拟机分配多少内存。</p>
 <p>静态分配会导致不灵活，占用固定资源的问题。</p>
-<p>动态分配的原理则是**<code>过量分配（Overcommitment）</code>**（假设并非所有 VMs 同时需要全部已分配的内存。）但这样会在回收已分配的内存时碰到问题，因为Hypervisor 无法知道哪些内存页是重要的，哪些可以释放。</p>
+<p>动态分配的原理则是<strong><code>过量分配（Overcommitment）</code></strong>（假设并非所有 VMs 同时需要全部已分配的内存。）但这样会在回收已分配的内存时碰到问题，因为Hypervisor 无法知道哪些内存页是重要的，哪些可以释放。</p>
 <p>为了解决这个问题我们可以使用 <strong><code>Ballooning</code></strong> (“balloon driver”)：Gast-BS内部的软件与Hypervisor进行通信：（没有内存压力的虚拟机）释放内存（“气球放气”）；申请内存（”给气球充气“）。</p>
-<h3 id="I-O-虚拟化（I-O-Virtualisierung）"><a href="#I-O-虚拟化（I-O-Virtualisierung）" class="headerlink" title="I&#x2F;O 虚拟化（I&#x2F;O-Virtualisierung）"></a><strong>I&#x2F;O 虚拟化（I&#x2F;O-Virtualisierung）</strong></h3><p>介绍几种I&#x2F;O 虚拟化的技术：</p>
-<h4 id="完整虚拟化-仿真（Full-Virtualization-Emulation）"><a href="#完整虚拟化-仿真（Full-Virtualization-Emulation）" class="headerlink" title="完整虚拟化&#x2F;仿真（Full Virtualization&#x2F;Emulation）"></a><strong>完整虚拟化&#x2F;仿真（Full Virtualization&#x2F;Emulation）</strong></h4><p>Hypervisor管理所有 Guest VM 的I&#x2F;O请求，调度I&#x2F;O资源。</p>
-<p>Hypervisor 通过软件多路复用（<strong><code>multiplext</code></strong>）或仿真（emuliert）I&#x2F;O 设备。</p>
-<p>Hypervisor会拦截Guest VM的I&#x2F;O请求，并将其转发到物理 I&#x2F;O 设备。</p>
+<h3 id="I-O-虚拟化（I-O-Virtualisierung）"><a href="#I-O-虚拟化（I-O-Virtualisierung）" class="headerlink" title="I/O 虚拟化（I/O-Virtualisierung）"></a><strong>I/O 虚拟化（I/O-Virtualisierung）</strong></h3><p>介绍几种I/O 虚拟化的技术：</p>
+<h4 id="完整虚拟化-仿真（Full-Virtualization-Emulation）"><a href="#完整虚拟化-仿真（Full-Virtualization-Emulation）" class="headerlink" title="完整虚拟化/仿真（Full Virtualization/Emulation）"></a><strong>完整虚拟化/仿真（Full Virtualization/Emulation）</strong></h4><p>Hypervisor管理所有 Guest VM 的I/O请求，调度I/O资源。</p>
+<p>Hypervisor 通过软件多路复用（<strong><code>multiplext</code></strong>）或仿真（emuliert）I/O 设备。</p>
+<p>Hypervisor会拦截Guest VM的I/O请求，并将其转发到物理 I/O 设备。</p>
 <p>优势：</p>
 <ul>
-<li><strong>高效</strong> Gemultiplexte I&#x2F;O-Geräte sind <strong>effizient</strong>；</li>
+<li><strong>高效</strong> Gemultiplexte I/O-Geräte sind <strong>effizient</strong>；</li>
 <li><strong>透明</strong> <strong>Transparentes</strong> Geräte-Management。</li>
 </ul>
 <p>问题：</p>
 <ul>
 <li>实现起来太<strong>复杂</strong>；</li>
-<li>Hypervisor 需要为多种 I&#x2F;O 设备提供驱动程序。；</li>
-<li>如果 I&#x2F;O 设备完全仿真（Emulation），会产生较高的性能开销（<strong>Overhead</strong>）。</li>
+<li>Hypervisor 需要为多种 I/O 设备提供驱动程序。；</li>
+<li>如果 I/O 设备完全仿真（Emulation），会产生较高的性能开销（<strong>Overhead</strong>）。</li>
 </ul>
-<h4 id="半虚拟化（Paravirtualization）"><a href="#半虚拟化（Paravirtualization）" class="headerlink" title="半虚拟化（Paravirtualization）"></a><strong>半虚拟化（Paravirtualization）</strong></h4><p>将 I&#x2F;O 设备驱动分为两部分</p>
-<p>使用**<code>拆分驱动架构（Split-Driver-Architektur）</code>** </p>
+<h4 id="半虚拟化（Paravirtualization）"><a href="#半虚拟化（Paravirtualization）" class="headerlink" title="半虚拟化（Paravirtualization）"></a><strong>半虚拟化（Paravirtualization）</strong></h4><p>将 I/O 设备驱动分为两部分</p>
+<p>使用<strong><code>拆分驱动架构（Split-Driver-Architektur）</code></strong> </p>
 <ul>
-<li><strong><code>后端驱动（Backend-Treiber）</code></strong>：运行在 Hypervisor 或 I&#x2F;O 处理 VM 内，实际管理物理设备。</li>
+<li><strong><code>后端驱动（Backend-Treiber）</code></strong>：运行在 Hypervisor 或 I/O 处理 VM 内，实际管理物理设备。</li>
 <li><strong><code>前端驱动（Frontend-Treiber）</code></strong>：运行在 Gast-BS 内，与后端驱动通信。</li>
 </ul>
 <p>优势：</p>
@@ -2905,23 +2905,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ul>
 <li>Guest OS 需要额外修改或安装特定驱动。</li>
 </ul>
-<h4 id="设备域（Device-Domains）"><a href="#设备域（Device-Domains）" class="headerlink" title="设备域（Device Domains）"></a><strong>设备域（Device Domains）</strong></h4><p>一台VM充当所有I&#x2F;O设备的接口（在Xen中称为Domain 0或”dom0”），其他VMs通过这台VM访问I&#x2F;O设备，而不是直接访问硬件。</p>
-<h4 id="直接-I-O-访问（Direct-I-O）"><a href="#直接-I-O-访问（Direct-I-O）" class="headerlink" title="直接 I&#x2F;O 访问（Direct I&#x2F;O）"></a><strong>直接 I&#x2F;O 访问（Direct I&#x2F;O）</strong></h4><p>使用硬件支持的 I&#x2F;O 设备多路复用（Multiplexing）。</p>
-<p><strong>I&#x2F;O-MMU（I&#x2F;O 内存管理单元）</strong> 负责管理 Guest VM 的设备内存：</p>
+<h4 id="设备域（Device-Domains）"><a href="#设备域（Device-Domains）" class="headerlink" title="设备域（Device Domains）"></a><strong>设备域（Device Domains）</strong></h4><p>一台VM充当所有I/O设备的接口（在Xen中称为Domain 0或”dom0”），其他VMs通过这台VM访问I/O设备，而不是直接访问硬件。</p>
+<h4 id="直接-I-O-访问（Direct-I-O）"><a href="#直接-I-O-访问（Direct-I-O）" class="headerlink" title="直接 I/O 访问（Direct I/O）"></a><strong>直接 I/O 访问（Direct I/O）</strong></h4><p>使用硬件支持的 I/O 设备多路复用（Multiplexing）。</p>
+<p><strong>I/O-MMU（I/O 内存管理单元）</strong> 负责管理 Guest VM 的设备内存：</p>
 <ul>
-<li>负责 I&#x2F;O 地址和中断（Interrupt）的映射。</li>
+<li>负责 I/O 地址和中断（Interrupt）的映射。</li>
 <li>隔离 DMA（直接内存访问）请求，防止 VMs 互相干扰。</li>
 <li>优势：<ul>
-<li>Guest VM 直接访问物理设备，提高 I&#x2F;O 效率。</li>
-<li>部分 I&#x2F;O 处理由硬件完成，减少 Hypervisor 负担。</li>
+<li>Guest VM 直接访问物理设备，提高 I/O 效率。</li>
+<li>部分 I/O 处理由硬件完成，减少 Hypervisor 负担。</li>
 </ul>
 </li>
 </ul>
-<h4 id="单根-I-O-虚拟化（Single-Root-I-O-Virtualization-SR-IOV）"><a href="#单根-I-O-虚拟化（Single-Root-I-O-Virtualization-SR-IOV）" class="headerlink" title="单根 I&#x2F;O 虚拟化（Single Root I&#x2F;O Virtualization, SR-IOV）"></a><strong>单根 I&#x2F;O 虚拟化（Single Root I&#x2F;O Virtualization, SR-IOV）</strong></h4><p>I&#x2F;O 设备本身支持虚拟化，将 一个物理设备拆分为多个虚拟功能（ Virtual Functions，VF），会绕过Hypervisor的I&#x2F;O处理。</p>
-<p>Gast VM 看到的是一个独立的 I&#x2F;O 设备，但实际上它共享了同一个物理设备。</p>
+<h4 id="单根-I-O-虚拟化（Single-Root-I-O-Virtualization-SR-IOV）"><a href="#单根-I-O-虚拟化（Single-Root-I-O-Virtualization-SR-IOV）" class="headerlink" title="单根 I/O 虚拟化（Single Root I/O Virtualization, SR-IOV）"></a><strong>单根 I/O 虚拟化（Single Root I/O Virtualization, SR-IOV）</strong></h4><p>I/O 设备本身支持虚拟化，将 一个物理设备拆分为多个虚拟功能（ Virtual Functions，VF），会绕过Hypervisor的I/O处理。</p>
+<p>Gast VM 看到的是一个独立的 I/O 设备，但实际上它共享了同一个物理设备。</p>
 <p>（感觉大部分虚拟化的技术都是通过减轻Hypervisor的负担来提高效率的）</p>
 <h2 id="进程虚拟机（Process-Virtual-Machines）"><a href="#进程虚拟机（Process-Virtual-Machines）" class="headerlink" title="进程虚拟机（Process Virtual Machines）"></a><strong>进程虚拟机（Process Virtual Machines）</strong></h2><p>跟系统虚拟机不同的是，进程虚拟机（Process VM）只给单个（或者多个）进程提供虚拟运行环境，使应用程序可以独立于底层操作系统和硬件架构运行。</p>
-<p><strong><code>Runtime</code><strong>会给用户空间进程（User-Space-Prozesse）提供虚拟运行环境，并且负责实现 ABI接口（由系统调用接口（Systemcall Interface）和用户指令集架构（User-ISA）组成）。简单来讲就是</strong>Runtime需要负责转换&#x2F;翻译Systemcall和ISA的指令。</strong></p>
+<p><strong><code>Runtime</code></strong>会给用户空间进程（User-Space-Prozesse）提供虚拟运行环境，并且负责实现 ABI接口（由系统调用接口（Systemcall Interface）和用户指令集架构（User-ISA）组成）。简单来讲就是<strong>Runtime需要负责转换/翻译Systemcall和ISA的指令。</strong></p>
 <p>对应用程序来说，整个“系统”由 ABI 接口决定，而不依赖底层硬件或操作系统。</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250318101728848.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250318101728848.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250318101728848"></p>
 <p>Runtime是类似于Hypervisor的中间层，但他们的核心作用之类的完全不一样。</p>
@@ -2931,7 +2931,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><strong><code>平台无关性（Plattform-Unabhängigkeit）</code></strong>：程序可以在不同 <strong>OS</strong> 运行。</li>
 <li><strong><code>性能优化（Performance-Optimierung）</code></strong>：二进制优化器（Binary Optimizer）会优化代码。</li>
 </ol>
-<p>**高级语言虚拟机（High-Level-Language VMs, HLL VMs）**作为进程虚拟机的一种，会提供一个与底层架构无关的虚拟 ISA（ Plattform-unabhängige virtuelle ISA），使得应用程序不依赖特定的操作系统（OS）和硬件架构。主要是为了运行高级编程语言的代码。</p>
+<p><strong>高级语言虚拟机（High-Level-Language VMs, HLL VMs）</strong>作为进程虚拟机的一种，会提供一个与底层架构无关的虚拟 ISA（ Plattform-unabhängige virtuelle ISA），使得应用程序不依赖特定的操作系统（OS）和硬件架构。主要是为了运行高级编程语言的代码。</p>
 <p>比如说 Java Virtual Machine (JVM) 可以解释和执行 Java 字节码（Java Bytecode），让 Java 代码可以在 Windows、Linux、Mac 等不同平台 上运行。</p>
 <p>如果多个进程需要共享资源并相互交互（interagieren），则通常使用<strong>操作系统级虚拟化（OS-level Virtualization）</strong>。</p>
 <h2 id="操作系统级虚拟化（OS-level-Virtualization）"><a href="#操作系统级虚拟化（OS-level-Virtualization）" class="headerlink" title="操作系统级虚拟化（OS-level-Virtualization）"></a><strong>操作系统级虚拟化（OS-level-Virtualization）</strong></h2><p>操作系统级虚拟化（OS-level-Virtualization）可以运行多个隔离的应用进程，共享同一个操作系统（OS）。</p>
@@ -2975,19 +2975,27 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>该挂载点的 mount 和 umount 事件会在 Peer Group 之间传播。</p>
 <p>例如，在 Shared Mount 上挂载一个新目录，所有共享该挂载点的进程都会看到这个变更。</p>
 </li>
+</ul>
+</li>
+</ul>
+<ul>
 <li><p><strong>Private Mount</strong> 私有挂载：不接收+不传递</p>
 <p>挂载点不会接收，也不会向对等组（Peer Groups）传递事件。 Der Mount-Point empfängt und leitet keine Events zu Peer Groups weiter.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Slave Mount</strong> 从属挂载：接收+不传递</p>
 <p>Slave-Mount-Points empfangen Events von einer Master Peer Group.</p>
 </li>
+</ul>
+<ul>
 <li><p><strong>Unbinable Mount</strong> 不可绑定挂载：</p>
 <p>Ist ein Private Mount, der nicht gebunden (Bind Mount) werden kann. 不能被绑定的私人挂载。</p>
 <p>(Bind Mount指的是允许将一个目录或文件挂载到另一个位置，使其在多个路径下可见。)</p>
-</li>
-</ul>
 <p>Peer Groups（对等组）：Peer Group 是一组共享 mount 事件的挂载点，当一个 Shared Mount 被创建时，它会被添加到某个 Peer Group。所有 Peer Group 内的挂载点都会同步 mount 和 umount 事件。</p>
 </li>
+</ul>
+<ul>
 <li><p><strong><code>User</code></strong>:</p>
 <p>isolieren User- und Group-IDs 隔离用户 ID 和权限</p>
 <p>Erhöhte Privilegien sind nur innerhalb des User Namespace gültig.</p>

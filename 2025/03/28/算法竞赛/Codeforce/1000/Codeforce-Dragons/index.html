@@ -2281,7 +2281,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743242012839),
+    lastupdate: new Date(1743280319961),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2720,12 +2720,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250328111631917.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250328111631917.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250328111631917"></p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a><strong>思路</strong></h2><p>这道题的重点是可以自由挑选打龙的顺序，所以可以用vector来存储所有x，y的值，然后进行排序。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><h3 id="C"><a href="#C" class="headerlink" title="C++"></a><strong>C++</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span> <span class="comment">// for sort</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="type">int</span> s, n;</span><br><span class="line">    cin &gt;&gt; s &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">    vector&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; <span class="built_in">dragons</span>(n); <span class="comment">// 每条龙是一个(x, y)的vector</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) {</span><br><span class="line">        cin &gt;&gt; dragons[i].first &gt;&gt; dragons[i].second; <span class="comment">// first 是 x，second 是 y</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 按照龙的强度从小到大排序</span></span><br><span class="line">    <span class="comment">// 默认先按照 pair 的 first 升序排列。如果 first 相等，再按照 second 升序排列</span></span><br><span class="line">    <span class="comment">// begin和end会对所有内容进行排序。</span></span><br><span class="line">    <span class="built_in">sort</span>(dragons.<span class="built_in">begin</span>(), dragons.<span class="built_in">end</span>());</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) {</span><br><span class="line">        <span class="keyword">if</span> (s &gt; dragons[i].first) {</span><br><span class="line">            s += dragons[i].second; <span class="comment">// 赢了，加数值的奖励</span></span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            cout &lt;&lt; <span class="string">"NO"</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">"YES"</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-
-
 <p>如果是降序的话需要写成</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span>(dragons.<span class="built_in">begin</span>(), dragons.<span class="built_in">end</span>(), [](pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; a, pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; b) {</span><br><span class="line">    <span class="keyword">return</span> a.first &gt; b.first;</span><br><span class="line">});</span><br></pre></td></tr></table></figure>
-
 
   </div>
   
@@ -2833,8 +2829,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 当点击了下面那个按钮之后网页的url会增加一个参数：
 
 1/?format=r
-
-因为给的附件比较多，所以直接挨个搜索“format”，可以确定下来2份相...</p>
+因为给的附件比较多，所以直接挨个搜索“format”，可以确定下来2份相关...</p>
         </a>
       
       
@@ -2846,9 +2841,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 专门提示了是Jinja2，所以大概率是注入，而Jinja2注入的格式为
 1{{ code }}
-
 （以下用server来指代当前网址）
-因为...</p>
+因为没...</p>
         </a>
       
     </div>

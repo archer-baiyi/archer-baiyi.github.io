@@ -2279,7 +2279,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743242012839),
+    lastupdate: new Date(1743280319961),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2717,16 +2717,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div id="post-body" itemprop="articleBody">
     <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250326140242162.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250326140242162.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250326140242162"></p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a><strong>思路</strong></h2><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a><strong>Python</strong></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">word = <span class="built_in">input</span>()</span><br><span class="line"></span><br><span class="line">V = [<span class="string">"A"</span>, <span class="string">"O"</span>, <span class="string">"Y"</span>, <span class="string">"E"</span>, <span class="string">"U"</span>, <span class="string">"I"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># deletes all the vowels</span></span><br><span class="line">word = <span class="string">''</span>.join(c <span class="keyword">for</span> c <span class="keyword">in</span> word <span class="keyword">if</span> c.upper() <span class="keyword">not</span> <span class="keyword">in</span> V)</span><br><span class="line"></span><br><span class="line"><span class="comment"># replaces all uppercase consonants with corresponding lowercase ones.</span></span><br><span class="line">word = word.lower()</span><br><span class="line"></span><br><span class="line"><span class="comment"># inserts a character "." before each consonant,</span></span><br><span class="line">word = <span class="string">''</span>.join(<span class="string">'.'</span> + c <span class="keyword">for</span> c <span class="keyword">in</span> word)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(word)</span><br></pre></td></tr></table></figure>
-
 <p>优化：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">word = <span class="built_in">input</span>()</span><br><span class="line"></span><br><span class="line">V = [<span class="string">"A"</span>, <span class="string">"O"</span>, <span class="string">"Y"</span>, <span class="string">"E"</span>, <span class="string">"U"</span>, <span class="string">"I"</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">''</span>.join(<span class="string">'.'</span> + c.lower() <span class="keyword">for</span> c <span class="keyword">in</span> word <span class="keyword">if</span> c.upper() <span class="keyword">not</span> <span class="keyword">in</span> V))</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="C"><a href="#C" class="headerlink" title="C"></a><strong>C</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a><strong>C++</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
   </div>
