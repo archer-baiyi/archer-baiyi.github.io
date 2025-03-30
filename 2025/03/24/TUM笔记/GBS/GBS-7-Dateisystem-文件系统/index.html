@@ -48,7 +48,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-24T20:53:38.000Z">
-<meta property="article:modified_time" content="2025-03-29T21:59:38.759Z">
+<meta property="article:modified_time" content="2025-03-30T14:55:27.815Z">
 <meta property="article:tag" content="Betriebssysteme">
 <meta property="article:tag" content="Operating System">
 <meta property="article:tag" content="操作系统">
@@ -2280,7 +2280,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743285824271),
+    lastupdate: new Date(1743346547225),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2693,10 +2693,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-29T22:59:38+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-30T16:55:27+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 29, 2025</p>
+    <p>更新于：Mar 30, 2025</p>
   </a>
 </div>
 
@@ -3145,7 +3145,60 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 </ul>
 <h4 id="碎片整理（Defragmentierung）"><a href="#碎片整理（Defragmentierung）" class="headerlink" title="碎片整理（Defragmentierung）"></a><strong>碎片整理（Defragmentierung）</strong></h4><p>将文件的所有块重新排列，使它们尽可能连续，提高访问效率。（<strong>Neugruppierung</strong> der Blöcke der Dateien auf der Festplatte）</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a><strong>例子</strong></h2><h3 id="Linux的ext2"><a href="#Linux的ext2" class="headerlink" title="Linux的ext2"></a><strong>Linux的ext2</strong></h3><h3 id="Linux的ext4"><a href="#Linux的ext4" class="headerlink" title="Linux的ext4"></a><strong>Linux的ext4</strong></h3>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a><strong>例子</strong></h2><h3 id="Linux的ext2"><a href="#Linux的ext2" class="headerlink" title="Linux的ext2"></a><strong>Linux的ext2</strong></h3><p>ext2会将硬盘分区划分为“块组”结构（Aufteilung der Festplatten-Partition in Block-Gruppen）。</p>
+<p>Block 0 是预留给系统启动用的（System-Bootup-Vorgang）。</p>
+<p>而其余的所有Block-Gruppen都包含以下信息：</p>
+<ul>
+<li><p><strong><code>超级块（Superblock）</code></strong>：</p>
+<p>包含有关文件系统布局的信息，比如说 i-node和数据块的总数、空闲块列表的指针等。</p>
+<p>（Anzahl der i-nodes und Blöcke, Pointer zur Liste mit freien Blöcken, etc.）</p>
+</li>
+<li><p><strong><code>组描述符表（Gruppen-Deskriptor-Tabelle）</code></strong>：</p>
+<p>包含这个块组的信息，比如说Bitmap的位置、空闲的 i-node 和数据块的数量、目录的数量等。</p>
+<p>（Position der Bitmaps, Anzahl freie i-nodes und Blöcke, Anzahl der Verzeichnisse）</p>
+</li>
+<li><p>两个<strong><code>位图（Bitmaps）</code></strong>：</p>
+<p>每个Bitmap都是一个Block的大小，记录空闲块以及 i-nodes。通过这个Bitmap可以找到空闲的块以及i-nodes。</p>
+</li>
+<li><p><strong><code>i-nodes</code></strong></p>
+</li>
+<li><p><strong><code>Datenblöcke</code></strong></p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250330110156802.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250330110156802.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250330110156802"></p>
+<p>（这些Block groups都是ext2管理的空间）</p>
+<p>ext2中打开文件时，系统会在目录里查找该文件的i-node信息：</p>
+<ol>
+<li><p>首先从目录条目（Verzeichniseintrag）中获取 i-node 编号（i-node-Nummer），通过该编号可以在硬盘上的 i-node 表中找到该文件的 i-node，并将其加载到内存中。</p>
+</li>
+<li><p>然后 i-node 会被写入内存中的 i-node 表。</p>
+<p>i-node 表包含了所有已打开的文件和目录的 i-nodes。</p>
+</li>
+</ol>
+<p>目录文件结构图示：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250330162716676.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250330162716676.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250330162716676"></p>
+<h3 id="Linux的ext4"><a href="#Linux的ext4" class="headerlink" title="Linux的ext4"></a><strong>Linux的ext4</strong></h3><p>ext4则是在ext2的基础上加了 journaling 日志机制。这里的日志是一个文件，它会通过一个环形缓冲区（ring buffer）来实现。日志由一个独立于文件系统的层管理，叫做 <strong><code>Journaling Block Device（JBD）</code></strong>。</p>
+<p>JBD中支持以下几种数据结构：</p>
+<ul>
+<li><p><strong>日志记录（Log-Eintrag (Log Record)）</strong></p>
+<p>描述低等级的修改操作。</p>
+<p>Beschreibt eine Low-level-Dateisystem-Operation, die einen Block modifiziert.</p>
+</li>
+<li><p><strong>原子操作句柄（Atomic Operation Handle）</strong></p>
+<p>会将一组相关的日志记录组合在一起，并原子性地执行。（Gruppiert mehrere zusammengehörige Log-Einträge und führt sie atomar aus）</p>
+<p>比如说 <kbd>write</kbd> 一般会涉及修改i-node、数据块、空闲块列表等信息，而这些操作应当作为一个整体 原子性执行（atomar als Einheit ausgeführt werden）。</p>
+</li>
+<li><p><strong>事务（Transaktionen）</strong></p>
+<p>JBD会将多个原子操作作为事务处理。一组日志记录只有在相关的所有实际写入操作都完成后，才能从日志中移除。</p>
+</li>
+</ul>
+<p>（这些内容在之前的日志文件系统（Journaling-Dateisysteme）都讲过，跟Datenbank里的也差不多。）</p>
+<p>ext4同样改进了将块映射到文件的方式：在ext2/3中都是使用指针指向单个块（Direkte und ein-/zwei-/dreifach indirekte Blöcke），这样一来如果块的数量过多可能会导致指针数量也过多。所以ext4采用的是<strong><code>Extents</code></strong>：</p>
+<p>Instead of storing a list of every individual block which makes up the file, the idea is to store just the address of the first and last block of each continuous range of blocks. These continuous ranges of data blocks (and the pairs of numbers which represent them) are called extents.</p>
+<p>（这段解释是这里来的：<a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/223310/what-do-extents-feature-do-in-ext4-filesystem-in-linux）">https://unix.stackexchange.com/questions/223310/what-do-extents-feature-do-in-ext4-filesystem-in-linux）</a></p>
+<p>图示：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250330165511999.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250330165511999.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250330165511999"></p>
+
   </div>
   
   
@@ -3871,7 +3924,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/24/TUM笔记/GBS/GBS-7-Dateisystem-文件系统/","name":"GBS 7 Dateisystem 文件系统"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 7 Dateisystem 文件系统","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/24/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-7-Dateisystem-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/24/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-7-Dateisystem-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/","wordCount":10,"datePublished":"2025-03-24T20:53:38.000Z","dateModified":"2025-03-29T21:59:38.759Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,操作系统,文件系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/24/TUM笔记/GBS/GBS-7-Dateisystem-文件系统/","name":"GBS 7 Dateisystem 文件系统"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 7 Dateisystem 文件系统","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/24/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-7-Dateisystem-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/24/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-7-Dateisystem-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/","wordCount":10,"datePublished":"2025-03-24T20:53:38.000Z","dateModified":"2025-03-30T14:55:27.815Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,操作系统,文件系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
