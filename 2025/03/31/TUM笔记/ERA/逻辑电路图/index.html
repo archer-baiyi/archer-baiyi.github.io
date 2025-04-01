@@ -48,7 +48,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-31T20:35:54.000Z">
-<meta property="article:modified_time" content="2025-03-31T21:56:28.808Z">
+<meta property="article:modified_time" content="2025-04-01T08:04:03.527Z">
 <meta property="article:tag" content="Rechnerarchitektur">
 <meta property="article:tag" content="计算机体系结构">
 <meta property="article:tag" content="逻辑电路图">
@@ -2280,7 +2280,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743458440950),
+    lastupdate: new Date(1743494655541),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2693,10 +2693,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-31T23:56:28+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-01T10:04:03+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 31, 2025</p>
+    <p>更新于：Apr 1, 2025</p>
   </a>
 </div>
 
@@ -2729,13 +2729,20 @@ ha: B^2 &\to B^2 \\
 (a_0,b_0) &\mapsto (s_1,s_0)\\
 \text{mit } 2s_1+s_0 &= a_0+b_0
 \end{align*}</script><p>对应的真值表则是：</p>
-<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331225929102.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331225929102.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250331225929102"></p>
-<p>也就是说</p>
+<script type="math/tex; mode=display">
+\begin{array}{cc|cc}
+a_0 & b_0 & s_1 & s_0 \\
+\hline
+0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 1 \\
+1 & 0 & 0 & 1 \\
+1 & 1 & 1 & 0 \\
+\end{array}</script><p>也就是说</p>
 <script type="math/tex; mode=display">
 s_0 = a_0 \text{ xor } b_0\\
 s_1 = a_0 \wedge b_0</script><p>对应的逻辑电路图：</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331230050785.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331230050785.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250331230050785"></p>
-<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331231142112.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331231142112.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250331231142112"></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401094600432.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401094600432.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401094600432"></p>
 <p>左边是and，右边是xor。在之后的内容里用HA指代半加器。</p>
 <p><strong>Kosten和Tiefe分别是：C(HA) = 2, Depth(HA) = 1。</strong></p>
 <h3 id="全加器（Der-Volladdierer-，FA）"><a href="#全加器（Der-Volladdierer-，FA）" class="headerlink" title="全加器（Der Volladdierer ，FA）"></a>全加器（Der Volladdierer ，FA）</h3><p>全加器的目的是计算<strong>3个bit的加法，输出为2个bit</strong>，即：</p>
@@ -2748,8 +2755,19 @@ fa: B^3 &\to B^2 \\
 (a_0,b_0,c) &\mapsto (s_1,s_0)\\
 \text{mit } 2s_1+s_0 &= a_0+b_0+c
 \end{align*}</script><p>真值表：</p>
-<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331234846152.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331234846152.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250331234846152"></p>
-<p>注意到：</p>
+<script type="math/tex; mode=display">
+\begin{array}{ccc|cc}
+a_0 & b_0 & c & fa_1 & fa_0 \\
+\hline
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 1 \\
+0 & 1 & 0 & 0 & 1 \\
+0 & 1 & 1 & 1 & 0 \\
+1 & 0 & 0 & 0 & 1 \\
+1 & 0 & 1 & 1 & 0 \\
+1 & 1 & 0 & 1 & 0 \\
+1 & 1 & 1 & 1 & 1 \\
+\end{array}</script><p>注意到：</p>
 <script type="math/tex; mode=display">
 s_0 = a_0 \text{ xor } b_0 \text{ xor } c = a_0(c,ha_0(a_0,b_0))\\</script><script type="math/tex; mode=display">
 \begin{align*}
@@ -2759,6 +2777,44 @@ s_1 &= a_0 \wedge b_0 \vee c \wedge  (a_0 \text{ xor } b_0 )\\
 <p>逻辑电路图：</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331235158764.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331235158764.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250331235158764"></p>
 <p><strong>Kosten和Tiefe分别是：C(HA) = 5, Depth(HA) = 3。</strong></p>
+<h3 id="选择器（Multiplexer，MUX）"><a href="#选择器（Multiplexer，MUX）" class="headerlink" title="选择器（Multiplexer，MUX）"></a>选择器（Multiplexer，MUX）</h3><p>选择器正如字面意思，会从2个数里选择一个数。数学表达：</p>
+<script type="math/tex; mode=display">
+\begin{align*}sel_n: B^{2n+} &\to B^{n} \\
+(a_{n-1}, \ldots, a_0, b_{n-1}, \ldots, b_0, s) &\mapsto 
+\begin{cases}
+(a_{n-1} \ldots a_0), & \text{falls } s = 1 \\
+(b_{n-1} \ldots b_0), & \text{falls } s = 0
+\end{cases}
+\end{align*}</script><p>注意到：</p>
+<script type="math/tex; mode=display">
+(sel_n)_i = (s \wedge a_i) \vee (\neg s \wedge b_i)</script><p>逻辑电路图：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401094045617.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401094045617.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401094045617"></p>
+<p>后续一般用这个符号指代：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401094118410.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401094118410.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401094118410"></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401094846745.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401094846745.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401094846745"></p>
+<h2 id="存储（Speichern）"><a href="#存储（Speichern）" class="headerlink" title="存储（Speichern）"></a>存储（Speichern）</h2><h3 id="RS-Latch"><a href="#RS-Latch" class="headerlink" title="RS-Latch"></a>RS-Latch</h3><p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401095059518.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401095059518.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401095059518"></p>
+<p>真值表：</p>
+<script type="math/tex; mode=display">
+\begin{array}{cc|cc}
+R & S & Q(t) & \neg Q(t) \\
+\hline
+0 & 0 & Q(t) & \neg Q(t) \\
+0 & 1 & 1 & 0 \\
+1 & 0 & 0 & 1 \\
+1 & 1 & 0 & 0 \\
+\end{array}</script><h3 id="D-Latch"><a href="#D-Latch" class="headerlink" title="D-Latch"></a>D-Latch</h3><p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401095635448.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401095635448.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401095635448"></p>
+<p>（设上面 and 的结果为S，下面 and 的结果为R，跟RS-Latch的位置一样。）</p>
+<p>真值表：</p>
+<script type="math/tex; mode=display">
+\begin{array}{cc|cc|cc}
+D & E & Q(t) & \neg Q(t) & R & S\\
+\hline
+0 & 0 & Q(t) & \neg Q(t) & 0 & 0\\
+0 & 1 & 0 & 1 & 1 & 0\\
+1 & 0 & Q(t) & \neg Q(t) & 0 & 0\\
+1 & 1 & 1 & 0 & 0 & 1\\
+\end{array}</script><h3 id="2-2-Bit-Speicher"><a href="#2-2-Bit-Speicher" class="headerlink" title="2*2 Bit Speicher"></a>2*2 Bit Speicher</h3><p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401100156550.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401100156550.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401100156550"></p>
+<p>（write位等于0代表读，等于1代表写；灰色的是选择器；上面的2个黄色部分是Adresse=0的结果，下面的是Adresse=1的。）</p>
 
   </div>
   
@@ -2916,7 +2972,7 @@ s_1 &= a_0 \wedge b_0 \vee c \wedge  (a_0 \text{ xor } b_0 )\\
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">逻辑门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E6%B3%95%EF%BC%88Addition%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">加法（Addition）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8A%E5%8A%A0%E5%99%A8%EF%BC%88Der-Halbaddierer-%EF%BC%8CHA%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">半加器（Der Halbaddierer ，HA）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%8A%A0%E5%99%A8%EF%BC%88Der-Volladdierer-%EF%BC%8CFA%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">全加器（Der Volladdierer ，FA）</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">逻辑门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E6%B3%95%EF%BC%88Addition%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">加法（Addition）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8A%E5%8A%A0%E5%99%A8%EF%BC%88Der-Halbaddierer-%EF%BC%8CHA%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">半加器（Der Halbaddierer ，HA）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%8A%A0%E5%99%A8%EF%BC%88Der-Volladdierer-%EF%BC%8CFA%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">全加器（Der Volladdierer ，FA）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88Multiplexer%EF%BC%8CMUX%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">选择器（Multiplexer，MUX）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%EF%BC%88Speichern%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">存储（Speichern）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RS-Latch"><span class="toc-number">3.1.</span> <span class="toc-text">RS-Latch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Latch"><span class="toc-number">3.2.</span> <span class="toc-text">D-Latch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Bit-Speicher"><span class="toc-number">3.3.</span> <span class="toc-text">2*2 Bit Speicher</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3531,7 +3587,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/ERA-计算机体系结构/","name":"ERA 计算机体系结构"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/31/TUM笔记/ERA/逻辑电路图/","name":"逻辑电路图"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"逻辑电路图","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/31/TUM%E7%AC%94%E8%AE%B0/ERA/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/31/TUM%E7%AC%94%E8%AE%B0/ERA/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/","wordCount":0,"datePublished":"2025-03-31T20:35:54.000Z","dateModified":"2025-03-31T21:56:28.808Z","articleSection":"TUM课程笔记","keywords":"Rechnerarchitektur,计算机体系结构,逻辑电路图,逻辑门","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/ERA-计算机体系结构/","name":"ERA 计算机体系结构"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/31/TUM笔记/ERA/逻辑电路图/","name":"逻辑电路图"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"逻辑电路图","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/31/TUM%E7%AC%94%E8%AE%B0/ERA/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/31/TUM%E7%AC%94%E8%AE%B0/ERA/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/","wordCount":0,"datePublished":"2025-03-31T20:35:54.000Z","dateModified":"2025-04-01T08:04:03.527Z","articleSection":"TUM课程笔记","keywords":"Rechnerarchitektur,计算机体系结构,逻辑电路图,逻辑门","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
