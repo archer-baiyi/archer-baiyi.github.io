@@ -9,7 +9,7 @@
    
   <!-- SEO相关 -->
   <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://archer-baiyi.github.io/tags/codeforce/"/>
+  <link rel="canonical" href="https://archer-baiyi.github.io/tags/jwt/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -36,13 +36,13 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Tag: Codeforce - Hexo</title>
+  <title>Tag: JWT - Hexo</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="hi - null - Hexo">
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://archer-baiyi.github.io/tags/Codeforce/index.html">
+<meta property="og:url" content="https://archer-baiyi.github.io/tags/JWT/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="hi">
 <meta property="og:locale" content="en_US">
@@ -2634,20 +2634,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
       
     
     
@@ -2655,7 +2641,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/28/算法竞赛/Codeforce/1000/Codeforce-Dragons/">
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/04/02/CTF/Web/WayWitch/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2673,8 +2659,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/28/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/1000/Codeforce-Dragons/"  itemprop="url">
-        Codeforce Dragons
+      <a href="/2025/04/02/CTF/Web/WayWitch/"  itemprop="url">
+        HTB WayWitch
       </a>
     </h2>
   
@@ -2682,8 +2668,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       
         题目描述
-思路这道题的重点是可以自由挑选打龙的顺序，所以可以用vector来存储所有x，y的值，然后进行排序。
-代码C++1234567891011121314151617181920212223242526272829303132#include &lt;iostream&gt;#include &lt;vector&gt;#include &lt;algorithm&gt; // for...
+（有附件）
+观察打开网页：
+
+输入123试试，然后查看cookie：
+
+因为cookie的内容为3部分，每2部分由 . 隔开的，所以是JWT，用 https://jwt.io/ 试试：
+
+去给的附件里找找看有没有关于JWT的信息。
+运气比较好，通过直接搜索 “JWT” 可以在 scr/views/index.html 里找到这部分内容：
+1234567891011121314151...
       
     
   </div>
@@ -2691,509 +2685,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-03-28T11:15:13+01:00">2025-03-28</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-04-02T18:03:54+02:00">2025-04-02</time>
         
           <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/">Codeforce</a>
+          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Web/">Web</a>
           
             <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url"><span itemprop="name">算法竞赛</span></a>
+              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
             </span>
           
             <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
+              <a href="/categories/CTF/Web/" itemprop="url"><span itemprop="name">Web</span></a>
             </span>
           
         
       </div>
       
         <div>
-          <a class='readmore' href='/2025/03/28/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/1000/Codeforce-Dragons/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/27/算法竞赛/Codeforce/1000/Codeforce-Chat-room/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/27/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/1000/Codeforce-Chat-room/"  itemprop="url">
-        Codeforce Chat room
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        题目描述
-思路利用一个index/指针来逐个匹配目标字符串 “hello”。从j=0开始，如果找到了j就加一。如果最后j=5的话就说明找到了。
-代码C++12345678910111213141516171819202122232425262728#include &lt;iostream&gt;#include &lt;string&gt;using namespace std;int m...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-27T13:13:26+01:00">2025-03-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/">Codeforce</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url"><span itemprop="name">算法竞赛</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/27/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/1000/Codeforce-Chat-room/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/27/算法竞赛/Codeforce/1000/Codeforce-Lucky-Division/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/27/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/1000/Codeforce-Lucky-Division/"  itemprop="url">
-        Codeforce Lucky Division
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        题目描述
-思路写2个函数，第一个判断一个数是否是（严格的）lucky number，第二个函数遍历所有的lucky number判断是否是当前n的因数。
-代码C++12345678910111213141516171819202122232425262728293031#include &lt;iostream&gt;#include &lt;string&gt;using namespac...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-27T13:06:28+01:00">2025-03-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/">Codeforce</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url"><span itemprop="name">算法竞赛</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/27/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/1000/Codeforce-Lucky-Division/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/26/算法竞赛/Codeforce/1000/Codeforce-String-Task/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/26/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/1000/Codeforce-String-Task/"  itemprop="url">
-        Codeforce-String Task
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        题目描述
-思路代码Python1234567891011121314word = input()V = ["A", "O", "Y", "E", "U", "I"]# deletes all the vowelsword = ''.join(c for c in word if c.upper() not in V)# replaces all uppercase consonants wi...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-26T14:02:00+01:00">2025-03-26</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/">Codeforce</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url"><span itemprop="name">算法竞赛</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/26/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/1000/Codeforce-String-Task/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/25/算法竞赛/Codeforce/800/Codeforce-Next-Round/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/25/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/800/Codeforce-Next-Round/"  itemprop="url">
-        Codeforce Next Round
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        题目描述
-思路先统计前 k 个分数中大于 0 的数量。因为分数是递减排列的，只需继续统计从第 k 个位置开始，所有与第 k 个分数相等的连续分数个数。最后的总合就是结果。
-代码Python12345678910111213141516171819n_k = input().split()n = int(n_k[0])k = int(n_k[1])n_list = list(map(int, ...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-25T22:17:50+01:00">2025-03-25</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/">Codeforce</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url"><span itemprop="name">算法竞赛</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/25/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/800/Codeforce-Next-Round/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/25/算法竞赛/Codeforce/800/Codeforce-Bit/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/25/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/800/Codeforce-Bit/"  itemprop="url">
-        Codeforce-Bit++
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        题目描述
-思路对于每一行命令检测+是否在里面就好。
-代码Python123456789n = int(input())x=0for _ in range(n):    op = input()    if "+" in op:        x += 1    else:        x -= 1print(x)
-C1234567891011121314151617181920#inclu...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-25T18:57:32+01:00">2025-03-25</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/">Codeforce</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url"><span itemprop="name">算法竞赛</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/25/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/800/Codeforce-Bit/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/25/算法竞赛/Codeforce/800/Codeforce-Team/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/25/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/800/Codeforce-Team/"  itemprop="url">
-        Codeforce - Team
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        题目描述
-一共有 n 道题目，而对于每道题，他们会选择是否去做这题：只有当三个人中至少有两个人对这题有把握时，他们才会决定去做。
-思路直接计算每行的和是否大于等于2。
-代码Python123456789n = int(input())  count = 0   for _ in range(n):    a, b, c = map(int, input().split())    if a ...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-25T18:42:06+01:00">2025-03-25</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/">Codeforce</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url"><span itemprop="name">算法竞赛</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/25/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/800/Codeforce-Team/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/25/算法竞赛/Codeforce/800/Codeforce-A-Way-Too-Long-Words/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/25/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/800/Codeforce-A-Way-Too-Long-Words/"  itemprop="url">
-        Codeforce - Way Too Long Words 题解
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        题目描述
-简单来讲就是需要”简化“长单词。
-思路先判断单词长度。如果小于等于10就不用管，如果超过10，则写成：首字母 + 中间的字母数量 + 末尾字母。
-代码Python1234567n = int(input())for _ in range(n):    word = input()    if len(word) &gt; 10:        print(word[0] + str...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-25T18:28:41+01:00">2025-03-25</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/">Codeforce</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url"><span itemprop="name">算法竞赛</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/25/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/800/Codeforce-A-Way-Too-Long-Words/' itemprop="url">
+          <a class='readmore' href='/2025/04/02/CTF/Web/WayWitch/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3943,7 +3452,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/tags/Codeforce/","name":"Codeforce"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/tags/JWT/","name":"JWT"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
