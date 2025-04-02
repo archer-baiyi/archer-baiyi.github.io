@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://archer-baiyi.github.io/2025/04/03/CTF/Web/HTB-Juggling-facts-Writeup/</loc>
+    <lastmod>2025-04-02</lastmod>
+  </url>
+  <url>
+    <loc>https://archer-baiyi.github.io/2025/04/02/CTF/Web/HTB-SpookTastic-Writeup/</loc>
+    <lastmod>2025-04-02</lastmod>
+  </url>
+  <url>
     <loc>https://archer-baiyi.github.io/2025/03/28/CTF/Misc/HTB-Art-Writeup/</loc>
     <lastmod>2025-04-02</lastmod>
   </url>
