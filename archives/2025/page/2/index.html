@@ -2274,7 +2274,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743678850886),
+    lastupdate: new Date(1743715440971),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2691,6 +2691,306 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <section class="post-list">
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/04/02/CTF/Web/HTB-Phantom-Script-Writeup/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/04/02/CTF/Web/HTB-Phantom-Script-Writeup/"  itemprop="url">
+        HTB Phantom Script Writeup
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        题目描述
+（有附件，但完全不需要。）
+观察打开网页：
+
+注意右边的这段代码：
+123456789101112searchInput.addEventListener(&#x27;input&#x27;, function () &#123;    const query = searchInput.value;    if (query.trim() !== &quot;&quot;) &#...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-04-02T13:56:01+02:00">2025-04-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Web/">Web</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/Web/" itemprop="url"><span itemprop="name">Web</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/04/02/CTF/Web/HTB-Phantom-Script-Writeup/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/04/02/CTF/Web/HTB-OnlyHacks-Writeup/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/04/02/CTF/Web/HTB-OnlyHacks-Writeup/"  itemprop="url">
+        HTB OnlyHacks Writeup
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        题目描述
+（无附件）
+观察打开网页：
+
+注册个账号试试：（注意这里一定要上传一个头像，不然会一直提示用户名重复）
+
+进去之后会显示4个人，我们每个都点一下绿色的心（在dating app里应该是心动的意思）：
+
+
+
+
+然后点进右上角的Mathces：
+
+会发现只有一个对话框。
+
+对话里没有什么有用的信息，但是我们注意到它好像是每隔一段时间（大概5到10秒左右）才会看一次我们的消息并回复，跟一...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-04-02T09:38:35+02:00">2025-04-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Web/">Web</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/Web/" itemprop="url"><span itemprop="name">Web</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/04/02/CTF/Web/HTB-OnlyHacks-Writeup/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/31/TUM笔记/ERA/逻辑电路图/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/03/31/TUM%E7%AC%94%E8%AE%B0/ERA/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/"  itemprop="url">
+        逻辑电路图
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        逻辑门先来认识（记）一下基础的逻辑门：
+
+注意，NAND，NOR那里的那个小圆圈代表的是取反（negation），跟最底下的Negation是一个效果。
+比如这里表达的是 $y = \neg (a \wedge \neg b) $ ：
+
+一般情况下堵在逻辑门出入口的圆圈指的是取反，而下面这种只是表示线路连接而已：
+
+不要弄混了。
+加法（Addition）半加器（Der Halbaddiere...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-03-31T22:35:54+02:00">2025-03-31</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">TUM课程笔记</a><span class="sep"></span><a class="category-link" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ERA-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">ERA 计算机体系结构</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url"><span itemprop="name">TUM课程笔记</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/ERA-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" itemprop="url"><span itemprop="name">ERA 计算机体系结构</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/03/31/TUM%E7%AC%94%E8%AE%B0/ERA/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/31/CTF/如何在wsl里安装sage/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/"  itemprop="url">
+        如何在wsl里安装sage
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        一共分成2个步骤：
+
+安装Miniforge（Anaconda的轻量化替代品）
+通过Anaconda安装sage
+下载vscode的wsl版（可选）
+
+安装Miniforge1wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+然后安装脚本：
+1ba...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-03-31T14:44:34+02:00">2025-03-31</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/CTF/">CTF</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -3144,298 +3444,6 @@ https://www.bertna...
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/28/算法竞赛/Codeforce/1000/Codeforce-Dragons/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/28/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/1000/Codeforce-Dragons/"  itemprop="url">
-        Codeforce Dragons
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        题目描述
-思路这道题的重点是可以自由挑选打龙的顺序，所以可以用vector来存储所有x，y的值，然后进行排序。
-代码C++1234567891011121314151617181920212223242526272829303132#include &lt;iostream&gt;#include &lt;vector&gt;#include &lt;algorithm&gt; // for...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-28T11:15:13+01:00">2025-03-28</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/">Codeforce</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url"><span itemprop="name">算法竞赛</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/28/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/1000/Codeforce-Dragons/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/27/CTF/Web/HTB-Templated-Writeup/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/27/CTF/Web/HTB-Templated-Writeup/"  itemprop="url">
-        HTB Templated Writeup
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        题目描述
-（无附件）
-观察打开网站会发现一片空白：
-
-专门提示了是Jinja2，所以大概率是注入，而Jinja2注入的格式为
-1{{ code }}
-（以下用server来指代当前网址）
-因为没有给网页源代码，所以只能不断尝试。然后会发现当将当前url修改成
-1server/{{7*7}}
-时，会显示
-
-可以看到 7*7 确实被执行了，所以确定这里就是注入口。
-渗透有至少2种方法：
-第一种通...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-27T21:02:53+01:00">2025-03-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Web/">Web</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/Web/" itemprop="url"><span itemprop="name">Web</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/27/CTF/Web/HTB-Templated-Writeup/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/27/CTF/Web/HTB-Spookifier-Writeup/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/27/CTF/Web/HTB-Spookifier-Writeup/"  itemprop="url">
-        HTB Spookifier Writeup
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        题目描述
-（有附件）
-解题观察打开网站：
-
-输入 “abc“ 会看到：
-
-然后我们来查看代码（routes.py）：
-1234567891011121314from flask import Blueprint, requestfrom flask_mako import render_templatefrom application.util import spookifyweb = Bl...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-27T18:16:33+01:00">2025-03-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Web/">Web</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/Web/" itemprop="url"><span itemprop="name">Web</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/27/CTF/Web/HTB-Spookifier-Writeup/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/27/算法竞赛/Codeforce/1000/Codeforce-Chat-room/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/27/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/1000/Codeforce-Chat-room/"  itemprop="url">
-        Codeforce Chat room
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        题目描述
-思路利用一个index/指针来逐个匹配目标字符串 “hello”。从j=0开始，如果找到了j就加一。如果最后j=5的话就说明找到了。
-代码C++12345678910111213141516171819202122232425262728#include &lt;iostream&gt;#include &lt;string&gt;using namespace std;int m...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-27T13:13:26+01:00">2025-03-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a><span class="sep"></span><a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/">Codeforce</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url"><span itemprop="name">算法竞赛</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/" itemprop="url"><span itemprop="name">Codeforce</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/27/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/Codeforce/1000/Codeforce-Chat-room/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -3571,7 +3579,7 @@ https://www.bertna...
           <li><a class="flat-box"
             title="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"
             active-action="action-categoriesTUME8AFBEE7A88BE7AC94E8AEB0"
-            ><div class='name'>TUM课程笔记</div><div class='badge'>(9)</div></a></li>
+            ><div class='name'>TUM课程笔记</div><div class='badge'>(13)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Dantenbank-%E6%95%B0%E6%8D%AE%E5%BA%93/" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Dantenbank-%E6%95%B0%E6%8D%AE%E5%BA%93/"
@@ -3586,7 +3594,7 @@ https://www.bertna...
           <li><a class="flat-box child"
             title="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/GBS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/TUM%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/GBS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
             active-action="action-categoriesTUME8AFBEE7A88BE7AC94E8AEB0GBS-E6938DE4BD9CE7B3BBE7BB9F"
-            ><div class='name'>GBS 操作系统</div><div class='badge'>(5)</div></a></li>
+            ><div class='name'>GBS 操作系统</div><div class='badge'>(9)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/"
@@ -3626,7 +3634,7 @@ https://www.bertna...
 
 
     <div class='content'>
-      <a href="/tags/1000/" style="font-size: 17.75px; color: #808080">1000</a> <a href="/tags/800/" style="font-size: 17.75px; color: #808080">800</a> <a href="/tags/Betriebssysteme/" style="font-size: 19px; color: #777">Betriebssysteme</a> <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/CTF/" style="font-size: 15.25px; color: #919191">CTF</a> <a href="/tags/Codeforce/" style="font-size: 20.25px; color: #6f6f6f">Codeforce</a> <a href="/tags/Cookie/" style="font-size: 14px; color: #999">Cookie</a> <a href="/tags/Database/" style="font-size: 14px; color: #999">Database</a> <a href="/tags/Datenbank/" style="font-size: 14px; color: #999">Datenbank</a> <a href="/tags/Ersetztungsstrategie/" style="font-size: 14px; color: #999">Ersetztungsstrategie</a> <a href="/tags/HTB/" style="font-size: 24px; color: #555">HTB</a> <a href="/tags/Hash/" style="font-size: 15.25px; color: #919191">Hash</a> <a href="/tags/Injection/" style="font-size: 21.5px; color: #666">Injection</a> <a href="/tags/JWT/" style="font-size: 14px; color: #999">JWT</a> <a href="/tags/JavaScript/" style="font-size: 16.5px; color: #888">JavaScript</a> <a href="/tags/Jinja2/" style="font-size: 14px; color: #999">Jinja2</a> <a href="/tags/Mako/" style="font-size: 14px; color: #999">Mako</a> <a href="/tags/Misc/" style="font-size: 14px; color: #999">Misc</a> <a href="/tags/MongoDB/" style="font-size: 14px; color: #999">MongoDB</a> <a href="/tags/Operating-System/" style="font-size: 19px; color: #777">Operating System</a> <a href="/tags/PHP/" style="font-size: 15.25px; color: #919191">PHP</a> <a href="/tags/PHP-%E4%BB%A3%E7%A0%81%E6%B3%A8%E5%85%A5/" style="font-size: 14px; color: #999">PHP 代码注入</a> <a href="/tags/Page-table/" style="font-size: 14px; color: #999">Page table</a> <a href="/tags/Paging/" style="font-size: 14px; color: #999">Paging</a> <a href="/tags/Piet/" style="font-size: 14px; color: #999">Piet</a> <a href="/tags/RCE/" style="font-size: 14px; color: #999">RCE</a> <a href="/tags/RISC-V/" style="font-size: 14px; color: #999">RISC-V</a> <a href="/tags/Rechnerarchitektur/" style="font-size: 16.5px; color: #888">Rechnerarchitektur</a> <a href="/tags/Reverse-Engineering/" style="font-size: 15.25px; color: #919191">Reverse Engineering</a> <a href="/tags/SQL/" style="font-size: 15.25px; color: #919191">SQL</a> <a href="/tags/SQL-Injection/" style="font-size: 14px; color: #999">SQL Injection</a> <a href="/tags/Template-Injection/" style="font-size: 15.25px; color: #919191">Template Injection</a> <a href="/tags/Web/" style="font-size: 22.75px; color: #5e5e5e">Web</a> <a href="/tags/Writeup/" style="font-size: 24px; color: #555">Writeup</a> <a href="/tags/XSS/" style="font-size: 15.25px; color: #919191">XSS</a> <a href="/tags/container/" style="font-size: 14px; color: #999">container</a> <a href="/tags/cpp/" style="font-size: 14px; color: #999">cpp</a> <a href="/tags/esolang/" style="font-size: 14px; color: #999">esolang</a> <a href="/tags/greedy/" style="font-size: 14px; color: #999">greedy</a> <a href="/tags/html/" style="font-size: 14px; color: #999">html</a> <a href="/tags/remote/" style="font-size: 14px; color: #999">remote</a> <a href="/tags/sage/" style="font-size: 14px; color: #999">sage</a> <a href="/tags/socket/" style="font-size: 14px; color: #999">socket</a> <a href="/tags/sortings/" style="font-size: 14px; color: #999">sortings</a> <a href="/tags/switch/" style="font-size: 14px; color: #999">switch</a> <a href="/tags/vscode/" style="font-size: 14px; color: #999">vscode</a> <a href="/tags/writeup/" style="font-size: 16.5px; color: #888">writeup</a> <a href="/tags/wsl/" style="font-size: 14px; color: #999">wsl</a> <a href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" style="font-size: 14px; color: #999">内存管理</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 15.25px; color: #919191">哈希</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 19px; color: #777">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">数据库</a> <a href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">文件系统</a> <a href="/tags/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/" style="font-size: 15.25px; color: #919191">模板注入</a> <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 14px; color: #999">汇编语言</a> <a href="/tags/%E6%B3%A8%E5%85%A5/" style="font-size: 17.75px; color: #808080">注入</a> <a href="/tags/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" style="font-size: 20.25px; color: #6f6f6f">算法竞赛</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/" style="font-size: 14px; color: #999">虚拟化</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 16.5px; color: #888">计算机体系结构</a> <a href="/tags/%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA/" style="font-size: 14px; color: #999">输入/输出</a> <a href="/tags/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/" style="font-size: 14px; color: #999">逻辑电路图</a> <a href="/tags/%E9%80%BB%E8%BE%91%E9%97%A8/" style="font-size: 14px; color: #999">逻辑门</a>
+      <a href="/tags/1000/" style="font-size: 17.75px; color: #808080">1000</a> <a href="/tags/800/" style="font-size: 17.75px; color: #808080">800</a> <a href="/tags/Betriebssysteme/" style="font-size: 21.5px; color: #666">Betriebssysteme</a> <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/CTF/" style="font-size: 15.25px; color: #919191">CTF</a> <a href="/tags/Codeforce/" style="font-size: 20.25px; color: #6f6f6f">Codeforce</a> <a href="/tags/Cookie/" style="font-size: 14px; color: #999">Cookie</a> <a href="/tags/Database/" style="font-size: 14px; color: #999">Database</a> <a href="/tags/Datenbank/" style="font-size: 14px; color: #999">Datenbank</a> <a href="/tags/Ersetztungsstrategie/" style="font-size: 14px; color: #999">Ersetztungsstrategie</a> <a href="/tags/HTB/" style="font-size: 24px; color: #555">HTB</a> <a href="/tags/Hash/" style="font-size: 15.25px; color: #919191">Hash</a> <a href="/tags/Injection/" style="font-size: 21.5px; color: #666">Injection</a> <a href="/tags/JWT/" style="font-size: 14px; color: #999">JWT</a> <a href="/tags/JavaScript/" style="font-size: 16.5px; color: #888">JavaScript</a> <a href="/tags/Jinja2/" style="font-size: 14px; color: #999">Jinja2</a> <a href="/tags/Mako/" style="font-size: 14px; color: #999">Mako</a> <a href="/tags/Misc/" style="font-size: 14px; color: #999">Misc</a> <a href="/tags/MongoDB/" style="font-size: 14px; color: #999">MongoDB</a> <a href="/tags/Mutex/" style="font-size: 14px; color: #999">Mutex</a> <a href="/tags/Operating-System/" style="font-size: 21.5px; color: #666">Operating System</a> <a href="/tags/PHP/" style="font-size: 15.25px; color: #919191">PHP</a> <a href="/tags/PHP-%E4%BB%A3%E7%A0%81%E6%B3%A8%E5%85%A5/" style="font-size: 14px; color: #999">PHP 代码注入</a> <a href="/tags/Page-table/" style="font-size: 14px; color: #999">Page table</a> <a href="/tags/Paging/" style="font-size: 14px; color: #999">Paging</a> <a href="/tags/Petri-Netz/" style="font-size: 14px; color: #999">Petri-Netz</a> <a href="/tags/Piet/" style="font-size: 14px; color: #999">Piet</a> <a href="/tags/RCE/" style="font-size: 14px; color: #999">RCE</a> <a href="/tags/RISC-V/" style="font-size: 14px; color: #999">RISC-V</a> <a href="/tags/Rechnerarchitektur/" style="font-size: 16.5px; color: #888">Rechnerarchitektur</a> <a href="/tags/Reverse-Engineering/" style="font-size: 15.25px; color: #919191">Reverse Engineering</a> <a href="/tags/SQL/" style="font-size: 15.25px; color: #919191">SQL</a> <a href="/tags/SQL-Injection/" style="font-size: 14px; color: #999">SQL Injection</a> <a href="/tags/Semaphore/" style="font-size: 14px; color: #999">Semaphore</a> <a href="/tags/Template-Injection/" style="font-size: 15.25px; color: #919191">Template Injection</a> <a href="/tags/Web/" style="font-size: 22.75px; color: #5e5e5e">Web</a> <a href="/tags/Writeup/" style="font-size: 24px; color: #555">Writeup</a> <a href="/tags/XSS/" style="font-size: 15.25px; color: #919191">XSS</a> <a href="/tags/asynchron/" style="font-size: 14px; color: #999">asynchron</a> <a href="/tags/container/" style="font-size: 14px; color: #999">container</a> <a href="/tags/cpp/" style="font-size: 14px; color: #999">cpp</a> <a href="/tags/esolang/" style="font-size: 14px; color: #999">esolang</a> <a href="/tags/greedy/" style="font-size: 14px; color: #999">greedy</a> <a href="/tags/html/" style="font-size: 14px; color: #999">html</a> <a href="/tags/remote/" style="font-size: 14px; color: #999">remote</a> <a href="/tags/sage/" style="font-size: 14px; color: #999">sage</a> <a href="/tags/socket/" style="font-size: 14px; color: #999">socket</a> <a href="/tags/sortings/" style="font-size: 14px; color: #999">sortings</a> <a href="/tags/switch/" style="font-size: 14px; color: #999">switch</a> <a href="/tags/synchron/" style="font-size: 14px; color: #999">synchron</a> <a href="/tags/vscode/" style="font-size: 14px; color: #999">vscode</a> <a href="/tags/writeup/" style="font-size: 16.5px; color: #888">writeup</a> <a href="/tags/wsl/" style="font-size: 14px; color: #999">wsl</a> <a href="/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" style="font-size: 14px; color: #999">内存管理</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 15.25px; color: #919191">哈希</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 19px; color: #777">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px; color: #999">数据库</a> <a href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" style="font-size: 14px; color: #999">文件系统</a> <a href="/tags/%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5/" style="font-size: 15.25px; color: #919191">模板注入</a> <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" style="font-size: 14px; color: #999">汇编语言</a> <a href="/tags/%E6%B3%A8%E5%85%A5/" style="font-size: 17.75px; color: #808080">注入</a> <a href="/tags/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" style="font-size: 20.25px; color: #6f6f6f">算法竞赛</a> <a href="/tags/%E7%BA%BF%E7%A8%8B/" style="font-size: 14px; color: #999">线程</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/" style="font-size: 14px; color: #999">虚拟化</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" style="font-size: 16.5px; color: #888">计算机体系结构</a> <a href="/tags/%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA/" style="font-size: 14px; color: #999">输入/输出</a> <a href="/tags/%E8%BF%9B%E7%A8%8B/" style="font-size: 14px; color: #999">进程</a> <a href="/tags/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/" style="font-size: 14px; color: #999">逻辑电路图</a> <a href="/tags/%E9%80%BB%E8%BE%91%E9%97%A8/" style="font-size: 14px; color: #999">逻辑门</a>
     </div>
   </section>
 

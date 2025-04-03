@@ -48,7 +48,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-02T20:20:04.000Z">
-<meta property="article:modified_time" content="2025-04-03T09:00:56.106Z">
+<meta property="article:modified_time" content="2025-04-03T21:18:13.766Z">
 <meta property="article:tag" content="Betriebssysteme">
 <meta property="article:tag" content="Operating System">
 <meta property="article:tag" content="操作系统">
@@ -2283,7 +2283,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743678850886),
+    lastupdate: new Date(1743715440971),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2696,7 +2696,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-03T11:00:56+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-03T23:18:13+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Apr 3, 2025</p>
@@ -2740,10 +2740,82 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403103914097.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403103914097.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250403103914097"></p>
 <p>举个例子区分一下基址寻址（Basis-Adressierung）和直接寻址（Direkte Adressierung）：假设我们现在的内存空间有15个Block，并且有2个程序在使用内存，我们将1-5分给第一个程序，把6-10分给第二个程序。如果是直接寻址的话，第一个程序的地址需要记录成（1，2，3，4，5），第二个需要记录（6，7，8，9，10）。但如果是基址寻址的话，第二个只需要记录（5；1，2，3，4，5），主要会记录相对位置。这样一来在重新分配内存空间时只需要修改basis（也就是5）即可（比如说（10；1，2，3，4，5）），其他的不需要改变。</p>
 <p>当然基址寻址（Basis-Adressierung）也有个缺点，那就是每次计算地址时都需要进行一次加法操作。（<strong>Aufwendige Additionsoperation</strong>）</p>
-<h4 id="段式寻址（Segmentadressierung）"><a href="#段式寻址（Segmentadressierung）" class="headerlink" title="段式寻址（Segmentadressierung）"></a><strong>段式寻址（Segmentadressierung）</strong></h4><p>我们来看一下x86里的段式寻址（Segmentadressierung）的例子：</p>
-<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250402223437850.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250402223437850.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250402223437850"></p>
-<h3 id="空闲内存管理（Freispeicherverwaltung）"><a href="#空闲内存管理（Freispeicherverwaltung）" class="headerlink" title="空闲内存管理（Freispeicherverwaltung）"></a><strong>空闲内存管理（Freispeicherverwaltung）</strong></h3><h4 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a><strong>存储结构</strong></h4><h5 id="位图（Bitmap）"><a href="#位图（Bitmap）" class="headerlink" title="位图（Bitmap）"></a><strong>位图（Bitmap）</strong></h5><p><strong>链表（Verkettete Liste）</strong></p>
-<h4 id="内存分配策略（Belegungstrategien）"><a href="#内存分配策略（Belegungstrategien）" class="headerlink" title="内存分配策略（Belegungstrategien）"></a><strong>内存分配策略（Belegungstrategien）</strong></h4><h4 id="碎片化（Fragmentierung）"><a href="#碎片化（Fragmentierung）" class="headerlink" title="碎片化（Fragmentierung）"></a><strong>碎片化（Fragmentierung）</strong></h4><p>一般会分成内部碎片化与外部碎片化。</p>
+<h4 id="段式寻址（Segmentadressierung）"><a href="#段式寻址（Segmentadressierung）" class="headerlink" title="段式寻址（Segmentadressierung）"></a><strong>段式寻址（Segmentadressierung）</strong></h4><p>将Adressraums分成不同长度的<strong><code>逻辑段（logische Segmente）</code></strong>，比如说分成Stack-, Daten-, Code-Segment。这样做的好处是可以给每一段内容不同的权限（Zugriffsberechtigungen），以提高安全性，针对pwn的攻击特别有用。</p>
+<p>每个段需要两个基本信息：<strong>段起始地址（Segmentanfangsadresse）</strong>和<strong>段的长度（Länge des Segments）</strong>。</p>
+<p>CPU通常提供一个<strong><code>段寄存器（Segmentregister）</code></strong>来保存段信息。</p>
+<p>只不过主要是32 位操作系统会使用段机制，而在64 位系统中基本不用段机制，最多用于线程管理（TLS）和兼容性支持。</p>
+<p>我们来看一下x86里的段式寻址（Segmentadressierung）的例子：</p>
+<p><strong>x86 架构</strong>会使用一个叫做<strong><code>全局描述符表（Global Descriptor Table, GDT）</code></strong>的数据结构来管理段，每一项会包含以下信息：</p>
+<ul>
+<li>基地址（Basisadresse）</li>
+<li>段的长度（Länge des Segments）</li>
+<li>标志位（Flags）：例如Zugriff以及Segment的类型（Code，Daten还是Stack）</li>
+</ul>
+<p>而段寄存器（Segmentregister）中保存的不是地址，而是GDT表中的一个索引。</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403161731590.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403161731590.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250403161731590"></p>
+<p>1. 想要访问 cs:0x800 的话，需要先在段寄存器（Segmentregister）找到cs对应的值，也就是 0x08，然后找到这个值在DGT对应的那一行信息。随后计算 0x10000 + 0x800 = 0x10800。确认它在范围内，所以这个就是我们要的地址。</p>
+<p>2. 想要访问 es:0x800 的话，需要先在段寄存器（Segmentregister）找到es对应的值，也就是 0x10，然后找到这个值在DGT对应的那一行信息。随后计算 0x20000 + 0x800，会发现超出范围了，因为它的长度只有 0x00800，所以会返回 “Segmentation Fault”。</p>
+<h3 id="空闲内存管理（Freispeicherverwaltung）"><a href="#空闲内存管理（Freispeicherverwaltung）" class="headerlink" title="空闲内存管理（Freispeicherverwaltung）"></a><strong>空闲内存管理（Freispeicherverwaltung）</strong></h3><h4 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a><strong>存储结构</strong></h4><h5 id="位图（Bitmap）"><a href="#位图（Bitmap）" class="headerlink" title="位图（Bitmap）"></a><strong>位图（Bitmap）</strong></h5><p>将存储空间分成相同大小的块（Blöcke），每个块用一个bit标记，<strong>1表示已占用，0表示空闲。</strong>这一串内容就是<strong><code>位图（Bitmap）</code></strong>。</p>
+<p>例子：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403214805646.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403214805646.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250403214805646"></p>
+<p>但是实现过程中会遇到一个问题：Blcok的大小该怎么选择呢？选小了就会需要更大位图，但选大了又容易导致浪费。</p>
+<p>优势：</p>
+<ul>
+<li>可以简单快速地访问固定大小的内存块。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>假如有个进程需要k个Block，那么就需要在位图里找到7个连续的0，这个的开销就太大了。</li>
+</ul>
+<p><strong>链表（Verkettete Liste）</strong></p>
+<p>还是将存储空间分成相同大小的块（Blöcke），然后链表记录块的占用信息：</p>
+<p>链表的每一项存储：</p>
+<ul>
+<li>开始地址</li>
+<li>长度</li>
+<li>指向下一项的指针（einen Zeiger auf den nächsten Eintrag (oder Terminator T == NULL)）</li>
+</ul>
+<p>例子：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403215806991.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403215806991.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250403215806991"></p>
+<p>P表示已被进程占用，F表空闲。</p>
+<p>优点：</p>
+<ul>
+<li>灵活（Flexible Speicheraufteilung）</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><p>需要线性搜索（Lineare Suche）</p>
+<p>需要挨个找有没有合适的。</p>
+</li>
+<li><p>没有固定的管理结构</p>
+</li>
+</ul>
+<p>优化的办法：</p>
+<ul>
+<li>分别维护两个链表，一个存储已分配的内存块，一个存储空闲的内存块。</li>
+<li>按照内存块大小排序</li>
+<li>使用平衡树结构管理链表（(balancierter) Baumstruktur）</li>
+<li>同时使用多个链表</li>
+</ul>
+<h4 id="内存分配策略（Belegungstrategien）"><a href="#内存分配策略（Belegungstrategien）" class="headerlink" title="内存分配策略（Belegungstrategien）"></a><strong>内存分配策略（Belegungstrategien）</strong></h4><p>由于需要一直分配再释放进程的存储空间，所以存储空间容易碎片化。比如说在上面那张图里有着好几个空闲的连续的存储空间，我们该如何给每个进程选择一块合适的位置呢？</p>
+<p>一般会用到以下几个策略：</p>
+<p>（以这个为例:）</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403225311550.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403225311550.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250403225311550"></p>
+<h5 id="First-Fit"><a href="#First-Fit" class="headerlink" title="First-Fit"></a><strong>First-Fit</strong></h5><p>从前往后，找到大小够的直接给。</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403225454516.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403225454516.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250403225454516"></p>
+<h5 id="Next-Fit"><a href="#Next-Fit" class="headerlink" title="Next-Fit"></a><strong>Next-Fit</strong></h5><p>从上次停止的地方开始，找到够的直接给。</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403225512322.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403225512322.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250403225512322"></p>
+<h5 id="Best-Fit"><a href="#Best-Fit" class="headerlink" title="Best-Fit"></a><strong>Best-Fit</strong></h5><p>分配“<strong>最小剩余空间</strong>”的空闲块（Freibereich mit dem <strong>geringsten Verschnitt</strong>）</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403225523616.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403225523616.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250403225523616"></p>
+<h5 id="Worst-Fit"><a href="#Worst-Fit" class="headerlink" title="Worst-Fit"></a><strong>Worst-Fit</strong></h5><p>分配“<strong>最大剩余空间</strong>”的空闲块（Freibereich mit dem <strong>größten Verschnitt</strong>）</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403225534503.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403225534503.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250403225534503"></p>
+<h5 id="Buddy-Algorithmus"><a href="#Buddy-Algorithmus" class="headerlink" title="Buddy-Algorithmus"></a><strong>Buddy-Algorithmus</strong></h5><p>将存储空间分成 $2^k$ 大小的Block，where $l \leq k \leq u$，$2^l$是最小的可占用的空间大小，$2^u$是最大的可占用的空间大小。当一个进程需要的存储空间为 $x$ 时，会给它分配一块大小为 $2^{\lfloor log_2(x) \rfloor}$ 的Block。</p>
+<p>这样一来每次最多会浪费半个Block大小的存储空间。</p>
+<p>分配的具体算法看这个例子就好：（需要额外注意它合并空闲块的算法）</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403230727156.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403230727156.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250403230727156"></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403230740892.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403230740892.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250403230740892"></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403230752724.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403230752724.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250403230752724"></p>
+<h4 id="碎片化（Fragmentierung）"><a href="#碎片化（Fragmentierung）" class="headerlink" title="碎片化（Fragmentierung）"></a><strong>碎片化（Fragmentierung）</strong></h4><p>一般会分成内部碎片化与外部碎片化。</p>
 <h2 id="虚拟内存管理（Virtuelle-Speicherverwaltung）"><a href="#虚拟内存管理（Virtuelle-Speicherverwaltung）" class="headerlink" title="虚拟内存管理（Virtuelle Speicherverwaltung）"></a><strong>虚拟内存管理（Virtuelle Speicherverwaltung）</strong></h2>
   </div>
   
@@ -2912,7 +2984,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Einfuhrung"><span class="toc-number">1.</span> <span class="toc-text">Einführung</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">物理内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E5%9D%80%EF%BC%88Adressierung%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">寻址（Adressierung）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%AF%BB%E5%9D%80%EF%BC%88Direkte-Adressierung%EF%BC%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">直接寻址（Direkte Adressierung）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E5%9D%80%E5%AF%BB%E5%9D%80%EF%BC%88Basis-Adressierung%EF%BC%89"><span class="toc-number">2.1.2.</span> <span class="toc-text">基址寻址（Basis-Adressierung）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AE%B5%E5%BC%8F%E5%AF%BB%E5%9D%80%EF%BC%88Segmentadressierung%EF%BC%89"><span class="toc-number">2.1.3.</span> <span class="toc-text">段式寻址（Segmentadressierung）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B2%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%88Freispeicherverwaltung%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">空闲内存管理（Freispeicherverwaltung）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.1.</span> <span class="toc-text">存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%8D%E5%9B%BE%EF%BC%88Bitmap%EF%BC%89"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">位图（Bitmap）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5%EF%BC%88Belegungstrategien%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">内存分配策略（Belegungstrategien）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A2%8E%E7%89%87%E5%8C%96%EF%BC%88Fragmentierung%EF%BC%89"><span class="toc-number">2.2.3.</span> <span class="toc-text">碎片化（Fragmentierung）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%88Virtuelle-Speicherverwaltung%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">虚拟内存管理（Virtuelle Speicherverwaltung）</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Einfuhrung"><span class="toc-number">1.</span> <span class="toc-text">Einführung</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">物理内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E5%9D%80%EF%BC%88Adressierung%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">寻址（Adressierung）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%AF%BB%E5%9D%80%EF%BC%88Direkte-Adressierung%EF%BC%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">直接寻址（Direkte Adressierung）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E5%9D%80%E5%AF%BB%E5%9D%80%EF%BC%88Basis-Adressierung%EF%BC%89"><span class="toc-number">2.1.2.</span> <span class="toc-text">基址寻址（Basis-Adressierung）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AE%B5%E5%BC%8F%E5%AF%BB%E5%9D%80%EF%BC%88Segmentadressierung%EF%BC%89"><span class="toc-number">2.1.3.</span> <span class="toc-text">段式寻址（Segmentadressierung）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B2%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%88Freispeicherverwaltung%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">空闲内存管理（Freispeicherverwaltung）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.1.</span> <span class="toc-text">存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%8D%E5%9B%BE%EF%BC%88Bitmap%EF%BC%89"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">位图（Bitmap）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5%EF%BC%88Belegungstrategien%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">内存分配策略（Belegungstrategien）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#First-Fit"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">First-Fit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Next-Fit"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">Next-Fit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Best-Fit"><span class="toc-number">2.2.2.3.</span> <span class="toc-text">Best-Fit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Worst-Fit"><span class="toc-number">2.2.2.4.</span> <span class="toc-text">Worst-Fit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Buddy-Algorithmus"><span class="toc-number">2.2.2.5.</span> <span class="toc-text">Buddy-Algorithmus</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A2%8E%E7%89%87%E5%8C%96%EF%BC%88Fragmentierung%EF%BC%89"><span class="toc-number">2.2.3.</span> <span class="toc-text">碎片化（Fragmentierung）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%88Virtuelle-Speicherverwaltung%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">虚拟内存管理（Virtuelle Speicherverwaltung）</span></a></li></ol>
   </div>
 </section>
 
@@ -3473,7 +3545,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/02/TUM笔记/GBS/GBS-6-Speicherverwaltung-内存管理/","name":"GBS 6 Speicherverwaltung 内存管理"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 6 Speicherverwaltung 内存管理","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/02/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-6-Speicherverwaltung-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/02/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-6-Speicherverwaltung-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/","wordCount":10,"datePublished":"2025-04-02T20:20:04.000Z","dateModified":"2025-04-03T09:00:56.106Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,操作系统,内存管理,Paging,Page table,Ersetztungsstrategie","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/02/TUM笔记/GBS/GBS-6-Speicherverwaltung-内存管理/","name":"GBS 6 Speicherverwaltung 内存管理"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 6 Speicherverwaltung 内存管理","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/02/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-6-Speicherverwaltung-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/02/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-6-Speicherverwaltung-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/","wordCount":10,"datePublished":"2025-04-02T20:20:04.000Z","dateModified":"2025-04-03T21:18:13.766Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,操作系统,内存管理,Paging,Page table,Ersetztungsstrategie","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
