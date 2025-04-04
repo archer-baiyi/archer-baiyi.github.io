@@ -48,7 +48,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-02T20:20:04.000Z">
-<meta property="article:modified_time" content="2025-04-04T14:59:04.051Z">
+<meta property="article:modified_time" content="2025-04-04T22:41:43.187Z">
 <meta property="article:tag" content="Betriebssysteme">
 <meta property="article:tag" content="Operating System">
 <meta property="article:tag" content="操作系统">
@@ -2283,7 +2283,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743778754255),
+    lastupdate: new Date(1743806511378),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2696,10 +2696,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-04T16:59:04+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-05T00:41:43+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 4, 2025</p>
+    <p>更新于：Apr 5, 2025</p>
   </a>
 </div>
 
@@ -2715,8 +2715,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>[toc]</p>
-<h2 id="Einfuhrung"><a href="#Einfuhrung" class="headerlink" title="Einführung"></a><strong>Einführung</strong></h2><p>首先来看一下计算机存储的层次结构：</p>
+    <h2 id="Einfuhrung"><a href="#Einfuhrung" class="headerlink" title="Einführung"></a><strong>Einführung</strong></h2><p>首先来看一下计算机存储的层次结构：</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403010809824.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250403010809824.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250403010809824"></p>
 <p>从上往下依次是寄存器、缓存、内存、硬盘以及磁带驱动器。存储空间大小（从上往下）依次递增，但读取速度依次递减。</p>
 <p>我们这章主要关注内存（Hauptspeicher）。</p>
@@ -2893,12 +2892,182 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h3 id="页错误（Seitenfehler，Page-Fault）"><a href="#页错误（Seitenfehler，Page-Fault）" class="headerlink" title="页错误（Seitenfehler，Page Fault）"></a><strong>页错误（Seitenfehler，Page Fault）</strong></h3><p>当程序访问一个虚拟地址时，如果该地址对应的页面不在内存中（即页表中的 P-Bit 未设置），就会发生页错误（Seitenfehler，Page Fault）。硬件会触发中断（Interrupt），交由操作系统处理，执行页错误处理器（Page-Fault-Handler）。</p>
 <p>处理时分2种情况：</p>
 <ol>
-<li>asd</li>
-<li>asd</li>
+<li><p>页面被换出（<strong>ausgelagert</strong>）：</p>
+<p>查找是否有空闲页框（Kachel）：</p>
+<ul>
+<li>有空闲：直接加载页面</li>
+<li>无空闲：使用页面置换算法（Seitenersetzungsstrategien）释放空间</li>
+</ul>
+</li>
+<li><p>页面不存在也未被换出（<strong>nicht ausgelagert</strong>）</p>
+<p>操作系统会触发内存保护错误（Speicherschutz-Fehler）</p>
+</li>
 </ol>
+<p>之后便会更新页表项（Page-Table-Eintrag）：设置P-Bit，清除R-Bit和M-Bit。</p>
+<p>这些操作都完成之后便会恢复程序的状态。</p>
 <p>目前这些转换地址的流程总结一下就是：</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404165524088.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404165524088.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250404165524088"></p>
-<h3 id="（Seitenersetzungsstrategien）"><a href="#（Seitenersetzungsstrategien）" class="headerlink" title="（Seitenersetzungsstrategien）"></a><strong>（Seitenersetzungsstrategien）</strong></h3><h4 id="FIFO"><a href="#FIFO" class="headerlink" title="FIFO"></a><strong>FIFO</strong></h4><h4 id="Second-Chance"><a href="#Second-Chance" class="headerlink" title="Second-Chance"></a><strong>Second-Chance</strong></h4><h4 id="Clock"><a href="#Clock" class="headerlink" title="Clock"></a><strong>Clock</strong></h4><h4 id="Least-Recently-Used-LRU"><a href="#Least-Recently-Used-LRU" class="headerlink" title="Least Recently Used (LRU)"></a><strong>Least Recently Used (LRU)</strong></h4><h4 id="Not-Frequently-Used-NFU-Aging"><a href="#Not-Frequently-Used-NFU-Aging" class="headerlink" title="Not Frequently Used (NFU), Aging"></a><strong>Not Frequently Used (NFU), Aging</strong></h4><h4 id="Working-Set"><a href="#Working-Set" class="headerlink" title="Working Set"></a><strong>Working Set</strong></h4><h4 id="Working-Set-with-Clock"><a href="#Working-Set-with-Clock" class="headerlink" title="Working Set with Clock"></a><strong>Working Set with Clock</strong></h4><h2 id="malloc"><a href="#malloc" class="headerlink" title="malloc()"></a><strong>malloc()</strong></h2>
+<h3 id="页面置换算法（Seitenersetzungsstrategien）"><a href="#页面置换算法（Seitenersetzungsstrategien）" class="headerlink" title="页面置换算法（Seitenersetzungsstrategien）"></a><strong>页面置换算法（Seitenersetzungsstrategien）</strong></h3><p>替换页面的时候，我们有3个问题需要考虑：当内存满了，我们应该</p>
+<ol>
+<li><p>在<strong>什么时候</strong>加载页面？</p>
+<p>针对这个问题我们有2种方法：</p>
+<ol>
+<li><strong><code>按需分页（On-Demand Paging）</code></strong>：页面只有在确实被访问到时，才会被加载到主存。</li>
+<li><strong><code>预取（Prefetching）</code></strong>：会提前加载页面以备不时之需。但这样一来又会回到一开始的问题，我们需要在提前多久加载哪些内容呢？</li>
+</ol>
+</li>
+<li><p>将页面加载到<strong>哪里</strong>？</p>
+<p>所有页框（Kacheln）地位相同，一般不需要策略决定。但在实际中操作系统一般会对内核代码和内核数据做特殊处理，比如说恒等映射（Identity Mapping），即虚拟地址 = 物理地址。这样效率会高很多。</p>
+</li>
+<li><p>如果内存已经满了，我们该把现有的<strong>哪一页给换下去</strong>？</p>
+<p>这些正是我们下面会仔细讲的内容。</p>
+</li>
+</ol>
+<p>理论上最完美的算法当然是替换掉那个 下一次将被访问时间最晚 的页面。操作系统肯定是无法做到预知未来的，不过我们可以尝试往这个方向靠。</p>
+<h4 id="FIFO"><a href="#FIFO" class="headerlink" title="FIFO"></a><strong>FIFO</strong></h4><p>跟普通的First-in-First-Out一样，先替换掉最早来的。</p>
+<p>例子：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404214804028.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404214804028.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250404214804028"></p>
+<p><strong>缺点</strong>：在实际情况里大部分最早来的都是最重要的，所以之后大概率会多次访问，如果被替换下去了会一直触发Page Fault，开销会很大。</p>
+<p>所以相比之下较常用的是它的改版：Second-Chance-Algorithmus。</p>
+<h4 id="Second-Chance-Algorithmus"><a href="#Second-Chance-Algorithmus" class="headerlink" title="Second-Chance-Algorithmus"></a><strong>Second-Chance-Algorithmus</strong></h4><p>在FIFO的基础上，会给每页第二次机会。</p>
+<p>页面被访问时会设置R-bit = 1。如果在队伍首则判断R-Bit的值，等于0就会被替换掉（如果M=1需要先执行写入操作然后再替换），等于1的话就给R-Bit的值更新成0然后挪到队伍尾。</p>
+<p>图示：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404214820967.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404214820967.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250404214820967"></p>
+<p><strong>缺点</strong>：每次都移动整个队列非常麻烦。</p>
+<p>所以使用更高效的数据结构替代队列：Clock。</p>
+<h4 id="Clock-Algorithmus"><a href="#Clock-Algorithmus" class="headerlink" title="Clock-Algorithmus"></a><strong>Clock-Algorithmus</strong></h4><p>将所有页面按顺序组成一个环状列表（就像Clock一样），有一个“时钟指针”指向其中某个页面，表示当前检查的位置。这个指针用于寻找要替换的页面。</p>
+<p>具体流程：</p>
+<ol>
+<li><p>如果当前指向的页面的 R 位为 0：</p>
+<ul>
+<li><p>替换这个页面为新页面</p>
+</li>
+<li><p>指针移动一格（顺时针）</p>
+</li>
+</ul>
+</li>
+<li><p>如果 R 位为 1：</p>
+<ul>
+<li><p>将 R 位清除（设为 0）</p>
+</li>
+<li><p>指针继续移动一格，检查下一个页面</p>
+</li>
+</ul>
+</li>
+<li><p>重复 1-2 步骤：</p>
+<ul>
+<li><p>直到找到一个 R 位为 0 的页面</p>
+</li>
+<li><p>这个页面会被替换</p>
+</li>
+</ul>
+</li>
+<li><p>如果该页面的 M 位（Modified Bit）为 1：</p>
+<ul>
+<li>将该页面内容写回磁盘</li>
+</ul>
+</li>
+<li><p>如果 M 位为 0：</p>
+<ul>
+<li>直接丢弃该页面（因为它未被修改）</li>
+</ul>
+</li>
+</ol>
+<p>具体例子见文章结尾的例题。</p>
+<p><strong>Clock 例子</strong>：</p>
+<p>假设现在需要进行这些操作：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404221319540.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404221319540.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250404221319540"></p>
+<p>那么：（每一步里被修改了的内容都用橙色标出来了的）</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404221345638.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404221345638.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250404221345638"></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404221414899.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404221414899.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250404221414899"></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404221429321.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404221429321.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250404221429321"></p>
+<h4 id="Least-Recently-Used-LRU"><a href="#Least-Recently-Used-LRU" class="headerlink" title="Least Recently Used (LRU)"></a><strong>Least Recently Used (LRU)</strong></h4><p>因为程序的局部性原理（Lokalitätseigenschaft），我们可以假设过去经常使用的页面，未来也可能被再次使用。</p>
+<p>当发生Page Fault时，替换掉那个“最长时间没被使用”的页面。</p>
+<p><strong>缺点</strong>：这个方法的实现需要一个双向链表，记录所有被访问页面，每次访问页面都要把它移到表头（意味着频繁更新），开销太大了，效率不高。</p>
+<p>不过我们可以考虑使用软件近似模拟LRU（用“近似但效率更高”的方法来模拟 LRU 的行为趋势）：Not Frequently Used (NFU) 和 Aging。</p>
+<p><strong>LRU例子</strong>：</p>
+<p>假设现在有6页（Page）和4个页框（Kacheln），我们想要按照这个顺序访问：1 3 5 4 2 4 3 2 1 0 5 3 ，那么具体的过程便是：<br><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404223527711.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404223527711.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250404223527711"></p>
+<h4 id="Not-Frequently-Used-NFU"><a href="#Not-Frequently-Used-NFU" class="headerlink" title="Not Frequently Used (NFU)"></a><strong>Not Frequently Used (NFU)</strong></h4><ul>
+<li>给每个页面 P 引入一个软件计数器 $A_p$<ul>
+<li>固定大小，例如 b 位（bit），初始为 0</li>
+</ul>
+</li>
+<li>每次定时器中断（Timer-Interrupt）时：<ul>
+<li>操作系统检查所有页面的 R 位（被访问位）</li>
+<li>如果某个页面 P 的 R 位被设置：<ul>
+<li>对应的计数器 $A_p$ 加 1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>缺点</strong>：NFU并不知道“访问是否是最近的”，只知道总访问次数。比如说一个页面过去访问很多，但最近一直没被访问，NFU仍然会认为它很重要。</p>
+<p>为了解决这个问题便需要Aging-Verfahren。</p>
+<p><strong>NFU 例子1</strong>：</p>
+<p>页面编号：0, 1, 2, 3, 4</p>
+<p>访问顺序（参考链）：0111221123324434</p>
+<p>得到的计数器值：$A_0=1, A_1=5, A_2=4, A_3=3, A_4=3,$</p>
+<p><strong>NFU 例子2</strong>：</p>
+<p>假设现在有6页（Page）和4个页框（Kacheln），我们想要按照这个顺序访问：1 3 5 4 2 4 3 2 1 0 5 3 ，那么具体的过程便是：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404224410764.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404224410764.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250404224410764"></p>
+<h4 id="Aging-Verfahren"><a href="#Aging-Verfahren" class="headerlink" title="Aging-Verfahren"></a><strong>Aging-Verfahren</strong></h4><p>Aging主要的思路是记录访问的“老化”程度（Erfassung der Alterung von Zugriffen）。</p>
+<p>首先设置一个固定时间间隔 t（比如 20 毫秒）并记录哪些页面在这个间隔内被访问了。</p>
+<p>同样会给每个页面 P 引入一个软件计数器 $A_p$。</p>
+<p>每隔 t 的时间都会更新$A_p$：</p>
+<ul>
+<li>将计数器向右移一位（shift）</li>
+<li>把当前 R 位的值放到最高位</li>
+</ul>
+<p><strong>Aging 例子</strong>：</p>
+<p>假设：Aging 计数器为 4 位（二进制），当前计数器 $A_p = 1100_2 = 12_{10}$，当前的引用位 R = 0。</p>
+<p>那么新的 $A_p$ 会变成 $0110_2 = 6_{10}$ 。</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404232557694.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404232557694.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250404232557694"></p>
+<p>当然，Aging也是有一定局限性的，但是我没看懂。（乐）</p>
+<h4 id="Working-Set-Ersetzungs-Verfahren"><a href="#Working-Set-Ersetzungs-Verfahren" class="headerlink" title="Working-Set Ersetzungs-Verfahren"></a><strong>Working-Set Ersetzungs-Verfahren</strong></h4><p>前面这些策略全都是基于按需分页（Demand Paging）的，我们现在来看点不一样的。</p>
+<p>首先，一个进程当前真正需要的那一批页面（Die Menge der Seiten, die ein Prozess <strong>aktuell</strong> benötigt）称为：<strong><code>工作集（Working Set）</code></strong>。而<strong><code>抖动（Setitenflattern，Thrashing）</code></strong>指的是当进程频繁地触发Page Fault。</p>
+<p>在<strong><code>Working-Set-Modell</code></strong>中：</p>
+<ul>
+<li>在任意时刻 t，工作集 w(k, t) 表示进程在最近的 k 次内存访问中访问到的页面集合。（从t往前数k个）</li>
+</ul>
+<p>比如说给定一个访问序列：26157777516234123444344，并且将k设置为4，那么w(k, t1) = {3, 4}，w(8, t1) = {2, 3, 4}。</p>
+<p>最简单的办法肯定是只替换不在当前工作集内的页面，但是每次都往前追踪k次访问带来的开销太大了。所以我们使用进程的执行时间（Rechenzeit）来近似。</p>
+<p>需要先定义几个值：</p>
+<ul>
+<li><p>执行时间区间 $\tau$ </p>
+</li>
+<li><p>时间间隔 I（Clock Tick 间隔）</p>
+</li>
+<li>给每个进程设置一个单调递增的计数器 $Z$，用于近似进程的执行时间（Ausführungszeit /Rechenzeit)，实际使用CPU的时间）</li>
+<li>给每一页 P 设置一个计数器 $Z_p$，用于近似上次访问的时间。</li>
+</ul>
+<p>Working-Set Ersetzungs-Verfahren：</p>
+<ul>
+<li>当发生页面错误时，操作系统会检查所有页的 R 位（R-Bits）：<ul>
+<li>如果R=1 für Seite P：页面属于 Working-Set，不会被替换，但是会将当前的 $Z_p$ 更新成 $Z$ 的值；</li>
+<li>如果R=0 für Seite P：<ul>
+<li>如果$Z - Z_P &gt; \tau$：P不属于Working-Set，会被替换掉；</li>
+<li>如果$Z - Z_P \leq \tau$：虽然 P 在 I 这段时间里没有被使用过，但还是属于 Working-Set。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果<strong>找到了多个</strong>符合条件的候选页：系统会选择 $Z_p$ 最小的那一页，称为 $P_{\text{old}}$。</li>
+<li>如果<strong>找不到任何</strong>页面可以换出（所有页面都还在 Working Set 中）：替换最老的页面（即 $P_{\text{old}}$）。</li>
+</ul>
+<p><strong>缺点</strong>：实现起来非常复杂。</p>
+<p>所以实际中会用 Working-Set Ansatz mit Clock-artiger Verwaltung der Seiten。</p>
+<h4 id="Working-Set-with-Clock"><a href="#Working-Set-with-Clock" class="headerlink" title="Working Set with Clock"></a><strong>Working Set with Clock</strong></h4><h2 id="malloc"><a href="#malloc" class="headerlink" title="malloc()"></a><strong>malloc()</strong></h2><h2 id="Linux中的内存管理"><a href="#Linux中的内存管理" class="headerlink" title="Linux中的内存管理"></a><strong>Linux中的内存管理</strong></h2><p>使用4级页表（4-stufige Pagetabelle）。</p>
+<p>内存分配（Speicher-Allokation）：</p>
+<ul>
+<li>Buddy 分配器（Buddy-Allocator，基于之前讲的Buddy-Algorithm）：最小分配单位为页（page）</li>
+</ul>
+<p>页面替换策略（Seitenersetzungsstrategie）：</p>
+<ul>
+<li>使用 Swap 区：页不会立即被换出，而是暂存在 Swap 区</li>
+<li>操作系统会保留一部分空闲帧（Frames），以便快速加载需要的页面</li>
+<li>使用 Clock 替换算法的一个变种 作为页面替换策略</li>
+</ul>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><strong>例题</strong></h2>
   </div>
   
   
@@ -3066,7 +3235,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Einfuhrung"><span class="toc-number">1.</span> <span class="toc-text">Einführung</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">物理内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E5%9D%80%EF%BC%88Adressierung%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">寻址（Adressierung）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%AF%BB%E5%9D%80%EF%BC%88Direkte-Adressierung%EF%BC%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">直接寻址（Direkte Adressierung）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E5%9D%80%E5%AF%BB%E5%9D%80%EF%BC%88Basis-Adressierung%EF%BC%89"><span class="toc-number">2.1.2.</span> <span class="toc-text">基址寻址（Basis-Adressierung）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AE%B5%E5%BC%8F%E5%AF%BB%E5%9D%80%EF%BC%88Segmentadressierung%EF%BC%89"><span class="toc-number">2.1.3.</span> <span class="toc-text">段式寻址（Segmentadressierung）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B2%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%88Freispeicherverwaltung%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">空闲内存管理（Freispeicherverwaltung）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.1.</span> <span class="toc-text">存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%8D%E5%9B%BE%EF%BC%88Bitmap%EF%BC%89"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">位图（Bitmap）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%EF%BC%88Verkettete-Liste%EF%BC%89"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">链表（Verkettete Liste）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5%EF%BC%88Belegungstrategien%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">内存分配策略（Belegungstrategien）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#First-Fit"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">First-Fit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Next-Fit"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">Next-Fit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Best-Fit"><span class="toc-number">2.2.2.3.</span> <span class="toc-text">Best-Fit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Worst-Fit"><span class="toc-number">2.2.2.4.</span> <span class="toc-text">Worst-Fit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Buddy-Algorithmus"><span class="toc-number">2.2.2.5.</span> <span class="toc-text">Buddy-Algorithmus</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A2%8E%E7%89%87%E5%8C%96%EF%BC%88Fragmentierung%EF%BC%89"><span class="toc-number">2.2.3.</span> <span class="toc-text">碎片化（Fragmentierung）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%88Virtuelle-Speicherverwaltung%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">虚拟内存管理（Virtuelle Speicherverwaltung）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E7%BB%84%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">硬件组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E8%A1%A8%EF%BC%88Page-Table%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">页表（Page Table）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E9%A1%B5%E8%A1%A8%EF%BC%88Mehrstufige-Seitentabellen%EF%BC%89"><span class="toc-number">3.2.1.</span> <span class="toc-text">多级页表（Mehrstufige Seitentabellen）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%94%99%E8%AF%AF%EF%BC%88Seitenfehler%EF%BC%8CPage-Fault%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">页错误（Seitenfehler，Page Fault）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88Seitenersetzungsstrategien%EF%BC%89"><span class="toc-number">3.4.</span> <span class="toc-text">（Seitenersetzungsstrategien）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FIFO"><span class="toc-number">3.4.1.</span> <span class="toc-text">FIFO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Second-Chance"><span class="toc-number">3.4.2.</span> <span class="toc-text">Second-Chance</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Clock"><span class="toc-number">3.4.3.</span> <span class="toc-text">Clock</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Least-Recently-Used-LRU"><span class="toc-number">3.4.4.</span> <span class="toc-text">Least Recently Used (LRU)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Not-Frequently-Used-NFU-Aging"><span class="toc-number">3.4.5.</span> <span class="toc-text">Not Frequently Used (NFU), Aging</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Working-Set"><span class="toc-number">3.4.6.</span> <span class="toc-text">Working Set</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Working-Set-with-Clock"><span class="toc-number">3.4.7.</span> <span class="toc-text">Working Set with Clock</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#malloc"><span class="toc-number">4.</span> <span class="toc-text">malloc()</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Einfuhrung"><span class="toc-number">1.</span> <span class="toc-text">Einführung</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">物理内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E5%9D%80%EF%BC%88Adressierung%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">寻址（Adressierung）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%AF%BB%E5%9D%80%EF%BC%88Direkte-Adressierung%EF%BC%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">直接寻址（Direkte Adressierung）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E5%9D%80%E5%AF%BB%E5%9D%80%EF%BC%88Basis-Adressierung%EF%BC%89"><span class="toc-number">2.1.2.</span> <span class="toc-text">基址寻址（Basis-Adressierung）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AE%B5%E5%BC%8F%E5%AF%BB%E5%9D%80%EF%BC%88Segmentadressierung%EF%BC%89"><span class="toc-number">2.1.3.</span> <span class="toc-text">段式寻址（Segmentadressierung）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B2%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%88Freispeicherverwaltung%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">空闲内存管理（Freispeicherverwaltung）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.1.</span> <span class="toc-text">存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%8D%E5%9B%BE%EF%BC%88Bitmap%EF%BC%89"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">位图（Bitmap）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%EF%BC%88Verkettete-Liste%EF%BC%89"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">链表（Verkettete Liste）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5%EF%BC%88Belegungstrategien%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">内存分配策略（Belegungstrategien）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#First-Fit"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">First-Fit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Next-Fit"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">Next-Fit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Best-Fit"><span class="toc-number">2.2.2.3.</span> <span class="toc-text">Best-Fit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Worst-Fit"><span class="toc-number">2.2.2.4.</span> <span class="toc-text">Worst-Fit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Buddy-Algorithmus"><span class="toc-number">2.2.2.5.</span> <span class="toc-text">Buddy-Algorithmus</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A2%8E%E7%89%87%E5%8C%96%EF%BC%88Fragmentierung%EF%BC%89"><span class="toc-number">2.2.3.</span> <span class="toc-text">碎片化（Fragmentierung）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%88Virtuelle-Speicherverwaltung%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">虚拟内存管理（Virtuelle Speicherverwaltung）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E7%BB%84%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">硬件组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E8%A1%A8%EF%BC%88Page-Table%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">页表（Page Table）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E9%A1%B5%E8%A1%A8%EF%BC%88Mehrstufige-Seitentabellen%EF%BC%89"><span class="toc-number">3.2.1.</span> <span class="toc-text">多级页表（Mehrstufige Seitentabellen）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%94%99%E8%AF%AF%EF%BC%88Seitenfehler%EF%BC%8CPage-Fault%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">页错误（Seitenfehler，Page Fault）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95%EF%BC%88Seitenersetzungsstrategien%EF%BC%89"><span class="toc-number">3.4.</span> <span class="toc-text">页面置换算法（Seitenersetzungsstrategien）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FIFO"><span class="toc-number">3.4.1.</span> <span class="toc-text">FIFO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Second-Chance-Algorithmus"><span class="toc-number">3.4.2.</span> <span class="toc-text">Second-Chance-Algorithmus</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Clock-Algorithmus"><span class="toc-number">3.4.3.</span> <span class="toc-text">Clock-Algorithmus</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Least-Recently-Used-LRU"><span class="toc-number">3.4.4.</span> <span class="toc-text">Least Recently Used (LRU)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Not-Frequently-Used-NFU"><span class="toc-number">3.4.5.</span> <span class="toc-text">Not Frequently Used (NFU)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Aging-Verfahren"><span class="toc-number">3.4.6.</span> <span class="toc-text">Aging-Verfahren</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Working-Set-Ersetzungs-Verfahren"><span class="toc-number">3.4.7.</span> <span class="toc-text">Working-Set Ersetzungs-Verfahren</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Working-Set-with-Clock"><span class="toc-number">3.4.8.</span> <span class="toc-text">Working Set with Clock</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#malloc"><span class="toc-number">4.</span> <span class="toc-text">malloc()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E4%B8%AD%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">Linux中的内存管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">例题</span></a></li></ol>
   </div>
 </section>
 
@@ -3627,7 +3796,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/02/TUM笔记/GBS/GBS-6-Speicherverwaltung-内存管理/","name":"GBS 6 Speicherverwaltung 内存管理"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 6 Speicherverwaltung 内存管理","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/02/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-6-Speicherverwaltung-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/02/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-6-Speicherverwaltung-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/","wordCount":10,"datePublished":"2025-04-02T20:20:04.000Z","dateModified":"2025-04-04T14:59:04.051Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,操作系统,内存管理,Paging,Page table,Ersetztungsstrategie","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/02/TUM笔记/GBS/GBS-6-Speicherverwaltung-内存管理/","name":"GBS 6 Speicherverwaltung 内存管理"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 6 Speicherverwaltung 内存管理","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/02/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-6-Speicherverwaltung-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/02/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-6-Speicherverwaltung-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/","wordCount":10,"datePublished":"2025-04-02T20:20:04.000Z","dateModified":"2025-04-04T22:41:43.187Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,操作系统,内存管理,Paging,Page table,Ersetztungsstrategie","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
