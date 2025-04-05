@@ -37,7 +37,7 @@
   <!-- feed -->
   <!-- 页面元数据 -->
   <title>GBS 5 Inter-Prozesskommunikation (IPC) 进程间通信 - Hexo</title>
-  <meta name="keywords" content="Betriebssysteme,Operating System,synchron,asynchron,null">
+  <meta name="keywords" content="Betriebssysteme,Operating System,synchron,asynchron,signal,null">
   <meta desc name="description" content="操作系统基础相关笔记 - null - Hexo">
   
 <meta property="og:type" content="article">
@@ -48,11 +48,12 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-03T21:19:45.000Z">
-<meta property="article:modified_time" content="2025-04-03T21:23:52.242Z">
+<meta property="article:modified_time" content="2025-04-05T14:27:17.393Z">
 <meta property="article:tag" content="Betriebssysteme">
 <meta property="article:tag" content="Operating System">
 <meta property="article:tag" content="synchron">
 <meta property="article:tag" content="asynchron">
+<meta property="article:tag" content="signal">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2280,7 +2281,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743806511378),
+    lastupdate: new Date(1743863248571),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2685,18 +2686,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Betriebssysteme/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Betriebssysteme</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Operating-System/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Operating System</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/synchron/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>synchron</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/asynchron/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>asynchron</p></a></div>
-  <span hidden itemprop="keywords">Betriebssysteme Operating System synchron asynchron</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Betriebssysteme/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Betriebssysteme</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Operating-System/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Operating System</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/synchron/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>synchron</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/asynchron/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>asynchron</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/signal/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>signal</p></a></div>
+  <span hidden itemprop="keywords">Betriebssysteme Operating System synchron asynchron signal</span>
   
 
 
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-03T23:23:52+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-05T16:27:17+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 3, 2025</p>
+    <p>更新于：Apr 5, 2025</p>
   </a>
 </div>
 
@@ -2712,7 +2713,205 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    
+    <h2 id="无连接通信（Verbindungslose-Kommunikation）"><a href="#无连接通信（Verbindungslose-Kommunikation）" class="headerlink" title="无连接通信（Verbindungslose Kommunikation）"></a><strong>无连接通信（Verbindungslose Kommunikation）</strong></h2><p>无连接通信（Verbindungslose Kommunikation）的通道（Kanäle）可以按照带宽（Bandbreite）分成2种：</p>
+<ol>
+<li>窄带通道（Schmalbandige Kanäle）</li>
+<li>宽带通道（Breitbandige Kanäle）</li>
+</ol>
+<h3 id="窄带通道（Schmalbandige-Kanale）"><a href="#窄带通道（Schmalbandige-Kanale）" class="headerlink" title="窄带通道（Schmalbandige Kanäle）"></a><strong>窄带通道（Schmalbandige Kanäle）</strong></h3><p><strong><code>窄带通道（Schmalbandige Kanäle）</code></strong>只传输少量信息（wenige Bits），主要用于事件的通知（Melden von Ereignissen）。它需要同步机制和中断机制（Synchronisationskonzepte und Unterbrechungskonzepte ）来确保通信的可靠性。</p>
+<p>Linux里的例子：<strong>Signals</strong></p>
+<ul>
+<li><p>进程可以互相发送信号（使用 kill() ）</p>
+</li>
+<li><p>进程可以显式捕获这些信号（使用 signal() ）：</p>
+<ul>
+<li><p>可以通过注册一个信号处理函数（signal handler）来处理信号</p>
+</li>
+<li><p>也忽略该信号（使用 SIG_IGN）</p>
+</li>
+</ul>
+</li>
+<li>如果一个进程没有捕获（abfangen）信号，那么操作系统会终止（beendet）该进程。</li>
+<li><strong>SIGKILL 和 SIGSTOP 是不能被捕获的</strong>，这些信号会强制终止或暂停进程，进程无法阻止或忽略它们</li>
+</ul>
+<p>kill()函数的用法：</p>
+<p>kill(pid, signal)，其中pid是进程ID，signal是具体要发送的信号，可选的有：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>作用说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIGHUP</td>
+<td>终端挂起或控制进程终止，常用于重新加载配置</td>
+</tr>
+<tr>
+<td>SIGINT</td>
+<td>中断（通常来自 Ctrl+C）</td>
+</tr>
+<tr>
+<td>SIGILL</td>
+<td>非法指令，通常是程序错误导致</td>
+</tr>
+<tr>
+<td>SIGABRT</td>
+<td>异常终止（由 abort() 触发）</td>
+</tr>
+<tr>
+<td>SIGKILL</td>
+<td><strong>强制终止</strong>，无法被捕获或忽略</td>
+</tr>
+<tr>
+<td>SIGUSR1</td>
+<td>用户自定义信号 1</td>
+</tr>
+<tr>
+<td>SIGSEGV</td>
+<td>段错误（Segmentation Fault）</td>
+</tr>
+<tr>
+<td>SIGUSR2</td>
+<td>用户自定义信号 2</td>
+</tr>
+<tr>
+<td>SIGPIPE</td>
+<td>管道破裂（写入没有读取端的 pipe）</td>
+</tr>
+<tr>
+<td>SIGALRM</td>
+<td>定时器信号（alarm() 到期触发）</td>
+</tr>
+<tr>
+<td>SIGTERM</td>
+<td><strong>正常终止请求</strong>，默认的 kill 信号</td>
+</tr>
+<tr>
+<td>SIGCHLD</td>
+<td>子进程结束时通知父进程</td>
+</tr>
+<tr>
+<td>SIGCONT</td>
+<td>恢复被停止的进程</td>
+</tr>
+<tr>
+<td>SIGSTOP</td>
+<td><strong>强制停止</strong>，无法被捕获或忽略</td>
+</tr>
+<tr>
+<td>SIGTSTP</td>
+<td>终端停止信号（Ctrl+Z）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>代码示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 信号处理函数：当接收到信号时执行</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">sighandler</span><span class="params">(<span class="type">int</span> sig)</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Caught signal %d\n&quot;</span>, sig);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重新注册信号处理器（旧版 signal API 需要这样做）</span></span><br><span class="line">    signal(SIGINT, sighandler);     <span class="comment">// Ctrl+C</span></span><br><span class="line">    signal(SIGALRM, sighandler);    <span class="comment">// alarm() 触发的定时器信号</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[], <span class="type">char</span> *envp[])</span> &#123;</span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">1024</span>];  <span class="comment">// 用于存储用户输入</span></span><br><span class="line">    <span class="type">int</span> len;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注册信号处理函数</span></span><br><span class="line">    signal(SIGINT, sighandler);     <span class="comment">// 捕获 Ctrl+C</span></span><br><span class="line">    signal(SIGALRM, sighandler);    <span class="comment">// 捕获定时器 alarm 信号</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置一个定时器，5 秒后发送 SIGALRM 信号</span></span><br><span class="line">    alarm(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 第一阶段：每秒打印一次计数，持续 10 秒</span></span><br><span class="line">    <span class="keyword">for</span> (len = <span class="number">0</span>; len &lt; <span class="number">10</span>; len++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Counting %d...\n&quot;</span>, len);</span><br><span class="line">        sleep(<span class="number">1</span>);  <span class="comment">// 每秒暂停</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 第二次定时器设置，在 10 秒后发送另一个 SIGALRM</span></span><br><span class="line">    alarm(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 第二阶段：进入一个循环，从标准输入读取用户输入</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">// 从标准输入读取内容（阻塞式）</span></span><br><span class="line">        len = read(<span class="number">0</span>, buffer, <span class="keyword">sizeof</span>(buffer) - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (len == <span class="number">-1</span>) &#123;</span><br><span class="line">            <span class="comment">// 读取失败，打印错误并继续</span></span><br><span class="line">            perror(<span class="string">&quot;read() failed&quot;</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (len == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 读到 EOF（比如输入 Ctrl+D），退出程序</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Exiting\n&quot;</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        buffer[len] = <span class="string">&#x27;\0&#x27;</span>;  <span class="comment">// 添加字符串结尾符</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果用户输入的是 &quot;exit&quot;，退出程序</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">strncmp</span>(buffer, <span class="string">&quot;exit&quot;</span>, <span class="number">4</span>)) &#123;</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 把用户输入的内容原样输出回终端</span></span><br><span class="line">        write(<span class="number">1</span>, buffer, <span class="built_in">strlen</span>(buffer));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Counting 0...</span><br><span class="line">Counting 1...</span><br><span class="line">...</span><br><span class="line">Counting 4...</span><br><span class="line">Caught signal 14       &lt;-- alarm(5) 到时触发 SIGALRM</span><br><span class="line">Counting 5...</span><br><span class="line">...</span><br><span class="line">Counting 9...</span><br><span class="line">hello, world           &lt;-- 用户输入</span><br><span class="line">hello, world           &lt;-- 程序回显</span><br><span class="line">Caught signal 14       &lt;-- alarm(10) 又触发了 SIGALRM</span><br><span class="line">^C Caught signal 2     &lt;-- 用户按了 Ctrl+C，触发 SIGINT (signal 2)</span><br><span class="line">exit                   &lt;-- 用户输入 exit，触发退出</span><br></pre></td></tr></table></figure>
+<h3 id="宽带通道（Breitbandige-Kanale）"><a href="#宽带通道（Breitbandige-Kanale）" class="headerlink" title="宽带通道（Breitbandige Kanäle）"></a><strong>宽带通道（Breitbandige Kanäle）</strong></h3><p> <strong><code>宽带通道（Breitbandige Kanäle）</code></strong>用于传输大量数据，可以根据通信的方式进一步划分为：</p>
+<ol>
+<li>隐式通信（Implizite Kommunikation）</li>
+<li>显式通信（Explizite Kommunikation）</li>
+</ol>
+<h4 id="隐式通信（Implizite-Kommunikation）"><a href="#隐式通信（Implizite-Kommunikation）" class="headerlink" title="隐式通信（Implizite Kommunikation）"></a><strong>隐式通信（Implizite Kommunikation）</strong></h4><p><strong><code>隐式通信（Implizite Kommunikation）</code></strong>是<strong>通过共享资源实现</strong>的，比如说内存、寄存器、文件、环形缓冲区等。</p>
+<p>优点：简单快速，因为不需要不需要在不同地址空间（Adressräumen）之间复制数据。</p>
+<p>缺点：不一定一直都有共享区域可以用；可能会出现 busy-waiting，所以需要额外的同步机制。</p>
+<p>（第三章的内容就是在讲这个）</p>
+<h4 id="显式通信（Explizite-Kommunikation）"><a href="#显式通信（Explizite-Kommunikation）" class="headerlink" title="显式通信（Explizite Kommunikation）"></a><strong>显式通信（Explizite Kommunikation）</strong></h4><p><strong><code>显式通信（Explizite Kommunikation）</code></strong>则是我们比较熟悉的：<strong>发送/接收信息</strong>。适用于地址空间（Adressräumen）分离的进程（比如两个互不相干的进程），不过是与操作系统的直接交互。</p>
+<p>这种通信可以是本地的也可以是远程的。</p>
+<p>一般信息由2部分组成：</p>
+<ul>
+<li>消息头（Nachrichtenkopf，header）：包含管理信息，比如说发送者、接收者的标识、消息大小等。</li>
+<li>消息体（Nachrichtenkörper）：有效载荷（payload），也就是真正的信息内容。</li>
+</ul>
+<p>流程：</p>
+<ol>
+<li>进程使用 send() 发送消息</li>
+<li>操作系统的消息服务负责传递该消息</li>
+<li>接收方进程使用 recv() 接收该消息</li>
+</ol>
+<p>而显式通信（Explizite Kommunikation） 又可以进一步划分为：</p>
+<ol>
+<li>同步通信（Synchrone Kommunikation）</li>
+<li>异步通信（Asynchrone Kommunikation）</li>
+</ol>
+<p>这其中又有2种消息通信的模式（Muster）：</p>
+<ol>
+<li><p>消息通知（Meldung）</p>
+<p>是单向的（unidirectional），通常只是传递少量数据，比如说通知状态变化。</p>
+</li>
+<li><p>任务（Auftrag）</p>
+<p>是双向的（bidirectional），比如说查询某些数据，请求发送后收到包含数据的响应。</p>
+</li>
+</ol>
+<p>Asynchron的优点：</p>
+<ul>
+<li>在实时系统中非常有用，当发送进程不能被阻塞时；</li>
+<li>允许发送方和接收方并行处理任务；</li>
+<li>适合用于事件的通知/信号传递。</li>
+</ul>
+<p>Asynchron的缺点：</p>
+<ul>
+<li>操作系统有管理负担（需要消息缓冲区来存储异步数据）</li>
+<li>错误处理更复杂：<ul>
+<li>无法直接通知发送方是否成功；</li>
+<li>数据包可能丢失（当缓冲区满了，尤其是网络通信中）；</li>
+<li>有时需要重传数据包。</li>
+</ul>
+</li>
+</ul>
+<p>在实际应用中，异步通信更常用，特别适用于不确定接收方是否在线、或者无法预测响应时间的情况。</p>
+<p>可以使用线程来结合同步与异步通信（比如：主线程同步处理、子线程异步等待）。</p>
+<h5 id="Asynchrone-Meldung"><a href="#Asynchrone-Meldung" class="headerlink" title="Asynchrone Meldung"></a><strong>Asynchrone Meldung</strong></h5><p><strong>只发不等</strong></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155011380.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155011380.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250405155011380"></p>
+<p><strong>Synchrone Meldung</strong></p>
+<p><strong>等待对方确认收到</strong></p>
+<p>流程：</p>
+<ul>
+<li>接收方在收到消息后会发送一个确认（Bestätigung）</li>
+<li>发送方在发送完消息后会等待接收确认（Empfangsbestätigung）</li>
+</ul>
+<p>确认消息不包含实际数据，仅用于同步。</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155154111.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155154111.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250405155154111"></p>
+<p>另一种方法：<strong>Rendezvous-Verfahren</strong>：</p>
+<ul>
+<li>在交换消息之前，发送方与接收方都要事先准备好进行发送和接收</li>
+<li>这样一来消息不需要缓冲</li>
+</ul>
+<p><strong>Asynchrone Auftrag</strong></p>
+<p><strong>各发各的</strong></p>
+<p>任务（Auftrag）和结果（Resultat）是作为两个独立的消息发送的。</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155207289.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155207289.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250405155207289"></p>
+<p><strong>Synchrone Auftrag</strong></p>
+<p><strong>等待对方回复</strong></p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155909542.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155909542.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250405155909542"></p>
+<h2 id="Streams"><a href="#Streams" class="headerlink" title="Streams"></a><strong>Streams</strong></h2><p>流（Stream）是对连接（Verbindung）的一种抽象。</p>
+<p>消息在传输过程中被缓冲，所有消息被整合为逻辑上的字节流（byte stream）。</p>
+<p>操作系统可以建立/关闭连接，或者是在流中进行读/写操作。</p>
+<p>C++头文件中的</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>指的就是这个。</p>
+<p>而管道（Pipes）正是流（Stream）的实现。</p>
+<p>管道是一个单向的流（unidirektionaler Strom）。双向通信可以用两个管道来模拟。管道实现先进先出（FIFO） 的数据传输模型。</p>
+<p>管道（Pipes）一般分为2种：</p>
+<ol>
+<li><p><strong><code>（匿名）管道</code></strong></p>
+<p>pipe() 函数会创建一个管道，它返回两个文件描述符，分别用于读和写。</p>
+<p>可以在 fork() 创建子进程时，把其中一端交给子进程，实现进程间通信，或者在不同的线程之间使用。</p>
+</li>
+<li><p><strong><code>命名管道（Named Pipes）</code></strong></p>
+<p>用于多个进程之间的通信，它们有自己的名字，在文件系统中可见。</p>
+</li>
+</ol>
+<p>代码示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> p[<span class="number">2</span>];              <span class="comment">// p[0]: 读端, p[1]: 写端</span></span><br><span class="line">    pipe(p);               <span class="comment">// 创建一个匿名管道</span></span><br><span class="line"></span><br><span class="line">    sendData(p[<span class="number">1</span>]);        <span class="comment">// 写数据到管道</span></span><br><span class="line">    receiveData(p[<span class="number">0</span>]);     <span class="comment">// 从管道中读取数据</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">sendData</span><span class="params">(<span class="type">int</span> fd)</span> &#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> *msg = <span class="string">&quot;Hello, world&quot;</span>;     <span class="comment">// 要发送的消息</span></span><br><span class="line">    <span class="type">uint16_t</span> len = <span class="built_in">strlen</span>(msg);           <span class="comment">// 消息长度（不含 \0）</span></span><br><span class="line">    <span class="type">uint16_t</span> nLen = htons(len);           <span class="comment">// 转换为网络字节序（大端）</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 先发送长度，确保接收端知道后面要读取多少字节</span></span><br><span class="line">    send(fd, &amp;nLen, <span class="keyword">sizeof</span>(nLen), <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 再发送消息本体</span></span><br><span class="line">    send(fd, msg, len, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">receiveData</span><span class="params">(<span class="type">int</span> fd)</span> &#123;</span><br><span class="line">    <span class="type">char</span> msg[<span class="number">1024</span>];        <span class="comment">// 接收缓冲区</span></span><br><span class="line">    <span class="type">uint16_t</span> nLen;         <span class="comment">// 网络字节序长度</span></span><br><span class="line">    <span class="type">uint16_t</span> len;          <span class="comment">// 主机字节序长度</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 先接收长度信息（2字节）</span></span><br><span class="line">    recv(fd, &amp;nLen, <span class="keyword">sizeof</span>(nLen), <span class="number">0</span>);</span><br><span class="line">    len = ntohs(nLen);     <span class="comment">// 转换为主机字节序</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 接收实际消息内容（len 字节）</span></span><br><span class="line">    recv(fd, msg, len, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    msg[len] = <span class="string">&#x27;\0&#x27;</span>;       <span class="comment">// 手动加上字符串结束符</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;接收到 %u 字节：%s\n&quot;</span>, len, msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
   </div>
   
   
@@ -2862,6 +3061,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
 
+
+<section class="widget toc-wrapper desktop mobile" id="toc-div" >
+  
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E9%80%9A%E4%BF%A1%EF%BC%88Verbindungslose-Kommunikation%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">无连接通信（Verbindungslose Kommunikation）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%84%E5%B8%A6%E9%80%9A%E9%81%93%EF%BC%88Schmalbandige-Kanale%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">窄带通道（Schmalbandige Kanäle）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%BD%E5%B8%A6%E9%80%9A%E9%81%93%EF%BC%88Breitbandige-Kanale%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">宽带通道（Breitbandige Kanäle）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E9%80%9A%E4%BF%A1%EF%BC%88Implizite-Kommunikation%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">隐式通信（Implizite Kommunikation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%BE%E5%BC%8F%E9%80%9A%E4%BF%A1%EF%BC%88Explizite-Kommunikation%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">显式通信（Explizite Kommunikation）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Asynchrone-Meldung"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">Asynchrone Meldung</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Streams"><span class="toc-number">2.</span> <span class="toc-text">Streams</span></a></li></ol>
+  </div>
+</section>
 
   
 
@@ -3420,7 +3633,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/03/TUM笔记/GBS/GBS-5-Inter-Prozesskommunikation-IPC-进程间通信/","name":"GBS 5 Inter-Prozesskommunikation (IPC) 进程间通信"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 5 Inter-Prozesskommunikation (IPC) 进程间通信","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-5-Inter-Prozesskommunikation-IPC-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-5-Inter-Prozesskommunikation-IPC-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/","wordCount":10,"datePublished":"2025-04-03T21:19:45.000Z","dateModified":"2025-04-03T21:23:52.242Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,synchron,asynchron","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/03/TUM笔记/GBS/GBS-5-Inter-Prozesskommunikation-IPC-进程间通信/","name":"GBS 5 Inter-Prozesskommunikation (IPC) 进程间通信"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 5 Inter-Prozesskommunikation (IPC) 进程间通信","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-5-Inter-Prozesskommunikation-IPC-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-5-Inter-Prozesskommunikation-IPC-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/","wordCount":10,"datePublished":"2025-04-03T21:19:45.000Z","dateModified":"2025-04-05T14:27:17.393Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,synchron,asynchron,signal","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
