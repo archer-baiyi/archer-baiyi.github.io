@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-03T21:20:18.000Z">
-<meta property="article:modified_time" content="2025-04-05T22:25:24.522Z">
+<meta property="article:modified_time" content="2025-04-06T14:16:36.317Z">
 <meta property="article:tag" content="Betriebssysteme">
 <meta property="article:tag" content="Operating System">
 <meta property="article:tag" content="Petri-Netz">
@@ -2280,7 +2280,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1743891960008),
+    lastupdate: new Date(1743949021531),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2693,7 +2693,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-06T00:25:24+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-06T16:16:36+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Apr 6, 2025</p>
@@ -2756,11 +2756,117 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 <p>每个Knote $x \in (S \cup T)$的</p>
 <ul>
-<li><strong>Vorbedingung </strong>指的是：$\cdot x := \{ \ y \ | \ y \ F \ x\ \}$，即能到x的点</li>
-<li><strong>Nachbedingung</strong> 指的是：$ x \cdot := \{ \ y \ | \ x \ F \ y\ \}$，即x能到的点。</li>
+<li><strong>Vorbedingung </strong>指的是：$\bullet x := \{ \ y \ | \ y \ F \ x\ \}$，即能到x的点</li>
+<li><strong>Nachbedingung</strong> 指的是：$ x \bullet := \{ \ y \ | \ x \ F \ y\ \}$，即x能到的点。</li>
 </ul>
 <p><strong>例子</strong>：</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406001837852.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406001837852.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250406001837852"></p>
+<p>和其他的建图一样，我们这里也可以定义带有标记（即容量，权重等）的图：</p>
+<ul>
+<li><p><strong>Kapazität</strong> einer Stelle：$c : S \to \mathbb{N}_0 \cup \{\infty\}$ </p>
+<p>如果没有专门标记出来，则默认 $\infty$。</p>
+</li>
+<li><p><strong>Gewichtung</strong> einer Kante：$w : F \to \mathbb{N}_0$  </p>
+<p>如果没有专门标记出来，则默认 $1$。</p>
+</li>
+</ul>
+<p>一个位置-变迁网（<strong>Stellen-Transitionsnetz</strong>）里除了上面提到的2个函数还需要一个函数</p>
+<p>$M : S \to \mathbb{N}_0 \cup \{\infty\}$ </p>
+<p>用于描述图当前的状态（Aktuelle Belegung des Netzes），即每个Stelle里的Token数量。</p>
+<p>需要满足 $\forall s \in S: M(s) \leq c(s)$。</p>
+<p>一个位置-变迁网（Stellen-Transitionsnetz）叫做Bedingungs/Ereignisnetz 或 <strong>Boolesches Netz</strong>（布尔网络），当$M : S \to \mathbb{B}$ ，也就是说每个Stelle里最多可以有1个Token。</p>
+<h3 id="触发规则（Schaltregel）"><a href="#触发规则（Schaltregel）" class="headerlink" title="触发规则（Schaltregel）"></a><strong>触发规则（Schaltregel）</strong></h3><p>一开始我们就提到，我们的关注点主要是系统的状态以及状态的变化。在前面介绍的内容中，函数 $M$ 被用来描述系统的当前状态，而我们希望通过 $T$（即Transitionen的集合）来描述状态的变化过程。不过，任何状态的变化都必须满足一定的前提条件。那么接下来我们就来看看，在 Petri 网中，这些条件是如何被定义的。</p>
+<p>给定一个位置-变迁网（Stellen-Transitionsnetz），即一个Petri-Netz (S, T, F)，函数 $c, w, M$。</p>
+<p>一个Transition $t \in T$ 可以<strong>触发（kann schalten）</strong>当：</p>
+<ul>
+<li>$\forall s \in \bullet t:  M(s) \geq w(s, t) $</li>
+<li>$\forall s \in t\bullet: M(s) \leq c(s) - w(t, s)$</li>
+</ul>
+<p>即当：</p>
+<ul>
+<li>到 t 的Stelle里有足够的Token（至少 $w(s, t)$ 个）</li>
+<li>t 能到的所有Stelle里有足够的空位给 $w(t, s)$ 个Token</li>
+</ul>
+<p>时才能触发 t 。</p>
+<p>这个t<strong>触发后</strong>整个图的状态会变成$M’$：</p>
+<ul>
+<li>$\forall s \in \bullet t \setminus t\bullet:  M’(s) = M(s) - w(s, t)$</li>
+<li>$\forall s’ \in t\bullet \setminus \bullet t:  M’(s’) = M(s’) + w(t, s’)$</li>
+<li>$\forall s’’ \in \bullet t \cap t\bullet: M’(s’’) = M(s’’) - w(s’’, t) + w(t, s’’)$</li>
+</ul>
+<p><strong>例子</strong>：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406101141996.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406101141996.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250406101141996"></p>
+<p>因为没有专门标记出来，所以默认Kapazität是 $\infty$，Gewicht是1。</p>
+<p><strong>不能Schalten的例子</strong>：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406102201952.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406102201952.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250406102201952"></p>
+<p>因为后面那里已经没有空余的位置了。</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406102537688.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406102537688.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250406102537688"></p>
+<p>这个同样不行，因为这里Schalten需要考虑3个地方：</p>
+<ol>
+<li>左边那里是否有足够的（1个）Token来触发t</li>
+<li>左边那里是否有足够的空闲位置</li>
+<li>右边那里是否有足够的空闲位置</li>
+</ol>
+<p>很明显第二点并不满足。</p>
+<p>注意，这里不能想着说反正左边的token会在触发 t 的时候被消耗掉所以就有足够的空闲位置！！！</p>
+<p>一定要所有的前提条件都满足了才能触发 t 。</p>
+<p>接下来我们来看一下怎么样可以通过建模出来的图判断当前系统的一些属性：</p>
+<h3 id="并发性-并行性（Nebenlaufigkeit，Concurrency）"><a href="#并发性-并行性（Nebenlaufigkeit，Concurrency）" class="headerlink" title="并发性 / 并行性（Nebenläufigkeit，Concurrency）"></a><strong>并发性 / 并行性（Nebenläufigkeit，Concurrency）</strong></h3><p>两个Transitionnen $t_0$ 和  $t_1$ 是<strong><code>并发的（nebenläufig）</code></strong>，当它们可以<strong>互不干扰地独立触发</strong>（unabhängig von einander schalten können, ohne sich gegenseitig zu beeinflussen.）。</p>
+<p><strong>例子</strong>：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406104509712.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406104509712.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250406104509712"></p>
+<p>可以看到，这里的 $t_1$ 和  $t_2$ 是并发的（nebenläufig），但 $t_1, t_2$ 和  $t_3$ 明显不是，因为 $t_3$ 只有在 $t_1, t_2$ 被触发后才能被触发。</p>
+<h3 id="不确定性（Nichtdeterminismus）"><a href="#不确定性（Nichtdeterminismus）" class="headerlink" title="不确定性（Nichtdeterminismus）"></a><strong>不确定性（Nichtdeterminismus）</strong></h3><p>不确定性表示在给定的标记状态 $M$ 下，可能会出现关于Transitionen可触发性的冲突。</p>
+<p>而  $t_0$ 和  $t_1$ <strong>处于冲突中（stehen im Konflikt）</strong>，当它们<strong>共享输入或输出的位置</strong>，并且<strong>这些位置的 token 数量只能满足其中一个Transition的触发条件。</strong></p>
+<p>如果token的数量足够触发所有的Transitionen那就不算有冲突，整个图也是确定的（deterministisch）。</p>
+<p>这样会导致进行一次不确定的选择（nichtdeterministische Auswahl）。</p>
+<p>例子：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406105115995.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406105115995.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250406105115995"></p>
+<p>这里的  $t_1$ 和  $t_3$ 冲突了，因为s1里只有1个token，所以要么触发 $t_1$ ，要么触发 $t_3$。</p>
+<h3 id="可到达性（Erreichbarkeit）"><a href="#可到达性（Erreichbarkeit）" class="headerlink" title="可到达性（Erreichbarkeit）"></a><strong>可到达性（Erreichbarkeit）</strong></h3><p>给定一个一个Petri-Netz (S, T, F) ，c，w，以及一个初始状态 $M_0$ 。</p>
+<p>那么一个有限序列（endliche Sequenz）$\rho = t_0, t_1,…, t_n \ (\text{with } t_i \in T)$   被叫做由 $M_0$ 激活的有限切换序列（von M aktivierteendliche Schaltfolge），当存在 $M_1, M_2,… M_n$ 使得：</p>
+<script type="math/tex; mode=display">
+M_0 \xrightarrow{t_0} M_1 \xrightarrow{t_1} \dots \xrightarrow{t_n} M_n, \text{ 即 } M_0 \xrightarrow{\rho} M_n</script><p>如果存在一个有限序列使得 $M$ 能变成 $M’$ ，那么我们就说 $M’$  ist von $M$ <strong><code>erreichbar</code></strong>。</p>
+<p>针对这个Erreichbarkeit我们可以再建立个图，叫做 <strong>Erreichbarkeitsgraph</strong>。里面的点表示 Belegung，有向边表示 Transition。</p>
+<p><strong>例子</strong>：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406125951995.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406125951995.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250406125951995"></p>
+<p>它对应的Erreichbarkeitsgraph：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406130047978.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406130047978.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250406130047978"></p>
+<p>记得左上角的这个有向边一定要画！</p>
+<p>注意：每个Petri-Netz会有着唯一的一个Erreichbarkeitsgraph，但一个Erreichbarkeitsgraph可能会对应很多个Petri-Netz，因为可能存在一些永远无法触发的Transitionen（这些无法触发的Transitionen完全不会改变Erreichbarkeitsgraph）。</p>
+<h3 id="Lebendigkeit（liveness）"><a href="#Lebendigkeit（liveness）" class="headerlink" title="Lebendigkeit（liveness）"></a><strong>Lebendigkeit（liveness）</strong></h3><p>给定一个一个Petri-Netz (S, T, F) ，c，w，以及一个初始状态 $M_0$ 。</p>
+<p>它是<strong><code>活跃的（lebendig）</code></strong>，当对于所有 $t \in T$ 都满足以下条件：</p>
+<p>对于所有从 $M_0$ 可到达的状态 $M_1$，存在一个后续状态 $M_2$， 使得 $t$ 在 $M_2$ 中可以触发，且 $M_2$ 是从 $M_1$ 可达的，即</p>
+<script type="math/tex; mode=display">
+\forall M_1 \text{ with } M_0 \xrightarrow{\rho_1} M_1: \quad \exists \rho_2, M_2 \text{ s.t. } M_1 \xrightarrow{\rho_2} M_2 \xrightarrow{t}</script><h3 id="死锁（Verklemmung-Deadlock）"><a href="#死锁（Verklemmung-Deadlock）" class="headerlink" title="死锁（Verklemmung, Deadlock）"></a><strong>死锁（Verklemmung, Deadlock）</strong></h3><p>给定一个一个Petri-Netz (S, T, F) ，c，w，以及一个初始状态 $M_0$ 。</p>
+<p>从 $M_0$ 出发可达的某个标记 $M$，称为<strong><code>完全死锁状态（vollständige Verklemmung）</code></strong>，如果在该状态下<strong>没有任何Transition $t \in T$ 可以触发。</strong> </p>
+<p><strong>如果一个Netz是lebendig的，那么它一定是verklemmungsfrei。</strong>（lebendig $\Rightarrow$ verklemmungsfrei）</p>
+<p>但一个Netz是verklemmungsfrei不一定能够说明它也是lebendig的。（verklemmungsfrei $\nRightarrow$  lebendig ）</p>
+<h3 id="Verhungern（Starvation），Fariness"><a href="#Verhungern（Starvation），Fariness" class="headerlink" title="Verhungern（Starvation），Fariness"></a><strong>Verhungern（Starvation），Fariness</strong></h3><p>给定一个一个Petri-Netz (S, T, F) ，c，w，以及一个初始状态 $M_0$ 。</p>
+<p>Eine Transaktion t ∈ T <strong><code>verhungert</code></strong>, 当存在一个无线序列使得t<strong>尽管处于可触发的状态但是只被触发了有限次。</strong>（wenn es eine unendliche Sequenz gibt, in der t trotz Transitionsbereitschaft nur endlich oft auftritt.）</p>
+<p>注意这里的前提条件“处于可触发的状态”非常重要，这个如果不满足那么就不能叫verhungert。</p>
+<p>一个Netz是<strong><code>公平的（fair）</code></strong>的，当不存在某个无限序列（例如 $t_0 \to t_4 \to t_1 \to \dots$），使得变迁 $t$ 虽然<strong>始终处于可触发状态</strong>，却<strong>永远没有或只有有限次被实际触发</strong>。</p>
+<p>所以如果一个Netz是公平的，那么就没有Transition会挨饿（verhungert）。</p>
+<p><strong>例子</strong>：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406151548850.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406151548850.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250406151548850"></p>
+<p>这个Netz是不公平的（unfair），因为存在</p>
+<ul>
+<li>$t_0 \to t_0 \to t_0 \to \dots$ ，即 $t_1$ 会挨饿；</li>
+<li>$t_1 \to t_1 \to t_1 \to \dots$ ，即 $t_0$ 会挨饿；</li>
+</ul>
+<p><strong>例子</strong>：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406161427375.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406161427375.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250406161427375"></p>
+<p>这个图是：</p>
+<ul>
+<li><p>nicht lebendig</p>
+<p>因为t0只能被触发一次。</p>
+</li>
+<li><p>deadlockfrei</p>
+<p>进到右边那个圈里之后永远都可以有后续操作。</p>
+</li>
+<li><p>fair</p>
+<p>因为t0触发一次之后不可能再进入准备就绪的状态，所以不算挨饿。</p>
+</li>
+</ul>
 
   </div>
   
@@ -2917,7 +3023,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Parallele-Systeme"><span class="toc-number">1.</span> <span class="toc-text">Parallele Systeme</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Petri-Netze"><span class="toc-number">2.</span> <span class="toc-text">Petri-Netze</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Parallele-Systeme"><span class="toc-number">1.</span> <span class="toc-text">Parallele Systeme</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Petri-Netze"><span class="toc-number">2.</span> <span class="toc-text">Petri-Netze</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E8%A7%84%E5%88%99%EF%BC%88Schaltregel%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">触发规则（Schaltregel）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E6%80%A7-%E5%B9%B6%E8%A1%8C%E6%80%A7%EF%BC%88Nebenlaufigkeit%EF%BC%8CConcurrency%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">并发性 &#x2F; 并行性（Nebenläufigkeit，Concurrency）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%EF%BC%88Nichtdeterminismus%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">不确定性（Nichtdeterminismus）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%88%B0%E8%BE%BE%E6%80%A7%EF%BC%88Erreichbarkeit%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">可到达性（Erreichbarkeit）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lebendigkeit%EF%BC%88liveness%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">Lebendigkeit（liveness）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%EF%BC%88Verklemmung-Deadlock%EF%BC%89"><span class="toc-number">2.6.</span> <span class="toc-text">死锁（Verklemmung, Deadlock）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Verhungern%EF%BC%88Starvation%EF%BC%89%EF%BC%8CFariness"><span class="toc-number">2.7.</span> <span class="toc-text">Verhungern（Starvation），Fariness</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3532,7 +3638,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/03/TUM笔记/GBS/GBS-4-Modellierung-Paralleler-Systeme-并行系统建模/","name":"GBS 4 Modellierung Paralleler Systeme 并行系统建模"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 4 Modellierung Paralleler Systeme 并行系统建模","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-4-Modellierung-Paralleler-Systeme-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-4-Modellierung-Paralleler-Systeme-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1/","wordCount":10,"datePublished":"2025-04-03T21:20:18.000Z","dateModified":"2025-04-05T22:25:24.522Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,Petri-Netz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/03/TUM笔记/GBS/GBS-4-Modellierung-Paralleler-Systeme-并行系统建模/","name":"GBS 4 Modellierung Paralleler Systeme 并行系统建模"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 4 Modellierung Paralleler Systeme 并行系统建模","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-4-Modellierung-Paralleler-Systeme-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-4-Modellierung-Paralleler-Systeme-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1/","wordCount":10,"datePublished":"2025-04-03T21:20:18.000Z","dateModified":"2025-04-06T14:16:36.317Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,Petri-Netz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
