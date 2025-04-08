@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-03T21:20:44.000Z">
-<meta property="article:modified_time" content="2025-04-03T21:22:56.389Z">
+<meta property="article:modified_time" content="2025-04-08T08:33:23.886Z">
 <meta property="article:tag" content="Betriebssysteme">
 <meta property="article:tag" content="Operating System">
 <meta property="article:tag" content="Mutex">
@@ -2249,7 +2249,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1744063201245),
+    lastupdate: new Date(1744114840701),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2662,10 +2662,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-03T23:22:56+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-08T10:33:23+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 3, 2025</p>
+    <p>更新于：Apr 8, 2025</p>
   </a>
 </div>
 
@@ -2681,7 +2681,67 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    
+    <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="例题1"><a href="#例题1" class="headerlink" title="例题1"></a>例题1</h3><p>假设现在有2个线程并行运行，并且共享内存（Shared Memory）中的x和y被初始化为0：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Thread 1</span></span><br><span class="line"><span class="keyword">if</span> (y &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">    x = x+<span class="number">1</span>;	<span class="comment">//atomic</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Thread 2</span></span><br><span class="line"><span class="keyword">while</span> (x &lt;= <span class="number">0</span> &amp;&amp; y &gt; <span class="number">-3</span>)&#123;</span><br><span class="line">    y = y<span class="number">-1</span>;	<span class="comment">//atomic</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>问题1：给出所以可能的结果组合。（Was sind alle möglichen Kombinationen der Werte für x und y nach der nicht-deterministsichen Ausführung der obenstehenden Threadds?）</strong></p>
+<ol>
+<li><p>首先假设一开始先只运行Thread 2，等结束了之后在运行Thread 1，这时 $y=-3$，已经不满足Thread 1里的 if 条件了，所以结果为 $(x,y)=(0,-3)$ 。</p>
+</li>
+<li><p>假设先只运行Thread 1，等完全结束了之后再运行Thread 2，这时 $x=1$ ，已经不满足Thread 2里的 while 条件了，所以结果为 $(x,y)=(1,0)$ 。</p>
+</li>
+<li>假设Thread 1，2先读取了 $x,y=0$ ，然后各自运行了一次，这时 $(x,y)=(1,-1)$ ，都不满足判断条件了，所以2个都结束，结果为 $(x,y)=(1,-1)$。</li>
+<li>假设Thread 1，2先读取了 $x,y=0$ ，然后 Thread 2 先运行了2次 （这时 $y=-2$），然后 Thread 1 运行了1次，那么结果为 $(x,y)=(1,-2)$ 。</li>
+<li>假设Thread 1，2先读取了 $x,y=0$ ，然后 Thread 2 先运行了3次 （这时 $y=-3$），然后 Thread 1 运行了1次，那么结果为 $(x,y)=(1,-3)$ 。</li>
+</ol>
+<p>所以<strong>答案</strong>为：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>-3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>问题2：现在该怎么利用Semaphoren和Mutex（限量3个及以内）使得最终结果为 $x=1, y=-1$？</strong></p>
+<p>回顾一下上面的逻辑，想要得到这个结果需要让 Thread 1，2先读取 $x,y=0$ ，然后各自运行一次。</p>
+<p>我们这里需要利用Mutex设置2道坎：</p>
+<ol>
+<li>在读取 x+=1 前面设置一道</li>
+<li>在 Thread 2 的while循环内的结尾加一个</li>
+</ol>
+<p>这样一来可以确保双方都先读取 $x,y=0$ ，然后运行一次 Thread 2之后运行 Thread 1。最终得到 $x=1, y=-1$ 。</p>
+<p><strong>答案</strong>：</p>
+<p>Innitialisierungsblock</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">block_t1(<span class="number">0</span>)</span><br><span class="line">block_t2(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>Codeblock</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Thread 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (y &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">    up(block_t2);</span><br><span class="line">    down(block_t1);</span><br><span class="line">    </span><br><span class="line">    x = x + <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">    up(block_t2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Thread 2</span></span><br><span class="line"></span><br><span class="line">down(block_t2;)</span><br><span class="line"><span class="keyword">if</span> (y &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">  </span><br><span class="line">    x = x + <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">    up(block_t1);</span><br><span class="line">    down(block_t2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
   </div>
   
   
@@ -2829,6 +2889,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
 
+
+<section class="widget toc-wrapper desktop mobile" id="toc-div" >
+  
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%981"><span class="toc-number">1.1.</span> <span class="toc-text">例题1</span></a></li></ol></li></ol>
+  </div>
+</section>
 
   
 
@@ -3203,7 +3277,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg","background/wallhaven-6dvy9w.png"];
+  let imgs = ["background/wallhaven-6dvy9w.png","background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3436,7 +3510,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/03/TUM笔记/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-并行系统与同步/","name":"GBS 3 Parallele Systeme und Synchronisation 并行系统与同步"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 3 Parallele Systeme und Synchronisation 并行系统与同步","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%90%8C%E6%AD%A5/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%90%8C%E6%AD%A5/","wordCount":10,"datePublished":"2025-04-03T21:20:44.000Z","dateModified":"2025-04-03T21:22:56.389Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,Mutex,Semaphore","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/03/TUM笔记/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-并行系统与同步/","name":"GBS 3 Parallele Systeme und Synchronisation 并行系统与同步"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 3 Parallele Systeme und Synchronisation 并行系统与同步","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%90%8C%E6%AD%A5/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%90%8C%E6%AD%A5/","wordCount":10,"datePublished":"2025-04-03T21:20:44.000Z","dateModified":"2025-04-08T08:33:23.886Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,Mutex,Semaphore","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
