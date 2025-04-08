@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-03T21:20:44.000Z">
-<meta property="article:modified_time" content="2025-04-08T08:33:23.886Z">
+<meta property="article:modified_time" content="2025-04-08T20:59:42.786Z">
 <meta property="article:tag" content="Betriebssysteme">
 <meta property="article:tag" content="Operating System">
 <meta property="article:tag" content="Mutex">
@@ -2249,7 +2249,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1744114840701),
+    lastupdate: new Date(1744145991176),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2662,7 +2662,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-08T10:33:23+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-08T22:59:42+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Apr 8, 2025</p>
@@ -2681,7 +2681,271 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="例题1"><a href="#例题1" class="headerlink" title="例题1"></a>例题1</h3><p>假设现在有2个线程并行运行，并且共享内存（Shared Memory）中的x和y被初始化为0：</p>
+    <p>[toc]</p>
+<h2 id="Einfuhrung"><a href="#Einfuhrung" class="headerlink" title="Einführung"></a><strong>Einführung</strong></h2><p>因为（单核）系统无法做到真正的并行进程，所以所谓的parallel的活动会导致<strong><code>不确定性（Nichtdeterminismus）</code></strong>，<strong>即系统在相同的初始条件和相同的输入下表现出不同的行为</strong>。</p>
+<p><strong>例子</strong>：</p>
+<p>假设现在我们有一个变量 $x = 2$，以及2个进程：</p>
+<p>进程1：$x = x + 5$</p>
+<p>进程2：$x = x \cdot 2$</p>
+<p>那么如果先运行进程1再运行2就会得到 $x = 14$，先运行进程2再运行1就会得到 $x = 9$ 。</p>
+<p>介绍几个概念：</p>
+<ul>
+<li><p><strong>竞态条件（Race Condition）</strong>：至少两个进程在读取或写入共享资源。这个时候最终结果会依赖于进程执行的顺序。</p>
+</li>
+<li><p><strong>临界区（Kritischer Abschnitt，critical section/region）</strong>：进程会在临界区中访问共享资源，而对于只能被独占使用的资源，访问将被顺序化/串行化（sequentialisiert）。</p>
+<p>所有跟共享资源相关的操作都会在临界区里执行。</p>
+</li>
+<li><p><strong>互斥（Wechselseitiger Ausschluss，Mutual Exclusion）</strong>：确保同一时间只有一个进程/线程能访问临界资源（critical section）。</p>
+</li>
+</ul>
+<p>互斥的实现一共需要注意以下几点：</p>
+<ul>
+<li>临界区必须是互斥访问的（wechselseitig ausgeschlossen），即同一时间只有一个进程可以进入临界区（kritischer Abschnitt）</li>
+<li>互斥的实现不得依赖于进程执行临界区的顺序假设。</li>
+<li>互斥的实现不得依赖于进程执行时间的假设。</li>
+<li>不能让某个进程无限期地阻止另一个进程进入临界区，即避免Starvation。</li>
+</ul>
+<p>图解：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250408173615860.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250408173615860.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250408173615860"></p>
+<p>在以下几个层面都有对应的办法来实现互斥/同步：</p>
+<ul>
+<li><strong>硬件层面</strong><ul>
+<li>通过<strong>禁止中断</strong>（Interrupts sperren）实现互斥（如中断屏蔽）</li>
+<li>使用<strong>原子机器指令</strong>（如 TSL、cmpxchg）保障操作不可分割（atomic）</li>
+</ul>
+</li>
+<li><strong>简单的系统层面</strong><ul>
+<li><strong>主动等待</strong>（如：Spin-Lock，busy waiting）</li>
+<li><strong>被动等待</strong>（如：sleep/wakeup，节省 CPU）</li>
+</ul>
+</li>
+<li><strong>更高级的操作系统层面</strong><ul>
+<li><strong>信号量（Semaphore）</strong>：支持主动或被动等待</li>
+<li><strong>互斥锁（Mutex）</strong></li>
+</ul>
+</li>
+<li><strong>编程语言层面</strong><ul>
+<li><strong>监视器（Monitor）概念</strong>：语言层级的同步抽象</li>
+</ul>
+</li>
+</ul>
+<h2 id="硬件层面"><a href="#硬件层面" class="headerlink" title="硬件层面"></a><strong>硬件层面</strong></h2><h3 id="中断屏蔽（Unterbrechnungssperre）"><a href="#中断屏蔽（Unterbrechnungssperre）" class="headerlink" title="中断屏蔽（Unterbrechnungssperre）"></a><strong>中断屏蔽（Unterbrechnungssperre）</strong></h3><p>中断（Interrupt, Unterbrechung ）是通过专用的中断线路发出的信号，例如：</p>
+<ul>
+<li><p>I/O 设备发出信号表示任务已完成</p>
+</li>
+<li><p>定时器发出信号表示时间片已用尽</p>
+</li>
+</ul>
+<p>而中断会打断当前的活动进程，将其转为就绪/等待状态（rechenwillig/wartend），然后Interrupt Handler会来处理这个中断。</p>
+<p>所以我们可以通过屏蔽中断来实现互斥访问：<strong>让 CPU 暂时禁止处理中断</strong>（temporarily prevent the CPU from responding to interrupts），防止当前进程在执行期间被强制让出 CPU，这样一来进程就可以不被打扰地完成其临界区操作。</p>
+<p>只不过这个方法（中断屏蔽）<strong>只适用于单处理器系统</strong>来实现临界区，因为在多处理器系统中，即使一个 CPU 禁用了中断，其他 CPU 仍然可以访问共享资源。</p>
+<p>并且实施时需要注意几点：</p>
+<ul>
+<li><p>确保由中断屏蔽保护的临界区必须很短。</p>
+<p>因为所有中断都是有意义的，随便屏蔽的话系统容易出问题。</p>
+</li>
+<li><p>该机制最多只应在操作系统内核中使用。</p>
+<p>为了安全性考虑。</p>
+</li>
+</ul>
+<h3 id="原子性机器指令（Atomare-Maschinenbefehle）"><a href="#原子性机器指令（Atomare-Maschinenbefehle）" class="headerlink" title="原子性机器指令（Atomare Maschinenbefehle）"></a><strong>原子性机器指令（Atomare Maschinenbefehle）</strong></h3><p>大多数计算机架构都具备专门用于原子操作的机器指令，我们这里以其中的 TSL（Test-and-Set Lock）为例子。</p>
+<p>具体实现的话需要先定义2个函数：<code>enter_crit_region</code>和<code>leave_crit_region</code> 。（见下方代码）</p>
+<p>具体流程：</p>
+<ul>
+<li><p>通过共享变量 lock 对内存访问进行同步</p>
+</li>
+<li><p>在进入临界区之前，进程 P 会调用 <code>enter_crit_region</code></p>
+</li>
+<li><p>如果 lock == 0，则进程 P 可以执行其临界区代码</p>
+</li>
+<li><p>否则，进程必须主动等待（忙等，busy waiting），直到 lock 被重置为 0</p>
+</li>
+<li><p>临界区结束后，进程 P 必须重置共享变量 lock，调用 <code>leave_crit_region</code></p>
+</li>
+</ul>
+<p><code>enter_crit_region</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enter_crit_region:</span><br><span class="line">  tsl rax, [lock]          ; 将 lock 的值读入 rax，并将 lock 设置为 1（原子操作）</span><br><span class="line">  cmp rax, $0              ; 判断原值是否为 0（锁是否空闲）</span><br><span class="line">  jne enter_crit_region    ; Busy Waiting（一直等）</span><br><span class="line">  ret                      ; 如果是 0，表示可以进入临界区</span><br></pre></td></tr></table></figure>
+<p><code>leave_crit_region</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">leave_crit_region:</span><br><span class="line">  mov [lock], $0           ; 将 lock 重置为 0，释放锁</span><br><span class="line">  ret</span><br></pre></td></tr></table></figure>
+<h2 id="简单的系统层面"><a href="#简单的系统层面" class="headerlink" title="简单的系统层面"></a><strong>简单的系统层面</strong></h2><h3 id="主动等待（Aktives-Warten）"><a href="#主动等待（Aktives-Warten）" class="headerlink" title="主动等待（Aktives Warten）"></a><strong>主动等待（Aktives Warten）</strong></h3><p>刚才提到的同步概念被叫做<strong><code>自旋锁（Spin-Lock）</code></strong>：进程会在一个循环中不断检查资源是否仍然被占用，也就是所谓的<strong><code>主动等待（Aktives Warten）</code></strong>。</p>
+<p>但是一直在这里等的话效率非常低下。</p>
+<p>示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* busy waiting emulation */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (shouldWait) &#123;</span><br><span class="line">        <span class="comment">// 什么都不做，只是一直干等</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Passives-Warten（被动等待）"><a href="#Passives-Warten（被动等待）" class="headerlink" title="Passives Warten（被动等待）"></a><strong>Passives Warten（被动等待）</strong></h3><p>相比之下 <strong><code>Passives Warten（被动等待）</code></strong> 就要高效很多：会使用系统服务（比如说 sleep）让进程进入等待状态（wartend），或者使用系统服务（比如说 wakeup ）让进程进入可运行状态（echenbereit）。</p>
+<p>比如说2个进程传输数据，A传给B。A传的时候让B进入等待状态，等A传完了再把B叫起来让它处理数据。</p>
+<h2 id="例子：生产者消费者问题（Erzeuger-Verbraucher-Problem）"><a href="#例子：生产者消费者问题（Erzeuger-Verbraucher-Problem）" class="headerlink" title="例子：生产者消费者问题（Erzeuger-Verbraucher-Problem）"></a><strong>例子：生产者消费者问题（Erzeuger-Verbraucher-Problem）</strong></h2><p>在这个例子中我们会有2个并行的进程：一个生产者（Erzeuger，producer）和一个消费者（Verbraucher，consumer）。两者共用一个缓存区（Puffer，Buffer）。对缓冲区的访问必须实现互斥。</p>
+<p>先给一个反例，后续会慢慢看到如何正确解决这个问题：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">producer</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="type">int</span> item = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        item = produce_item();</span><br><span class="line">        <span class="keyword">if</span> (count == N)</span><br><span class="line">            sleep();</span><br><span class="line">        insert_item(item);</span><br><span class="line">        count = count + <span class="number">1</span>;				<span class="comment">// 注意这里</span></span><br><span class="line">        <span class="keyword">if</span> (count == <span class="number">1</span>)</span><br><span class="line">            wakeup(consumer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">consumer</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="type">int</span> item = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (count == <span class="number">0</span>)</span><br><span class="line">            sleep();</span><br><span class="line">        item = remove_item();</span><br><span class="line">        count = count - <span class="number">1</span>;				<span class="comment">// 注意这里</span></span><br><span class="line">        <span class="keyword">if</span> (count == N - <span class="number">1</span>)</span><br><span class="line">            wakeup(producer);</span><br><span class="line">        consume_item(item);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到这里希望通过 count 来实现互斥，但问题是 count 本身就是一个共享变量。</p>
+<h2 id="更高级的操作系统层面"><a href="#更高级的操作系统层面" class="headerlink" title="更高级的操作系统层面"></a><strong>更高级的操作系统层面</strong></h2><h3 id="信号量（Semaphore）"><a href="#信号量（Semaphore）" class="headerlink" title="信号量（Semaphore）"></a><strong>信号量（Semaphore）</strong></h3><p>定义：</p>
+<ul>
+<li><strong><code>信号量（Semaphore）</code></strong>是一个整数控制变量 s</li>
+<li>在这个变量上定义了三种操作：<ul>
+<li>初始化（Initialisierung）</li>
+<li>P（down、wait）</li>
+<li>V（up、signal）</li>
+</ul>
+</li>
+<li>控制变量的值表示：<strong>允许多少个进程同时进入临界区</strong></li>
+</ul>
+<p>（P和V代表的是Proberen 和 Verhogen，是荷兰语，因为提出信号量这个概念的是Dijkstra，他是荷兰人。）</p>
+<p>那么这两个操作具体是怎么定义的呢：</p>
+<p><code>down</code> 操作（P）：</p>
+<ul>
+<li>控制变量 s 会被减一</li>
+<li>如果 s &lt; 0，当前进程 必须等待</li>
+<li>而在使用被动等待的实现中：<ul>
+<li>进程会被转为“等待状态”，并被加入等待队列（Wait-Queue）中管理</li>
+</ul>
+</li>
+</ul>
+<p><code>up</code> 操作（V ）：</p>
+<ul>
+<li>控制变量 s 会被加一</li>
+<li>如果使用的是被动等待：<ul>
+<li>如果等待队列不为空，则唤醒其中一个进程（变为就绪状态，rechenbereit ）</li>
+</ul>
+</li>
+</ul>
+<p>代码示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">down</span><span class="params">(semaphore *wa)</span> &#123;</span><br><span class="line">    <span class="type">int</span>* s = &amp;wa-&gt;s;					<span class="comment">// 访问wa这个结构体中s的值，简单来讲就是访问当前s的值。</span></span><br><span class="line">    *s -= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (*s &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        thread_yield(wa-&gt;wait_queue);  <span class="comment">// 把当前线程挂起，放入等待队列</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">up</span><span class="params">(semaphore *wa)</span> &#123;</span><br><span class="line">    <span class="type">int</span>* s = &amp;wa-&gt;s;					<span class="comment">// 访问wa这个结构体中s的值，简单来讲就是访问当前s的值。</span></span><br><span class="line">    *s += <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (*s &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        thread_wakeup(wa-&gt;wait_queue);  <span class="comment">// 从等待队列中唤醒一个线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么我们该怎么使用这个信号量呢？</p>
+<ul>
+<li><p>首先定义一个信号量对象 wa</p>
+</li>
+<li><p>将控制变量 <code>s</code> 初始化为 1（或更大的 n）</p>
+<p>取决于我们希望有多少个进程同时进入临界区</p>
+</li>
+<li><p>用 P/V 操作包裹临界区代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">down(&amp;wa);                     <span class="comment">// P操作：尝试进入</span></span><br><span class="line">execute_crit_region();        <span class="comment">// 临界区操作</span></span><br><span class="line">up(&amp;wa);                      <span class="comment">// V操作：释放信号量</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>ok，我们现在拥有更高级的工具了，再回来看一下刚才没有完全解决的生产者-消费者-问题。</p>
+<p>还是先看一个反例：</p>
+<p>只使用一个信号量 wa 来控制对缓冲区的访问，初始化为1。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Producer */</span></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    element = produce();           <span class="comment">// 生产一个元素</span></span><br><span class="line">    down(&amp;wa);                     <span class="comment">// 请求进入临界区</span></span><br><span class="line">    write_to_buf(W, element);      <span class="comment">// 写入缓冲区</span></span><br><span class="line">    up(&amp;wa);                       <span class="comment">// 释放临界区</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Consumer */</span></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    down(&amp;wa);                     <span class="comment">// 请求进入临界区</span></span><br><span class="line">    element = read_from_buf(W);    <span class="comment">// 从缓冲区读取元素</span></span><br><span class="line">    up(&amp;wa);                       <span class="comment">// 释放临界区</span></span><br><span class="line">    consume(element);             <span class="comment">// 消费数据</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>问题出在没有能够反应当前缓冲区是否满或者是空的状态。</p>
+<p>假如Producer进入了满的缓冲区，那么它无法进行写入操作，也就无法进行后续的 up(&amp;wa) 。它会卡在这里，并且Consumer也无法进来读取数据。</p>
+<p>那么该如何正确地解决这个问题呢：</p>
+<p>我们需要在此基础上添加2个信号量：</p>
+<ul>
+<li>一个用于表示当前的缓冲区已满：voll，初始化为0</li>
+<li>一个用于表示当前的缓冲区剩余的位置：leer，初始化为n，n 是缓冲区大小。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Producer */</span></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    element = produce();           <span class="comment">// 生产数据</span></span><br><span class="line">    down(&amp;leer);                   <span class="comment">// 等待有空位</span></span><br><span class="line">    down(&amp;wa);                     <span class="comment">// 请求进入缓冲区（互斥）</span></span><br><span class="line">    write_to_buf(W, element);      <span class="comment">// 写入缓冲区</span></span><br><span class="line">    up(&amp;wa);                       <span class="comment">// 释放互斥锁</span></span><br><span class="line">    up(&amp;voll);                     <span class="comment">// 增加“已满”计数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Consumer */</span></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    down(&amp;voll);                   <span class="comment">// 等待有数据可读</span></span><br><span class="line">    down(&amp;wa);                     <span class="comment">// 请求进入缓冲区（互斥）</span></span><br><span class="line">    element = read_from_buf(W);    <span class="comment">// 读取数据</span></span><br><span class="line">    up(&amp;wa);                       <span class="comment">// 释放互斥锁</span></span><br><span class="line">    up(&amp;leer);                     <span class="comment">// 增加“空位”计数</span></span><br><span class="line">    consume(element);             <span class="comment">// 消费数据</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="互斥锁（Mutex）"><a href="#互斥锁（Mutex）" class="headerlink" title="互斥锁（Mutex）"></a><strong>互斥锁（Mutex）</strong></h3><p>Mutex类似于二进制信号量（binary semaphore），只有2个状态：unlocked 和 locked。</p>
+<p><strong>注意</strong>：可以将Mutex当成2元信号量来理解，但是要清楚他们严格来讲并不一样。最大的区别便是拥有权：</p>
+<ul>
+<li>互斥锁（Mutex）只能由获取锁的实体（Entity）进行解锁（也就是说，它有一个Owner）。</li>
+<li>信号量（Semaphore）没有 Owner 的概念。</li>
+</ul>
+<h2 id="编程语言层面"><a href="#编程语言层面" class="headerlink" title="编程语言层面"></a><strong>编程语言层面</strong></h2><h3 id="监视器（Monitore）"><a href="#监视器（Monitore）" class="headerlink" title="监视器（Monitore）"></a><strong>监视器（Monitore）</strong></h3><p>属于比信号量（Semaphore）更高级的抽象层级。</p>
+<p>监视器将数据和对数据的访问操作封装在一起，实现自动同步，编译器则负责生成底层的信号量及其使用代码。</p>
+<p>简单来讲就是监视器（Monitore）会把互斥访问这一部分封装成一个黑盒（Black Box），使用时只需调用接口，不需要关心底层是怎么加锁、解锁的。这样一来也更不容易出错。</p>
+<p>一般使用定义好的操作 Produce 和 Consume 来调用监视器（Monitore）。</p>
+<h2 id="例子：Speisende-Philosophen（Dining-Philosophers）"><a href="#例子：Speisende-Philosophen（Dining-Philosophers）" class="headerlink" title="例子：Speisende Philosophen（Dining Philosophers）"></a><strong>例子：Speisende Philosophen（Dining Philosophers）</strong></h2><h2 id="死锁（Deadlock）"><a href="#死锁（Deadlock）" class="headerlink" title="死锁（Deadlock）"></a><strong>死锁（Deadlock）</strong></h2><p>死锁（Deadlock）描述的是一组进程里每个进程都在等待一个事件发生，但这个事件只能由其他等待中的进程触发。</p>
+<p>比如说A和B去图书馆借书，A已经借了x，B已经借了y。但现在A想借y，B想借x。只不过双方都希望借到新书了之后再把手上现有的这本还回去。这样就会陷入僵局，也就是死锁。</p>
+<p>例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">process_A</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    down(&amp;sema_resource_1);     <span class="comment">// 请求资源 R1</span></span><br><span class="line">    down(&amp;sema_resource_2);     <span class="comment">// 请求资源 R2</span></span><br><span class="line">    use_both_resources();       <span class="comment">// 使用两个资源</span></span><br><span class="line">    up(&amp;sema_resource_2);       <span class="comment">// 释放 R2</span></span><br><span class="line">    up(&amp;sema_resource_1);       <span class="comment">// 释放 R1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">process_B</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    down(&amp;sema_resource_2);     <span class="comment">// 请求资源 R2</span></span><br><span class="line">    down(&amp;sema_resource_1);     <span class="comment">// 请求资源 R1</span></span><br><span class="line">    use_both_resources();       <span class="comment">// 使用两个资源</span></span><br><span class="line">    up(&amp;sema_resource_1);       <span class="comment">// 释放 R1</span></span><br><span class="line">    up(&amp;sema_resource_2);       <span class="comment">// 释放 R2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>出现死锁（Deadlock）的充要条件</strong>（Notwendige und hinreichende Bedingungen）：</p>
+<ol>
+<li><p><strong>互斥使用资源</strong>（Exklusiv nutzbare Ressource，<strong>Mutual Exclusion</strong>）</p>
+<p>共享资源不可同时被多个进程访问。</p>
+</li>
+<li><p><strong>占有且等待</strong>（Belegen und Anfordern，<strong>Hold and Wait</strong>）</p>
+<p>进程已经持有资源，还要继续请求其他资源。</p>
+</li>
+<li><p><strong>不可抢占</strong>（Nicht Entziehbar，<strong>No Preemption</strong>）</p>
+<p>资源不能被强行拿走（被系统抢回），只能自己释放。</p>
+</li>
+<li><p><strong>循环等待</strong>（Zyklische Wartebedingung，<strong>Circular Wait</strong>）</p>
+<p>至少两个或更多进程形成一个循环，每个进程都在等待另一个进程所持有的资源。</p>
+</li>
+</ol>
+<p>（死锁是等价于这4个条件同时满足的。）</p>
+<p>建模有向图 Belegungsanforderungsgraphen：</p>
+<ul>
+<li>点<ul>
+<li>圆圈表示进程，</li>
+<li>方形表示资源</li>
+</ul>
+</li>
+<li>边<ul>
+<li>进程A占用（belegt）资源R：R到A的边</li>
+<li>进程A想要（fordert）资源R：A到R的边</li>
+</ul>
+</li>
+</ul>
+<p>例子：</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250408224759356.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250408224759356.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250408224759356"></p>
+<h3 id="Deadlocks的应对策略"><a href="#Deadlocks的应对策略" class="headerlink" title="Deadlocks的应对策略"></a><strong>Deadlocks的应对策略</strong></h3><p>主要有4种策略：</p>
+<ol>
+<li><p><strong>忽视（Ignorieren）</strong></p>
+</li>
+<li><p><strong>检测（Deadlock-Detection ，Erkennung）</strong></p>
+<ul>
+<li>分配资源后检测/模拟是否会产生死锁，如果会的话就回档。</li>
+</ul>
+</li>
+<li><p><strong>避免（Deadlock-Avoidance，Vermeidung）</strong></p>
+<ul>
+<li><p>分配资源前模拟是否会产生死锁</p>
+</li>
+<li><p>使用 Bankier-Algorithmus</p>
+</li>
+</ul>
+</li>
+<li><p><strong>预防（Deadlock-Prevention，Verhinderung）</strong></p>
+<ul>
+<li>设计的时候就避免死锁出现，确保上面的4个条件至少有一条不会出现。</li>
+</ul>
+</li>
+</ol>
+<p>对比：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>策略类型</th>
+<th>方法</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>识别（Erkennung）</td>
+<td>周期性检测（Periodischer Aufruf）</td>
+<td>可交互式响应（Interaktive Reaktion）</td>
+<td>可能通过中止造成损失（Verlust durch Abbruch）</td>
+</tr>
+<tr>
+<td>避免（Vermeidung）</td>
+<td>银行家算法（Bankiers-Algorithmus）</td>
+<td>无需资源抢占（Kein Ressourcenzug）</td>
+<td>需要提前知道未来资源需求（Zukünftiger Bedarf muss bekannt sein）</td>
+</tr>
+<tr>
+<td>预防（Verhinderung）</td>
+<td>资源分配采用固定顺序（Feste Reihenfolge bei Zuteilung）</td>
+<td>无需运行时检查（Keine Laufzeitprüfungen）</td>
+<td>静态、不灵活（Statisch, inflexibel）</td>
+</tr>
+<tr>
+<td></td>
+<td>一次性分配所有资源（Alle Ressourcen auf einmal zuteilen）</td>
+<td>不需要资源抢占（Kein Ressourcenzug notwendig）</td>
+<td>效率低（Ineffizient）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><strong>例题</strong></h2><h3 id="例题1"><a href="#例题1" class="headerlink" title="例题1"></a><strong>例题1</strong></h3><p>假设现在有2个线程并行运行，并且共享内存（Shared Memory）中的x和y被初始化为0：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Thread 1</span></span><br><span class="line"><span class="keyword">if</span> (y &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">    x = x+<span class="number">1</span>;	<span class="comment">//atomic</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Thread 2</span></span><br><span class="line"><span class="keyword">while</span> (x &lt;= <span class="number">0</span> &amp;&amp; y &gt; <span class="number">-3</span>)&#123;</span><br><span class="line">    y = y<span class="number">-1</span>;	<span class="comment">//atomic</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>问题1：给出所以可能的结果组合。（Was sind alle möglichen Kombinationen der Werte für x und y nach der nicht-deterministsichen Ausführung der obenstehenden Threadds?）</strong></p>
@@ -2900,7 +3164,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%981"><span class="toc-number">1.1.</span> <span class="toc-text">例题1</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Einfuhrung"><span class="toc-number">1.</span> <span class="toc-text">Einführung</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%B1%82%E9%9D%A2"><span class="toc-number">2.</span> <span class="toc-text">硬件层面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%B1%8F%E8%94%BD%EF%BC%88Unterbrechnungssperre%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">中断屏蔽（Unterbrechnungssperre）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%AD%90%E6%80%A7%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4%EF%BC%88Atomare-Maschinenbefehle%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">原子性机器指令（Atomare Maschinenbefehle）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%B1%82%E9%9D%A2"><span class="toc-number">3.</span> <span class="toc-text">简单的系统层面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E5%8A%A8%E7%AD%89%E5%BE%85%EF%BC%88Aktives-Warten%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">主动等待（Aktives Warten）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Passives-Warten%EF%BC%88%E8%A2%AB%E5%8A%A8%E7%AD%89%E5%BE%85%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">Passives Warten（被动等待）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98%EF%BC%88Erzeuger-Verbraucher-Problem%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">例子：生产者消费者问题（Erzeuger-Verbraucher-Problem）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E9%AB%98%E7%BA%A7%E7%9A%84%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%B1%82%E9%9D%A2"><span class="toc-number">5.</span> <span class="toc-text">更高级的操作系统层面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F%EF%BC%88Semaphore%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">信号量（Semaphore）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E9%94%81%EF%BC%88Mutex%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">互斥锁（Mutex）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%B1%82%E9%9D%A2"><span class="toc-number">6.</span> <span class="toc-text">编程语言层面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%91%E8%A7%86%E5%99%A8%EF%BC%88Monitore%EF%BC%89"><span class="toc-number">6.1.</span> <span class="toc-text">监视器（Monitore）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9ASpeisende-Philosophen%EF%BC%88Dining-Philosophers%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">例子：Speisende Philosophen（Dining Philosophers）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%BB%E9%94%81%EF%BC%88Deadlock%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">死锁（Deadlock）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Deadlocks%E7%9A%84%E5%BA%94%E5%AF%B9%E7%AD%96%E7%95%A5"><span class="toc-number">8.1.</span> <span class="toc-text">Deadlocks的应对策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">9.</span> <span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%981"><span class="toc-number">9.1.</span> <span class="toc-text">例题1</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3510,7 +3774,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/03/TUM笔记/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-并行系统与同步/","name":"GBS 3 Parallele Systeme und Synchronisation 并行系统与同步"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 3 Parallele Systeme und Synchronisation 并行系统与同步","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%90%8C%E6%AD%A5/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%90%8C%E6%AD%A5/","wordCount":10,"datePublished":"2025-04-03T21:20:44.000Z","dateModified":"2025-04-08T08:33:23.886Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,Mutex,Semaphore","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/03/TUM笔记/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-并行系统与同步/","name":"GBS 3 Parallele Systeme und Synchronisation 并行系统与同步"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 3 Parallele Systeme und Synchronisation 并行系统与同步","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%90%8C%E6%AD%A5/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%90%8C%E6%AD%A5/","wordCount":10,"datePublished":"2025-04-03T21:20:44.000Z","dateModified":"2025-04-08T20:59:42.786Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,Mutex,Semaphore","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
