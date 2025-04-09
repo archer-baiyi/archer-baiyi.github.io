@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-03T21:19:45.000Z">
-<meta property="article:modified_time" content="2025-04-05T14:27:17.393Z">
+<meta property="article:modified_time" content="2025-04-09T08:03:01.260Z">
 <meta property="article:tag" content="Betriebssysteme">
 <meta property="article:tag" content="Operating System">
 <meta property="article:tag" content="synchron">
@@ -2250,7 +2250,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1744181375374),
+    lastupdate: new Date(1744209726936),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2663,10 +2663,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-05T16:27:17+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-09T10:03:01+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 5, 2025</p>
+    <p>更新于：Apr 9, 2025</p>
   </a>
 </div>
 
@@ -2682,12 +2682,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="无连接通信（Verbindungslose-Kommunikation）"><a href="#无连接通信（Verbindungslose-Kommunikation）" class="headerlink" title="无连接通信（Verbindungslose Kommunikation）"></a><strong>无连接通信（Verbindungslose Kommunikation）</strong></h2><p>无连接通信（Verbindungslose Kommunikation）的通道（Kanäle）可以按照带宽（Bandbreite）分成2种：</p>
+    <p>[toc]</p>
+<h2 id="无连接通信（Verbindungslose-Kommunikation）"><a href="#无连接通信（Verbindungslose-Kommunikation）" class="headerlink" title="无连接通信（Verbindungslose Kommunikation）"></a><strong>无连接通信（Verbindungslose Kommunikation）</strong></h2><p>无连接通信（Verbindungslose Kommunikation）的通道（Kanäle）可以按照带宽（Bandbreite）分成2种：</p>
 <ol>
 <li>窄带通道（Schmalbandige Kanäle）</li>
 <li>宽带通道（Breitbandige Kanäle）</li>
 </ol>
-<h3 id="窄带通道（Schmalbandige-Kanale）"><a href="#窄带通道（Schmalbandige-Kanale）" class="headerlink" title="窄带通道（Schmalbandige Kanäle）"></a><strong>窄带通道（Schmalbandige Kanäle）</strong></h3><p><strong><code>窄带通道（Schmalbandige Kanäle）</code></strong>只传输少量信息（wenige Bits），主要用于事件的通知（Melden von Ereignissen）。它需要同步机制和中断机制（Synchronisationskonzepte und Unterbrechungskonzepte ）来确保通信的可靠性。</p>
+<h3 id="窄带通道（Schmalbandige-Kanale）"><a href="#窄带通道（Schmalbandige-Kanale）" class="headerlink" title="窄带通道（Schmalbandige Kanäle）"></a><strong>窄带通道（Schmalbandige Kanäle）</strong></h3><p><strong><code>窄带通道（Schmalbandige Kanäle）</code></strong>只<strong>传输少量信息（wenige Bits）</strong>，主要用于事件的通知（Melden von Ereignissen）。它需要同步机制和中断机制（Synchronisationskonzepte und Unterbrechungskonzepte ）来确保通信的可靠性。</p>
 <p>Linux里的例子：<strong>Signals</strong></p>
 <ul>
 <li><p>进程可以互相发送信号（使用 kill() ）</p>
@@ -2790,6 +2791,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>优点：简单快速，因为不需要不需要在不同地址空间（Adressräumen）之间复制数据。</p>
 <p>缺点：不一定一直都有共享区域可以用；可能会出现 busy-waiting，所以需要额外的同步机制。</p>
 <p>（第三章的内容就是在讲这个）</p>
+<p>而隐式通信（Implizite Kommunikation） 可以进一步划分为：</p>
+<ol>
+<li><p><strong><code>同步通信（Synchrone Kommunikation）</code></strong></p>
+<p>发送方或接收方可能需要等待对方。</p>
+<p>比如说共享内存并且设置了同步机制。</p>
+</li>
+<li><p><strong><code>异步通信（Asynchrone Kommunikation）</code></strong></p>
+<p>发送和接收可以独立进行。</p>
+<p>比如说通过共享的文件进行kommunizieren。</p>
+</li>
+</ol>
 <h4 id="显式通信（Explizite-Kommunikation）"><a href="#显式通信（Explizite-Kommunikation）" class="headerlink" title="显式通信（Explizite Kommunikation）"></a><strong>显式通信（Explizite Kommunikation）</strong></h4><p><strong><code>显式通信（Explizite Kommunikation）</code></strong>则是我们比较熟悉的：<strong>发送/接收信息</strong>。适用于地址空间（Adressräumen）分离的进程（比如两个互不相干的进程），不过是与操作系统的直接交互。</p>
 <p>这种通信可以是本地的也可以是远程的。</p>
 <p>一般信息由2部分组成：</p>
@@ -2803,10 +2815,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>操作系统的消息服务负责传递该消息</li>
 <li>接收方进程使用 recv() 接收该消息</li>
 </ol>
-<p>而显式通信（Explizite Kommunikation） 又可以进一步划分为：</p>
+<p>而显式通信（Explizite Kommunikation） 同样可以进一步划分为：</p>
 <ol>
-<li>同步通信（Synchrone Kommunikation）</li>
-<li>异步通信（Asynchrone Kommunikation）</li>
+<li><p><strong><code>同步通信（Synchrone Kommunikation）</code></strong></p>
+<p>发送方或接收方可能需要等待对方</p>
+</li>
+<li><p><strong><code>异步通信（Asynchrone Kommunikation）</code></strong></p>
+<p>发送和接收可以独立进行</p>
+</li>
 </ol>
 <p>这其中又有2种消息通信的模式（Muster）：</p>
 <ol>
@@ -2835,9 +2851,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 <p>在实际应用中，异步通信更常用，特别适用于不确定接收方是否在线、或者无法预测响应时间的情况。</p>
 <p>可以使用线程来结合同步与异步通信（比如：主线程同步处理、子线程异步等待）。</p>
-<h5 id="Asynchrone-Meldung"><a href="#Asynchrone-Meldung" class="headerlink" title="Asynchrone Meldung"></a><strong>Asynchrone Meldung</strong></h5><p><strong>只发不等</strong></p>
+<p><strong><code>Asynchrone Meldung</code></strong>：</p>
+<p><strong>只发不等</strong></p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155011380.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155011380.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250405155011380"></p>
-<p><strong>Synchrone Meldung</strong></p>
+<p><strong><code>Synchrone Meldung</code></strong>：</p>
 <p><strong>等待对方确认收到</strong></p>
 <p>流程：</p>
 <ul>
@@ -2851,11 +2868,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>在交换消息之前，发送方与接收方都要事先准备好进行发送和接收</li>
 <li>这样一来消息不需要缓冲</li>
 </ul>
-<p><strong>Asynchrone Auftrag</strong></p>
+<p><strong><code>Asynchrone Auftrag</code></strong>：</p>
 <p><strong>各发各的</strong></p>
 <p>任务（Auftrag）和结果（Resultat）是作为两个独立的消息发送的。</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155207289.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155207289.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250405155207289"></p>
-<p><strong>Synchrone Auftrag</strong></p>
+<p><strong><code>Synchrone Auftrag</code></strong>：</p>
 <p><strong>等待对方回复</strong></p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155909542.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250405155909542.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250405155909542"></p>
 <h2 id="Streams"><a href="#Streams" class="headerlink" title="Streams"></a><strong>Streams</strong></h2><p>流（Stream）是对连接（Verbindung）的一种抽象。</p>
@@ -2880,6 +2897,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> p[<span class="number">2</span>];              <span class="comment">// p[0]: 读端, p[1]: 写端</span></span><br><span class="line">    pipe(p);               <span class="comment">// 创建一个匿名管道</span></span><br><span class="line"></span><br><span class="line">    sendData(p[<span class="number">1</span>]);        <span class="comment">// 写数据到管道</span></span><br><span class="line">    receiveData(p[<span class="number">0</span>]);     <span class="comment">// 从管道中读取数据</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">sendData</span><span class="params">(<span class="type">int</span> fd)</span> &#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> *msg = <span class="string">&quot;Hello, world&quot;</span>;     <span class="comment">// 要发送的消息</span></span><br><span class="line">    <span class="type">uint16_t</span> len = <span class="built_in">strlen</span>(msg);           <span class="comment">// 消息长度（不含 \0）</span></span><br><span class="line">    <span class="type">uint16_t</span> nLen = htons(len);           <span class="comment">// 转换为网络字节序（大端）</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 先发送长度，确保接收端知道后面要读取多少字节</span></span><br><span class="line">    send(fd, &amp;nLen, <span class="keyword">sizeof</span>(nLen), <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 再发送消息本体</span></span><br><span class="line">    send(fd, msg, len, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">receiveData</span><span class="params">(<span class="type">int</span> fd)</span> &#123;</span><br><span class="line">    <span class="type">char</span> msg[<span class="number">1024</span>];        <span class="comment">// 接收缓冲区</span></span><br><span class="line">    <span class="type">uint16_t</span> nLen;         <span class="comment">// 网络字节序长度</span></span><br><span class="line">    <span class="type">uint16_t</span> len;          <span class="comment">// 主机字节序长度</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 先接收长度信息（2字节）</span></span><br><span class="line">    recv(fd, &amp;nLen, <span class="keyword">sizeof</span>(nLen), <span class="number">0</span>);</span><br><span class="line">    len = ntohs(nLen);     <span class="comment">// 转换为主机字节序</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 接收实际消息内容（len 字节）</span></span><br><span class="line">    recv(fd, msg, len, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    msg[len] = <span class="string">&#x27;\0&#x27;</span>;       <span class="comment">// 手动加上字符串结束符</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;接收到 %u 字节：%s\n&quot;</span>, len, msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a><strong>例题</strong></h2><h3 id="例题1"><a href="#例题1" class="headerlink" title="例题1"></a><strong>例题1</strong></h3><p><strong>Für wehlche der folgenden IPC-Mechanismen wird in der Regel ein Filedescriptor verwendent?</strong></p>
+<ol>
+<li>Sockets</li>
+<li>Shared Memory</li>
+<li>Anon. Pipes</li>
+<li>Named Pipes</li>
+<li>Signals</li>
+</ol>
+<p><strong>答案</strong>：1，3，4。</p>
 
   </div>
   
@@ -3044,7 +3070,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E9%80%9A%E4%BF%A1%EF%BC%88Verbindungslose-Kommunikation%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">无连接通信（Verbindungslose Kommunikation）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%84%E5%B8%A6%E9%80%9A%E9%81%93%EF%BC%88Schmalbandige-Kanale%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">窄带通道（Schmalbandige Kanäle）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%BD%E5%B8%A6%E9%80%9A%E9%81%93%EF%BC%88Breitbandige-Kanale%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">宽带通道（Breitbandige Kanäle）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E9%80%9A%E4%BF%A1%EF%BC%88Implizite-Kommunikation%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">隐式通信（Implizite Kommunikation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%BE%E5%BC%8F%E9%80%9A%E4%BF%A1%EF%BC%88Explizite-Kommunikation%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">显式通信（Explizite Kommunikation）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Asynchrone-Meldung"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">Asynchrone Meldung</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Streams"><span class="toc-number">2.</span> <span class="toc-text">Streams</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E9%80%9A%E4%BF%A1%EF%BC%88Verbindungslose-Kommunikation%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">无连接通信（Verbindungslose Kommunikation）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%84%E5%B8%A6%E9%80%9A%E9%81%93%EF%BC%88Schmalbandige-Kanale%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">窄带通道（Schmalbandige Kanäle）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%BD%E5%B8%A6%E9%80%9A%E9%81%93%EF%BC%88Breitbandige-Kanale%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">宽带通道（Breitbandige Kanäle）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E9%80%9A%E4%BF%A1%EF%BC%88Implizite-Kommunikation%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">隐式通信（Implizite Kommunikation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%BE%E5%BC%8F%E9%80%9A%E4%BF%A1%EF%BC%88Explizite-Kommunikation%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">显式通信（Explizite Kommunikation）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Streams"><span class="toc-number">2.</span> <span class="toc-text">Streams</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%981"><span class="toc-number">3.1.</span> <span class="toc-text">例题1</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3421,7 +3447,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg","background/wallhaven-6dvy9w.png"];
+  let imgs = ["background/wallhaven-6dvy9w.png","background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3654,7 +3680,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/03/TUM笔记/GBS/GBS-5-Inter-Prozesskommunikation-IPC-进程间通信/","name":"GBS 5 Inter-Prozesskommunikation (IPC) 进程间通信"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 5 Inter-Prozesskommunikation (IPC) 进程间通信","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-5-Inter-Prozesskommunikation-IPC-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-5-Inter-Prozesskommunikation-IPC-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/","wordCount":10,"datePublished":"2025-04-03T21:19:45.000Z","dateModified":"2025-04-05T14:27:17.393Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,synchron,asynchron,signal","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/03/TUM笔记/GBS/GBS-5-Inter-Prozesskommunikation-IPC-进程间通信/","name":"GBS 5 Inter-Prozesskommunikation (IPC) 进程间通信"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 5 Inter-Prozesskommunikation (IPC) 进程间通信","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-5-Inter-Prozesskommunikation-IPC-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-5-Inter-Prozesskommunikation-IPC-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/","wordCount":10,"datePublished":"2025-04-03T21:19:45.000Z","dateModified":"2025-04-09T08:03:01.260Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,synchron,asynchron,signal","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
