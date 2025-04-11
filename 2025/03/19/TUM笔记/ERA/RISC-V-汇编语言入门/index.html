@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-19T19:56:10.000Z">
-<meta property="article:modified_time" content="2025-04-11T18:21:10.817Z">
+<meta property="article:modified_time" content="2025-04-11T18:49:23.433Z">
 <meta property="article:tag" content="Rechnerarchitektur">
 <meta property="article:tag" content="计算机体系结构">
 <meta property="article:tag" content="汇编语言">
@@ -2249,7 +2249,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1744395677197),
+    lastupdate: new Date(1744397400109),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2662,7 +2662,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-11T20:21:10+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-11T20:49:23+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Apr 11, 2025</p>
@@ -2888,10 +2888,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>a = b + c - d</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add t,b,c 	# t=b+c</span><br><span class="line">sub a,t,d	# a=t-d</span><br></pre></td></tr></table></figure>
 <p><strong>浮点数</strong>的情况：</p>
-<p>“f” 用于 Single Precision (32bit) Gleitkomma；</p>
-<p>“d” 用于 Double Precision (64bit) Gleitkomma。</p>
+<p><strong>“F” 拓展</strong>用于 Single Precision (32bit) Gleitkomma；</p>
+<p><strong>“D” 拓展</strong>用于 Double Precision (64bit) Gleitkomma。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fadd a,b,c</span><br><span class="line">fsub a,b,c</span><br><span class="line">dadd a,b,c</span><br><span class="line">dsub a,b,c</span><br></pre></td></tr></table></figure>
-<p><strong>乘法</strong>的话基本上就是以下几种：</p>
+<p><strong>乘法</strong>：</p>
+<p>注意，乘法以及除法都是需要<strong>“M”拓展</strong>（M-Erweiterung）的。</p>
+<p>乘法相关的操作基本上就是以下几种：</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250320174333984.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250320174333984.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250320174333984"></p>
 <p>只不过RISC-V 的基本整数指令集中（RV32I 和 RV64I）不包含 mul 指令，乘法运算通常需要 M 扩展（RV32M/RV64M）。如果只允许使用 RV32I/RV64I 指令，则必须通过移位和加法手动实现乘法。</p>
 <p>在硬件实现上，<strong>移位操作比乘法更快</strong>，因为移位仅涉及逻辑电路，而乘法通常需要额外的计算资源。</p>
@@ -2958,19 +2960,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld a1, 8(s0)</span><br></pre></td></tr></table></figure>
 <p>Basisadresse (s0) zum Offset (8) addieren,  </p>
 <p>Adresse = ([Wert in s0] + 8)</p>
+<p>a1存储的是地址 (s0里存储的地址+8) 的值</p>
 <p><strong>写入</strong>（Schreiben in den Speicher）：</p>
 <p>sd (store word)</p>
 <p>Format：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sd source, offset(base)</span><br></pre></td></tr></table></figure>
 <p>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld a1, 8(s0)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sd a1, 8(s0)</span><br></pre></td></tr></table></figure>
 <p>Basisadresse (s0) zum Offset (8) addieren,  </p>
 <p>Adresse = ([Wert in s0] + 8)</p>
-<h3 id="跳转-Sprung"><a href="#跳转-Sprung" class="headerlink" title="跳转 Sprung"></a><strong>跳转 Sprung</strong></h3><p>无条件跳转：</p>
+<h3 id="跳转-Sprung"><a href="#跳转-Sprung" class="headerlink" title="跳转 Sprung"></a><strong>跳转 Sprung</strong></h3><p><strong>无条件跳转</strong>：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">j imm</span><br><span class="line">jr reg, imm</span><br></pre></td></tr></table></figure>
 <p>第一个会跳转到PC = PC + imm</p>
 <p>第一个会跳转到PC = reg + imm</p>
-<p>有条件跳转：</p>
+<p><strong>有条件跳转</strong>：</p>
 <p>格式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bxx r1,r2,imm</span><br></pre></td></tr></table></figure>
 <p>bxx的可选选项：</p>
@@ -2978,15 +2981,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>branch if not equal (<strong>bne</strong>)：$r1 \neq r2$</p>
 <p>branch if less than (<strong>blt</strong>)：$r1 &lt; r2$</p>
 <p>branch if greater than or equal (<strong>bge</strong>)：$r1 \leq r2$</p>
-<p>例子1（if）：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i == j)&#123;</span><br><span class="line">	f = g + h;&#125;</span><br><span class="line">f = f – i;</span><br></pre></td></tr></table></figure>
+<p><strong>例子1（if）</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i == j)</span><br><span class="line">&#123;</span><br><span class="line">	f = g + h;</span><br><span class="line">&#125;</span><br><span class="line">f = f – i;</span><br></pre></td></tr></table></figure>
 <p>跟上面这段c代码等价的RISC-V Assembler（汇编）：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># s0 = f, s1 = g, s2 = h</span><br><span class="line"># s3 = i, s4 = j</span><br><span class="line">	bne s3, s4, L1</span><br><span class="line">	add s0, s1, s2</span><br><span class="line">L1: </span><br><span class="line">	sub s0, s0, s3</span><br></pre></td></tr></table></figure>
-<p>例子2（if, else）：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i == j)&#123;</span><br><span class="line">	f = g + h;&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">	f = f - i;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>例子2（if, else）</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i == j)&#123;</span><br><span class="line">	f = g + h;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	f = f - i;&#125;</span><br></pre></td></tr></table></figure>
 <p>跟上面这段c代码等价的RISC-V Assembler（汇编）：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># s0 = f, s1 = g, s2 = h</span><br><span class="line"># s3 = i, s4 = j</span><br><span class="line">	bne s3, s4, L1</span><br><span class="line">	add s0, s1, s2</span><br><span class="line">	j   done</span><br><span class="line">L1: </span><br><span class="line">	sub s0, s0, s3</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
-<p>例子2（while 循环）：</p>
+<p><strong>例子2（while 循环）</strong>：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Berechne x, so dass</span></span><br><span class="line"><span class="comment">// 2^x = 128</span></span><br><span class="line"><span class="type">int</span> <span class="built_in">pow</span> = <span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> x   = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (<span class="built_in">pow</span> != <span class="number">128</span>) &#123;</span><br><span class="line"><span class="built_in">pow</span> = <span class="built_in">pow</span> * <span class="number">2</span>;</span><br><span class="line">x = x + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>跟上面这段c代码等价的RISC-V Assembler（汇编）：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># s0 = pow, s1 = x</span><br><span class="line">	addi s0, zero, 1</span><br><span class="line">	add  s1, zero, zero</span><br><span class="line">	addi t0, zero, 128</span><br><span class="line">while: </span><br><span class="line">	beq  s0, t0, done</span><br><span class="line">	slli s0, s0, 1</span><br><span class="line">	addi s1, s1, 1</span><br><span class="line">	j    while</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
@@ -3639,7 +3642,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["background/wallhaven-6dvy9w.png","background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg"];
+  let imgs = ["background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg","background/wallhaven-6dvy9w.png"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3926,7 +3929,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/ERA-计算机体系结构/","name":"ERA 计算机体系结构"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/19/TUM笔记/ERA/RISC-V-汇编语言入门/","name":"RISC-V 汇编语言入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"RISC-V 汇编语言入门","description":"计算机体系结构基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/","wordCount":13,"datePublished":"2025-03-19T19:56:10.000Z","dateModified":"2025-04-11T18:21:10.817Z","articleSection":"TUM课程笔记","keywords":"Rechnerarchitektur,计算机体系结构,汇编语言,RISC-V","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/ERA-计算机体系结构/","name":"ERA 计算机体系结构"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/19/TUM笔记/ERA/RISC-V-汇编语言入门/","name":"RISC-V 汇编语言入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"RISC-V 汇编语言入门","description":"计算机体系结构基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/19/TUM%E7%AC%94%E8%AE%B0/ERA/RISC-V-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/","wordCount":13,"datePublished":"2025-03-19T19:56:10.000Z","dateModified":"2025-04-11T18:49:23.433Z","articleSection":"TUM课程笔记","keywords":"Rechnerarchitektur,计算机体系结构,汇编语言,RISC-V","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
