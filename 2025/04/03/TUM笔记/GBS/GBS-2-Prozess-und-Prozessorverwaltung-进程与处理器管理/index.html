@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-03T21:21:10.000Z">
-<meta property="article:modified_time" content="2025-04-03T21:22:15.634Z">
+<meta property="article:modified_time" content="2025-04-10T18:10:48.390Z">
 <meta property="article:tag" content="Betriebssysteme">
 <meta property="article:tag" content="Operating System">
 <meta property="article:tag" content="进程">
@@ -2249,7 +2249,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1744306969256),
+    lastupdate: new Date(1744394173970),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2662,10 +2662,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-03T23:22:15+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-10T20:10:48+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 3, 2025</p>
+    <p>更新于：Apr 10, 2025</p>
   </a>
 </div>
 
@@ -2681,7 +2681,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    
+    <h2 id="进程（Prozess）"><a href="#进程（Prozess）" class="headerlink" title="进程（Prozess）"></a><strong>进程（Prozess）</strong></h2><h3 id="进程管理（Prozessverwaltung）"><a href="#进程管理（Prozessverwaltung）" class="headerlink" title="进程管理（Prozessverwaltung）"></a><strong>进程管理（Prozessverwaltung）</strong></h3><h4 id="Dispathcer"><a href="#Dispathcer" class="headerlink" title="Dispathcer"></a><strong>Dispathcer</strong></h4><h4 id="调度（Scheduling）"><a href="#调度（Scheduling）" class="headerlink" title="调度（Scheduling）"></a><strong>调度（Scheduling）</strong></h4><h5 id="调度策略（Scheduling-Strategien）"><a href="#调度策略（Scheduling-Strategien）" class="headerlink" title="调度策略（Scheduling-Strategien）"></a><strong>调度策略（Scheduling-Strategien）</strong></h5><p><strong>First-Come-First-Served (FCFS)</strong> </p>
+<p><strong>Shorttest Job First (SJF)</strong></p>
+<p><strong>Shortest Remaining Time Next (SRTN)</strong> </p>
+<p><strong>Round-Robing Scheduling (RR)</strong></p>
+<p><strong>Proority Scheduling</strong> </p>
+<p><strong>Earliest Deadline First (EDF)</strong></p>
+<h2 id="线程（Threads）"><a href="#线程（Threads）" class="headerlink" title="线程（Threads）"></a><strong>线程（Threads）</strong></h2>
   </div>
   
   
@@ -2827,6 +2833,20 @@ Einführung因为（单核）系统无法做到真正的并行进程，所以所
   
   
 
+
+<section class="widget toc-wrapper desktop mobile" id="toc-div" >
+  
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%EF%BC%88Prozess%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">进程（Prozess）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%EF%BC%88Prozessverwaltung%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">进程管理（Prozessverwaltung）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dispathcer"><span class="toc-number">1.1.1.</span> <span class="toc-text">Dispathcer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%EF%BC%88Scheduling%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">调度（Scheduling）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5%EF%BC%88Scheduling-Strategien%EF%BC%89"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">调度策略（Scheduling-Strategien）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%EF%BC%88Threads%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">线程（Threads）</span></a></li></ol>
+  </div>
+</section>
 
   
 
@@ -3434,7 +3454,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/03/TUM笔记/GBS/GBS-2-Prozess-und-Prozessorverwaltung-进程与处理器管理/","name":"GBS 2 Prozess- und Prozessorverwaltung 进程与处理器管理"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 2 Prozess- und Prozessorverwaltung 进程与处理器管理","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-2-Prozess-und-Prozessorverwaltung-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-2-Prozess-und-Prozessorverwaltung-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86/","wordCount":10,"datePublished":"2025-04-03T21:21:10.000Z","dateModified":"2025-04-03T21:22:15.634Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,进程,线程","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/GBS-操作系统/","name":"GBS 操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/03/TUM笔记/GBS/GBS-2-Prozess-und-Prozessorverwaltung-进程与处理器管理/","name":"GBS 2 Prozess- und Prozessorverwaltung 进程与处理器管理"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"GBS 2 Prozess- und Prozessorverwaltung 进程与处理器管理","description":"操作系统基础相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-2-Prozess-und-Prozessorverwaltung-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-2-Prozess-und-Prozessorverwaltung-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86/","wordCount":10,"datePublished":"2025-04-03T21:21:10.000Z","dateModified":"2025-04-10T18:10:48.390Z","articleSection":"TUM课程笔记","keywords":"Betriebssysteme,Operating System,进程,线程","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
