@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%90%8C%E6%AD%A5/</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
     <loc>https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-5-Inter-Prozesskommunikation-IPC-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/</loc>
     <lastmod>2025-04-15</lastmod>
   </url>
@@ -47,10 +51,6 @@
   <url>
     <loc>https://archer-baiyi.github.io/2025/04/09/Codeforce-Raising-Bacteria-Task/</loc>
     <lastmod>2025-04-09</lastmod>
-  </url>
-  <url>
-    <loc>https://archer-baiyi.github.io/2025/04/03/TUM%E7%AC%94%E8%AE%B0/GBS/GBS-3-Parallele-Systeme-und-Synchronisation-%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%90%8C%E6%AD%A5/</loc>
-    <lastmod>2025-04-08</lastmod>
   </url>
   <url>
     <loc>https://archer-baiyi.github.io/2025/04/07/CTF/Crypto/HTB-RSAisEasy-Writeup/</loc>
