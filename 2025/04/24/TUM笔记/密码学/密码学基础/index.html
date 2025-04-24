@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-24T19:45:04.000Z">
-<meta property="article:modified_time" content="2025-04-24T20:31:14.045Z">
+<meta property="article:modified_time" content="2025-04-24T22:18:03.647Z">
 <meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2246,7 +2246,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1745526684747),
+    lastupdate: new Date(1745533447747),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2659,10 +2659,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-24T22:31:14+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-25T00:18:03+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 24, 2025</p>
+    <p>更新于：Apr 25, 2025</p>
   </a>
 </div>
 
@@ -2691,17 +2691,31 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p><strong>Definition 1</strong>: (<strong><code>Perfect Ciphertext Indistinguishability / perfect secrecy / perfect security</code></strong>)</p>
 <p>一个定义在 $(\mathcal{K}, \mathcal{M}, \mathcal{C})$ 上的 Shannon cipher $\Pi = (E, D)$，满足<strong>密文完全不可区分</strong>（has perfectly indistinguishable ciphertexts）（或者说是<strong>绝对安全 perfectly secure</strong>的），当</p>
 <script type="math/tex; mode=display">
-\forall m_0, m_1 \in \mathcal{M},\ c \in \mathcal{C} :\ \Pr[E(k, m_0) = c] = \Pr[E(k, m_1) = c]</script><p>其中概率是针对密钥的分布而言，$k$ 是一个随机变量。</p>
+\forall m_0, m_1 \in \mathcal{M},\ c \in \mathcal{C} :\ \Pr[E(k, m_0) = c] = \Pr[E(k, m_1) = c].</script><p>其中概率是针对密钥的分布而言，$k$ 是一个随机变量。</p>
+<p>我们会假设每个密钥 $k$ 都是从 $\mathcal{K}$ 里uniformly挑选的，即每个密钥被挑选的概率都等于 $\frac{1}{\mathcal{K}}$。</p>
+<p>设</p>
+<script type="math/tex; mode=display">
+N_{m, c} = \left| \left\{ k \in \mathcal{K} : E(k, m) = c \right\} \right|</script><p>为可以将m加密成c的密钥数量，那么我们可以将定义里的等式重新重新表述为：</p>
+<script type="math/tex; mode=display">
+\forall m_0, m_1 \in \mathcal{M},\ c \in \mathcal{C} :\ N_{m_0, c} = N_{m_1, c}</script><p>也就是说<strong>对于任意2个明文和1个密文，都存在同样多的密钥可以将这两段密文都加密成这段密文。</strong></p>
 <p><strong>Theorem 2</strong>: </p>
 <p>如果$\Pi = (E, D)$是绝对安全的（perfectly secure），那么有 $|\mathcal{K}| \geq |\mathcal{M}|$。</p>
-<p>证明：</p>
+<p><strong>证明</strong>：</p>
 <p>我们假设 $|\mathcal{K}| &lt; |\mathcal{M}|$，并任意选择一段明文$m_0$和一个密钥$k’$。设$c := E(k’,m_0)$，那么有</p>
 <script type="math/tex; mode=display">
 Pr[E(k,m_0)=c] > 0</script><p>设</p>
 <script type="math/tex; mode=display">
-S = \{ D(\hat{k},c) \in \mathcal{M}: \hat{k} \in \mathcal{K} \}</script><p>为c所有可能的解密结果。选择$m_1\in \mathcal{M}\backslash S$ ，那么就有</p>
+S = \{ D(\hat{k},c) \in \mathcal{M}: \hat{k} \in \mathcal{K} \}</script><p>为c所有可能的解密结果。选择$m_1\in \mathcal{M}\backslash S$ （这个集合非空是因为 $|S| \leq |\mathcal{K}| &lt; |\mathcal{M}|$），那么就有</p>
 <script type="math/tex; mode=display">
-0 < \Pr[E(k, m_0) = c] \ne \Pr[E(k, m_1) = c] = 0 \ \ \ \ \lightning</script><p>a contradiction.</p>
+0 < \Pr[E(k, m_0) = c] \ne \Pr[E(k, m_1) = c] = 0</script><p>a contradiction. <span style="float:right;">$\square$</span></p>
+<p>该如何理解这个定理呢？</p>
+<p>其主要说明的就是当密钥空间小于信息空间时，可能会对于有些密文只存在一个（可能的）对应的明文。</p>
+<p>然而在实际情况里，一直要求密钥空间大于信息空间其实不太现实，因为我们需要各方各面都传输大量的信息。这就导致Shannon提出来的这个perfect secrecy概念不够实用（practical）。</p>
+<p>其根本的原因是，shannon提出来的概念着重于杜绝所有潜在的威胁。但实际上对我们来说，有些威胁是可以接受的：比如说质因数分解很大的数需要大量的计算资源与时间，对我们很难造成什么实质性的威胁。又或者是我运气够好，可以一下子猜到密码。</p>
+<p>所以说我们实际追求的是<strong>无法以不可忽略的（non-negligible）概率被高效（efficiently）破解的高效加密算法</strong>，。</p>
+<p>What we would like to have are <strong>efficient encryption schemes that cannot be broken “efficiently” with a “non-negligible” probability</strong>.</p>
+<p>比如说质因数分解，它的理论成功概率很高，但是效率非常低，所以可以被忽视。而猜密码这种方法的成功概率太低了，所以也不需要理会。</p>
+<p>重新表述一下就是：“<strong>不存在一个算法可以在时间T内以p的概率成功破解我们的加密算法</strong>”。</p>
 
   </div>
   
@@ -3231,7 +3245,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["background/wallhaven-6dvy9w.png","background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg"];
+  let imgs = ["background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg","background/wallhaven-6dvy9w.png"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3518,7 +3532,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/密码学-Kryptografie/","name":"密码学 Kryptografie"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/24/TUM笔记/密码学/密码学基础/","name":"密码学 Kryptografie"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"密码学 Kryptografie","description":"密码学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/24/TUM%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/24/TUM%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/","wordCount":7,"datePublished":"2025-04-24T19:45:04.000Z","dateModified":"2025-04-24T20:31:14.045Z","articleSection":"TUM课程笔记","keywords":"密码学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/","name":"TUM课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM课程笔记/密码学-Kryptografie/","name":"密码学 Kryptografie"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/24/TUM笔记/密码学/密码学基础/","name":"密码学 Kryptografie"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"密码学 Kryptografie","description":"密码学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/24/TUM%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/24/TUM%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/","wordCount":7,"datePublished":"2025-04-24T19:45:04.000Z","dateModified":"2025-04-24T22:18:03.647Z","articleSection":"TUM课程笔记","keywords":"密码学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
