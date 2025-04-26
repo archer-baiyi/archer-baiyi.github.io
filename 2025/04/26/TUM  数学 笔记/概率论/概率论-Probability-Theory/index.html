@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-26T18:32:06.000Z">
-<meta property="article:modified_time" content="2025-04-26T19:56:11.870Z">
+<meta property="article:modified_time" content="2025-04-26T20:16:17.489Z">
 <meta property="article:tag" content="概率论">
 <meta property="article:tag" content="Probability Theory">
 <meta name="twitter:card" content="summary">
@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1745697403921),
+    lastupdate: new Date(1745698591291),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2660,7 +2660,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-26T21:56:11+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-26T22:16:17+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Apr 26, 2025</p>
@@ -2679,12 +2679,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a><strong>Basics</strong></h2><h3 id="Expected-value-Expectation-Erwartungswert-期望"><a href="#Expected-value-Expectation-Erwartungswert-期望" class="headerlink" title="Expected value / Expectation /  Erwartungswert / 期望"></a><strong>Expected value / Expectation /  Erwartungswert / 期望</strong></h3><p><strong>Definition</strong> :  Let $X$ be a random variable on a probability space $(\Omega,\mathcal{F},P)$. The <strong><code>expectation</code></strong> of $X$ is defined by</p>
-<script type="math/tex; mode=display">
-E[X] = \int_{\Omega}X(\omega)P(d\omega).</script><p><br></p>
-<p><strong>Theorem</strong>: Let $X:\Omega \to S$ be a random variable on a probability space $(\Omega,\mathcal{F},P)$ with distribution $\mu$ and let $g:S\to \mathbb{R}$ be a measurable function. Then</p>
-<script type="math/tex; mode=display">
-E[g(X)] = \int_{S}g(x)\mu(dx).</script><p><br></p>
+    <h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a><strong>Basics</strong></h2><h3 id="Expected-value-Expectation-Erwartungswert-期望"><a href="#Expected-value-Expectation-Erwartungswert-期望" class="headerlink" title="Expected value / Expectation /  Erwartungswert / 期望"></a><strong>Expected value / Expectation /  Erwartungswert / 期望</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong> :  Let $X$ be a random variable on a probability space $(\Omega,\mathcal{F},P)$. The <strong><code>expectation</code></strong> of $X$ is defined by</p><script type="math/tex; mode=display">E[X] = \int_{\Omega}X(\omega)P(d\omega).</script></div>
+<p><br></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>: Let $X:\Omega \to S$ be a random variable on a probability space $(\Omega,\mathcal{F},P)$ with distribution $\mu$ and let $g:S\to \mathbb{R}$ be a measurable function. Then</p><script type="math/tex; mode=display">E[g(X)] = \int_{S}g(x)\mu(dx).</script></div>
+<p><br></p>
 <p><strong>Corollary</strong>: If $X$ is a discrete random variable with values in $S$, then</p>
 <script type="math/tex; mode=display">
 E[g(X)] = \sum_{x \in S}g(x)P(X=x).</script><p><br></p>
@@ -2698,28 +2696,22 @@ E[g(X)] = \int_{\mathbb{R}^n} g(x) f(x) \, dx.</script><p><br></p>
 <p><strong>Corollary</strong>: If $X$ has values in $\mathbb{R}$</p>
 <script type="math/tex; mode=display">
 E[X] = \int_{\mathbb{R}} x f(x) \, dx.</script><p><br></p>
-<p><strong>Theorem (Linearity)</strong>: Let $X,Y :\Omega \to \mathbb{R}$ be random variables in $\mathcal{L}^1$. Then</p>
-<script type="math/tex; mode=display">
-E[aX+bY] = aE[X] + bE[Y] \ \ \text{ for all }a,b \in \mathbb{R}</script><p><br></p>
-<p><strong>Theorem</strong>: Let $X,Y :\Omega \to \mathbb{R}$ be <strong>independent</strong> random variables, $g,h: \mathbb{R} \to \mathbb{R}$ be Borel-measurable function with $E[|g(X)|], E[|h(Y)|] &lt; \infty$. Then</p>
-<script type="math/tex; mode=display">
-E[g(X)h(Y)] = E[g(X)] E[h(Y)].</script><p><strong>proof</strong>: Since $X$ and $Y$ are independent, the joint distribution of $(X, Y)$ is the product of the marginal distributions $P_X \times P_Y$. Using <u>Fubini’s theorem</u>, we obtain</p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem (Linearity)</strong>: Let $X,Y :\Omega \to \mathbb{R}$ be random variables in $\mathcal{L}^1$. Then</p><script type="math/tex; mode=display">E[aX+bY] = aE[X] + bE[Y] \ \ \text{ for all }a,b \in \mathbb{R}</script></div>
+<p><br></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>: Let$X,Y :\Omega \to \mathbb{R}$be <strong>independent</strong> random variables, $g,h: \mathbb{R} \to \mathbb{R}$ be Borel-measurable function with $E[|g(X)|], E[|h(Y)|] &lt; \infty$. Then</p><script type="math/tex; mode=display">E[g(X)h(Y)] = E[g(X)] E[h(Y)].</script></div>
+<p><strong>proof</strong>: Since $X$ and $Y$ are independent, the joint distribution of $(X, Y)$ is the product of the marginal distributions $P_X \times P_Y$. Using <u>Fubini’s theorem</u>, we obtain</p>
 <script type="math/tex; mode=display">
 \begin{align*}
 E[g(X)h(Y)] &= \int_{\mathbb{R}} \int_{\mathbb{R}} g(x)h(y) \, P_X(dx) P_Y(dy)\\
 &= \left( \int_{\mathbb{R}} g(x) \, P_X(dx) \right) \left( \int_{\mathbb{R}} h(y) \, P_Y(dy) \right) = E[g(X)] E[h(Y)].
-\end{align*}</script><p><br></p>
-<p><strong>Corollary</strong>: Let $X,Y :\Omega \to \mathbb{R}$ be <strong>independent</strong> random variables in $\mathcal{L}^1$, then</p>
-<script type="math/tex; mode=display">
-E[XY] = E[X] E[Y].</script><h3 id="Variance-Varianz-方差"><a href="#Variance-Varianz-方差" class="headerlink" title="Variance / Varianz / 方差"></a><strong>Variance / Varianz / 方差</strong></h3><p><strong>Definition</strong>: Let $X\in \mathcal{L}^1$. Then </p>
-<script type="math/tex; mode=display">
-\text{Var} = E[(X-E(X))^2]</script><p>is called the <strong><code>variance</code></strong> of $X$ and </p>
-<script type="math/tex; mode=display">
-\sigma_X = \sqrt{Var(X)}</script><p>is the <strong><code>standard deviation</code></strong> fo $X$.</p>
+\end{align*}</script><p><span style="float:right;">$\square$</span></p>
 <p><br></p>
-<p><strong>Theorem</strong>: Let $X\in \mathcal{L}^1$, then</p>
+<p><strong>Corollary</strong>: Let$X,Y :\Omega \to \mathbb{R}$be <strong>independent</strong> random variables in $\mathcal{L}^1$, then</p>
 <script type="math/tex; mode=display">
-\text{Var} = E[X^2] - E[X]^2.</script><p>proof: </p>
+E[XY] = E[X] E[Y].</script><h3 id="Variance-Varianz-方差"><a href="#Variance-Varianz-方差" class="headerlink" title="Variance / Varianz / 方差"></a><strong>Variance / Varianz / 方差</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>: Let$X\in \mathcal{L}^1$. Then </p><script type="math/tex; mode=display">\text{Var} = E[(X-E(X))^2]</script><p>is called the <strong><code>variance</code></strong> of$X$and </p><script type="math/tex; mode=display">\sigma_X = \sqrt{Var(X)}</script><p>is the <strong><code>standard deviation</code></strong> of $X$.</p></div>
+<p><br></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>: Let$X\in \mathcal{L}^1$, then</p><script type="math/tex; mode=display">\text{Var} = E[X^2] - E[X]^2.</script></div>
+<p>proof: </p>
 <p>let $\mu:=E[X]$. </p>
 <script type="math/tex; mode=display">
 \begin{align*}
@@ -2727,39 +2719,28 @@ E[XY] = E[X] E[Y].</script><h3 id="Variance-Varianz-方差"><a href="#Variance-V
 &= E[X^2-2\mu X + \mu^2]\\
 &= E[X^2]-2\mu E[X] + \mu^2\\
 &= E[X^2]- \mu^2
-\end{align*}</script><p><br></p>
-<p><strong>Theorem</strong>: Let $X$ be a random variable with finite expectation. For $a,b \in \mathbb{R}$, it holds that:</p>
-<script type="math/tex; mode=display">
-\text{Var}(aX + b) = a^2 \text{Var}(X)</script><p><strong>proof</strong>: </p>
+\end{align*}</script><p><span style="float:right;">$\square$</span></p>
+<p><br></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>: Let $X$ be a random variable with finite expectation. For $a,b \in \mathbb{R}$, it holds that:</p><script type="math/tex; mode=display">\text{Var}(aX + b) = a^2 \text{Var}(X)</script></div>
+<p><strong>proof</strong>: </p>
 <script type="math/tex; mode=display">
 \begin{align*}
 \text{Var}(aX + b) &= E\left[(aX + b - E[aX+b])^2\right] \\
 &= E\left[(aX + b - (aE[X] + b))^2\right] \quad \text{(by linearity)}\\
 &= E\left[a^2 (X - E[X])^2\right] \\
 &= a^2 \text{Var}(X)
-\end{align*}</script><p><br></p>
-<h3 id="Covariance-协方差"><a href="#Covariance-协方差" class="headerlink" title="Covariance / 协方差"></a><strong>Covariance / 协方差</strong></h3><p><strong>Definition</strong> :For real-valued random variables $X, Y \in L^2$, the <strong><code>covariance</code></strong> of $X$ and $Y$ is defined by</p>
-<script type="math/tex; mode=display">
-\text{Cov}(X, Y) = E\Bigl[(X - E[X])(Y - E[Y])\Bigl]</script><p><br></p>
-<p><strong>Theorem</strong>:<br>(a) $\text{Cov}(X, X) = \text{Var}(X)$</p>
-<p>(b) $\text{Cov}(X, Y) = E[XY] - E[X]E[Y]$</p>
-<p>(c) If $X$ and $Y$ are independent, then $\operatorname{Cov}(X, Y) = 0$.</p>
+\end{align*}</script><p><span style="float:right;">$\square$</span></p>
+<p><br></p>
+<h3 id="Covariance-协方差"><a href="#Covariance-协方差" class="headerlink" title="Covariance / 协方差"></a><strong>Covariance / 协方差</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong> :For real-valued random variables$X, Y \in L^2$, the <strong><code>covariance</code></strong> of$X$and$Y$is defined by</p><script type="math/tex; mode=display">\text{Cov}(X, Y) = E\Bigl[(X - E[X])(Y - E[Y])\Bigl]</script></div>
+<p><br></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>:<br>(a) $\text{Cov}(X, X) = \text{Var}(X)$</p><p>(b) $\text{Cov}(X, Y) = E[XY] - E[X]E[Y]$</p><p>(c) If $X$ and $Y$ are independent, then $\operatorname{Cov}(X, Y) = 0$.</p></div>
 <p><strong>Proof</strong>:</p>
 <p>(a) Clear from the definition.</p>
 <p>(b) By the linearity of expectation, it follows:</p>
 <script type="math/tex; mode=display">
-\text{Cov}(X, Y) = E[XY - XE[Y] - E[X]Y + E[X]E[Y]] = E[XY] - E[X]E[Y].</script><p>(c) The claim follows from $E[XY] = E[X]E[Y]$.</p>
+\text{Cov}(X, Y) = E[XY - XE[Y] - E[X]Y + E[X]E[Y]] = E[XY] - E[X]E[Y].</script><p>(c) The claim follows from $E[XY] = E[X]E[Y]$.<span style="float:right;">$\square$</span></p>
 <p><br></p>
-<p><strong>Theorem</strong>: Let $X_i, Y_j \in L^2$, $a_i, b_j \in \mathbb{R}$, $1 \leq i \leq n$, $1 \leq j \leq m$. Then:</p>
-<p>(a) The covariance is bilinear:</p>
-<script type="math/tex; mode=display">
-\operatorname{Cov}\left( \sum_{i=1}^{n} a_i X_i, \sum_{j=1}^{m} b_j Y_j \right) = \sum_{i=1}^{n} \sum_{j=1}^{m} a_i b_j \operatorname{Cov}(X_i, Y_j)</script><p>(b)</p>
-<script type="math/tex; mode=display">
-\operatorname{Var}\left( \sum_{i=1}^{n} X_i \right) = \sum_{i=1}^{n} \operatorname{Var}(X_i) + \sum_{\substack{i,j=1\\i \neq j}}^{n} \operatorname{Cov}(X_i, X_j)</script><p>In particular:</p>
-<script type="math/tex; mode=display">
-\operatorname{Var}(X_1 + X_2) = \operatorname{Var}(X_1) + \operatorname{Var}(X_2) + 2 \operatorname{Cov}(X_1, X_2)</script><p>(c) If $X_1, \dots, X_n$ are uncorrelated, i.e., $\operatorname{Cov}(X_i, X_j) = 0$ for all $i \neq j$, then:</p>
-<script type="math/tex; mode=display">
-\operatorname{Var}\left( \sum_{i=1}^{n} X_i \right) = \sum_{i=1}^{n} \operatorname{Var}(X_i)</script><p><strong>This holds especially if $X_1, \dots, X_n$ are independent.</strong></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>: Let $X_i, Y_j \in L^2$, $a_i, b_j \in \mathbb{R}$, $1 \leq i \leq n$, $1 \leq j \leq m$. Then:</p><p>(a) The covariance is bilinear:</p><script type="math/tex; mode=display">\operatorname{Cov}\left( \sum_{i=1}^{n} a_i X_i, \sum_{j=1}^{m} b_j Y_j \right) = \sum_{i=1}^{n} \sum_{j=1}^{m} a_i b_j \operatorname{Cov}(X_i, Y_j)</script><p>(b)</p><script type="math/tex; mode=display">\operatorname{Var}\left( \sum_{i=1}^{n} X_i \right) = \sum_{i=1}^{n} \operatorname{Var}(X_i) + \sum_{\substack{i,j=1\\i \neq j}}^{n} \operatorname{Cov}(X_i, X_j)</script><p>In particular:</p><script type="math/tex; mode=display">\operatorname{Var}(X_1 + X_2) = \operatorname{Var}(X_1) + \operatorname{Var}(X_2) + 2 \operatorname{Cov}(X_1, X_2)</script><p>(c) If $X_1, \dots, X_n$ are uncorrelated, i.e., $\operatorname{Cov}(X_i, X_j) = 0$ for all $i \neq j$, then:</p><script type="math/tex; mode=display">\operatorname{Var}\left( \sum_{i=1}^{n} X_i \right) = \sum_{i=1}^{n} \operatorname{Var}(X_i)</script><p><strong>This holds especially if $X_1, \dots, X_n$ are independent.</strong></p></div>
 <p><strong>Proof</strong>:</p>
 <p>(a) Since $\operatorname{Cov}(X, Y) = \operatorname{Cov}(Y, X)$, it suffices to show linearity in the first argument. From the linearity of expectation, it follows:</p>
 <script type="math/tex; mode=display">
@@ -2774,7 +2755,7 @@ E[XY] = E[X] E[Y].</script><h3 id="Variance-Varianz-方差"><a href="#Variance-V
 &= \sum_{i=1}^{n} \operatorname{Var}(X_i) + \sum_{\substack{i,j=1\\i \neq j}}^{n} \operatorname{Cov}(X_i, X_j)
 \end{align*}</script><p>In the special case $n = 2$, this gives:</p>
 <script type="math/tex; mode=display">
-\operatorname{Var}(X_1 + X_2) = \operatorname{Var}(X_1) + \operatorname{Var}(X_2) + \operatorname{Cov}(X_1, X_2) + \operatorname{Cov}(X_2, X_1)</script><p>(c) Follows from part (b).</p>
+\operatorname{Var}(X_1 + X_2) = \operatorname{Var}(X_1) + \operatorname{Var}(X_2) + \operatorname{Cov}(X_1, X_2) + \operatorname{Cov}(X_2, X_1)</script><p>(c) Follows from part (b).<span style="float:right;">$\square$</span></p>
 
   </div>
   
@@ -3303,7 +3284,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["background/wallhaven-6dvy9w.png","background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg"];
+  let imgs = ["background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg","background/wallhaven-6dvy9w.png"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3590,7 +3571,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/密码学-Kryptografie/","name":"密码学 Kryptografie"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/26/TUM  数学 笔记/概率论/概率论-Probability-Theory/","name":"概率论 Probability Theory"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"概率论 Probability Theory","description":"概率论相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA-Probability-Theory/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA-Probability-Theory/","wordCount":7,"datePublished":"2025-04-26T18:32:06.000Z","dateModified":"2025-04-26T19:56:11.870Z","articleSection":"TUM 数学 笔记","keywords":"概率论,Probability Theory","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/密码学-Kryptografie/","name":"密码学 Kryptografie"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/26/TUM  数学 笔记/概率论/概率论-Probability-Theory/","name":"概率论 Probability Theory"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"概率论 Probability Theory","description":"概率论相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA-Probability-Theory/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA-Probability-Theory/","wordCount":7,"datePublished":"2025-04-26T18:32:06.000Z","dateModified":"2025-04-26T20:16:17.489Z","articleSection":"TUM 数学 笔记","keywords":"概率论,Probability Theory","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
