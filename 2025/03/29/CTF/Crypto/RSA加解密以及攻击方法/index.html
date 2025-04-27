@@ -2250,7 +2250,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1745790121286),
+    lastupdate: new Date(1745790910618),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2690,7 +2690,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>选择2个很大的质数$p, q$.</li>
 <li>计算$n:=pq$。这里的n是公开的，$p, q$则是保密的。</li>
 <li>计算$\varphi(n)$。（因为我们知道$n=pq$，且$p, q$均为质数，我们可以利用公式$\varphi(n)=(p-1)(q-1)$进行快速计算。）</li>
-<li>选择$e \in \{1,2,…,\varphi(n)-1\}$，使得$gcd(\varphi(n),e)=1$.<br> 我们的公钥为$(e,n)$。</li>
+<li>选择$e \in {1,2,…,\varphi(n)-1}$，使得$gcd(\varphi(n),e)=1$.<br> 我们的公钥为$(e,n)$。</li>
 <li><p>计算密钥$d$，满足$ed \equiv 1$ mod $\varphi(n)$.</p>
 <ol>
 <li>用扩展欧几里得算法找到 $x$ 和 $y$，使得：</li>

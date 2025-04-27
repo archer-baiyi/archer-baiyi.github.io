@@ -2248,7 +2248,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1745790121286),
+    lastupdate: new Date(1745790910618),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2724,14 +2724,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 <p>每个Knote $x \in (S \cup T)$的</p>
 <ul>
-<li><strong>Vorbedingung </strong>指的是：$\bullet x := \{ \ y \ | \ y \ F \ x\ \}$，即能到x的点</li>
-<li><strong>Nachbedingung</strong> 指的是：$ x \bullet := \{ \ y \ | \ x \ F \ y\ \}$，即x能到的点。</li>
+<li><strong>Vorbedingung </strong>指的是：$\bullet x := { \ y \ | \ y \ F \ x\ }$，即能到x的点</li>
+<li><strong>Nachbedingung</strong> 指的是：$ x \bullet := { \ y \ | \ x \ F \ y\ }$，即x能到的点。</li>
 </ul>
 <p><strong>例子</strong>：</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406001837852.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250406001837852.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250406001837852"></p>
 <p>和其他的建图一样，我们这里也可以定义带有标记（即容量，权重等）的图：</p>
 <ul>
-<li><p><strong>Kapazität</strong> einer Stelle：$c : S \to \mathbb{N}_0 \cup \{\infty\}$ </p>
+<li><p><strong>Kapazität</strong> einer Stelle：$c : S \to \mathbb{N}_0 \cup {\infty}$ </p>
 <p>如果没有专门标记出来，则默认 $\infty$。</p>
 </li>
 <li><p><strong>Gewichtung</strong> einer Kante：$w : F \to \mathbb{N}_0$  </p>
@@ -2739,7 +2739,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 </ul>
 <p>一个位置-变迁网（<strong>Stellen-Transitionsnetz</strong>）里除了上面提到的2个函数还需要一个函数</p>
-<p>$M : S \to \mathbb{N}_0 \cup \{\infty\}$ </p>
+<p>$M : S \to \mathbb{N}_0 \cup {\infty}$ </p>
 <p>用于描述图当前的状态（Aktuelle Belegung des Netzes），即每个Stelle里的Token数量。</p>
 <p>需要满足 $\forall s \in S: M(s) \leq c(s)$。</p>
 <p>一个位置-变迁网（Stellen-Transitionsnetz）叫做Bedingungs/Ereignisnetz 或 <strong>Boolesches Netz</strong>（布尔网络），当$M : S \to \mathbb{B}$ ，也就是说每个Stelle里最多可以有1个Token。</p>
