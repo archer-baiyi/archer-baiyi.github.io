@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-27T21:56:41.000Z">
-<meta property="article:modified_time" content="2025-04-28T19:38:10.796Z">
+<meta property="article:modified_time" content="2025-04-28T20:54:26.347Z">
 <meta property="article:tag" content="Theoretische Informatik">
 <meta property="article:tag" content="理论信息学">
 <meta name="twitter:card" content="summary">
@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1745869097138),
+    lastupdate: new Date(1745873676938),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2660,7 +2660,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-28T21:38:10+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-28T22:54:26+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Apr 28, 2025</p>
@@ -2725,14 +2725,14 @@ AB \cap AC = \{ab,abb\} \cap \{a,ab\} = \{ab\} \neq \empty</script><p>最根本�
 <div class="note green"><p><strong></strong></p><p><strong>Lemma</strong>:</p><p>$A^<em> A^</em> = A^*$</p></div>
 <p>证明：Trivial。<span style="float:right;">$\square$</span></p>
 <p><br></p>
-<h3 id="语法（Grammatiken）"><a href="#语法（Grammatiken）" class="headerlink" title="语法（Grammatiken）"></a><strong>语法（Grammatiken）</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>一个<strong><code>语法（Grammatik）</code></strong>是一个四元组 $G = (V, \Sigma, P, S)$，其中：</p><ul><li>$V$ 是一组<strong><code>非终结符号（Nichtterminalzeichen / Nichtterminale / Variablen）</code></strong>的有限集合；</li><li>$\Sigma$ 是一组<strong><code>终结符号（Terminalzeichen / Terminale / Alphabet）</code></strong>，与 $V$ 不相交；</li><li>$P \subseteq (V \cup \Sigma)^<em> \times (V \cup \Sigma)^</em>$ 是一组<strong><code>产生式（Produktionen）</code></strong>的集合；</li><li>$S \in V$ 是<strong><code>开始符号（Startsymbol）</code></strong>。</li></ul></div>
+<h3 id="语法（Grammatiken）"><a href="#语法（Grammatiken）" class="headerlink" title="语法（Grammatiken）"></a><strong>语法（Grammatiken）</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>一个<strong><code>文法（Grammatik）</code></strong>是一个四元组 $G = (V, \Sigma, P, S)$，其中：</p><ul><li>$V$ 是一组<strong><code>非终结符号（Nichtterminalzeichen / Nichtterminale / Variablen）</code></strong>的有限集合；</li><li>$\Sigma$ 是一组<strong><code>终结符号（Terminalzeichen / Terminale / Alphabet）</code></strong>，与 $V$ 不相交；</li><li>$P \subseteq (V \cup \Sigma)^<em> \times (V \cup \Sigma)^</em>$ 是一组<strong><code>产生式（Produktionen）</code></strong>的集合；</li><li>$S \in V$ 是<strong><code>开始符号（Startsymbol）</code></strong>。</li></ul></div>
 <p><br></p>
 <p>为了方便，我们一般用：</p>
 <ul>
 <li>$\alpha \to \beta$ 指代 $(\alpha, \beta) \in P$；</li>
 <li>$\alpha \to \beta_1|\cdots |\beta_n$ 指代 $\alpha \to \beta_1, …, \alpha \to \beta_n$</li>
 </ul>
-<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>一个语法（Grammatik） $G = (V, \Sigma, P, S)$ induziert 一个<strong><code>推导关系</code></strong> $\to_G$，作用于 $V \cup \Sigma$ 上的单词：</p><script type="math/tex; mode=display">\alpha \to_G \alpha'</script><p>当且仅当存在一条规则 $\beta \to \beta’$ 属于 $P$，以及单词 $\alpha_1, \alpha_2$，使得</p><script type="math/tex; mode=display">\alpha = \alpha_1 \beta \alpha_2 \quad \text{且} \quad \alpha' = \alpha_1 \beta' \alpha_2.</script><p>一个这样的序列</p><script type="math/tex; mode=display">\alpha_1 \to_G \alpha_2 \to_G \cdots \to_G \alpha_n</script><p>叫做从 $\alpha_1$ 开始的<strong>推导（Ableitung）</strong>。</p><p>如果 $\alpha_1 = S$ 并且 $\alpha_n \in \Sigma^<em>$，那么 $G$ <em>*生成（erzeugt）</em></em>单词 $\alpha_n$。</p><p>$G$ 的<strong>语言</strong>（Sprache von G）是所有由 $G$ 生成的单词的集合，记为 $L(G)$。</p></div>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>一个文法（Grammatik） $G = (V, \Sigma, P, S)$ induziert 一个<strong><code>推导关系</code></strong> $\to_G$，作用于 $V \cup \Sigma$ 上的单词：</p><script type="math/tex; mode=display">\alpha \to_G \alpha'</script><p>当且仅当存在一条规则 $\beta \to \beta’$ 属于 $P$，以及单词 $\alpha_1, \alpha_2$，使得</p><script type="math/tex; mode=display">\alpha = \alpha_1 \beta \alpha_2 \quad \text{且} \quad \alpha' = \alpha_1 \beta' \alpha_2.</script><p>一个这样的序列</p><script type="math/tex; mode=display">\alpha_1 \to_G \alpha_2 \to_G \cdots \to_G \alpha_n</script><p>叫做从 $\alpha_1$ 开始的<strong>推导（Ableitung）</strong>。</p><p>如果 $\alpha_1 = S$ 并且 $\alpha_n \in \Sigma^<em> $，那么 $G$ <em>*生成（erzeugt）</em></em>单词 $\alpha_n$。</p><p>$G$ 的<strong>语言</strong>（Sprache von G）是所有由 $G$ 生成的单词的集合，记为 $L(G)$。</p></div>
 <p><br></p>
 <p>注意，定义里的$\alpha_1, \alpha_2$可以是$\varepsilon$，也可以是其他单词的Konkatenation。所以在一个大的Konkatenation里，对于其中一个存在Produktion，那么对整个Konkatenation都存在一个推导。</p>
 <p><strong>例子</strong>：</p>
@@ -2757,8 +2757,54 @@ AB \cap AC = \{ab,abb\} \cap \{a,ab\} = \{ab\} \neq \empty</script><p>最根本�
 <p>该如何从$\langle \text{Expr} \rangle$推导出$a * (b + c)$呢？</p>
 <script type="math/tex; mode=display">
 \begin{align*}
-\langle \text{Expr} \rangle &\xrightarrow{1}  \langle \text{Term} \rangle \xrightarrow{1}  \langle \text{Term} \rangle * \langle \text{Factor} \rangle \xrightarrow{1}  \langle \text{Factor} \rangle * \langle \text{Factor} \rangle
-\end{align*}</script>
+\langle \text{Expr} \rangle &\xrightarrow{1}  \langle \text{Term} \rangle 
+\xrightarrow{4}  \langle \text{Term} \rangle * \langle \text{Factor} \rangle \xrightarrow{3}  \langle \text{Factor} \rangle * \langle \text{Factor} \rangle \\
+&\xrightarrow{5}  a * \langle \text{Factor} \rangle
+\xrightarrow{6}  a * (\langle \text{Expr} \rangle)
+\xrightarrow{2}  a * (\langle \text{Expr} \rangle + \langle \text{Term} \rangle) \\
+&\xrightarrow{1}  a * (\langle \text{Term} \rangle + \langle \text{Term} \rangle)
+\xrightarrow{3}  a * (\langle \text{Factor} \rangle + \langle \text{Term} \rangle)
+\xrightarrow{3}  a * (\langle \text{Factor} \rangle + \langle \text{Factor} \rangle)\\
+&\xrightarrow{5}  a * (b + \langle \text{Factor} \rangle)
+\xrightarrow{5}  a * (b+ c)
+\end{align*}</script><p>一共需要11步。</p>
+<p> <strong>例子</strong>：</p>
+<p>这两个语法：</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+G_1: \quad S &\to abcS \mid \epsilon \\
+ba &\to ab \\
+cb &\to bc \\
+ca &\to ac
+\end{align*}</script><script type="math/tex; mode=display">
+\begin{align*}
+G_1: \quad S &\to aBSc \mid \epsilon \\
+Ba &\to aB \\
+Bb &\to bB \\
+Bc &\to bc
+\end{align*}</script><p>哪个可以生成$M = { a^n b^n c^n \mid n \geq 0 }$呢？</p>
+<p>首先，有$M \subseteq L(G_1)$，因为$S \to abcS \to abcabcS \to abcabc \to abacbc \to aabcbc \to aabbcc$，但是$L(G_1) \neq M$，因为$S \to abcS \to abcabcS \to abcabc$。</p>
+<p>而$L(G_2) = M$，因为：$S \to aBSc \to aBaBcc \to aBaBcc \to aaBBcc \to aaBbcc \to aabBcc \to aabbcc$</p>
+<p>。</p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:  <strong><code>(Reflexive transitive Hülle)</code></strong></p><script type="math/tex; mode=display">\begin{align*}\alpha &\to_G^0 \alpha \\\alpha &\to_G^{n+1} \gamma \quad :\Leftrightarrow \quad \exists \beta.\ \alpha \to_G^n \beta \to_G \gamma \\\alpha &\to_G^* \beta \quad :\Leftrightarrow \quad \exists n.\ \alpha \to_G^n \beta \\\alpha &\to_G^+ \beta \quad :\Leftrightarrow \quad \exists n > 0.\ \alpha \to_G^n \beta\end{align*}</script></div>
+<p><br></p>
+<p>有$L(G) = { w \in \Sigma^<em> \mid S \to_G^</em> w }$。</p>
+<p>例子：在前面的例子我们已经看到了$\langle \text{Expr} \rangle$推导出$a * (b + c)$需要11步，所以有</p>
+<script type="math/tex; mode=display">
+\langle \text{Expr} \rangle \to_G^{11} a * (b + c)</script><p>并因此有</p>
+<script type="math/tex; mode=display">
+\langle \text{Expr} \rangle \to_G^* a * (b + c)</script><p>和</p>
+<script type="math/tex; mode=display">
+\langle \text{Expr} \rangle \to_G^+ a * (b + c)</script><h3 id="乔姆斯基体系（Chomsky-Hierarchie）"><a href="#乔姆斯基体系（Chomsky-Hierarchie）" class="headerlink" title="乔姆斯基体系（Chomsky Hierarchie）"></a><strong>乔姆斯基体系（Chomsky Hierarchie）</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>一个文法 $G$ 的类型定义如下：</p><ul><li><p><strong>类型 0</strong>：始终成立。</p></li><li><p><strong>类型 1</strong>：如果对于每一个产生式 $\alpha \to \beta$（除了 $S \to \epsilon$）都有</p><script type="math/tex; mode=display">|\alpha| \leq |\beta|</script><p>并且，如果 $S \to \epsilon$ 是一个产生式，则 $S$ 不出现在任何 $\beta$ 中。</p></li><li><p><strong>类型 2</strong>：如果 $G$ 是类型 1 的文法，并且对于每个产生式 $\alpha \to \beta$，都有</p><script type="math/tex; mode=display">\alpha \in V</script></li><li><p><strong>类型 3</strong>：如果 $G$ 是类型 2 的文法，并且对于每个产生式 $\alpha \to \beta$（除了 $S \to \epsilon$）都有</p><script type="math/tex; mode=display">\beta \in \Sigma \cup \Sigma V</script></li></ul></div>
+<p><br></p>
+<p>显然有：</p>
+<script type="math/tex; mode=display">
+\text{Typ 3} \subseteq \text{Typ 2} \subseteq \text{Typ 1} \subseteq \text{Typ 0}</script><div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>:</p><script type="math/tex; mode=display">L(\text{Typ 3}) \subseteq L(\text{Typ 2}) \subseteq L(\text{Typ 1}) \subseteq L(\text{Typ 0})</script></div>
+<p><br></p>
+<p><strong><code>Wortproblem</code></strong>：</p>
+<p>Gegeben: 一个文法 $G$ 和一个单词 $w \in \Sigma^*$，<br> Frage：$w$ 是否属于 $L(G)$？</p>
+<h2 id="正规语言（Regulare-Sprachen）"><a href="#正规语言（Regulare-Sprachen）" class="headerlink" title="正规语言（Reguläre Sprachen）"></a><strong>正规语言（Reguläre Sprachen）</strong></h2><p>等价关系：</p>
+
   </div>
   
   
@@ -2909,7 +2955,7 @@ AB \cap AC = \{ab,abb\} \cap \{a,ab\} = \{ab\} \neq \empty</script><p>最根本�
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%88Grammatiken%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">语法（Grammatiken）</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%88Grammatiken%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">语法（Grammatiken）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%94%E5%A7%86%E6%96%AF%E5%9F%BA%E4%BD%93%E7%B3%BB%EF%BC%88Chomsky-Hierarchie%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">乔姆斯基体系（Chomsky Hierarchie）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E8%AF%AD%E8%A8%80%EF%BC%88Regulare-Sprachen%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">正规语言（Reguläre Sprachen）</span></a></li></ol>
   </div>
 </section>
 
@@ -3286,7 +3332,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["background/wallhaven-6dvy9w.png","background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg"];
+  let imgs = ["background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg","background/wallhaven-6dvy9w.png"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3573,7 +3619,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/27/TUM info 笔记/Theoretische Informatik/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Theoretische Informatik 理论信息学","description":"理论信息学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/","wordCount":9,"datePublished":"2025-04-27T21:56:41.000Z","dateModified":"2025-04-28T19:38:10.796Z","articleSection":"TUM info 课程笔记","keywords":"Theoretische Informatik,理论信息学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/27/TUM info 笔记/Theoretische Informatik/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Theoretische Informatik 理论信息学","description":"理论信息学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/","wordCount":9,"datePublished":"2025-04-27T21:56:41.000Z","dateModified":"2025-04-28T20:54:26.347Z","articleSection":"TUM info 课程笔记","keywords":"Theoretische Informatik,理论信息学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
