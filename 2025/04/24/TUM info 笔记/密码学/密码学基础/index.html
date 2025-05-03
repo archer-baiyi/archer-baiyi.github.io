@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-24T19:45:04.000Z">
-<meta property="article:modified_time" content="2025-05-03T20:57:53.383Z">
+<meta property="article:modified_time" content="2025-05-03T22:15:32.327Z">
 <meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2246,7 +2246,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1746305886041),
+    lastupdate: new Date(1746310581353),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2659,10 +2659,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-03T22:57:53+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-04T00:15:32+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：May 3, 2025</p>
+    <p>更新于：May 4, 2025</p>
   </a>
 </div>
 
@@ -2713,8 +2713,8 @@ N_{m, c} = \left| \left\{ k \in \mathcal{K} : E(k, m) = c \right\} \right|</scri
 <p><strong>证明</strong>：</p>
 <p>Given an OTP, for all $m \in \mathcal{M}$ there is exactly one unique $k \in \mathcal{K}$ such that $E(k, m) = c$. It follows that $N_{m,c} = 1$，因为</p>
 <ul>
-<li>There is at least one key $k := c \oplus m$ with $E(c \oplus m, m) = c \oplus m \oplus m = c$.</li>
-<li>Assuming two keys $k_0, k_1 \in \mathcal{K}$ exist where $E(k_0, m) = E(k_1, m) = c$:</li>
+<li>存在：There is at least one key $k := c \oplus m$ with $E(c \oplus m, m) = c \oplus m \oplus m = c$.</li>
+<li>唯一：Assuming two keys $k_0, k_1 \in \mathcal{K}$ exist where $E(k_0, m) = E(k_1, m) = c$:</li>
 </ul>
 <script type="math/tex; mode=display">
 \begin{aligned}
@@ -2743,6 +2743,59 @@ S = \{ D(\hat{k},c) \in \mathcal{M}: \hat{k} \in \mathcal{K} \}</script><p>为c�
 <p>What we would like to have are <strong>efficient encryption schemes that cannot be broken “efficiently” with a “non-negligible” probability</strong>.</p>
 <p>比如说质因数分解，它的理论成功概率很高，但是效率非常低，所以可以被忽视。而猜密码这种方法的成功概率太低了，所以也不需要理会。</p>
 <p>重新表述一下就是：“<strong>不存在一个算法可以在时间T内以p的概率成功破解我们的加密算法</strong>”。</p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition 2 (Polynomially-bounded)</strong>:</p><p>A function $f : \mathbb{Z}_+ \to \mathbb{R}$ is called <strong><code>polynomially-bounded</code></strong> if there exist $c, n_0 \in \mathbb{N}$ such that for all integers $n \geq n_0$, we have  </p><script type="math/tex; mode=display">|f(n)| \leq n^c \quad (f(n) \in \mathcal{O}(n^c)).</script></div>
+<p><br></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition 3 (PPT algorithm)</strong>:</p><p>An algorithm is called <strong><code>efficient</code></strong>, if its runtime as a function of its input length is polynomially-bounded. </p><p>We call this algorithm a <strong><code>probabilistic polynomial time (PPT) algorithm</code></strong>.</p></div>
+<p><br></p>
+<p>就其实efficient和PPT是一个意思。</p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition 4 (Efficiently sampleable)</strong>:</p><p>A set $S$ is <strong><code>efficiently sampleable</code></strong> if there is a PPT-algorithm that is able to sample an element from it uniformly and randomly.<br>For such a sampling, we use the notation $s \xleftarrow{R} S$.</p></div>
+<p><br></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition 5 (Negligible)</strong>:</p><p>A function $f : \mathbb{Z}<em>+ \to \mathbb{R}$ is called <strong>negligible</strong> if for all $c \in \mathbb{N}$ there exists a $n_0 \in \mathbb{Z}</em>+$ such that for all integers $n \geq n_0$, we have  </p><script type="math/tex; mode=display">|f(n)| \leq \frac{1}{n^c} \quad \left(f(n) \in \mathcal{O}\left(\frac{1}{n^c}\right)\right).</script></div>
+<p><br></p>
+<p>$f$的值会无限小。</p>
+<p><strong>例子</strong>：$\frac{1}{2^n},\quad \frac{1}{n^{\log n}}$，the probability of randomly choosing a specific key from a set of $2^n$ $n$-bit keys</p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition 6 (Super-poly)</strong>:</p><p>A function $f : \mathbb{Z}_+ \to \mathbb{R}$ is called <strong>super-poly</strong> if $\frac{1}{f}$ is negligible.</p></div>
+<p><br></p>
+<p>翻译一下：</p>
+<p>对于所有的$c \in \mathbb{N}$ 都存在一个 a $n<em>0 \in \mathbb{Z}</em>+$ 使得 for all integers $n \geq n_0$, we have ：</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+|\frac{1}{f(n)}| &\leq \frac{1}{n^c} \\
+\Leftrightarrow f(n) &\geq n^c
+\end{align*}</script><p><strong>例子</strong>：The runtime of an algorithm enumerating all $n$-bit keys to possible ciphertexts for a message $m$ by calculating $E(k, m)$ for all $2^n$ keys is super-poly.</p>
+<p>Let $c \in \mathbb{R}<em>+$ be a constant,<br>$f</em>{neg}, g<em>{neg}$ be negligible functions,<br>$f</em>{poly}, g<em>{poly}$ be polynomially-bounded functions, and<br>$f</em>{spoly}, g_{spoly}$ be super-polynomial functions.</p>
+<p>Then:</p>
+<p><img src="/images/image-20250503234053246.png" class="lazyload" data-srcset="/images/image-20250503234053246.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250503234053246"></p>
+<p><br></p>
+<p>通常我们会定义2个参数：</p>
+<ul>
+<li><strong><code>Security parameter</code></strong> $\lambda$: A positive integer.</li>
+<li><strong><code>System parameter</code></strong> $\Lambda$: A bit string.</li>
+</ul>
+<p>$\lambda$ is chosen when a cipher is deployed. <strong>一般来说，$\lambda$ 的值越大，密码系统的安全等级越高。</strong>较高的值通常与较长的密钥相关联，同时对加解密操作 $D$ 和 $E$ 的性能带来负面影响。</p>
+<p>而$\Lambda$ is not chosen but determined by $\lambda$ for a specific cipher. 比如说，$\lambda$可能表示模数 $n$ 的位长度（length in bits），$n$本身则为成为System parameter$\Lambda$。</p>
+<p>这两个参数都是公开的。</p>
+<p>The parameterization applies the key, message and ciphertext spaces </p>
+<script type="math/tex; mode=display">
+\{\mathcal{K}_{\lambda, \Lambda}\}_{\lambda, \Lambda},\quad 
+  \{\mathcal{M}_{\lambda, \Lambda}\}_{\lambda, \Lambda},\quad 
+  \{\mathcal{C}_{\lambda, \Lambda}\}_{\lambda, \Lambda}</script><p><br></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition 7 (efficient algorithm)</strong>:</p><p>Let $A$ be an algorithm that takes as input a security parameter $\lambda \in \mathbb{Z}_{\geq 1}$,   as well as other parameters encoded as a bit string $x \in {0,1}^{\leq p(\lambda)}$ for some fixed polynomial $p$.</p><p>We call $A$ an <strong><code>efficient algorithm</code></strong> if there exist a poly-bounded function $t$ and a negligible function $\epsilon$<br>such that for all $\lambda$ and $x$, the probability that the running time of $A$ on input $(\lambda, x)$ exceeds $t(\lambda)$ is at most $\epsilon(\lambda)$.</p></div>
+<p>翻译一下：A的输入为一个 security parameter $\lambda \in \mathbb{Z}_{\geq 1}$,  以及被 encoded as a bit string $x \in {0,1}^{\leq p(\lambda)}$ （for some fixed polynomial $p$）的其他的parameters。</p>
+<p><br></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition 8 (computational cipher)</strong>:</p><p>A <strong><code>computational cipher</code></strong> is a pair of <strong>efficient algorithms</strong> $\Pi := (E,D)$ such that:</p><ul><li>$k \in \mathcal{K}$ is an encryption key.</li><li>$m \in \mathcal{M}$ is a message.</li><li>$c \in \mathcal{C}$ is a ciphertext.</li><li>$E : \mathcal{K} \times \mathcal{M} \rightarrow \mathcal{C}$ is the encryption algorithm.</li><li>$D : \mathcal{K} \times \mathcal{C} \rightarrow \mathcal{M}$ is the decryption algorithm.</li><li>$\mathcal{K}, \mathcal{M}$ and $\mathcal{C}$ are <em>finite</em> spaces.</li></ul></div>
+<p><br></p>
+<p>computational cipher的定义其实和Shannon cipher就只差了一个 efficient algorithms 的条件。</p>
+<p><br></p>
+<p>当然在现实生活中，传输数据时会产生各种随机的噪音，所以$E$ 可以是 non-deterministic。在这种情况下我们会引入一个新的参数randomness：$r \in \mathcal{R}$ ，并且用</p>
+<script type="math/tex; mode=display">
+c \xleftarrow{R} E(k, m) \quad\text{ or }\quad r \xleftarrow{R} \mathcal{R} \quad\text{ or }\quad c \leftarrow E(k, m; r)</script><p>表示（受随机数的影响的）加密后的结果。</p>
+<p>（这里箭头上的$R$就只是表面当前考虑的是受随机数的影响的加密）</p>
+<p>而correctness requirement也需要随之改写成：</p>
+<script type="math/tex; mode=display">
+\forall c \xleftarrow{R} E(k, m) : D(k, c) = m</script><p>（即就算受随机数的影响，也需要可以成功解密出来。感觉跟coding theory很像。）</p>
+<p>当$E$ 是 deterministic 的时候，我们会把$\Pi = (E,D)$ 叫作 <strong><code>deterministic cipher</code></strong>。（比如说OTP）</p>
+<p>一个deterministic cipher显然是Shannon cipher。</p>
 
   </div>
   
@@ -3564,7 +3617,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/密码学-Kryptografie/","name":"密码学 Kryptografie"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/24/TUM info 笔记/密码学/密码学基础/","name":"密码学 Kryptografie"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"密码学 Kryptografie","description":"密码学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/24/TUM%20info%20%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/24/TUM%20info%20%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/","wordCount":7,"datePublished":"2025-04-24T19:45:04.000Z","dateModified":"2025-05-03T20:57:53.383Z","articleSection":"TUM info 课程笔记","keywords":"密码学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/密码学-Kryptografie/","name":"密码学 Kryptografie"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/24/TUM info 笔记/密码学/密码学基础/","name":"密码学 Kryptografie"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"密码学 Kryptografie","description":"密码学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/24/TUM%20info%20%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/24/TUM%20info%20%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/","wordCount":7,"datePublished":"2025-04-24T19:45:04.000Z","dateModified":"2025-05-03T22:15:32.327Z","articleSection":"TUM info 课程笔记","keywords":"密码学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
