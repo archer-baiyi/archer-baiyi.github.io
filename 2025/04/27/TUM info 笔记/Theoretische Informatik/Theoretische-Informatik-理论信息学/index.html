@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-27T21:56:41.000Z">
-<meta property="article:modified_time" content="2025-04-29T18:40:12.394Z">
+<meta property="article:modified_time" content="2025-04-30T08:00:13.047Z">
 <meta property="article:tag" content="Theoretische Informatik">
 <meta property="article:tag" content="理论信息学">
 <meta name="twitter:card" content="summary">
@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1745952196077),
+    lastupdate: new Date(1746305886041),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2660,10 +2660,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-29T20:40:12+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-30T10:00:13+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 29, 2025</p>
+    <p>更新于：Apr 30, 2025</p>
   </a>
 </div>
 
@@ -2679,7 +2679,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a><strong>基本概念</strong></h2><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><ul><li><p>一个<strong><code>字母表（Alphabet）</code></strong> $ \Sigma $ 是一个有限集合。<br>例如：$ {0,1} $、ASCII、Unicode。</p></li><li><p>一个<strong><code>单词/字符串 （Wort/String）</code></strong>是由$ \Sigma $中字符组成的有限序列，例如 010。</p></li><li><p>$|w|$表示单词$ w $ 的长度。</p></li><li><p><strong><code>空单词（leere Wort）</code></strong>（长度为 0 的唯一单词）用$\varepsilon$表示。</p></li><li><p>如果 $ u $ 和 $ v $ 是单词，则 $ uv $ 表示它们的<strong><code>连接（Konkatenation）</code></strong>。</p></li><li><p>如果 $ w $ 是一个单词，那么 $ w^n $ 定义为：<br>$ w^0 = \varepsilon $，并且 $ w^{n+1} = w w^n $。<br>例如：$ (ab)^3 = ababab $。</p></li><li><p>$ \Sigma^* $ 是所有由 $ \Sigma $ 中字符组成的单词的集合（Menge aller Wörter）。</p></li><li><p>其中的子集$ L \subseteq \Sigma^<em> $ 被称为<em>*<code>（形式）语言 （(formale) Sprache）</code></em></em>。</p></li></ul></div>
+    <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a><strong>基本概念</strong></h2><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><ul><li><p>一个<strong><code>字母表（Alphabet）</code></strong> $\Sigma$ 是一个有限集合。<br>例如：$ {0,1} $、ASCII、Unicode。</p></li><li><p>一个<strong><code>单词/字符串 （Wort/String）</code></strong>是由$\Sigma$中字符组成的有限序列，例如 010。</p></li><li><p>$|w|$表示单词$ w $ 的长度。</p></li><li><p><strong><code>空单词（leere Wort）</code></strong>（长度为 0 的唯一单词）用$\varepsilon$表示。</p></li><li><p>如果 $u$ 和 $v$ 是单词，则 $uv$ 表示它们的<strong><code>连接（Konkatenation）</code></strong>。</p></li><li><p>如果 $ w $ 是一个单词，那么 $w^n$ 定义为：<br>$ w^0 = \varepsilon $，并且 $ w^{n+1} = w w^n $。<br>例如：$ (ab)^3 = ababab $。</p></li><li><p>$ \Sigma^* $ 是所有由 $ \Sigma $ 中字符组成的单词的集合（Menge aller Wörter）。</p></li><li><p>其中的子集$ L \subseteq \Sigma^* $ 被称为<code>（形式）语言 （(formale) Sprache）</code>。</p></li></ul></div>
 <p><br></p>
 <p>注意，这里的形式语言（(formale) Sprache）$L$并没有要求必须包含$\varepsilon$。</p>
 <p>来看一下简单的<strong>（形式）语言 （(formale) Sprache）的例子</strong>：</p>
@@ -2783,13 +2783,15 @@ Ba &\to aB \\
 Bb &\to bB \\
 Bc &\to bc
 \end{align*}</script><p>哪个可以生成$M = { a^n b^n c^n \mid n \geq 0 }$呢？</p>
-<p>首先，有$M \subseteq L(G_1)$，因为$S \to abcS \to abcabcS \to abcabc \to abacbc \to aabcbc \to aabbcc$，但是$L(G_1) \neq M$，因为$S \to abcS \to abcabcS \to abcabc$。</p>
-<p>而$L(G_2) = M$，因为：$S \to aBSc \to aBaBcc \to aBaBcc \to aaBBcc \to aaBbcc \to aabBcc \to aabbcc$</p>
-<p>。</p>
-<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:  <strong><code>(Reflexive transitive Hülle)</code></strong></p><script type="math/tex; mode=display">\begin{align*}\alpha &\to_G^0 \alpha \\\alpha &\to_G^{n+1} \gamma \quad :\Leftrightarrow \quad \exists \beta.\ \alpha \to_G^n \beta \to_G \gamma \\\alpha &\to_G^* \beta \quad :\Leftrightarrow \quad \exists n.\ \alpha \to_G^n \beta \\\alpha &\to_G^+ \beta \quad :\Leftrightarrow \quad \exists n > 0.\ \alpha \to_G^n \beta\end{align*}</script></div>
+<p>首先，有$M \subseteq L(G_1)$，因为$S \to abcS \to abcabcS \to abcabc \to abacbc \to aabcbc \to aabbcc$。</p>
+<p>只不过$L(G_1) \neq M$，因为$S \to abcS \to abcabcS \to abcabc$。</p>
+<p>而$L(G_2) = M$，因为：</p>
+<script type="math/tex; mode=display">
+S \to aBSc \to aBaBcc \to aBaBcc \to aaBBcc \to aaBbcc \to aabBcc \to aabbcc.</script><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:  <strong><code>(Reflexive transitive Hülle)</code></strong></p><script type="math/tex; mode=display">\begin{align*}\alpha &\to_G^0 \alpha \\\alpha &\to_G^{n+1} \gamma \quad :\Leftrightarrow \quad \exists \beta.\ \alpha \to_G^n \beta \to_G \gamma \\\alpha &\to_G^* \beta \quad :\Leftrightarrow \quad \exists n.\ \alpha \to_G^n \beta \\\alpha &\to_G^+ \beta \quad :\Leftrightarrow \quad \exists n > 0.\ \alpha \to_G^n \beta\end{align*}</script></div>
 <p><br></p>
-<p>有$L(G) = { w \in \Sigma^<em> \mid S \to_G^</em> w }$。</p>
-<p>例子：在前面的例子我们已经看到了$\langle \text{Expr} \rangle$推导出$a * (b + c)$需要11步，所以有</p>
+<p>不难注意到有：</p>
+<script type="math/tex; mode=display">
+L(G) = \{ w \in \Sigma^* | S \to_G^* w \}.</script><p><strong>例子</strong>：在前面的例子我们已经看到了$\langle \text{Expr} \rangle$推导出$a * (b + c)$需要11步，所以有</p>
 <script type="math/tex; mode=display">
 \langle \text{Expr} \rangle \to_G^{11} a * (b + c)</script><p>并因此有</p>
 <script type="math/tex; mode=display">
@@ -2801,12 +2803,46 @@ Bc &\to bc
 <script type="math/tex; mode=display">
 \text{Typ 3} \subseteq \text{Typ 2} \subseteq \text{Typ 1} \subseteq \text{Typ 0}</script><div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>:</p><script type="math/tex; mode=display">L(\text{Typ 3}) \subseteq L(\text{Typ 2}) \subseteq L(\text{Typ 1}) \subseteq L(\text{Typ 0})</script></div>
 <p><br></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Typ</th>
+<th>Grammatikart</th>
+<th>Sprachklasse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Typ 3</td>
+<td>Rechtslineare Grammatik</td>
+<td>Reguläre Sprachen</td>
+</tr>
+<tr>
+<td>Typ 2</td>
+<td>Kontextfreie Grammatik</td>
+<td>Kontextfreie Sprachen</td>
+</tr>
+<tr>
+<td>Typ 1</td>
+<td>Kontextsensitive Grammatik</td>
+<td>Kontextsensitive Sprachen</td>
+</tr>
+<tr>
+<td>Typ 0</td>
+<td>Phrasenstrukturgrammatik</td>
+<td>Rekursiv aufzählbare Sprachen</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><strong><code>Wortproblem</code></strong>：</p>
 <p>Gegeben: 一个文法 $G$ 和一个单词 $w \in \Sigma^*$，<br> Frage：$w$ 是否属于 $L(G)$？</p>
 <h2 id="正规语言（Regulare-Sprachen）"><a href="#正规语言（Regulare-Sprachen）" class="headerlink" title="正规语言（Reguläre Sprachen）"></a><strong>正规语言（Reguläre Sprachen）</strong></h2><p>等价关系：</p>
 <p><img src="/images/屏幕截图 2025-04-28 230311.png" class="lazyload" data-srcset="/images/屏幕截图 2025-04-28 230311.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="屏幕截图 2025-04-28 230311.png"></p>
 <h3 id="Deterministische-endliche-Automaten"><a href="#Deterministische-endliche-Automaten" class="headerlink" title="Deterministische endliche Automaten"></a><strong>Deterministische endliche Automaten</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>Ein <strong><code>deterministischer endlicher Automat</code></strong> (<em>deterministic finite automaton</em>, <strong><code>DFA</code></strong>)<br>$M = (Q, \Sigma, \delta, q_0, F)$ besteht aus</p><ul><li>einer endlichen Menge von <strong>Zuständen</strong> $Q$,</li><li>einem (endlichen) <strong>Eingabealphabet</strong> $\Sigma$,</li><li>einer (totalen!) <strong>Übergangsfunktion</strong> $\delta : Q \times \Sigma \rightarrow Q$,</li><li>einem <strong>Startzustand</strong> $q_0 \in Q$, und</li><li>einer Menge $F \subseteq Q$ von <strong>Endzuständen</strong> (akzeptierenden Zust.).</li></ul></div>
 <p><br></p>
+<p>名字里的deterministisch是指：对于每一个状态（Zustand）以及一个Übergang只对应一个状态（Zustand）。</p>
 <div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>Die von $M$ <strong><code>akzeptierte</code></strong> Sprache ist</p><script type="math/tex; mode=display">L(M) := \{ w \in \Sigma^* \mid \hat{\delta}(q_0, w) \in F \},</script><p>wobei $\hat{\delta} : Q \times \Sigma^* \rightarrow Q$ induktiv definiert ist durch:</p><script type="math/tex; mode=display">\begin{aligned}\hat{\delta}(q, \varepsilon) &= q \\\hat{\delta}(q, aw) &= \hat{\delta}(\delta(q, a), w) \quad \text{für } a \in \Sigma,\, w \in \Sigma^*.\end{aligned}</script><p><em>( $\hat{\delta}(q, w)$ bezeichnet den Zustand, den man aus $q$ mit $w$ erreicht. )</em></p><p>Eine Sprache ist <strong><code>regulär</code></strong> gdw. sie von einem DFA akzeptiert wird.</p></div>
 <p><br></p>
 <p>可以这样理解$\hat{\delta}$：第一个参数是起始状况（Zustand），然后第二个参数的一连串的路径（或者说是操作），会依次触发/经过。</p>
@@ -2822,7 +2858,7 @@ L(M) := \{ w \in \Sigma^* \mid \hat{\delta}(q_0, w) \in F \},</script><p>里的�
 <li>Endzustände 会被用doppelte Kreise标记出来。</li>
 </ul>
 <p><strong>例子</strong>：</p>
-<p><img src="images/image-20250429104404267.png" class="lazyload" data-srcset="images/image-20250429104404267.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250429104404267"></p>
+<p><img src="/images/image-20250429110901414.png" class="lazyload" data-srcset="/images/image-20250429110901414.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250429104404267"></p>
 <ul>
 <li>$Q = {0,1,2}$</li>
 <li>$\Sigma = {a,b}$</li>
@@ -2831,7 +2867,7 @@ L(M) := \{ w \in \Sigma^* \mid \hat{\delta}(q_0, w) \in F \},</script><p>里的�
 <p>同样，所有包含ab的Wort也一定会被akzeptiert。</p>
 <p><strong>例子</strong>：</p>
 <p>我们用#w表示w的二进制。（比如说#100=4）</p>
-<p><img src="images/image-20250429110901414.png" class="lazyload" data-srcset="images/image-20250429110901414.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250429110901414"></p>
+<p><img src="/images/image-20250429110901414.png" class="lazyload" data-srcset="/images/image-20250429110901414.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250429110901414"></p>
 <p>不难发现，DFA akzeptiert $w \in {0,1}^*$当且仅当#w是偶数。</p>
 <p><strong>证明</strong>：</p>
 <p>假设$w \neq \varepsilon$，可以通过</p>
@@ -2841,7 +2877,29 @@ L(M) := \{ w \in \Sigma^* \mid \hat{\delta}(q_0, w) \in F \},</script><p>里的�
 <script type="math/tex; mode=display">
 w0 \in L(A), w1 \notin L(A)</script><p>即$w \in L(A) \Leftrightarrow w\text{为偶数}$。（也就是二进制的最低位等于0）</p>
 <p>如果$w = \varepsilon$，有$\hat{\delta}(0, \varepsilon) = 0$，所以$\varepsilon \in L(A)$。（注意 #$\varepsilon = 0$）<span style="float:right;">$\square$</span></p>
-<h3 id="Von-rechtslinearen-Grammatiken-zu-DFA-und-zuruck"><a href="#Von-rechtslinearen-Grammatiken-zu-DFA-und-zuruck" class="headerlink" title="Von rechtslinearen Grammatiken zu DFA (und zurück)"></a><strong>Von rechtslinearen Grammatiken zu DFA (und zurück)</strong></h3><p><strong><code>Rechtslineare Grammatik</code></strong>指的是所有Produktion都长这样：$A \to a$ 或者$A \to aB$。</p>
+<h3 id="Von-rechtslinearen-Grammatiken-zu-DFA-und-zuruck"><a href="#Von-rechtslinearen-Grammatiken-zu-DFA-und-zuruck" class="headerlink" title="Von rechtslinearen Grammatiken zu DFA (und zurück)"></a><strong>Von rechtslinearen Grammatiken zu DFA (und zurück)</strong></h3><p><strong><code>Rechtslineare Grammatik</code></strong>（即Typ3）指的是所有Produktion都长这样：$A \to a$ 或者$A \to aB$。</p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>Ein <strong><code>nichtdeterministischer endlicher Automat</code></strong> (<em>nondeterministic finite automaton</em>, <strong><code>NFA</code></strong>) ist ein 5-Tupel<br>$N = (Q, \Sigma, \delta, q_0, F)$, so dass</p><ul><li>$Q$, $\Sigma$, $q_0$ und $F$ sind wie bei einem DFA  </li><li>$\delta : Q \times \Sigma \rightarrow \mathcal{P}(Q)$ <ul><li>$\mathcal{P}(Q)$ = Menge aller Teilmengen von $Q$ </li><li>Alternative: Relation $\delta \subseteq Q \times \Sigma \times Q$</li></ul></li></ul></div>
+<p><br></p>
+<p>注意，在DFA里，每一个状态（Zustand）以及一个Übergang只对应一个状态（Zustand）。而在NFA里，一个状态（Zustand）以及一个Übergang可以对应多个状态。</p>
+<p><strong>例子</strong>：</p>
+<p><img src="/images/image-20250430092950591.png" class="lazyload" data-srcset="/images/image-20250430092950591.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250430092950591"></p>
+<p>每一个点可能会拥有多条相同名字的边，所以结果是不确定的。（nichtdeterministisch ）</p>
+<p>当我们输入$0111$，可能会得到多个Zustandsfolgen：</p>
+<script type="math/tex; mode=display">
+p,p,p,p,p, \ \ \ p,p,p,p,q \ \ \ p,p,p,q,r</script><p><br>和之前类似，我们可以在$\delta$的基础上定义</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\bar{\delta}: \mathcal{P}(Q) \times \Sigma &\to \mathcal{P}(Q) \\
+\bar{\delta}(S,a) :&= \bigcup_{q \in S} \delta(q, a)
+\end{align*}</script><p>并在这个基础上像之前一样inductive定义</p>
+<script type="math/tex; mode=display">
+\hat{\bar{\delta}} : \mathcal{P}(Q) \times \Sigma^* \rightarrow \mathcal{P}(Q)</script><p>而$\hat{\delta}(S, w)$ 可以理解成是Menge aller Zustände, die sich von einem Zustand in $S$ aus mit $w$ erreichen lassen.</p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>Die von $N = (Q, \Sigma, \delta, q_0, F)$ <strong><code>akzeptierte</code></strong> Sprache ist:</p><script type="math/tex; mode=display">L(N) := \{ w \in \Sigma^* \mid \hat{\delta}(\{q_0\}, w) \cap F \neq \emptyset \}</script></div>
+<p><br></p>
+<p>DFA定义的akzeptierte Sprache里，是</p>
+<script type="math/tex; mode=display">
+L(M) := \{ w \in \Sigma^* \mid \hat{\delta}(q_0, w) \in F \},</script><p>而在这里，由于$\hat{\delta}(q_0, w)$ 是几个集合，所以我们要求的是它和$F$的交集不为空，也就是说只要存在到达的可能性那就会被akzeptiert。</p>
+<p>为了方便，我们后续一般还是用$\delta$ 指代$\bar{\delta}$ ， $\delta$ 指代$\hat{\delta}$ 。</p>
 
   </div>
   
@@ -3657,7 +3715,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/27/TUM info 笔记/Theoretische Informatik/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Theoretische Informatik 理论信息学","description":"理论信息学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/","wordCount":9,"datePublished":"2025-04-27T21:56:41.000Z","dateModified":"2025-04-29T18:40:12.394Z","articleSection":"TUM info 课程笔记","keywords":"Theoretische Informatik,理论信息学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/27/TUM info 笔记/Theoretische Informatik/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Theoretische Informatik 理论信息学","description":"理论信息学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/","wordCount":9,"datePublished":"2025-04-27T21:56:41.000Z","dateModified":"2025-04-30T08:00:13.047Z","articleSection":"TUM info 课程笔记","keywords":"Theoretische Informatik,理论信息学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
