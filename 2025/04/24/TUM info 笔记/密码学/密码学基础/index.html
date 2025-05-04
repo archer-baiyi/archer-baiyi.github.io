@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-24T19:45:04.000Z">
-<meta property="article:modified_time" content="2025-05-04T10:33:29.874Z">
+<meta property="article:modified_time" content="2025-05-04T10:40:19.728Z">
 <meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2246,7 +2246,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1746354814538),
+    lastupdate: new Date(1746355225006),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2659,7 +2659,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-04T12:33:29+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-04T12:40:19+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：May 4, 2025</p>
@@ -2724,7 +2724,7 @@ k_0 \oplus m \oplus m &= k_1 \oplus m \oplus m \\
 k_0 &= k_1
 \end{aligned}</script><p>所以有：</p>
 <script type="math/tex; mode=display">
-\forall m_0, m_1 \in \mathcal{M}, c \in \mathcal{C} : N_{m_0, c} = N_{m_1, c}=1</script><p><span style="float:right;">$\square$</span></p>
+\forall m_0, m_1 \in \mathcal{M}, c \in \mathcal{C} : N_{m_0, c} = N_{m_1, c}=1</script><p>. <span style="float:right;">$\square$</span></p>
 <div class="note green"><p><strong></strong></p><p><strong>Theorem 2</strong>: </p><p>如果$\Pi = (E, D)$是绝对安全的（perfectly secure），那么有 $|\mathcal{K}| \geq |\mathcal{M}|$。</p></div>
 <p><br></p>
 <p><strong>证明</strong>：</p>
@@ -2814,8 +2814,6 @@ c \xleftarrow{R} E(k, m) \quad\text{ or }\quad r \xleftarrow{R} \mathcal{R} \qua
 |\Pr[\phi(E(k, m_0))] - \Pr[\phi(E(k, m_1))]| \leq \epsilon</script><p>这个便是<strong><code>Statistical Ciphertext Indistinguishability</code></strong>的定义。</p>
 <p>而所谓的<strong><code>Computational Ciphertext Indistinguishability</code></strong>便是在此基础上继续要求 predicate $\phi$ 是efficient。</p>
 <h3 id="Attack-Game"><a href="#Attack-Game" class="headerlink" title="Attack Game"></a><strong>Attack Game</strong></h3><p>我们通常会用一个Attack Game来形式化定义安全性。会有一个Adversary $\mathcal{A}$，如果他的输出不同于任何”trivial attack”（比如说随机猜测），那么我们就说他破解（break）了我们的加密。我们会用$\mathcal{A}$’s <strong>advantage</strong> 来衡量他对我们的加密有多大的影响。</p>
-<div class="note blue"><p><strong></strong></p><p><strong>Attack Game 1 (Ciphertext Indistinguishability)</strong>:</p><p>For a given cipher $\Pi = (E, D)$ defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$ and for a given adversary $\mathcal{A}$, we define two experiments.<br>For $b \in {0,1}$, <strong>Experiment $b$</strong> proceeds as follows:</p><ul><li><p>The adversary computes $m_0, m_1 \in \mathcal{M}$ <strong>of the same length</strong> and sends them to a challenger.</p></li><li><p>The challenger computes </p><script type="math/tex; mode=display">k \xleftarrow{R} \mathcal{K},c \xleftarrow{R} E(k, m_b)</script><p>and sends $c$ to the adversary.</p></li><li><p>The adversary outputs a bit $\hat{b} \in {0,1}$.</p></li><li><p>Let $W_b$ be the event that $\mathcal{A}$ outputs 1.</p></li></ul></div>
-<p><br></p>
 <div class="note cyan"><p><strong></strong></p><p><strong>Attack Game 1 (Ciphertext Indistinguishability)</strong>:</p><p>For a given cipher $\Pi = (E, D)$ defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$ and for a given adversary $\mathcal{A}$, we define two experiments.<br>For $b \in {0,1}$, <strong>Experiment $b$</strong> proceeds as follows:</p><ul><li><p>The adversary computes $m_0, m_1 \in \mathcal{M}$ <strong>of the same length</strong> and sends them to a challenger.</p></li><li><p>The challenger computes </p><script type="math/tex; mode=display">k \xleftarrow{R} \mathcal{K},c \xleftarrow{R} E(k, m_b)</script><p>and sends $c$ to the adversary.</p></li><li><p>The adversary outputs a bit $\hat{b} \in {0,1}$.</p></li><li><p>Let $W_b$ be the event that $\mathcal{A}$ outputs 1.（$\mathcal{A}$在实验b的时候输出1）</p></li></ul></div>
 <p>图示：</p>
 <p><img src="/images/image-20250504111956473.png" class="lazyload" data-srcset="/images/image-20250504111956473.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250504111956473"></p>
@@ -2826,18 +2824,19 @@ c \xleftarrow{R} E(k, m) \quad\text{ or }\quad r \xleftarrow{R} \mathcal{R} \qua
 <p>如果对于所有adversaries $\mathcal{A}$都有：</p>
 <script type="math/tex; mode=display">
 SC_{adv}[\mathcal{A}, \Pi] = 0</script><p>那么它一定是(computationally) indistinguishable ciphertexts。</p>
+<p><br></p>
 <p>例子：</p>
 <ul>
 <li><p>Trivial attacks</p>
 <ul>
-<li>$\mathcal{A}$永远输出1，那么<script type="math/tex; mode=display">
+<li><p>如果$\mathcal{A}$永远输出1，那么</p>
+<script type="math/tex; mode=display">
 SCadv[\mathcal{A}, \Pi] := |\Pr[W_0] - \Pr[W_1]| = |1-1| = 0</script></li>
+<li><p>如果$\mathcal{A}$通过扔硬币选择输出，那么</p>
+<script type="math/tex; mode=display">
+SCadv[\mathcal{A}, \Pi] := |\Pr[W_0] - \Pr[W_1]| = |\frac{1}{2} - \frac{1}{2}| = 0</script></li>
 </ul>
 </li>
-</ul>
-<ul>
-<li>$\mathcal{A}$通过扔硬币选择输出，那么<script type="math/tex; mode=display">
-SCadv[\mathcal{A}, \Pi] := |\Pr[W_0] - \Pr[W_1]| = |\frac{1}{2} - \frac{1}{2}| = 0</script></li>
 </ul>
 <ul>
 <li><p>如果挑选2条一样的明文，那么advantage也等于0，因为不可能通过任何手段可以判断出来到底加密的是哪条信息，所以只能猜，也就是$|\frac{1}{2} - \frac{1}{2}| = 0$。</p>
@@ -2880,7 +2879,7 @@ SCadv^*[\mathcal{A}, \Pi]
 &= \left| \frac{1}{2} \cdot (1 - \text{Pr}[W_0] + \text{Pr}[W_1]) - \frac{1}{2} \right| \\
 &= \frac{1}{2} \cdot \left| \text{Pr}[W_1] - \text{Pr}[W_0] \right| \\
 &= \frac{1}{2} \cdot SCadv[\mathcal{A}, \Pi] 
-\end{align*}</script><p><span style="float:right;">$\square$</span></p>
+\end{align*}</script><p>. <span style="float:right;">$\square$</span></p>
 <div class="note green"><p><strong></strong></p><p><strong>Theorem 3</strong>:</p><p>The <strong>one-time pad （OTP）</strong> has indistinguishable ciphertexts.</p></div>
 <p><br></p>
 <p><strong>证明</strong>：</p>
@@ -2889,7 +2888,8 @@ SCadv^*[\mathcal{A}, \Pi]
 <p>Since $k$ is randomly chosen, $m_b \oplus k$ is a uniformly random bitstring of length $L$, independent of $b$. 所以说只能随机猜测b。</p>
 <p>所以</p>
 <script type="math/tex; mode=display">
-SCadv^*[\mathcal{A}, \Pi_{\text{OTP}}] = | \text{Pr}[W] - \frac{1}{2} | =|  \text{Pr}[b = \hat{b}] - \frac{1}{2} |= 0</script>
+SCadv^*[\mathcal{A}, \Pi_{\text{OTP}}] = | \text{Pr}[W] - \frac{1}{2} | =|  \text{Pr}[b = \hat{b}] - \frac{1}{2} |= 0</script><p>.<span style="float:right;">$\square$</span></p>
+<h2 id="Secret-key-cryptography"><a href="#Secret-key-cryptography" class="headerlink" title="Secret key cryptography"></a><strong>Secret key cryptography</strong></h2>
   </div>
   
   
@@ -3046,7 +3046,7 @@ SCadv^*[\mathcal{A}, \Pi_{\text{OTP}}] = | \text{Pr}[W] - \frac{1}{2} | =|  \tex
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basics"><span class="toc-number">1.</span> <span class="toc-text">Basics</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Attack-Game"><span class="toc-number">1.1.</span> <span class="toc-text">Attack Game</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basics"><span class="toc-number">1.</span> <span class="toc-text">Basics</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Attack-Game"><span class="toc-number">1.1.</span> <span class="toc-text">Attack Game</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Secret-key-cryptography"><span class="toc-number">2.</span> <span class="toc-text">Secret key cryptography</span></a></li></ol>
   </div>
 </section>
 
@@ -3710,7 +3710,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/密码学-Kryptografie/","name":"密码学 Kryptografie"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/24/TUM info 笔记/密码学/密码学基础/","name":"密码学 Kryptografie"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"密码学 Kryptografie","description":"密码学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/24/TUM%20info%20%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/24/TUM%20info%20%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/","wordCount":7,"datePublished":"2025-04-24T19:45:04.000Z","dateModified":"2025-05-04T10:33:29.874Z","articleSection":"TUM info 课程笔记","keywords":"密码学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/密码学-Kryptografie/","name":"密码学 Kryptografie"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/24/TUM info 笔记/密码学/密码学基础/","name":"密码学 Kryptografie"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"密码学 Kryptografie","description":"密码学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/24/TUM%20info%20%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/24/TUM%20info%20%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/","wordCount":7,"datePublished":"2025-04-24T19:45:04.000Z","dateModified":"2025-05-04T10:40:19.728Z","articleSection":"TUM info 课程笔记","keywords":"密码学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
