@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-24T19:45:04.000Z">
-<meta property="article:modified_time" content="2025-05-03T22:15:32.327Z">
+<meta property="article:modified_time" content="2025-05-04T10:33:29.874Z">
 <meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2246,7 +2246,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1746310581353),
+    lastupdate: new Date(1746354814538),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2659,7 +2659,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-04T00:15:32+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-04T12:33:29+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：May 4, 2025</p>
@@ -2750,20 +2750,27 @@ S = \{ D(\hat{k},c) \in \mathcal{M}: \hat{k} \in \mathcal{K} \}</script><p>为c�
 <p>就其实efficient和PPT是一个意思。</p>
 <div class="note yellow"><p><strong></strong></p><p><strong>Definition 4 (Efficiently sampleable)</strong>:</p><p>A set $S$ is <strong><code>efficiently sampleable</code></strong> if there is a PPT-algorithm that is able to sample an element from it uniformly and randomly.<br>For such a sampling, we use the notation $s \xleftarrow{R} S$.</p></div>
 <p><br></p>
-<div class="note yellow"><p><strong></strong></p><p><strong>Definition 5 (Negligible)</strong>:</p><p>A function $f : \mathbb{Z}<em>+ \to \mathbb{R}$ is called <strong>negligible</strong> if for all $c \in \mathbb{N}$ there exists a $n_0 \in \mathbb{Z}</em>+$ such that for all integers $n \geq n_0$, we have  </p><script type="math/tex; mode=display">|f(n)| \leq \frac{1}{n^c} \quad \left(f(n) \in \mathcal{O}\left(\frac{1}{n^c}\right)\right).</script></div>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition 5 (Negligible)</strong>:</p><p>A function </p><script type="math/tex; mode=display">f: \mathbb{Z}_+ \to \mathbb{R}</script><p>is called <strong>negligible</strong> if </p><script type="math/tex; mode=display">\forall c \in \mathbb{N} \  \exists n_0 \in \mathbb{Z}_+ \  \text{ s.t. for all integers } n \geq n_0 :|f(n)| \leq \frac{1}{n^c} \quad \left(f(n) \in \mathcal{O}\left(\frac{1}{n^c}\right)\right).</script></div>
 <p><br></p>
 <p>$f$的值会无限小。</p>
 <p><strong>例子</strong>：$\frac{1}{2^n},\quad \frac{1}{n^{\log n}}$，the probability of randomly choosing a specific key from a set of $2^n$ $n$-bit keys</p>
+<p><br></p>
 <div class="note yellow"><p><strong></strong></p><p><strong>Definition 6 (Super-poly)</strong>:</p><p>A function $f : \mathbb{Z}_+ \to \mathbb{R}$ is called <strong>super-poly</strong> if $\frac{1}{f}$ is negligible.</p></div>
 <p><br></p>
 <p>翻译一下：</p>
-<p>对于所有的$c \in \mathbb{N}$ 都存在一个 a $n<em>0 \in \mathbb{Z}</em>+$ 使得 for all integers $n \geq n_0$, we have ：</p>
+<p>对于所有的 $c \in \mathbb{N}$ 都存在一个 $n_0 \in \mathbb{Z}_+$使得 for all integers $n \geq n_0$, we have ：</p>
 <script type="math/tex; mode=display">
 \begin{align*}
 |\frac{1}{f(n)}| &\leq \frac{1}{n^c} \\
 \Leftrightarrow f(n) &\geq n^c
 \end{align*}</script><p><strong>例子</strong>：The runtime of an algorithm enumerating all $n$-bit keys to possible ciphertexts for a message $m$ by calculating $E(k, m)$ for all $2^n$ keys is super-poly.</p>
-<p>Let $c \in \mathbb{R}<em>+$ be a constant,<br>$f</em>{neg}, g<em>{neg}$ be negligible functions,<br>$f</em>{poly}, g<em>{poly}$ be polynomially-bounded functions, and<br>$f</em>{spoly}, g_{spoly}$ be super-polynomial functions.</p>
+<p>Let $c \in \mathbb{R}_+$ be a constant, </p>
+<script type="math/tex; mode=display">
+f_{neg}, g_{neg}</script><p>be negligible functions, </p>
+<script type="math/tex; mode=display">
+f_{poly}, g_{poly}</script><p>be polynomially-bounded functions, and </p>
+<script type="math/tex; mode=display">
+f_{spoly}, g_{spoly}</script><p>be super-polynomial functions.</p>
 <p>Then:</p>
 <p><img src="/images/image-20250503234053246.png" class="lazyload" data-srcset="/images/image-20250503234053246.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250503234053246"></p>
 <p><br></p>
@@ -2796,7 +2803,93 @@ c \xleftarrow{R} E(k, m) \quad\text{ or }\quad r \xleftarrow{R} \mathcal{R} \qua
 \forall c \xleftarrow{R} E(k, m) : D(k, c) = m</script><p>（即就算受随机数的影响，也需要可以成功解密出来。感觉跟coding theory很像。）</p>
 <p>当$E$ 是 deterministic 的时候，我们会把$\Pi = (E,D)$ 叫作 <strong><code>deterministic cipher</code></strong>。（比如说OTP）</p>
 <p>一个deterministic cipher显然是Shannon cipher。</p>
-
+<p>之前我们定义的 <strong><code>Perfect Ciphertext Indistinguishability</code></strong> 是这样的：</p>
+<script type="math/tex; mode=display">
+\forall m_0, m_1 \in \mathcal{M},\ c \in \mathcal{C} :\ \Pr[E(k, m_0) = c] = \Pr[E(k, m_1) = c].</script><p>而我们希望将这个定义推广到可以适应所有的 predicate $\phi$（一个判断函数，输出结果只为true或者false。也就是一个从$\mathcal{C}$ 映射到${0,1}$的函数。比如说判断“密文的前4位是否全为0”。）：</p>
+<script type="math/tex; mode=display">
+\forall \phi \in \{0,1\}^{\mathcal{C}},\ m_0, m_1 \in \mathcal{M}:\ 
+\Pr[\phi(E(k, m_0))] = \Pr[\phi(E(k, m_1))]</script><p>给这个式子引入一个误差（a negligible chance for an adversary to break our scheme by demanding）就会变成：</p>
+<script type="math/tex; mode=display">
+\forall \phi \in \{0,1\}^{\mathcal{C}},\ m_0, m_1 \in \mathcal{M}:\ 
+|\Pr[\phi(E(k, m_0))] - \Pr[\phi(E(k, m_1))]| \leq \epsilon</script><p>这个便是<strong><code>Statistical Ciphertext Indistinguishability</code></strong>的定义。</p>
+<p>而所谓的<strong><code>Computational Ciphertext Indistinguishability</code></strong>便是在此基础上继续要求 predicate $\phi$ 是efficient。</p>
+<h3 id="Attack-Game"><a href="#Attack-Game" class="headerlink" title="Attack Game"></a><strong>Attack Game</strong></h3><p>我们通常会用一个Attack Game来形式化定义安全性。会有一个Adversary $\mathcal{A}$，如果他的输出不同于任何”trivial attack”（比如说随机猜测），那么我们就说他破解（break）了我们的加密。我们会用$\mathcal{A}$’s <strong>advantage</strong> 来衡量他对我们的加密有多大的影响。</p>
+<div class="note blue"><p><strong></strong></p><p><strong>Attack Game 1 (Ciphertext Indistinguishability)</strong>:</p><p>For a given cipher $\Pi = (E, D)$ defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$ and for a given adversary $\mathcal{A}$, we define two experiments.<br>For $b \in {0,1}$, <strong>Experiment $b$</strong> proceeds as follows:</p><ul><li><p>The adversary computes $m_0, m_1 \in \mathcal{M}$ <strong>of the same length</strong> and sends them to a challenger.</p></li><li><p>The challenger computes </p><script type="math/tex; mode=display">k \xleftarrow{R} \mathcal{K},c \xleftarrow{R} E(k, m_b)</script><p>and sends $c$ to the adversary.</p></li><li><p>The adversary outputs a bit $\hat{b} \in {0,1}$.</p></li><li><p>Let $W_b$ be the event that $\mathcal{A}$ outputs 1.</p></li></ul></div>
+<p><br></p>
+<div class="note cyan"><p><strong></strong></p><p><strong>Attack Game 1 (Ciphertext Indistinguishability)</strong>:</p><p>For a given cipher $\Pi = (E, D)$ defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$ and for a given adversary $\mathcal{A}$, we define two experiments.<br>For $b \in {0,1}$, <strong>Experiment $b$</strong> proceeds as follows:</p><ul><li><p>The adversary computes $m_0, m_1 \in \mathcal{M}$ <strong>of the same length</strong> and sends them to a challenger.</p></li><li><p>The challenger computes </p><script type="math/tex; mode=display">k \xleftarrow{R} \mathcal{K},c \xleftarrow{R} E(k, m_b)</script><p>and sends $c$ to the adversary.</p></li><li><p>The adversary outputs a bit $\hat{b} \in {0,1}$.</p></li><li><p>Let $W_b$ be the event that $\mathcal{A}$ outputs 1.（$\mathcal{A}$在实验b的时候输出1）</p></li></ul></div>
+<p>图示：</p>
+<p><img src="/images/image-20250504111956473.png" class="lazyload" data-srcset="/images/image-20250504111956473.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250504111956473"></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>We define $\mathcal{A}$’s <strong><code>ciphertext distinguishing advantage</code></strong> or <strong><code>semantic security advantage</code></strong> as</p><script type="math/tex; mode=display">SCadv[\mathcal{A}, \Pi] := |\Pr[W_0] - \Pr[W_1]|</script></div>
+<p><br></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition 9 (Ciphertext Indistinguishability)</strong>:</p><p>A cipher $\Pi := (E, D)$ has <strong><code>(computationally) indistinguishable ciphertexts</code></strong>,<br>if $SC_{adv}[\mathcal{A}, \Pi]$ is negligible for all PPT adversaries $\mathcal{A}$.</p></div>
+<p><br></p>
+<p>如果对于所有adversaries $\mathcal{A}$都有：</p>
+<script type="math/tex; mode=display">
+SC_{adv}[\mathcal{A}, \Pi] = 0</script><p>那么它一定是(computationally) indistinguishable ciphertexts。</p>
+<p>例子：</p>
+<ul>
+<li><p>Trivial attacks</p>
+<ul>
+<li>$\mathcal{A}$永远输出1，那么<script type="math/tex; mode=display">
+SCadv[\mathcal{A}, \Pi] := |\Pr[W_0] - \Pr[W_1]| = |1-1| = 0</script></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>$\mathcal{A}$通过扔硬币选择输出，那么<script type="math/tex; mode=display">
+SCadv[\mathcal{A}, \Pi] := |\Pr[W_0] - \Pr[W_1]| = |\frac{1}{2} - \frac{1}{2}| = 0</script></li>
+</ul>
+<ul>
+<li><p>如果挑选2条一样的明文，那么advantage也等于0，因为不可能通过任何手段可以判断出来到底加密的是哪条信息，所以只能猜，也就是$|\frac{1}{2} - \frac{1}{2}| = 0$。</p>
+</li>
+<li><p>假如这样设计一个加密：$E(k, m) := (\text{parity}(m), E’(k, m))$，即加密结果包含2个信息，第一个是明文$m$的奇偶性，第二个是真正的加密内容，那么就会存在一个 adversary with advantage 1：</p>
+<ul>
+<li>$\mathcal{A}$挑选2个明文，一个的parity等于1，一个的等于0.那么他就可以通过$E(k, m)$的第一个component的值（parity）来判断明文到底是那条。</li>
+</ul>
+</li>
+<li><p>对于perfectly secure ciphers，所有的adversary has advantage 0 。</p>
+</li>
+</ul>
+<p><br></p>
+<p>如果我们让challenger随机挑选b，那么就会得到下面这种attack game：</p>
+<div class="note cyan"><p><strong></strong></p><p><strong>Attack Game 2 (Ciphertext Indistinguishability — bit guessing) </strong>:</p><p>For a given cipher $\Pi = (E, D)$ defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$ and for a given adversary $\mathcal{A}$, the experiment proceeds as follows:</p><ul><li>The adversary computes $m_0, m_1 \in \mathcal{M}$ of the same length and sends them to a challenger.</li><li>The challenger computes $b \xleftarrow{R} {0,1}$, $k \xleftarrow{R} \mathcal{K}$, $c \xleftarrow{R} E(k, m_b)$</li><li>The adversary outputs a bit $\hat{b} \in {0,1}$</li><li>Let $W$ be the event that $\hat{b} = b$</li></ul></div>
+<p><br></p>
+<p>图示：</p>
+<p><img src="/images/image-20250504120050047.png" class="lazyload" data-srcset="/images/image-20250504120050047.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250504120050047"></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>We define $\mathcal{A}$’s <strong><code>bit-guessing advantage</code></strong> as:</p><script type="math/tex; mode=display">SCadv^*[\mathcal{A}, \Pi] := |\Pr[W] - \tfrac{1}{2}|</script></div>
+<p><br></p>
+<div class="note green"><p><strong></strong></p><p><strong>Lemma</strong>:</p><script type="math/tex; mode=display">SCadv^*[\mathcal{A}] = \frac{1}{2}SCadv[\mathcal{A}]</script></div>
+<p><br></p>
+<p><strong>证明</strong>：</p>
+<p>因为b是随机挑选的，所以</p>
+<script type="math/tex; mode=display">
+\text{Pr}[b = 0] = \text{Pr}[b = 1] = \frac{1}{2}</script><p>那么有</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\text{Pr}[W] &= \text{Pr}[\hat{b} = b] \\
+&= \text{Pr}[\hat{b} = b \mid b = 0] \cdot \text{Pr}[b = 0] + \text{Pr}[\hat{b} = b \mid b = 1] \cdot \text{Pr}[b = 1] \\
+&= \frac{1}{2} \cdot \left( \text{Pr}[\hat{b} = 0 \mid b = 0] + \text{Pr}[\hat{b} = 1 \mid b = 1] \right)
+\end{align*}</script><p>根据之前$W_0,W_1$的定义可以得到：</p>
+<script type="math/tex; mode=display">
+\text{Pr}[\hat{b} = 0 \mid b = 0] = 1 - \text{Pr}[\hat{b} = 1 \mid b = 0] = 1 - \text{Pr}[W_0]</script><script type="math/tex; mode=display">
+\text{Pr}[\hat{b} = 1 \mid b = 1] = \text{Pr}[W_1]</script><p>所以：</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+SCadv^*[\mathcal{A}, \Pi] 
+&= \left| \text{Pr}[W] - \frac{1}{2} \right| \\
+&= \left| \frac{1}{2} \cdot (1 - \text{Pr}[W_0] + \text{Pr}[W_1]) - \frac{1}{2} \right| \\
+&= \frac{1}{2} \cdot \left| \text{Pr}[W_1] - \text{Pr}[W_0] \right| \\
+&= \frac{1}{2} \cdot SCadv[\mathcal{A}, \Pi] 
+\end{align*}</script><p><span style="float:right;">$\square$</span></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem 3</strong>:</p><p>The <strong>one-time pad （OTP）</strong> has indistinguishable ciphertexts.</p></div>
+<p><br></p>
+<p><strong>证明</strong>：</p>
+<p>我们用bit-guessing game来证明这个thm。  </p>
+<p>Let $\mathcal{A}$ be any adversary. Assume it outputs messages $m_0, m_1 \in {0,1}^L$ for some length $L$.  </p>
+<p>Since $k$ is randomly chosen, $m_b \oplus k$ is a uniformly random bitstring of length $L$, independent of $b$. 所以说只能随机猜测b。</p>
+<p>所以</p>
+<script type="math/tex; mode=display">
+SCadv^*[\mathcal{A}, \Pi_{\text{OTP}}] = | \text{Pr}[W] - \frac{1}{2} | =|  \text{Pr}[b = \hat{b}] - \frac{1}{2} |= 0</script>
   </div>
   
   
@@ -2953,7 +3046,7 @@ c \xleftarrow{R} E(k, m) \quad\text{ or }\quad r \xleftarrow{R} \mathcal{R} \qua
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basics"><span class="toc-number">1.</span> <span class="toc-text">Basics</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basics"><span class="toc-number">1.</span> <span class="toc-text">Basics</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Attack-Game"><span class="toc-number">1.1.</span> <span class="toc-text">Attack Game</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3330,7 +3423,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["background/wallhaven-6dvy9w.png","background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg"];
+  let imgs = ["background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg","background/wallhaven-6dvy9w.png"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3617,7 +3710,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/密码学-Kryptografie/","name":"密码学 Kryptografie"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/24/TUM info 笔记/密码学/密码学基础/","name":"密码学 Kryptografie"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"密码学 Kryptografie","description":"密码学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/24/TUM%20info%20%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/24/TUM%20info%20%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/","wordCount":7,"datePublished":"2025-04-24T19:45:04.000Z","dateModified":"2025-05-03T22:15:32.327Z","articleSection":"TUM info 课程笔记","keywords":"密码学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/密码学-Kryptografie/","name":"密码学 Kryptografie"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/24/TUM info 笔记/密码学/密码学基础/","name":"密码学 Kryptografie"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"密码学 Kryptografie","description":"密码学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/24/TUM%20info%20%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/24/TUM%20info%20%E7%AC%94%E8%AE%B0/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/","wordCount":7,"datePublished":"2025-04-24T19:45:04.000Z","dateModified":"2025-05-04T10:33:29.874Z","articleSection":"TUM info 课程笔记","keywords":"密码学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
