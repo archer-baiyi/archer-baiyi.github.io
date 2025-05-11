@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-27T21:56:41.000Z">
-<meta property="article:modified_time" content="2025-05-06T14:44:38.896Z">
+<meta property="article:modified_time" content="2025-05-08T20:39:40.254Z">
 <meta property="article:tag" content="Theoretische Informatik">
 <meta property="article:tag" content="理论信息学">
 <meta name="twitter:card" content="summary">
@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1746695651719),
+    lastupdate: new Date(1746990263478),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2660,10 +2660,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-06T16:44:38+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-08T22:39:40+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：May 6, 2025</p>
+    <p>更新于：May 8, 2025</p>
   </a>
 </div>
 
@@ -2686,10 +2686,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ul>
 <li><p>杜登（Duden）词典中所有单词的集合</p>
 </li>
-<li><p>$L_1 = { \epsilon, ab, abab, ababab, \dots } = { (ab)^n \mid n \in \mathbb{N} }$</p>
+<li><p>$L_1 = { \varepsilon, ab, abab, ababab, \dots } = { (ab)^n \mid n \in \mathbb{N} }$</p>
 <p>（$\Sigma_1 = {a, b}$）</p>
 </li>
-<li><p>$L_2 = { \epsilon, ab, aabb, abab, abba, baab, baba, bbaa, \dots } = { w \in {a,b}^* \mid w\ \text{中包含相同数量的}\ a\ \text{和}\ b\ \text{字符} }$</p>
+<li><p>$L_2 = { \varepsilon, ab, aabb, abab, abba, baab, baba, bbaa, \dots } = { w \in {a,b}^* \mid w\ \text{中包含相同数量的}\ a\ \text{和}\ b\ \text{字符} }$</p>
 <p>（$\Sigma_2 = {a, b}$）</p>
 </li>
 <li><p>$L_3 = {0, 1, 100, 1001, 10000, \dots} = { w \in {0,1}^* \mid w\ \text{是一个二进制编码的平方数} }$</p>
@@ -2697,20 +2697,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 <li><p>$\emptyset$</p>
 </li>
-<li><p>${\epsilon}$</p>
+<li><p>${\varepsilon}$</p>
 </li>
 </ul>
 <p><br></p>
 <p>反例：</p>
 <ul>
-<li>$\epsilon$ 或 $ab$ 不是语言，因为它们不是集合。</li>
+<li>$\varepsilon$ 或 $ab$ 不是语言，因为它们不是集合。</li>
 </ul>
 <p><br></p>
-<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>: 语言上的运算（Operationen auf Sprachen）</p><p>设 $A, B \subseteq \Sigma^*$：</p><ul><li><p><strong>连接（Konkatenation）</strong>：$AB := { uv \mid u \in A \land v \in B }$<br>例子：${ab, b} {a, bb} = {aba, abbb, ba, bbb}$</p></li><li><p>$A^n := { w<em>1 \dots w_n \mid w_1, \dots, w_n \in A } = \underbrace{A \cdots A}</em>{n}$</p><ul><li><p>例子：${ab, ba}^2 = {abab, abba, baab, baba}$</p></li><li><p>递归定义：$<br>A^0 = {\epsilon} \quad \text{且} \quad A^{n+1} := A A^n$</p></li></ul></li><li><p>$A^* := { w<em>1 \dots w_n \mid n \geq 0 \land w_1, \dots, w_n \in A } = \bigcup</em>{n \in \mathbb{N}} A^n$ </p><ul><li>例子：${01}^<em> = {\epsilon, 01, 0101, 010101, \dots} \neq {0,1}^</em>$</li></ul></li><li><p>$A^+ := AA^* = \bigcup_{n \geq 1} A^n$</p></li></ul></div>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>: 语言上的运算（Operationen auf Sprachen）</p><p>设 $A, B \subseteq \Sigma^*$：</p><ul><li><p><strong>连接（Konkatenation）</strong>：$AB := { uv \mid u \in A \land v \in B }$<br>例子：${ab, b} {a, bb} = {aba, abbb, ba, bbb}$</p></li><li><p>$A^n := { w<em>1 \dots w_n \mid w_1, \dots, w_n \in A } = \underbrace{A \cdots A}</em>{n}$</p><ul><li><p>例子：${ab, ba}^2 = {abab, abba, baab, baba}$</p></li><li><p>递归定义：$<br>A^0 = {\varepsilon} \quad \text{且} \quad A^{n+1} := A A^n$</p></li></ul></li><li><p>$A^* := { w<em>1 \dots w_n \mid n \geq 0 \land w_1, \dots, w_n \in A } = \bigcup</em>{n \in \mathbb{N}} A^n$ </p><ul><li>例子：${01}^<em> = {\varepsilon, 01, 0101, 010101, \dots} \neq {0,1}^</em>$</li></ul></li><li><p>$A^+ := AA^* = \bigcup_{n \geq 1} A^n$</p></li></ul></div>
 <p><br></p>
 <p>注意，因为$A^0 = { \varepsilon }$，所以对于所有 $A$ 都有：$\varepsilon \in A^<em>$，并且 $\emptyset^</em> = { \varepsilon }$。</p>
 <p><br></p>
-<div class="note green"><p><strong></strong></p><p><strong>Lemma</strong>:</p><ul><li>$\emptyset A = \emptyset$</li><li>${\epsilon}A = A$</li></ul></div>
+<div class="note green"><p><strong></strong></p><p><strong>Lemma</strong>:</p><ul><li>$\emptyset A = \emptyset$</li><li>${\varepsilon}A = A$</li></ul></div>
 <p>证明：Trivial。<span style="float:right;">$\square$</span></p>
 <p><br></p>
 <div class="note green"><p><strong></strong></p><p><strong>Lemma</strong>:</p><ul><li>$A(B \cup C) = AB \cup AC$</li><li>$(A \cup B)C = AC \cup BC$</li></ul></div>
@@ -2725,14 +2725,14 @@ AB \cap AC = \{ab,abb\} \cap \{a,ab\} = \{ab\} \neq \emptyset</script><p>最根�
 <div class="note green"><p><strong></strong></p><p><strong>Lemma</strong>:</p><p>$A^<em> A^</em> = A^*$</p></div>
 <p>证明：Trivial。<span style="float:right;">$\square$</span></p>
 <p><br></p>
-<h3 id="语法（Grammatiken）"><a href="#语法（Grammatiken）" class="headerlink" title="语法（Grammatiken）"></a><strong>语法（Grammatiken）</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>一个<strong><code>文法（Grammatik）</code></strong>是一个四元组 $G = (V, \Sigma, P, S)$，其中：</p><ul><li>$V$ 是一组<strong><code>非终结符号（Nichtterminalzeichen / Nichtterminale / Variablen）</code></strong>的有限集合；</li><li>$\Sigma$ 是一组<strong><code>终结符号（Terminalzeichen / Terminale / Alphabet）</code></strong>，与 $V$ 不相交；</li><li>$P \subseteq (V \cup \Sigma)^<em> \times (V \cup \Sigma)^</em>$ 是一组<strong><code>产生式（Produktionen）</code></strong>的集合；</li><li>$S \in V$ 是<strong><code>开始符号（Startsymbol）</code></strong>。</li></ul></div>
+<h3 id="文法（Grammatiken）"><a href="#文法（Grammatiken）" class="headerlink" title="文法（Grammatiken）"></a><strong>文法（Grammatiken）</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>一个<strong><code>文法（Grammatik）</code></strong>是一个四元组 $G = (V, \Sigma, P, S)$，其中：</p><ul><li><p>$V$ 是一组<strong><code>非终结符号（Nichtterminalzeichen / Nichtterminale / Variablen）</code></strong>的有限集合；</p></li><li><p>$\Sigma$ 是一组<strong><code>终结符号（Terminalzeichen / Terminale / Alphabet）</code></strong>，与 $V$ 不相交；</p></li><li><script type="math/tex; mode=display">P \subseteq (V \cup \Sigma)^* \times (V \cup \Sigma)^*</script><p>是一组<strong><code>产生式（Produktionen）</code></strong>的集合；</p></li><li><p>$S \in V$ 是<strong><code>开始符号（Startsymbol）</code></strong>。</p></li></ul></div>
 <p><br></p>
 <p>为了方便，我们一般用：</p>
 <ul>
 <li>$\alpha \to \beta$ 指代 $(\alpha, \beta) \in P$；</li>
 <li>$\alpha \to \beta_1|\cdots |\beta_n$ 指代 $\alpha \to \beta_1, …, \alpha \to \beta_n$</li>
 </ul>
-<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>一个文法（Grammatik） $G = (V, \Sigma, P, S)$ induziert 一个<strong><code>推导关系</code></strong> $\to_G$，作用于 $V \cup \Sigma$ 上的单词：</p><script type="math/tex; mode=display">\alpha \to_G \alpha'</script><p>当且仅当存在一条规则 $\beta \to \beta’$ 属于 $P$，以及单词 $\alpha_1, \alpha_2$，使得</p><script type="math/tex; mode=display">\alpha = \alpha_1 \beta \alpha_2 \quad \text{且} \quad \alpha' = \alpha_1 \beta' \alpha_2.</script><p>一个这样的序列</p><script type="math/tex; mode=display">\alpha_1 \to_G \alpha_2 \to_G \cdots \to_G \alpha_n</script><p>叫做从 $\alpha_1$ 开始的<strong>推导（Ableitung）</strong>。</p><p>如果 $\alpha_1 = S$ 并且 $\alpha_n \in \Sigma^<em> $，那么 $G$ <em>*生成（erzeugt）</em></em>单词 $\alpha_n$。</p><p>$G$ 的<strong>语言</strong>（Sprache von G）是所有由 $G$ 生成的单词的集合，记为 $L(G)$。</p></div>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>一个文法（Grammatik） $G = (V, \Sigma, P, S)$ induziert 一个<strong><code>推导关系</code></strong> $\to_G$，作用于 $V \cup \Sigma$ 上的单词：</p><script type="math/tex; mode=display">\alpha \to_G \alpha'</script><p>当且仅当存在一条规则 $\beta \to \beta’$ 属于 $P$，以及单词 $\alpha_1, \alpha_2$，使得</p><script type="math/tex; mode=display">\alpha = \alpha_1 \beta \alpha_2 \quad \text{且} \quad \alpha' = \alpha_1 \beta' \alpha_2.</script><p>一个这样的序列</p><script type="math/tex; mode=display">\alpha_1 \to_G \alpha_2 \to_G \cdots \to_G \alpha_n</script><p>叫做从 $\alpha_1$ 开始的<strong>推导（Ableitung）</strong>。</p><p>如果 $\alpha_1 = S$ 并且</p><script type="math/tex; mode=display">\alpha_n \in \Sigma^*</script><p> ，那么 $G$ <strong>生成（erzeugt）</strong>单词 $\alpha_n$。</p><p>$G$ 的<strong>语言</strong>（Sprache von G）是所有由 $G$ 生成的单词的集合，记为 $L(G)$。</p></div>
 <p><br></p>
 <p>注意，定义里的$\alpha_1, \alpha_2$可以是$\varepsilon$，也可以是其他单词的Konkatenation。所以在一个大的Konkatenation里，对于其中一个存在Produktion，那么对整个Konkatenation都存在一个推导。</p>
 <p><strong>例子</strong>：</p>
@@ -2797,7 +2797,7 @@ L(G) = \{ w \in \Sigma^* | S \to_G^* w \}.</script><p><strong>例子</strong>：
 <script type="math/tex; mode=display">
 \langle \text{Expr} \rangle \to_G^* a * (b + c)</script><p>和</p>
 <script type="math/tex; mode=display">
-\langle \text{Expr} \rangle \to_G^+ a * (b + c)</script><h3 id="乔姆斯基体系（Chomsky-Hierarchie）"><a href="#乔姆斯基体系（Chomsky-Hierarchie）" class="headerlink" title="乔姆斯基体系（Chomsky Hierarchie）"></a><strong>乔姆斯基体系（Chomsky Hierarchie）</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>一个文法 $G$ 的类型定义如下：</p><ul><li><p><strong>类型 0</strong>：始终成立。</p></li><li><p><strong>类型 1</strong>：如果对于每一个产生式 $\alpha \to \beta$（除了 $S \to \epsilon$）都有</p><script type="math/tex; mode=display">|\alpha| \leq |\beta|</script><p>并且，如果 $S \to \epsilon$ 是一个产生式，则 $S$ 不出现在任何 $\beta$ 中。</p></li><li><p><strong>类型 2</strong>：如果 $G$ 是类型 1 的文法，并且对于每个产生式 $\alpha \to \beta$，都有</p><script type="math/tex; mode=display">\alpha \in V</script></li><li><p><strong>类型 3</strong>：如果 $G$ 是类型 2 的文法，并且对于每个产生式 $\alpha \to \beta$（除了 $S \to \epsilon$）都有</p><script type="math/tex; mode=display">\beta \in \Sigma \cup \Sigma V</script></li></ul></div>
+\langle \text{Expr} \rangle \to_G^+ a * (b + c)</script><h3 id="乔姆斯基体系（Chomsky-Hierarchie）"><a href="#乔姆斯基体系（Chomsky-Hierarchie）" class="headerlink" title="乔姆斯基体系（Chomsky Hierarchie）"></a><strong>乔姆斯基体系（Chomsky Hierarchie）</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>一个文法 $G$ 的类型定义如下：</p><ul><li><p><strong>类型 0</strong>：始终成立。</p></li><li><p><strong>类型 1</strong>：如果对于每一个产生式 $\alpha \to \beta$（除了 $S \to \varepsilon$）都有</p><script type="math/tex; mode=display">|\alpha| \leq |\beta|</script><p>并且，如果 $S \to \varepsilon$ 是一个产生式，则 $S$ 不出现在任何 $\beta$ 中。</p></li><li><p><strong>类型 2</strong>：如果 $G$ 是类型 1 的文法，并且对于每个产生式 $\alpha \to \beta$，都有</p><script type="math/tex; mode=display">\alpha \in V</script></li><li><p><strong>类型 3</strong>：如果 $G$ 是类型 2 的文法，并且对于每个产生式 $\alpha \to \beta$（除了 $S \to \varepsilon$）都有</p><script type="math/tex; mode=display">\beta \in \Sigma \cup \Sigma V</script></li></ul></div>
 <p><br></p>
 <p>显然有：</p>
 <script type="math/tex; mode=display">
@@ -2894,13 +2894,136 @@ p,p,p,p,p, \ \ \ p,p,p,p,q \ \ \ p,p,p,q,r</script><p><br>和之前类似，我�
 \end{align*}</script><p>并在这个基础上像之前一样inductive定义</p>
 <script type="math/tex; mode=display">
 \hat{\bar{\delta}} : \mathcal{P}(Q) \times \Sigma^* \rightarrow \mathcal{P}(Q)</script><p>而$\hat{\delta}(S, w)$ 可以理解成是Menge aller Zustände, die sich von einem Zustand in $S$ aus mit $w$ erreichen lassen.</p>
+<p><strong>例子</strong>：</p>
+<p><img src="/images/image-20250430092950591.png" class="lazyload" data-srcset="/images/image-20250430092950591.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250430092950591"></p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\hat{\bar{\delta}}(\{p,q\},10)
+&= \hat{\bar{\delta}}(\bar{\delta}(\{p, q\}, 1), 0) \\
+&= \hat{\bar{\delta}}(\delta(p, 1) \cup \delta(q, 1), 0) \\
+&= \hat{\bar{\delta}}(\{p, q, r\}, 0) \\
+&= \bar{\delta}(\{p, q, r\}, 0) \\
+&= \delta(p, 0) \cup \delta(q, 0) \cup \delta(r, 0) \\
+&= \{p\} \cup \{r\} \cup \emptyset \\
+&= \{p, r\}
+\end{aligned}</script><p>也就是说从$p,q$出发，进行一遍$10$的操作，最后一定会落在$p,r$。</p>
 <div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>Die von $N = (Q, \Sigma, \delta, q_0, F)$ <strong><code>akzeptierte</code></strong> Sprache ist:</p><script type="math/tex; mode=display">L(N) := \{ w \in \Sigma^* \mid \hat{\delta}(\{q_0\}, w) \cap F \neq \emptyset \}</script></div>
 <p><br></p>
-<p>DFA定义的akzeptierte Sprache里，是</p>
+<p>注意，在DFA定义的akzeptierte Sprache里，是</p>
 <script type="math/tex; mode=display">
 L(M) := \{ w \in \Sigma^* \mid \hat{\delta}(q_0, w) \in F \},</script><p>而在这里，由于$\hat{\delta}(q_0, w)$ 是几个集合，所以我们要求的是它和$F$的交集不为空，也就是说只要存在到达的可能性那就会被akzeptiert。</p>
-<p>为了方便，我们后续一般还是用$\delta$ 指代$\bar{\delta}$ ， $\delta$ 指代$\hat{\delta}$ 。</p>
-
+<p>为了方便，我们后续一般还是用$\delta$ 指代$\bar{\delta}$ ， $\hat{\delta}$ 指代$\hat{\bar{\delta}}$ 。</p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>:</p><p>Für jede rechtslineare Grammatik $G$ gibt es einen NFA $N$ <em>mit</em>  </p><script type="math/tex; mode=display">L(G) = L(N)</script></div>
+<p><br></p>
+<p>主要的构造（证明）思路就是将Grammatik里的Variablen （V）构造成NFA的Zustände（Q），然后将Grammatik的Produktion构造成NFA里的Übergänge。</p>
+<p>我们来看一下针对下面这个比较allgemein的例子的具体构造。</p>
+<p>例子：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+S &\rightarrow aX \mid aY \\
+X &\rightarrow aX \mid bY \mid a \\
+Y &\rightarrow aS \mid bX \mid aY \mid b
+\end{aligned}</script><p><strong>证明（构造）</strong>：</p>
+<p><img src="/images/image-20250508171557869.png" class="lazyload" data-srcset="/images/image-20250508171557869.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250508171557869"></p>
+<p>Sei $G = (V, \Sigma, P, S)$ eine rechtslineare Grammatik ohne die Produktion $S \rightarrow \varepsilon$.<br>Definiere den NFA $A = (Q, \Sigma, \delta, q_0, F)$ mit:</p>
+<ul>
+<li>$Q = V \cup {q_f}$ (wobei $q_f \notin V$)</li>
+<li>$Y \in \delta(X, a)$ gdw $(X \rightarrow aY) \in P$</li>
+<li>$q_f \in \delta(X, a)$ gdw $(X \rightarrow a) \in P$</li>
+<li>$q_0 = S$</li>
+<li>$F = {q_f}$</li>
+</ul>
+<p>Es gilt: $a_1 \ldots a_n \in L(G)$</p>
+<p>– gdw es existieren Variablen $X<em>1, \ldots, X</em>{n-1}$</p>
+<script type="math/tex; mode=display">
+S \rightarrow a_1X_1 \rightarrow_G a_1a_2X_2 \rightarrow_G \cdots \rightarrow_G a_1 \ldots a_{n-1}X_{n-1} \rightarrow_G a_1 \ldots a_n</script><p>– gdw es existieren Zustände $X<em>1, \ldots, X</em>{n-1}$</p>
+<script type="math/tex; mode=display">
+\delta(S, a_1) \ni X_1,\quad \delta(X_1, a_2) \ni X_2,\quad \ldots,\quad \delta(X_{n-1}, a_n) \ni q_F</script><p>– gdw $a_1 \ldots a_n \in L(A)$</p>
+<p>. <span style="float:right;">$\square$</span></p>
+<p>假设这个Grammatik还包含了$S \to \varepsilon$，那么需要将$F$构造成$F= {S, q_f}$。</p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>:</p><p>Für jeden NFA $N$ gibt es einen DFA $M$ <em>mit</em>  </p><script type="math/tex; mode=display">L(N) = L(M)</script></div>
+<p><br></p>
+<p>证明：</p>
+<p>Sei $N = (Q, \Sigma, \delta, q_0, F)$ ein NFA.<br>Definiere den DFA $M = (\mathcal{P}(Q), \Sigma, \bar{\delta}, {q_0}, F_M)$:</p>
+<script type="math/tex; mode=display">
+F_M := \{ S \subseteq Q \mid S \cap F \neq \emptyset \}</script><p>Dann gilt:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+w \in L(N) &\Leftrightarrow \hat{\bar{\delta}}(\{q_0\}, w) \cap F \neq \emptyset &\text{Def.} \\
+          &\Leftrightarrow \hat{\bar{\delta}}(\{q_0\}, w) \in F_M &\text{Def.} \\
+          &\Leftrightarrow w \in L(M) &\text{Def.}
+\end{aligned}</script><p>. <span style="float:right;">$\square$</span></p>
+<p>这种构造叫做 Potenzmengenkonstruktion 或者 Teilmengenkonstruktion。</p>
+<p><br></p>
+<p>注意，按照这个构造，如果NFA里有n个Zustände， 那对应的DFA里会有$2^n$个Zustände。很多当然是可以避免这个规格的，但是有些时候并避免不了。在这个Corollary之后我们会看一个避免不了的例子。</p>
+<div class="note green"><p><strong></strong></p><p><strong>Corollary</strong>:</p><p>Für jede rechtslineare Grammatik $G$ gibt es einen DFA $M$ <em>mit</em>  </p><script type="math/tex; mode=display">L(G) = L(M)</script></div>
+<p><br></p>
+<p><strong>例子</strong>：</p>
+<script type="math/tex; mode=display">
+L_k := \{ w \in \{0,1\}^* \mid \text{das $k$-letzte Bit von } w \text{ ist } 1 \}</script><p>（注意，这里是倒数第$k$位为1，不是正数。）</p>
+<p>Ein NFA für diese Sprache:</p>
+<p><img src="/images/image-20250508200336500.png" class="lazyload" data-srcset="/images/image-20250508200336500.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250508200336500"></p>
+<div class="note green"><p><strong></strong></p><p><strong>Lemma</strong>:</p><p>Jeder DFA $M$ <em>mit</em> $L(M) = L_k$ hat mindestens $2^k$ <em>Zuständen.</em></p></div>
+<p><br></p>
+<p><strong>证明</strong>：</p>
+<p>我们需要做的是证明 für alle $w_1, w_2 \in {0, 1}^k$:  </p>
+<script type="math/tex; mode=display">
+w_1 \ne w_2 \Rightarrow  \hat{\delta}(q_0, w_1) \ne \hat{\delta}(q_0, w_2)</script><p>证明了这个之后，由于${0, 1}^k$里有$2^k$个元素，那么任意一个DFA里也至少会有$2^k$个Zusände，因为对于所有的$w \in {0, 1}^k$，$\hat{\delta}(q_0, w)$都是$M$里的一个Zustand。</p>
+<p>那么我们现在开始证明这个结论，用反证法：</p>
+<p>Annahme: Es gibt $w_1, w_2 \in {0, 1}^k$ mit $w_1 \ne w_2$, aber $\hat{\delta}(q_0, w_1) = \hat{\delta}(q_0, w_2)$.</p>
+<p>Sei $w_1 = wa_i \ldots a_k$ und $w_2 = wb_i \ldots b_k$ mit $a_i \ne b_i$  （$i$表示的是$w_1,w_2$第一个不相等的位。而前面相同的部分我们就简单记作$w$。）<br>o.E. sei $a_i = 1$, $b_i = 0$.</p>
+<p>Es gilt einerseits:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+w_1 0^{i-1} &= wa_i \ldots a_k 0^{i-1} \in L_k \\
+w_2 0^{i-1} &= wb_i \ldots b_k 0^{i-1} \notin L_k
+\end{aligned}</script><p>（在$w_1,w_2$后面加上$i-1$个0，这样一来第一个的倒数第$k$位就是1，第二个的倒数第$k$位是0。）</p>
+<p>Aber es gilt auch:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\hat{\delta}(q_0, w_1 0^{i-1}) &= \hat{\delta}(\hat{\delta}(q_0, w_1), 0^{i-1}) \\
+                               &= \hat{\delta}(\hat{\delta}(q_0, w_2), 0^{i-1}) \quad \text{nach der Annahme}\\
+                               &= \hat{\delta}(q_0, w_2 0^{i-1})
+\end{aligned}</script><p>但是根据$L(M)$的定义：</p>
+<script type="math/tex; mode=display">
+L(M) := \{ w \in \Sigma^* \mid \hat{\delta}(q_0, w) \in F \},</script><p>不可能存在$a,b$满足$\hat{\delta}(q_0, a) = \hat{\delta}(q_0, b)$，但是一个在$L(M)$，一个不在。</p>
+<p>所以说得到一个Wiederspruch. <span style="float:right;">$\square$</span></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>:</p><p>Für jeden DFA $M$ gibt es eine rechtslineare Grammatik $G$ <em>mit</em>  </p><script type="math/tex; mode=display">L(M) = L(G)</script></div>
+<p><br></p>
+<p><strong>证明</strong>：</p>
+<p>Sei $M = (Q, \Sigma, \delta, q_0, F)$.<br>Die Grammatik $G = (V, T, P, S)$ mit:</p>
+<ul>
+<li>$V = Q$, $T = \Sigma$, $S = q_0$</li>
+<li>$(q_1 \rightarrow aq_2) \in P$ gdw $\delta(q_1, a) = q_2$</li>
+<li>$(q_1 \rightarrow a) \in P$ gdw $\delta(q_1, a) \in F$</li>
+<li>$(q_0 \rightarrow \varepsilon) \in P$ gdw $q_0 \in F$</li>
+</ul>
+<p>ist von Typ 3 und erfüllt $L(M) = L(G)$.<span style="float:right;">$\square$</span></p>
+<h3 id="NFAs-mit-epsilon-Ubergangen"><a href="#NFAs-mit-epsilon-Ubergangen" class="headerlink" title="NFAs mit $\epsilon$-Übergängen"></a><strong>NFAs mit $\epsilon$-Übergängen</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>Ein NFA mit <strong>$\epsilon$-Übergängen</strong> (auch <strong>$\varepsilon$-NFA</strong>) ist ein NFA mit einem speziellen Symbol $\epsilon \notin \Sigma$ und mit</p><script type="math/tex; mode=display">\delta : Q \times (\Sigma \cup \{\epsilon\}) \rightarrow \mathcal{P}(Q).</script><p>Ein $\epsilon$-Übergang darf ausgeführt werden, ohne dass ein Eingabezeichen gelesen wird.</p></div>
+<p><br></p>
+<p>注意，这里的$\epsilon$和之前用的$\varepsilon$是不一样的东西。</p>
+<p>$\epsilon$ ist ein einzelnes Symbol, $\varepsilon$ ist das leere Wort.</p>
+<p><strong>例子</strong>：</p>
+<p><img src="/images/image-20250508222656216.png" class="lazyload" data-srcset="/images/image-20250508222656216.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250508222656216"></p>
+<p>这个$\varepsilon$-NFA可以接受$\varepsilon,00,11,…$，但不能接受$101,…$。</p>
+<p>也就是说，这个Automat虽然读取的是$11$，但它可以先（“免费”）跳到$q_1$，然后再进行2次$1$的操作。</p>
+<div class="note green"><p><strong></strong></p><p><strong>Lemma</strong>:</p><p>Für jeden $\epsilon$-NFA $N$ gibt es einen NFA $N’$ <em>mit</em>  </p><script type="math/tex; mode=display">L(N) = L(N').</script></div>
+<p><br></p>
+<p><strong>证明</strong>：</p>
+<p>Sei $N = (Q, \Sigma, \delta, q_0, F)$ ein $\epsilon$-NFA.<br>Wir definieren den NFA<br>$N’ = (Q, \Sigma, \delta’, q_0, F’)$ mit folgenden Definitionen für $\delta’$ und $F’$:</p>
+<ul>
+<li><p>$\delta’ : Q \times \Sigma \rightarrow \mathcal{P}(Q)$</p>
+<script type="math/tex; mode=display">
+\delta'(q, a) := \bigcup_{i \geq 0, j \geq 0} \hat{\delta}(\{q\}, \epsilon^i a \epsilon^j)</script></li>
+<li><p>Falls $N$ das leere Wort $\varepsilon$ akzeptiert, also falls</p>
+<script type="math/tex; mode=display">
+\exists i \geq 0 : \hat{\delta}(\{q_0\}, \epsilon^i) \cap F \neq \emptyset</script><p>dann setze $F’ := F \cup {q_0}$, sonst setze $F’ := F$.<span style="float:right;">$\square$</span></p>
+</li>
+</ul>
+<p><br></p>
+<p><strong>例子</strong>：</p>
+<p><img src="/images/image-20250508223407911.png" class="lazyload" data-srcset="/images/image-20250508223407911.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250508223407911"></p>
+<h3 id="Regulare-Ausdrucke-正则表达式"><a href="#Regulare-Ausdrucke-正则表达式" class="headerlink" title="Reguläre Ausdrücke 正则表达式"></a><strong>Reguläre Ausdrücke 正则表达式</strong></h3>
   </div>
   
   
@@ -2998,6 +3121,16 @@ L(M) := \{ w \in \Sigma^* \mid \hat{\delta}(q_0, w) \in F \},</script><p>而在�
   
     <div class="prev-next">
       
+        <a class='prev' href='/2025/05/11/CTF/Crypto/%E8%A7%A3%E7%A0%81%E5%99%A8/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>解码器</p>
+          <p class='content'>用Python写了一个自动解码的软件，可以自动进行多轮的base 32，58，64，91，二进制以及hex解码。
+（后续可能会更新。）
+效果
+如果可以成功解码成text，则直接输出text：
+
+...</p>
+        </a>
+      
       
         <a class='next' href='/2025/04/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA-Probability-Theory/'>
           <p class='title'>概率论 Probability Theory<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
@@ -3051,7 +3184,7 @@ L(M) := \{ w \in \Sigma^* \mid \hat{\delta}(q_0, w) \in F \},</script><p>而在�
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%88Grammatiken%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">语法（Grammatiken）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%94%E5%A7%86%E6%96%AF%E5%9F%BA%E4%BD%93%E7%B3%BB%EF%BC%88Chomsky-Hierarchie%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">乔姆斯基体系（Chomsky Hierarchie）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E8%AF%AD%E8%A8%80%EF%BC%88Regulare-Sprachen%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">正规语言（Reguläre Sprachen）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Deterministische-endliche-Automaten"><span class="toc-number">2.1.</span> <span class="toc-text">Deterministische endliche Automaten</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Von-rechtslinearen-Grammatiken-zu-DFA-und-zuruck"><span class="toc-number">2.2.</span> <span class="toc-text">Von rechtslinearen Grammatiken zu DFA (und zurück)</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%B3%95%EF%BC%88Grammatiken%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">文法（Grammatiken）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%94%E5%A7%86%E6%96%AF%E5%9F%BA%E4%BD%93%E7%B3%BB%EF%BC%88Chomsky-Hierarchie%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">乔姆斯基体系（Chomsky Hierarchie）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E8%AF%AD%E8%A8%80%EF%BC%88Regulare-Sprachen%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">正规语言（Reguläre Sprachen）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Deterministische-endliche-Automaten"><span class="toc-number">2.1.</span> <span class="toc-text">Deterministische endliche Automaten</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Von-rechtslinearen-Grammatiken-zu-DFA-und-zuruck"><span class="toc-number">2.2.</span> <span class="toc-text">Von rechtslinearen Grammatiken zu DFA (und zurück)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NFAs-mit-epsilon-Ubergangen"><span class="toc-number">2.3.</span> <span class="toc-text">NFAs mit $\epsilon$-Übergängen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Regulare-Ausdrucke-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">2.4.</span> <span class="toc-text">Reguläre Ausdrücke 正则表达式</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3715,7 +3848,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/27/TUM info 笔记/Theoretische Informatik/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Theoretische Informatik 理论信息学","description":"理论信息学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/","wordCount":9,"datePublished":"2025-04-27T21:56:41.000Z","dateModified":"2025-05-06T14:44:38.896Z","articleSection":"TUM info 课程笔记","keywords":"Theoretische Informatik,理论信息学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/27/TUM info 笔记/Theoretische Informatik/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Theoretische Informatik 理论信息学","description":"理论信息学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/","wordCount":9,"datePublished":"2025-04-27T21:56:41.000Z","dateModified":"2025-05-08T20:39:40.254Z","articleSection":"TUM info 课程笔记","keywords":"Theoretische Informatik,理论信息学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
