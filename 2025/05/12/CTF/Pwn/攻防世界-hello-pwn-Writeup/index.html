@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1747038108075),
+    lastupdate: new Date(1747052747763),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2789,6 +2789,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
     <div class="prev-next">
+      
+        <a class='prev' href='/2025/05/12/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-level2-Writeup/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>攻防世界 level2 Writeup</p>
+          <p class='content'>观察用ida打开文件查看main函数：
+
+
+可以发现没有输入长度限制。
+接着查看vulnerable_function()的stack结构：
+
+此外，main函数自己会调用system()：
+
+...</p>
+        </a>
       
       
         <a class='next' href='/2025/05/12/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-level0-Writeup/'>
