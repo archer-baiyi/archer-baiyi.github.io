@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-05-12T08:24:30.000Z">
-<meta property="article:modified_time" content="2025-05-12T12:29:29.250Z">
+<meta property="article:modified_time" content="2025-05-12T12:41:40.389Z">
 <meta property="article:tag" content="Pwn">
 <meta property="article:tag" content="攻防世界">
 <meta name="twitter:card" content="summary">
@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1747053195311),
+    lastupdate: new Date(1747053733508),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2660,7 +2660,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-12T14:29:29+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-12T14:41:40+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：May 12, 2025</p>
@@ -2697,6 +2697,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>接着使用Shift+F12查看文件里的string：</p>
 <p><img src="/images/image-20250512103636013.png" class="lazyload" data-srcset="/images/image-20250512103636013.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250512103636013"></p>
 <p>由于system函数实际上接受的是一个字符串的指针，所以我们可以直接用在上面找到的<code>/bin/sh</code>的地址并将其作为参数传给system函数。</p>
+<div class="note warning"><p>note warning 注意！这个程序是32bit的。</p></div>
+<p>可以通过很多方面来判断：</p>
+<ol>
+<li><p>程序中使用了<code>eax</code>, <code>ecx</code>, <code>esp</code>, <code>ebp</code>等寄存器。这些都是32位寄存器。</p>
+<p>（如果是 64 位程序，寄存器通常会是：<code>rax</code>, <code>rcx</code>, <code>rsp</code>, <code>rbp</code>, 等。）</p>
+</li>
+<li><p>地址宽度是32bit的（最简单也是最重要的判断条件）</p>
+</li>
+</ol>
+<p>所以之后需要使用pwn库的<code>p32()</code>，而不是p64()。</p>
 <h2 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit"></a>Exploit</h2><p>我们做以下操作：</p>
 <ol>
 <li>覆盖掉<code>buf</code>以及<code>saved_registers</code>部分（=136+4）</li>
@@ -3252,7 +3262,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["background/wallhaven-6dvy9w.png","background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg"];
+  let imgs = ["background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg","background/wallhaven-6dvy9w.png"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3485,7 +3495,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Pwn/","name":"Pwn"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/攻防世界-level2-Writeup/","name":"攻防世界 level2 Writeup"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"攻防世界 level2 Writeup","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-level2-Writeup/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-level2-Writeup/","wordCount":0,"datePublished":"2025-05-12T08:24:30.000Z","dateModified":"2025-05-12T12:29:29.250Z","articleSection":"CTF","keywords":"Pwn,攻防世界","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Pwn/","name":"Pwn"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/攻防世界-level2-Writeup/","name":"攻防世界 level2 Writeup"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"攻防世界 level2 Writeup","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-level2-Writeup/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-level2-Writeup/","wordCount":0,"datePublished":"2025-05-12T08:24:30.000Z","dateModified":"2025-05-12T12:41:40.389Z","articleSection":"CTF","keywords":"Pwn,攻防世界","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
