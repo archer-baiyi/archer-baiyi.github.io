@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-05-18T20:28:18.000Z">
-<meta property="article:modified_time" content="2025-05-18T22:40:07.929Z">
+<meta property="article:modified_time" content="2025-05-19T08:07:22.657Z">
 <meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2246,7 +2246,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1747608027837),
+    lastupdate: new Date(1747644500868),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2655,7 +2655,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-19T00:40:07+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-19T10:07:22+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：May 19, 2025</p>
@@ -2699,18 +2699,129 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>这种情况下就非常简单，直接在引号里输入希望输出的内容即可。</p>
 <p>2. 涉及变量的情况：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);  <span class="comment">// %d是输出控制符，d 表示十进制，后面的 i 是输出参数*</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们需要在格式化字符串（ format string）里给定符合要求的格式（占位）符号，详细见下表：</p>
+<p>我们需要在格式化字符串（ format string）里给定符合要求的格式化。</p>
+<p>格式化占位符的语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%[parameter][flags][field width][.precision][length]type</span><br></pre></td></tr></table></figure>
+<p>- <strong>Parameter</strong>：指定用于格式化的参数位置（从1开始）</p>
 <div class="table-container">
 <table>
 <thead>
 <tr>
-<th>格式符</th>
+<th>字符</th>
 <th>说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>%d</td>
+<td><code>n$</code></td>
+<td>其中<code>n</code>是参数位置</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%2$d %1$d&quot;</span>, <span class="number">11</span>, <span class="number">22</span>);</span><br><span class="line"><span class="comment">// 会输出 22 11</span></span><br></pre></td></tr></table></figure>
+<p>- <strong>Flags</strong>：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-</code></td>
+<td>左对齐（默认是右对齐）</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>总是显示正号或负号（例如 +10）</td>
+</tr>
+<tr>
+<td><code> </code>(空格)</td>
+<td>正数前加空格，负数前加负号</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td>用0填充未占满的宽度</td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>对于<code>%o</code>、<code>%x</code>、<code>%X</code>等，添加前缀（如<code>0x</code>）；对于<code>%f</code>等，始终包含小数点</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>- <strong>Field Width</strong>：指定最小输出字符数，不足时用空格（或<code>0</code>）填充，如果要使用变量指定宽度，可以用 <code>*</code>。</p>
+<p>例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, <span class="number">42</span>);</span><br><span class="line"><span class="comment">// 会输出 &quot;   42&quot; （前面有3个空格）</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%*d&quot;</span>, <span class="number">5</span>, <span class="number">42</span>);</span><br><span class="line"><span class="comment">// 会输出 &quot;   42&quot; （前面有3个空格）</span></span><br></pre></td></tr></table></figure>
+<p>- <strong>Precision</strong>：指定数字小数点后的位数或字符串的最大输出长度：</p>
+<ul>
+<li>对于浮点数（如 <code>%f</code>）：表示小数点后保留的位数，如 <code>%.2f</code></li>
+<li>对于字符串（如 <code>%s</code>）：表示最大输出字符数，如 <code>%.5s</code></li>
+<li>可以使用 <code>*</code> 表示由参数动态提供</li>
+</ul>
+<p>- <strong>Length</strong>：指出浮点型参数或整型参数的长度</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hh</code></td>
+<td><code>signed char</code> 或 <code>unsigned char</code></td>
+</tr>
+<tr>
+<td><code>h</code></td>
+<td><code>short</code> 或 <code>unsigned short</code></td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td><code>long</code> 或 <code>unsigned long</code></td>
+</tr>
+<tr>
+<td><code>ll</code></td>
+<td><code>long long</code> 或 <code>unsigned long long</code></td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td><code>long double</code>（用于<code>%Lf</code>）</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td><code>size_t</code></td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td><code>ptrdiff_t</code></td>
+</tr>
+<tr>
+<td><code>j</code></td>
+<td><code>intmax_t</code> 或 <code>uintmax_t</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stddef.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">signed</span> <span class="type">char</span> a = <span class="number">-5</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%hhd\n&quot;</span>, a);</span><br><span class="line">    <span class="comment">// 会输出 &quot;-5&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="type">short</span> s = <span class="number">32000</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%hd\n&quot;</span>, s);</span><br><span class="line">    <span class="comment">// 会输出 &quot;32000&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="type">long</span> l = <span class="number">123456789L</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%ld\n&quot;</span>, l);</span><br><span class="line">    <span class="comment">// 会输出 &quot;123456789&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> ll = <span class="number">9223372036854775807LL</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ll);</span><br><span class="line">    <span class="comment">// 会输出 &quot;9223372036854775807&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="type">long</span> <span class="type">double</span> ld = <span class="number">3.141592653589793238L</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%Lf\n&quot;</span>, ld);</span><br><span class="line">    <span class="comment">// 会输出 &quot;3.141593&quot;（默认保留6位小数）</span></span><br><span class="line"></span><br><span class="line">    <span class="type">size_t</span> sz = <span class="number">100</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%zu\n&quot;</span>, sz);</span><br><span class="line">    <span class="comment">// 会输出 &quot;100&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="type">ptrdiff_t</span> diff = <span class="number">-8</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%td\n&quot;</span>, diff);</span><br><span class="line">    <span class="comment">// 会输出 &quot;-8&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="type">intmax_t</span> im = <span class="number">9223372036854775807</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%jd\n&quot;</span>, im);</span><br><span class="line">    <span class="comment">// 会输出 &quot;9223372036854775807&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>- <strong>Type</strong>：也称转换说明（conversion specification/specifier），指定具体的数据类型，有以下选择</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%d</code></td>
 <td>打印十进制整数（int）</td>
 </tr>
 <tr>
@@ -2740,6 +2851,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </tbody>
 </table>
 </div>
+<p>其中只有Type是必须要给的，其他均可以省略。</p>
+<p>例子：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">123</span>;</span><br><span class="line">    <span class="type">float</span> pi = <span class="number">3.14159</span>;</span><br><span class="line">    <span class="type">char</span> letter = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">    <span class="type">char</span> name[] = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    <span class="type">int</span> hex = <span class="number">255</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;整数：%d\n&quot;</span>, i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;浮点数（默认）：%f\n&quot;</span>, pi);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;浮点数（保留两位）：%.2f\n&quot;</span>, pi);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;字符串：%s\n&quot;</span>, name);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;字符：%c\n&quot;</span>, letter);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;十六进制：%x\n&quot;</span>, hex);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;百分号：%%\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>注意：在第二部分一定要给定变量，如果没有给，则会从错误的内存地址读取数据，导致不可预期的行为。</p>
 <p>此外还有一个比较特殊的格式符：<code>%n</code> 。这个格式符会让 <code>printf</code> 把当前已经打印的字符数量写入 n 所在的地址。</p>
@@ -2844,6 +2957,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
     <div class="prev-next">
+      
+        <a class='prev' href='/2025/05/19/CTF/Pwn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88Format-String%EF%BC%89%E6%BC%8F%E6%B4%9E%E4%BB%8B%E7%BB%8D/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>格式化字符串（Format String）漏洞介绍</p>
+          <p class='content'>我们首先来看一下什么是格式化字符串函数。
+格式化字符串函数格式化字符串（ format string）函数可以接受可变数量的参数，并将第一个参数作为格式化字符串，根据其来解析之后的参数。
+可以参...</p>
+        </a>
       
       
         <a class='next' href='/2025/05/18/CTF/Crypto/CryptexLab-CTF%E5%AF%86%E7%A0%81%E5%AD%A6%E5%B7%A5%E5%85%B7/'>
@@ -3518,7 +3638,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/编程/","name":"编程"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/05/18/编程/C语言入门/","name":"C语言入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"C语言入门","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/05/18/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/05/18/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/","wordCount":0,"datePublished":"2025-05-18T20:28:18.000Z","dateModified":"2025-05-18T22:40:07.929Z","articleSection":"编程","keywords":"C","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/编程/","name":"编程"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/05/18/编程/C语言入门/","name":"C语言入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"C语言入门","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/05/18/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/05/18/%E7%BC%96%E7%A8%8B/C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/","wordCount":0,"datePublished":"2025-05-18T20:28:18.000Z","dateModified":"2025-05-19T08:07:22.657Z","articleSection":"编程","keywords":"C","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
