@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1747765686643),
+    lastupdate: new Date(1747833277518),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2679,25 +2679,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a><strong>基本概念</strong></h2><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><ul><li><p>一个<strong><code>字母表（Alphabet）</code></strong> $\Sigma$ 是一个有限集合。<br>例如：$ {0,1} $、ASCII、Unicode。</p></li><li><p>一个<strong><code>单词/字符串 （Wort/String）</code></strong>是由$\Sigma$中字符组成的有限序列，例如 010。</p></li><li><p>$|w|$表示单词$ w $ 的长度。</p></li><li><p><strong><code>空单词（leere Wort）</code></strong>（长度为 0 的唯一单词）用$\varepsilon$表示。</p></li><li><p>如果 $u$ 和 $v$ 是单词，则 $uv$ 表示它们的<strong><code>连接（Konkatenation）</code></strong>。</p></li><li><p>如果 $ w $ 是一个单词，那么 $w^n$ 定义为：<br>$ w^0 = \varepsilon $，并且 $ w^{n+1} = w w^n $。<br>例如：$ (ab)^3 = ababab $。</p></li><li><p>$ \Sigma^* $ 是所有由 $ \Sigma $ 中字符组成的单词的集合（Menge aller Wörter）。</p></li><li><p>其中的子集$ L \subseteq \Sigma^* $ 被称为<code>（形式）语言 （(formale) Sprache）</code>。</p></li></ul></div>
+    <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a><strong>基本概念</strong></h2><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><ul><li><p>一个<strong><code>字母表（Alphabet）</code></strong> $\Sigma$ 是一个有限集合。<br>例如：$ \{0,1\} $、ASCII、Unicode。</p></li><li><p>一个<strong><code>单词/字符串 （Wort/String）</code></strong>是由$\Sigma$中字符组成的有限序列，例如 010。</p></li><li><p>$|w|$表示单词$ w $ 的长度。</p></li><li><p><strong><code>空单词（leere Wort）</code></strong>（长度为 0 的唯一单词）用$\varepsilon$表示。</p></li><li><p>如果 $u$ 和 $v$ 是单词，则 $uv$ 表示它们的<strong><code>连接（Konkatenation）</code></strong>。</p></li><li><p>如果 $ w $ 是一个单词，那么 $w^n$ 定义为：<br>$ w^0 = \varepsilon $，并且 $ w^{n+1} = w w^n $。<br>例如：$ (ab)^3 = ababab $。</p></li><li><p>$ \Sigma^* $ 是所有由 $ \Sigma $ 中字符组成的单词的集合（Menge aller Wörter）。</p></li><li><p>其中的子集$ L \subseteq \Sigma^* $ 被称为<code>（形式）语言 （(formale) Sprache）</code>。</p></li></ul></div>
 <p><br></p>
 <p>注意，这里的形式语言（(formale) Sprache）$L$并没有要求必须包含$\varepsilon$。</p>
 <p>来看一下简单的<strong>（形式）语言 （(formale) Sprache）的例子</strong>：</p>
 <ul>
 <li><p>杜登（Duden）词典中所有单词的集合</p>
 </li>
-<li><p>$L_1 = { \varepsilon, ab, abab, ababab, \dots } = { (ab)^n \mid n \in \mathbb{N} }$</p>
-<p>（$\Sigma_1 = {a, b}$）</p>
+<li><p>$L_1 = \{ \varepsilon, ab, abab, ababab, \dots \} = \{ (ab)^n \mid n \in \mathbb{N} \}$</p>
+<p>（$\Sigma_1 = \{a, b\}$）</p>
 </li>
-<li><p>$L_2 = { \varepsilon, ab, aabb, abab, abba, baab, baba, bbaa, \dots } = { w \in {a,b}^* \mid w\ \text{中包含相同数量的}\ a\ \text{和}\ b\ \text{字符} }$</p>
-<p>（$\Sigma_2 = {a, b}$）</p>
+<li><p>$L_2 = \{ \varepsilon, ab, aabb, abab, abba, baab, baba, bbaa, \dots \} = \{ w \in \{a,b\}^* \mid w\ \text{中包含相同数量的}\ a\ \text{和}\ b\ \text{字符} \}$</p>
+<p>（$\Sigma_2 = \{a, b\}$）</p>
 </li>
-<li><p>$L_3 = {0, 1, 100, 1001, 10000, \dots} = { w \in {0,1}^* \mid w\ \text{是一个二进制编码的平方数} }$</p>
-<p>（$\Sigma_3 = {0,1}$）</p>
+<li><p>$L_3 = \{0, 1, 100, 1001, 10000, \dots\} = \{ w \in \{0,1\}^* \mid w\ \text{是一个二进制编码的平方数} \}$</p>
+<p>（$\Sigma_3 = \{0,1\}$）</p>
 </li>
 <li><p>$\emptyset$</p>
 </li>
-<li><p>${\varepsilon}$</p>
+<li><p>$\{\varepsilon\}$</p>
 </li>
 </ul>
 <p><br></p>
@@ -2706,18 +2706,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>$\varepsilon$ 或 $ab$ 不是语言，因为它们不是集合。</li>
 </ul>
 <p><br></p>
-<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>: 语言上的运算（Operationen auf Sprachen）</p><p>设 $A, B \subseteq \Sigma^*$：</p><ul><li><p><strong>连接（Konkatenation）</strong>：$AB := { uv \mid u \in A \land v \in B }$<br>例子：${ab, b} {a, bb} = {aba, abbb, ba, bbb}$</p></li><li><script type="math/tex; mode=display">A^n := \{ w_1 \dots w_n \mid w_1, \dots, w_n \in A \} = \underbrace{A \cdots A}_{n}</script><ul><li><p>例子：${ab, ba}^2 = {abab, abba, baab, baba}$</p></li><li><p>递归定义：$<br>A^0 = {\varepsilon} \quad \text{且} \quad A^{n+1} := A A^n$</p></li></ul></li><li><script type="math/tex; mode=display">A^* := \{ w_1 \dots w_n \mid n \geq 0 \land w_1, \dots, w_n \in A \} = \bigcup_{n \in \mathbb{N}} A^n</script><ul><li>例子：<script type="math/tex; mode=display">\{01\}^* = \{\varepsilon, 01, 0101, 010101, \dots\} \neq \{0,1\}^*</script></li></ul></li><li><script type="math/tex; mode=display">A^+ := AA^* = \bigcup_{n \geq 1} A^n</script></li></ul></div>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>: 语言上的运算（Operationen auf Sprachen）</p><p>设 $A, B \subseteq \Sigma^*$：</p><ul><li><p><strong>连接（Konkatenation）</strong>：$AB := \{ uv \mid u \in A \land v \in B \}$<br>例子：$\{ab, b\} \{a, bb\} = \{aba, abbb, ba, bbb\}$</p></li><li><script type="math/tex; mode=display">A^n := \{ w_1 \dots w_n \mid w_1, \dots, w_n \in A \} = \underbrace{A \cdots A}_{n}</script><ul><li><p>例子：$\{ab, ba\}^2 = \{abab, abba, baab, baba\}$</p></li><li><p>递归定义：$<br>A^0 = \{\varepsilon\} \quad \text{且} \quad A^{n+1} := A A^n$</p></li></ul></li><li><script type="math/tex; mode=display">A^* := \{ w_1 \dots w_n \mid n \geq 0 \land w_1, \dots, w_n \in A \} = \bigcup_{n \in \mathbb{N}} A^n</script><ul><li>例子：<script type="math/tex; mode=display">\{01\}^* = \{\varepsilon, 01, 0101, 010101, \dots\} \neq \{0,1\}^*</script></li></ul></li><li><script type="math/tex; mode=display">A^+ := AA^* = \bigcup_{n \geq 1} A^n</script></li></ul></div>
 <p><br></p>
-<p>注意，因为$A^0 = { \varepsilon }$，所以对于所有 $A$ 都有：$\varepsilon \in A^<em>$，并且 $\emptyset^</em> = { \varepsilon }$。</p>
+<p>注意，因为$A^0 = \{ \varepsilon \}$，所以对于所有 $A$ 都有：$\varepsilon \in A^<em>$，并且 $\emptyset^</em> = \{ \varepsilon \}$。</p>
 <p><br></p>
-<div class="note green"><p><strong></strong></p><p><strong>Lemma</strong>:</p><ul><li>$\emptyset A = \emptyset$</li><li>${\varepsilon}A = A$</li></ul></div>
+<div class="note green"><p><strong></strong></p><p><strong>Lemma</strong>:</p><ul><li>$\emptyset A = \emptyset$</li><li>$\{\varepsilon\}A = A$</li></ul></div>
 <p>证明：Trivial。<span style="float:right;">$\square$</span></p>
 <p><br></p>
 <div class="note green"><p><strong></strong></p><p><strong>Lemma</strong>:</p><ul><li>$A(B \cup C) = AB \cup AC$</li><li>$(A \cup B)C = AC \cup BC$</li></ul></div>
 <p>证明：Trivial。<span style="float:right;">$\square$</span></p>
 <p><br></p>
 <p>但是注意，$A(B \cap C) \neq AB \cap AC$不一定一直成立。</p>
-<p><strong>反例</strong>：$A={a,ab}, B={b}, C ={\varepsilon}$：</p>
+<p><strong>反例</strong>：$A=\{a,ab\}, B=\{b\}, C =\{\varepsilon\}$：</p>
 <script type="math/tex; mode=display">
 A(B\cap C) = A \emptyset = \emptyset</script><script type="math/tex; mode=display">
 AB \cap AC = \{ab,abb\} \cap \{a,ab\} = \{ab\} \neq \emptyset</script><p>最根本的原因是可能存在$u’v’= u’’v’’ \in AB \cap AC$并且$u’ \neq  u’’, v’ \neq v’’$。这就导致不能从$uv \in AB \cap AC$推出存在$u \in A, v \in B \cap C$。</p>
@@ -2737,9 +2737,9 @@ AB \cap AC = \{ab,abb\} \cap \{a,ab\} = \{ab\} \neq \emptyset</script><p>最根�
 <p>注意，定义里的$\alpha_1, \alpha_2$可以是$\varepsilon$，也可以是其他单词的Konkatenation。所以在一个大的Konkatenation里，对于其中一个存在Produktion，那么对整个Konkatenation都存在一个推导。</p>
 <p><strong>例子</strong>：</p>
 <ul>
-<li><p>$V = { \langle \text{Expr} \rangle, \langle \text{Term} \rangle, \langle \text{Factor} \rangle }$</p>
+<li><p>$V = \{ \langle \text{Expr} \rangle, \langle \text{Term} \rangle, \langle \text{Factor} \rangle \}$</p>
 </li>
-<li><p>$\Sigma = { a, b, c, +, *, (, ) }$</p>
+<li><p>$\Sigma = \{ a, b, c, +, *, (, ) \}$</p>
 </li>
 <li><p>$S = \langle \text{Expr} \rangle$</p>
 </li>
@@ -2782,7 +2782,7 @@ G_1: \quad S &\to aBSc \mid \epsilon \\
 Ba &\to aB \\
 Bb &\to bB \\
 Bc &\to bc
-\end{align*}</script><p>哪个可以生成$M = { a^n b^n c^n \mid n \geq 0 }$呢？</p>
+\end{align*}</script><p>哪个可以生成$M = \{ a^n b^n c^n \mid n \geq 0 \}$呢？</p>
 <p>首先，有$M \subseteq L(G_1)$，因为$S \to abcS \to abcabcS \to abcabc \to abacbc \to aabcbc \to aabbcc$。</p>
 <p>只不过$L(G_1) \neq M$，因为$S \to abcS \to abcabcS \to abcabc$。</p>
 <p>而$L(G_2) = M$，因为：</p>
@@ -2860,15 +2860,15 @@ L(M) := \{ w \in \Sigma^* \mid \hat{\delta}(q_0, w) \in F \},</script><p>里的�
 <p><strong>例子</strong>：</p>
 <p><img src="/images/image-20250429110901414.png" class="lazyload" data-srcset="/images/image-20250429110901414.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250429104404267"></p>
 <ul>
-<li>$Q = {0,1,2}$</li>
-<li>$\Sigma = {a,b}$</li>
+<li>$Q = \{0,1,2\}$</li>
+<li>$\Sigma = \{a,b\}$</li>
 </ul>
 <p>不难注意到，在这里例子里，所有可以被akzeptiert的Wort都一定包含ab。（相当于必经之路）</p>
 <p>同样，所有包含ab的Wort也一定会被akzeptiert。</p>
 <p><strong>例子</strong>：</p>
 <p>我们用#w表示w的二进制。（比如说#100=4）</p>
 <p><img src="/images/image-20250429110901414.png" class="lazyload" data-srcset="/images/image-20250429110901414.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250429110901414"></p>
-<p>不难发现，DFA akzeptiert $w \in {0,1}^*$当且仅当#w是偶数。</p>
+<p>不难发现，DFA akzeptiert $w \in \{0,1\}^*$当且仅当#w是偶数。</p>
 <p><strong>证明</strong>：</p>
 <p>假设$w \neq \varepsilon$，可以通过</p>
 <script type="math/tex; mode=display">
@@ -2927,24 +2927,24 @@ Y &\rightarrow aS \mid bX \mid aY \mid b
 <p><img src="/images/image-20250508171557869.png" class="lazyload" data-srcset="/images/image-20250508171557869.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250508171557869"></p>
 <p>Sei $G = (V, \Sigma, P, S)$ eine rechtslineare Grammatik ohne die Produktion $S \rightarrow \varepsilon$.<br>Definiere den NFA $A = (Q, \Sigma, \delta, q_0, F)$ mit:</p>
 <ul>
-<li>$Q = V \cup {q_f}$ (wobei $q_f \notin V$)</li>
+<li>$Q = V \cup \{q_f\}$ (wobei $q_f \notin V$)</li>
 <li>$Y \in \delta(X, a)$ gdw $(X \rightarrow aY) \in P$</li>
 <li>$q_f \in \delta(X, a)$ gdw $(X \rightarrow a) \in P$</li>
 <li>$q_0 = S$</li>
-<li>$F = {q_f}$</li>
+<li>$F = \{q_f\}$</li>
 </ul>
 <p>Es gilt: $a_1 \ldots a_n \in L(G)$</p>
-<p>– gdw es existieren Variablen $X<em>1, \ldots, X</em>{n-1}$</p>
+<p>– gdw es existieren Variablen $X_1, \ldots, X_{n-1}$</p>
 <script type="math/tex; mode=display">
-S \rightarrow a_1X_1 \rightarrow_G a_1a_2X_2 \rightarrow_G \cdots \rightarrow_G a_1 \ldots a_{n-1}X_{n-1} \rightarrow_G a_1 \ldots a_n</script><p>– gdw es existieren Zustände $X<em>1, \ldots, X</em>{n-1}$</p>
+S \rightarrow a_1X_1 \rightarrow_G a_1a_2X_2 \rightarrow_G \cdots \rightarrow_G a_1 \ldots a_{n-1}X_{n-1} \rightarrow_G a_1 \ldots a_n</script><p>– gdw es existieren Zustände $X_1, \ldots, X_{n-1}$</p>
 <script type="math/tex; mode=display">
 \delta(S, a_1) \ni X_1,\quad \delta(X_1, a_2) \ni X_2,\quad \ldots,\quad \delta(X_{n-1}, a_n) \ni q_F</script><p>– gdw $a_1 \ldots a_n \in L(A)$</p>
 <p>. <span style="float:right;">$\square$</span></p>
-<p>假设这个Grammatik还包含了$S \to \varepsilon$，那么需要将$F$构造成$F= {S, q_f}$。</p>
+<p>假设这个Grammatik还包含了$S \to \varepsilon$，那么需要将$F$构造成$F= \{S, q_f\}$。</p>
 <div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>:</p><p>Für jeden NFA $N$ gibt es einen DFA $M$ <em>mit</em>  </p><script type="math/tex; mode=display">L(N) = L(M)</script></div>
 <p><br></p>
 <p>证明：</p>
-<p>Sei $N = (Q, \Sigma, \delta, q_0, F)$ ein NFA.<br>Definiere den DFA $M = (\mathcal{P}(Q), \Sigma, \bar{\delta}, {q_0}, F_M)$:</p>
+<p>Sei $N = (Q, \Sigma, \delta, q_0, F)$ ein NFA.<br>Definiere den DFA $M = (\mathcal{P}(Q), \Sigma, \bar{\delta}, \{q_0\}, F_M)$:</p>
 <script type="math/tex; mode=display">
 F_M := \{ S \subseteq Q \mid S \cap F \neq \emptyset \}</script><p>Dann gilt:</p>
 <script type="math/tex; mode=display">
@@ -2966,11 +2966,11 @@ L_k := \{ w \in \{0,1\}^* \mid \text{das $k$-letzte Bit von } w \text{ ist } 1 \
 <div class="note green"><p><strong></strong></p><p><strong>Lemma</strong>:</p><p>Jeder DFA $M$ <em>mit</em> $L(M) = L_k$ hat mindestens $2^k$ <em>Zuständen.</em></p></div>
 <p><br></p>
 <p><strong>证明</strong>：</p>
-<p>我们需要做的是证明 für alle $w_1, w_2 \in {0, 1}^k$:  </p>
+<p>我们需要做的是证明 für alle $w_1, w_2 \in \{0, 1\}^k$:  </p>
 <script type="math/tex; mode=display">
-w_1 \ne w_2 \Rightarrow  \hat{\delta}(q_0, w_1) \ne \hat{\delta}(q_0, w_2)</script><p>证明了这个之后，由于${0, 1}^k$里有$2^k$个元素，那么任意一个DFA里也至少会有$2^k$个Zusände，因为对于所有的$w \in {0, 1}^k$，$\hat{\delta}(q_0, w)$都是$M$里的一个Zustand。</p>
+w_1 \ne w_2 \Rightarrow  \hat{\delta}(q_0, w_1) \ne \hat{\delta}(q_0, w_2)</script><p>证明了这个之后，由于$\{0, 1\}^k$里有$2^k$个元素，那么任意一个DFA里也至少会有$2^k$个Zusände，因为对于所有的$w \in \{0, 1\}^k$，$\hat{\delta}(q_0, w)$都是$M$里的一个Zustand。</p>
 <p>那么我们现在开始证明这个结论，用反证法：</p>
-<p>Annahme: Es gibt $w_1, w_2 \in {0, 1}^k$ mit $w_1 \ne w_2$, aber $\hat{\delta}(q_0, w_1) = \hat{\delta}(q_0, w_2)$.</p>
+<p>Annahme: Es gibt $w_1, w_2 \in \{0, 1\}^k$ mit $w_1 \ne w_2$, aber $\hat{\delta}(q_0, w_1) = \hat{\delta}(q_0, w_2)$.</p>
 <p>Sei $w_1 = wa_i \ldots a_k$ und $w_2 = wb_i \ldots b_k$ mit $a_i \ne b_i$  （$i$表示的是$w_1,w_2$第一个不相等的位。而前面相同的部分我们就简单记作$w$。）<br>o.E. sei $a_i = 1$, $b_i = 0$.</p>
 <p>Es gilt einerseits:</p>
 <script type="math/tex; mode=display">
@@ -3017,7 +3017,7 @@ L(M) := \{ w \in \Sigma^* \mid \hat{\delta}(q_0, w) \in F \},</script><p>不可�
 \delta'(q, a) := \bigcup_{i \geq 0, j \geq 0} \hat{\delta}(\{q\}, \epsilon^i a \epsilon^j)</script></li>
 <li><p>Falls $N$ das leere Wort $\varepsilon$ akzeptiert, also falls</p>
 <script type="math/tex; mode=display">
-\exists i \geq 0 : \hat{\delta}(\{q_0\}, \epsilon^i) \cap F \neq \emptyset</script><p>dann setze $F’ := F \cup {q_0}$, sonst setze $F’ := F$.<span style="float:right;">$\square$</span></p>
+\exists i \geq 0 : \hat{\delta}(\{q_0\}, \epsilon^i) \cap F \neq \emptyset</script><p>dann setze $F’ := F \cup \{q_0\}$, sonst setze $F’ := F$.<span style="float:right;">$\square$</span></p>
 </li>
 </ul>
 <p><br></p>

@@ -2246,7 +2246,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1747765686643),
+    lastupdate: new Date(1747833277518),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2691,7 +2691,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p><br></p>
 <p>我们来看一个很简单的例子：<code>One-time-pad (OTP)</code>。</p>
 <ul>
-<li>$\mathcal{K} = \mathcal{M} = \mathcal{C} := {0,1}^L$ with $L$ as a fixed length $\geq 1$.</li>
+<li>$\mathcal{K} = \mathcal{M} = \mathcal{C} := \{0,1\}^L$ with $L$ as a fixed length $\geq 1$.</li>
 <li>$E(k, m) := k \oplus m$</li>
 <li>$D(k, c) := k \oplus c$</li>
 </ul>
@@ -2787,8 +2787,8 @@ f_{spoly}, g_{spoly}</script><p>be super-polynomial functions.</p>
 \{\mathcal{K}_{\lambda, \Lambda}\}_{\lambda, \Lambda},\quad 
   \{\mathcal{M}_{\lambda, \Lambda}\}_{\lambda, \Lambda},\quad 
   \{\mathcal{C}_{\lambda, \Lambda}\}_{\lambda, \Lambda}</script><p><br></p>
-<div class="note yellow"><p><strong></strong></p><p><strong>Definition 7 (efficient algorithm)</strong>:</p><p>Let $A$ be an algorithm that takes as input a security parameter $\lambda \in \mathbb{Z}_{\geq 1}$,   as well as other parameters encoded as a bit string $x \in {0,1}^{\leq p(\lambda)}$ for some fixed polynomial $p$.</p><p>We call $A$ an <strong><code>efficient algorithm</code></strong> if there exist a poly-bounded function $t$ and a negligible function $\epsilon$<br>such that for all $\lambda$ and $x$, the probability that the running time of $A$ on input $(\lambda, x)$ exceeds $t(\lambda)$ is at most $\epsilon(\lambda)$.</p></div>
-<p>翻译一下：A的输入为一个 security parameter $\lambda \in \mathbb{Z}_{\geq 1}$,  以及被 encoded as a bit string $x \in {0,1}^{\leq p(\lambda)}$ （for some fixed polynomial $p$）的其他的parameters。</p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition 7 (efficient algorithm)</strong>:</p><p>Let $A$ be an algorithm that takes as input a security parameter $\lambda \in \mathbb{Z}_{\geq 1}$,   as well as other parameters encoded as a bit string $x \in \{0,1\}^{\leq p(\lambda)}$ for some fixed polynomial $p$.</p><p>We call $A$ an <strong><code>efficient algorithm</code></strong> if there exist a poly-bounded function $t$ and a negligible function $\epsilon$<br>such that for all $\lambda$ and $x$, the probability that the running time of $A$ on input $(\lambda, x)$ exceeds $t(\lambda)$ is at most $\epsilon(\lambda)$.</p></div>
+<p>翻译一下：A的输入为一个 security parameter $\lambda \in \mathbb{Z}_{\geq 1}$,  以及被 encoded as a bit string $x \in \{0,1\}^{\leq p(\lambda)}$ （for some fixed polynomial $p$）的其他的parameters。</p>
 <p><br></p>
 <div class="note yellow"><p><strong></strong></p><p><strong>Definition 8 (computational cipher)</strong>:</p><p>A <strong><code>computational cipher</code></strong> is a pair of <strong>efficient algorithms</strong> $\Pi := (E,D)$ such that:</p><ul><li>$k \in \mathcal{K}$ is an encryption key.</li><li>$m \in \mathcal{M}$ is a message.</li><li>$c \in \mathcal{C}$ is a ciphertext.</li><li>$E : \mathcal{K} \times \mathcal{M} \rightarrow \mathcal{C}$ is the encryption algorithm.</li><li>$D : \mathcal{K} \times \mathcal{C} \rightarrow \mathcal{M}$ is the decryption algorithm.</li><li>$\mathcal{K}, \mathcal{M}$ and $\mathcal{C}$ are <em>finite</em> spaces.</li></ul></div>
 <p><br></p>
@@ -2805,7 +2805,7 @@ c \xleftarrow{R} E(k, m) \quad\text{ or }\quad r \xleftarrow{R} \mathcal{R} \qua
 <p>一个deterministic cipher显然是Shannon cipher。</p>
 <p>之前我们定义的 <strong><code>Perfect Ciphertext Indistinguishability</code></strong> 是这样的：</p>
 <script type="math/tex; mode=display">
-\forall m_0, m_1 \in \mathcal{M},\ c \in \mathcal{C} :\ \Pr[E(k, m_0) = c] = \Pr[E(k, m_1) = c].</script><p>而我们希望将这个定义推广到可以适应所有的 predicate $\phi$（一个判断函数，输出结果只为true或者false。也就是一个从$\mathcal{C}$ 映射到${0,1}$的函数。比如说判断“密文的前4位是否全为0”。）：</p>
+\forall m_0, m_1 \in \mathcal{M},\ c \in \mathcal{C} :\ \Pr[E(k, m_0) = c] = \Pr[E(k, m_1) = c].</script><p>而我们希望将这个定义推广到可以适应所有的 predicate $\phi$（一个判断函数，输出结果只为true或者false。也就是一个从$\mathcal{C}$ 映射到$\{0,1\}$的函数。比如说判断“密文的前4位是否全为0”。）：</p>
 <script type="math/tex; mode=display">
 \forall \phi \in \{0,1\}^{\mathcal{C}},\ m_0, m_1 \in \mathcal{M}:\ 
 \Pr[\phi(E(k, m_0))] = \Pr[\phi(E(k, m_1))]</script><p>给这个式子引入一个误差（a negligible chance for an adversary to break our scheme by demanding）就会变成：</p>
@@ -2814,7 +2814,7 @@ c \xleftarrow{R} E(k, m) \quad\text{ or }\quad r \xleftarrow{R} \mathcal{R} \qua
 |\Pr[\phi(E(k, m_0))] - \Pr[\phi(E(k, m_1))]| \leq \epsilon</script><p>这个便是<strong><code>Statistical Ciphertext Indistinguishability</code></strong>的定义。</p>
 <p>而所谓的<strong><code>Computational Ciphertext Indistinguishability</code></strong>便是在此基础上继续要求 predicate $\phi$ 是efficient。</p>
 <h3 id="Attack-Game"><a href="#Attack-Game" class="headerlink" title="Attack Game"></a><strong>Attack Game</strong></h3><p>我们通常会用一个Attack Game来形式化定义安全性。会有一个Adversary $\mathcal{A}$，如果他的输出不同于任何”trivial attack”（比如说随机猜测），那么我们就说他破解（break）了我们的加密。我们会用$\mathcal{A}$’s <strong>advantage</strong> 来衡量他对我们的加密有多大的影响。</p>
-<div class="note cyan"><p><strong></strong></p><p><strong>Attack Game 1 (Ciphertext Indistinguishability)</strong>:</p><p>For a given cipher $\Pi = (E, D)$ defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$ and for a given adversary $\mathcal{A}$, we define two experiments.<br>For $b \in {0,1}$, <strong>Experiment $b$</strong> proceeds as follows:</p><ul><li><p>The adversary computes $m_0, m_1 \in \mathcal{M}$ <strong>of the same length</strong> and sends them to a challenger.</p></li><li><p>The challenger computes </p><script type="math/tex; mode=display">k \xleftarrow{R} \mathcal{K},c \xleftarrow{R} E(k, m_b)</script><p>and sends $c$ to the adversary.</p></li><li><p>The adversary outputs a bit $\hat{b} \in {0,1}$.</p></li><li><p>Let $W_b$ be the event that $\mathcal{A}$ outputs 1.（$\mathcal{A}$在实验b的时候输出1）</p></li></ul></div>
+<div class="note cyan"><p><strong></strong></p><p><strong>Attack Game 1 (Ciphertext Indistinguishability)</strong>:</p><p>For a given cipher $\Pi = (E, D)$ defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$ and for a given adversary $\mathcal{A}$, we define two experiments.<br>For $b \in \{0,1\}$, <strong>Experiment $b$</strong> proceeds as follows:</p><ul><li><p>The adversary computes $m_0, m_1 \in \mathcal{M}$ <strong>of the same length</strong> and sends them to a challenger.</p></li><li><p>The challenger computes </p><script type="math/tex; mode=display">k \xleftarrow{R} \mathcal{K},c \xleftarrow{R} E(k, m_b)</script><p>and sends $c$ to the adversary.</p></li><li><p>The adversary outputs a bit $\hat{b} \in \{0,1\}$.</p></li><li><p>Let $W_b$ be the event that $\mathcal{A}$ outputs 1.（$\mathcal{A}$在实验b的时候输出1）</p></li></ul></div>
 <p>图示：</p>
 <p><img src="/images/image-20250504111956473.png" class="lazyload" data-srcset="/images/image-20250504111956473.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250504111956473"></p>
 <div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>We define $\mathcal{A}$’s <strong><code>ciphertext distinguishing advantage</code></strong> or <strong><code>semantic security advantage</code></strong> as</p><script type="math/tex; mode=display">SCadv[\mathcal{A}, \Pi] := |\Pr[W_0] - \Pr[W_1]|</script></div>
@@ -2851,7 +2851,7 @@ SCadv[\mathcal{A}, \Pi] := |\Pr[W_0] - \Pr[W_1]| = |\frac{1}{2} - \frac{1}{2}| =
 </ul>
 <p><br></p>
 <p>如果我们让challenger随机挑选b，那么就会得到下面这种attack game：</p>
-<div class="note cyan"><p><strong></strong></p><p><strong>Attack Game 2 (Ciphertext Indistinguishability — bit guessing) </strong>:</p><p>For a given cipher $\Pi = (E, D)$ defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$ and for a given adversary $\mathcal{A}$, the experiment proceeds as follows:</p><ul><li>The adversary computes $m_0, m_1 \in \mathcal{M}$ of the same length and sends them to a challenger.</li><li>The challenger computes $b \xleftarrow{R} {0,1}$, $k \xleftarrow{R} \mathcal{K}$, $c \xleftarrow{R} E(k, m_b)$</li><li>The adversary outputs a bit $\hat{b} \in {0,1}$</li><li>Let $W$ be the event that $\hat{b} = b$</li></ul></div>
+<div class="note cyan"><p><strong></strong></p><p><strong>Attack Game 2 (Ciphertext Indistinguishability — bit guessing) </strong>:</p><p>For a given cipher $\Pi = (E, D)$ defined over $(\mathcal{K}, \mathcal{M}, \mathcal{C})$ and for a given adversary $\mathcal{A}$, the experiment proceeds as follows:</p><ul><li>The adversary computes $m_0, m_1 \in \mathcal{M}$ of the same length and sends them to a challenger.</li><li>The challenger computes $b \xleftarrow{R} \{0,1\}$, $k \xleftarrow{R} \mathcal{K}$, $c \xleftarrow{R} E(k, m_b)$</li><li>The adversary outputs a bit $\hat{b} \in \{0,1\}$</li><li>Let $W$ be the event that $\hat{b} = b$</li></ul></div>
 <p><br></p>
 <p>图示：</p>
 <p><img src="/images/image-20250504120050047.png" class="lazyload" data-srcset="/images/image-20250504120050047.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250504120050047"></p>
@@ -2884,15 +2884,15 @@ SCadv^*[\mathcal{A}, \Pi]
 <p><br></p>
 <p><strong>证明</strong>：</p>
 <p>我们用bit-guessing game来证明这个thm。  </p>
-<p>Let $\mathcal{A}$ be any adversary. Assume it outputs messages $m_0, m_1 \in {0,1}^L$ for some length $L$.  </p>
+<p>Let $\mathcal{A}$ be any adversary. Assume it outputs messages $m_0, m_1 \in \{0,1\}^L$ for some length $L$.  </p>
 <p>Since $k$ is randomly chosen, $m_b \oplus k$ is a uniformly random bitstring of length $L$, independent of $b$. 所以说只能随机猜测b。</p>
 <p>所以</p>
 <script type="math/tex; mode=display">
 SCadv^*[\mathcal{A}, \Pi_{\text{OTP}}] = | \text{Pr}[W] - \frac{1}{2} | =|  \text{Pr}[b = \hat{b}] - \frac{1}{2} |= 0</script><p>.<span style="float:right;">$\square$</span></p>
-<h2 id="Secret-key-cryptography"><a href="#Secret-key-cryptography" class="headerlink" title="Secret key cryptography"></a><strong>Secret key cryptography</strong></h2><div class="note yellow"><p><strong></strong></p><p><strong>Definition 10 (Pseudo-random generator)</strong>:</p><p>A <strong><code>pseudo-random generator</code></strong> (PRG) is an efficiently computable function  </p><script type="math/tex; mode=display">G : \mathcal{S} \to \mathcal{R}</script><p>where:</p><ul><li>$|\mathcal{S}| &lt; |\mathcal{R}|$</li><li>$\mathcal{S}$ (usually ${0,1}^l$) is called the <strong><code>seed space</code></strong>.</li><li>$\mathcal{R}$ (usually ${0,1}^L$, $L &gt; l$) is called the <strong><code>output space</code></strong>.</li></ul></div>
+<h2 id="Secret-key-cryptography"><a href="#Secret-key-cryptography" class="headerlink" title="Secret key cryptography"></a><strong>Secret key cryptography</strong></h2><div class="note yellow"><p><strong></strong></p><p><strong>Definition 10 (Pseudo-random generator)</strong>:</p><p>A <strong><code>pseudo-random generator</code></strong> (PRG) is an efficiently computable function  </p><script type="math/tex; mode=display">G : \mathcal{S} \to \mathcal{R}</script><p>where:</p><ul><li>$|\mathcal{S}| &lt; |\mathcal{R}|$</li><li>$\mathcal{S}$ (usually $\{0,1\}^l$) is called the <strong><code>seed space</code></strong>.</li><li>$\mathcal{R}$ (usually $\{0,1\}^L$, $L &gt; l$) is called the <strong><code>output space</code></strong>.</li></ul></div>
 <p><br></p>
 <p>我们可以继续哟个attack game来formalize “random”的概念。</p>
-<div class="note cyan"><p><strong></strong></p><p><strong>Attack Game 3 (PRG advantage)</strong>:</p><p>For a given PRG $G$ defined over $(\mathcal{S}, \mathcal{R})$ and for a given adversary $\mathcal{A}$, we define two experiments.<br>For $b = 0,1$, <strong>Experiment $b$</strong> proceeds as follows:</p><ul><li>The challenger computes $r \in \mathcal{R}$ as follows and sends it to $\mathcal{A}$:<ul><li>if $b = 0$: $s \xleftarrow{R} \mathcal{S},\ r \leftarrow G(s)$</li><li>if $b = 1$: $r \xleftarrow{R} \mathcal{R}$</li></ul></li><li>The adversary outputs a bit $\hat{b} \in {0,1}$</li><li>Let $W_b$ be the event that $\mathcal{A}$ outputs 1</li></ul></div>
+<div class="note cyan"><p><strong></strong></p><p><strong>Attack Game 3 (PRG advantage)</strong>:</p><p>For a given PRG $G$ defined over $(\mathcal{S}, \mathcal{R})$ and for a given adversary $\mathcal{A}$, we define two experiments.<br>For $b = 0,1$, <strong>Experiment $b$</strong> proceeds as follows:</p><ul><li>The challenger computes $r \in \mathcal{R}$ as follows and sends it to $\mathcal{A}$:<ul><li>if $b = 0$: $s \xleftarrow{R} \mathcal{S},\ r \leftarrow G(s)$</li><li>if $b = 1$: $r \xleftarrow{R} \mathcal{R}$</li></ul></li><li>The adversary outputs a bit $\hat{b} \in \{0,1\}$</li><li>Let $W_b$ be the event that $\mathcal{A}$ outputs 1</li></ul></div>
 <p><br></p>
 <p>图示：</p>
 <p><img src="/images/image-20250504140728361.png" class="lazyload" data-srcset="/images/image-20250504140728361.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250504140728361"></p>
@@ -2900,7 +2900,7 @@ SCadv^*[\mathcal{A}, \Pi_{\text{OTP}}] = | \text{Pr}[W] - \frac{1}{2} | =|  \tex
 <p><br></p>
 <div class="note yellow"><p><strong></strong></p><p><strong>Definition 11 (Secure PRG)</strong>:</p><p>A PRG $G$ is <strong><code>secure</code></strong>, if $PRGadv[\mathcal{A}, G]$ is negligible for all PPT adversaries $\mathcal{A}$.</p></div>
 <p><br></p>
-<div class="note yellow"><p><strong></strong></p><p><strong>Definition 12 (Stream Cipher Construction)</strong>:</p><p>Given a PRG $G : \mathcal{K} \to {0,1}^L$, we define the basic <strong><code>stream cipher</code></strong> $\Pi = (E, D)$ over<br>$(\mathcal{K}, {0,1}^L, {0,1}^L)$ as follows:</p><ul><li>$E(k, m) := G(k) \oplus m$</li><li>$D(k, c) := G(k) \oplus c$</li></ul></div>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition 12 (Stream Cipher Construction)</strong>:</p><p>Given a PRG $G : \mathcal{K} \to \{0,1\}^L$, we define the basic <strong><code>stream cipher</code></strong> $\Pi = (E, D)$ over<br>$(\mathcal{K}, \{0,1\}^L, \{0,1\}^L)$ as follows:</p><ul><li>$E(k, m) := G(k) \oplus m$</li><li>$D(k, c) := G(k) \oplus c$</li></ul></div>
 <p><br></p>
 
   </div>

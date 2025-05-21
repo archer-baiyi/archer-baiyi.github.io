@@ -2252,7 +2252,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1747765686643),
+    lastupdate: new Date(1747833277518),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2988,8 +2988,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>把当前 R 位的值放到最高位</li>
 </ul>
 <p><strong>Aging 例子</strong>：</p>
-<p>假设：Aging 计数器为 4 位（二进制），当前计数器 $A<em>p = 1100_2 = 12</em>{10}$，当前的引用位 R = 0。</p>
-<p>那么新的 $A<em>p$ 会变成 $0110_2 = 6</em>{10}$ 。</p>
+<p>假设：Aging 计数器为 4 位（二进制），当前计数器 $A_p = 1100_2 = 12_{10}$，当前的引用位 R = 0。</p>
+<p>那么新的 $A_p$ 会变成 $0110_2 = 6_{10}$ 。</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404232557694.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250404232557694.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250404232557694"></p>
 <p>当然，Aging也是有一定局限性的，但是我没看懂。（乐）</p>
 <h4 id="Working-Set-Ersetzungs-Verfahren"><a href="#Working-Set-Ersetzungs-Verfahren" class="headerlink" title="Working-Set Ersetzungs-Verfahren"></a><strong>Working-Set Ersetzungs-Verfahren</strong></h4><p>前面这些策略全都是基于按需分页（Demand Paging）的，我们现在来看点不一样的。</p>
@@ -3020,7 +3020,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 </ul>
 </li>
-<li>如果<strong>找到了多个</strong>符合条件的候选页：系统会选择 $Z<em>p$ 最小的那一页，称为 $P</em>{\text{old}}$。</li>
+<li>如果<strong>找到了多个</strong>符合条件的候选页：系统会选择 $Z_p$ 最小的那一页，称为 $P_{\text{old}}$。</li>
 <li>如果<strong>找不到任何</strong>页面可以换出（所有页面都还在 Working Set 中）：替换最老的页面（即 $P_{\text{old}}$）。</li>
 </ul>
 <p><strong>缺点</strong>：实现起来非常复杂。</p>
