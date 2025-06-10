@@ -39,17 +39,17 @@
   <!-- 页面元数据 -->
   <title>HTB Questionnaire Writeup - Hexo</title>
   <meta name="keywords" content="Pwn,攻防世界,null">
-  <meta desc name="description" content="hi - null - Hexo">
+  <meta desc name="description" content="一些关于Pwn的基础知识。（包括一些pwn常用的Linux命令） - null - Hexo">
   
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTB Questionnaire Writeup">
 <meta property="og:url" content="https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目 12345678910111213141516171819202122#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;&#x2F;*This is not the challenge, just a template to answer the questions.To get the flag, answer the questions. There">
+<meta property="og:description" content="一些关于Pwn的基础知识。（包括一些pwn常用的Linux命令）">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-06-09T18:43:50.000Z">
-<meta property="article:modified_time" content="2025-06-09T19:22:23.364Z">
+<meta property="article:modified_time" content="2025-06-10T19:04:03.242Z">
 <meta property="article:tag" content="Pwn">
 <meta property="article:tag" content="攻防世界">
 <meta name="twitter:card" content="summary">
@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1749498278516),
+    lastupdate: new Date(1749582555463),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2660,10 +2660,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-09T21:22:23+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-10T21:04:03+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 9, 2025</p>
+    <p>更新于：Jun 10, 2025</p>
   </a>
 </div>
 
@@ -2764,7 +2764,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/&title=HTB Questionnaire Writeup - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/&title=HTB Questionnaire Writeup - Hexo&summary=一些关于Pwn的基础知识。（包括一些pwn常用的Linux命令）"
           
           >
           
@@ -2776,7 +2776,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/&title=HTB Questionnaire Writeup - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/&title=HTB Questionnaire Writeup - Hexo&summary=一些关于Pwn的基础知识。（包括一些pwn常用的Linux命令）"
           
           >
           
@@ -2788,7 +2788,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/&title=HTB Questionnaire Writeup - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/&title=HTB Questionnaire Writeup - Hexo&summary=一些关于Pwn的基础知识。（包括一些pwn常用的Linux命令）"
           
           >
           
@@ -2820,6 +2820,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
     <div class="prev-next">
+      
+        <a class='prev' href='/2025/06/10/CTF/Pwn/HTB-Getting-Started-Writeup/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>HTB Getting_Started Writeup</p>
+          <p class='content'>题目
+观察分析用IDA打开文件：
+
+
+注意到这道题最核心的漏洞：
+1__isoc99_scanf(&amp;unk_26E1, s);
+原本只给s分配了8位的缓冲区（char s[8];），而s...</p>
+        </a>
       
       
         <a class='next' href='/2025/06/09/CTF/Pwn/HTB-You-know-0xDiablos-Writeup/'>
@@ -3493,7 +3504,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Pwn/","name":"Pwn"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/","name":"HTB Questionnaire Writeup"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"HTB Questionnaire Writeup","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/","wordCount":0,"datePublished":"2025-06-09T18:43:50.000Z","dateModified":"2025-06-09T19:22:23.364Z","articleSection":"CTF","keywords":"Pwn,攻防世界","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Pwn/","name":"Pwn"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/","name":"HTB Questionnaire Writeup"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"HTB Questionnaire Writeup","description":"一些关于Pwn的基础知识。（包括一些pwn常用的Linux命令）","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/","wordCount":32,"datePublished":"2025-06-09T18:43:50.000Z","dateModified":"2025-06-10T19:04:03.242Z","articleSection":"CTF","keywords":"Pwn,攻防世界","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
