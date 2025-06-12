@@ -39,17 +39,17 @@
   <!-- 页面元数据 -->
   <title>HTB Regularity Writeup - Hexo</title>
   <meta name="keywords" content="Pwn,攻防世界,null">
-  <meta desc name="description" content="通过Buffer Overflow将返回地址修改成我们自己手写的/bin/sh命令。 - null - Hexo">
+  <meta desc name="description" content="ret2reg。通过Buffer Overflow将返回地址修改成我们自己手写的/bin/sh命令。 - null - Hexo">
   
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTB Regularity Writeup">
 <meta property="og:url" content="https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="通过Buffer Overflow将返回地址修改成我们自己手写的&#x2F;bin&#x2F;sh命令。">
+<meta property="og:description" content="ret2reg。通过Buffer Overflow将返回地址修改成我们自己手写的&#x2F;bin&#x2F;sh命令。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-06-11T19:43:48.000Z">
-<meta property="article:modified_time" content="2025-06-11T20:26:40.625Z">
+<meta property="article:modified_time" content="2025-06-12T14:47:32.458Z">
 <meta property="article:tag" content="Pwn">
 <meta property="article:tag" content="攻防世界">
 <meta name="twitter:card" content="summary">
@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1749673699928),
+    lastupdate: new Date(1749740648142),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2660,10 +2660,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-11T22:26:40+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-12T16:47:32+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 11, 2025</p>
+    <p>更新于：Jun 12, 2025</p>
   </a>
 </div>
 
@@ -2797,7 +2797,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/&title=HTB Regularity Writeup - Hexo&summary=通过Buffer Overflow将返回地址修改成我们自己手写的/bin/sh命令。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/&title=HTB Regularity Writeup - Hexo&summary=ret2reg。通过Buffer Overflow将返回地址修改成我们自己手写的/bin/sh命令。"
           
           >
           
@@ -2809,7 +2809,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/&title=HTB Regularity Writeup - Hexo&summary=通过Buffer Overflow将返回地址修改成我们自己手写的/bin/sh命令。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/&title=HTB Regularity Writeup - Hexo&summary=ret2reg。通过Buffer Overflow将返回地址修改成我们自己手写的/bin/sh命令。"
           
           >
           
@@ -2821,7 +2821,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/&title=HTB Regularity Writeup - Hexo&summary=通过Buffer Overflow将返回地址修改成我们自己手写的/bin/sh命令。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/&title=HTB Regularity Writeup - Hexo&summary=ret2reg。通过Buffer Overflow将返回地址修改成我们自己手写的/bin/sh命令。"
           
           >
           
@@ -3523,7 +3523,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Pwn/","name":"Pwn"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/","name":"HTB Regularity Writeup"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"HTB Regularity Writeup","description":"通过Buffer Overflow将返回地址修改成我们自己手写的/bin/sh命令。","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/","wordCount":42,"datePublished":"2025-06-11T19:43:48.000Z","dateModified":"2025-06-11T20:26:40.625Z","articleSection":"CTF","keywords":"Pwn,攻防世界","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Pwn/","name":"Pwn"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/","name":"HTB Regularity Writeup"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"HTB Regularity Writeup","description":"ret2reg。通过Buffer Overflow将返回地址修改成我们自己手写的/bin/sh命令。","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/","wordCount":50,"datePublished":"2025-06-11T19:43:48.000Z","dateModified":"2025-06-12T14:47:32.458Z","articleSection":"CTF","keywords":"Pwn,攻防世界","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
