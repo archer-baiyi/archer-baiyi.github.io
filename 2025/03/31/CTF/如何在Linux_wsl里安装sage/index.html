@@ -9,7 +9,7 @@
    
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://archer-baiyi.github.io/2025/03/31/ctf/如何在wsl里安装sage/"/>
+  <link rel="canonical" href="https://archer-baiyi.github.io/2025/03/31/ctf/如何在linux_wsl里安装sage/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -37,19 +37,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>如何在wsl里安装sage - Hexo</title>
+  <title>如何在Linux/Wsl里安装sage - Hexo</title>
   <meta name="keywords" content="wsl,sage,vscode,null">
   <meta desc name="description" content="hi - null - Hexo">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何在wsl里安装sage">
-<meta property="og:url" content="https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/index.html">
+<meta property="og:title" content="如何在Linux&#x2F;Wsl里安装sage">
+<meta property="og:url" content="https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8Linux_wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="使用Miniforge安装sage注意，这个方法安装的sage的版本会相对旧一些，但是整体的安装流程非常快速，一般10分钟内就可以完成。 一共分成2个步骤：  安装Miniforge（Anaconda的轻量化替代品） 通过Anaconda安装sage 下载vscode的wsl版（可选）  安装Miniforge1wget https:&#x2F;&#x2F;github.com&#x2F;conda-forge&#x2F;minifor">
+<meta property="og:description" content="使用Miniforge安装sage注意，这个方法安装的sage的版本会相对旧一些，但是整体的安装流程非常快速，一般10分钟内就可以完成。 一共分成2个步骤：  安装Miniforge（Anaconda的轻量化替代品） 使用conda安装sage 下载vscode的wsl版（可选）  安装Miniforge1wget https:&#x2F;&#x2F;github.com&#x2F;conda-forge&#x2F;miniforge&#x2F;">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-31T12:44:34.000Z">
-<meta property="article:modified_time" content="2025-06-29T21:56:13.590Z">
+<meta property="article:modified_time" content="2025-06-30T07:38:58.414Z">
 <meta property="article:tag" content="wsl">
 <meta property="article:tag" content="sage">
 <meta property="article:tag" content="vscode">
@@ -2248,7 +2248,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1751234187958),
+    lastupdate: new Date(1751269263869),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2599,7 +2599,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/31/CTF/如何在wsl里安装sage/">
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/31/CTF/如何在Linux_wsl里安装sage/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2620,7 +2620,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        如何在wsl里安装sage
+        如何在Linux/Wsl里安装sage
       </h1>
       <div class='new-meta-box'>
         
@@ -2657,10 +2657,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-29T23:56:13+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-30T09:38:58+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 29, 2025</p>
+    <p>更新于：Jun 30, 2025</p>
   </a>
 </div>
 
@@ -2680,19 +2680,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>一共分成2个步骤：</p>
 <ol>
 <li>安装Miniforge（Anaconda的轻量化替代品）</li>
-<li>通过Anaconda安装sage</li>
+<li>使用conda安装sage</li>
 <li>下载vscode的wsl版（可选）</li>
 </ol>
 <h3 id="安装Miniforge"><a href="#安装Miniforge" class="headerlink" title="安装Miniforge"></a><strong>安装Miniforge</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
 <p>然后安装脚本：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash Miniforge3-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-<p>如果安装时询问你是否要把它加入 <kbd>.bashrc</kbd>， 选择是，这样一来每次打开wsl它都会自动启动并进入base环境，会比较方便。</p>
+<p>如果安装时询问你是否要把它加入 <code>.bashrc</code> ， 选择是，这样一来每次打开wsl它都会自动启动并进入base环境，会比较方便。</p>
 <p>当然如果这个自启没有设置成功，也可以手动设置：</p>
-<p>先打开 <kbd>.bashrc</kbd> 编辑器</p>
+<p>先打开<code>.bashrc</code> 编辑器</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.bashrc</span><br></pre></td></tr></table></figure>
 <p>在文件末尾添加：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">. <span class="string">&quot;<span class="variable">$HOME</span>/miniforge3/etc/profile.d/conda.sh&quot;</span></span><br><span class="line">conda activate base</span><br></pre></td></tr></table></figure>
-<p>然后使用 <kbd>Ctrl + o</kbd> 和 <kbd>Ctrl + x</kbd> 保存并退出。</p>
+<p>然后使用<code>Ctrl + o</code>和<code>Ctrl + x</code>保存并退出。</p>
 <p>最后再运行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
 <h3 id="安装sage"><a href="#安装sage" class="headerlink" title="安装sage"></a><strong>安装sage</strong></h3><p>通过</p>
@@ -2703,7 +2703,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sage</span><br></pre></td></tr></table></figure>
 <p>打开sage。</p>
 <h3 id="下载vscode的wsl版"><a href="#下载vscode的wsl版" class="headerlink" title="下载vscode的wsl版"></a><strong>下载vscode的wsl版</strong></h3><p>由于单纯用命令行运行sage代码不太方便，并且只用sage的话有些python的命令（比如说连接服务器等）容易出问题，可以安装一个vscode的wsl版。</p>
-<p>首先在Windows里的vscode下载 <kbd>wsl</kbd>  的插件</p>
+<p>首先在Windows里的vscode下载<code>wsl</code>的插件</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331142857212.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331142857212.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250331142857212"></p>
 <p>之后在当前wsl的命令行里输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">code .</span><br><span class="line"><span class="comment"># 用vscode打开当前文件夹</span></span><br></pre></td></tr></table></figure>
@@ -2795,7 +2795,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/&title=如何在wsl里安装sage - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8Linux_wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/&title=如何在Linux/Wsl里安装sage - Hexo&summary="
           
           >
           
@@ -2807,7 +2807,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/&title=如何在wsl里安装sage - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8Linux_wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/&title=如何在Linux/Wsl里安装sage - Hexo&summary="
           
           >
           
@@ -2819,7 +2819,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/&title=如何在wsl里安装sage - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8Linux_wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/&title=如何在Linux/Wsl里安装sage - Hexo&summary="
           
           >
           
@@ -3528,7 +3528,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/31/CTF/如何在wsl里安装sage/","name":"如何在wsl里安装sage"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"如何在wsl里安装sage","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/","wordCount":0,"datePublished":"2025-03-31T12:44:34.000Z","dateModified":"2025-06-29T21:56:13.590Z","articleSection":"CTF","keywords":"wsl,sage,vscode","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/31/CTF/如何在Linux_wsl里安装sage/","name":"如何在Linux/Wsl里安装sage"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"如何在Linux/Wsl里安装sage","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8Linux_wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8Linux_wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/","wordCount":0,"datePublished":"2025-03-31T12:44:34.000Z","dateModified":"2025-06-30T07:38:58.414Z","articleSection":"CTF","keywords":"wsl,sage,vscode","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
