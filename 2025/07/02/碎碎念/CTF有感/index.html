@@ -9,7 +9,7 @@
    
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://archer-baiyi.github.io/2025/03/31/ctf/如何在linux_wsl里安装sage/"/>
+  <link rel="canonical" href="https://archer-baiyi.github.io/2025/07/02/碎碎念/ctf有感/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -37,22 +37,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>如何在Linux/Wsl里安装sage - Hexo</title>
-  <meta name="keywords" content="wsl,sage,vscode,null">
+  <title>CTF有感 - Hexo</title>
+  <meta name="keywords" content="null">
   <meta desc name="description" content="hi - null - Hexo">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何在Linux&#x2F;Wsl里安装sage">
-<meta property="og:url" content="https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8Linux_wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/index.html">
+<meta property="og:title" content="CTF有感">
+<meta property="og:url" content="https://archer-baiyi.github.io/2025/07/02/%E7%A2%8E%E7%A2%8E%E5%BF%B5/CTF%E6%9C%89%E6%84%9F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="使用Miniforge安装sage注意，这个方法安装的sage的版本会相对旧一些，但是整体的安装流程非常快速，一般10分钟内就可以完成。 一共分成2个步骤：  安装Miniforge（Anaconda的轻量化替代品） 使用conda安装sage 下载vscode的wsl版（可选）  安装Miniforge1wget https:&#x2F;&#x2F;github.com&#x2F;conda-forge&#x2F;miniforge&#x2F;">
+<meta property="og:description" content="在不久前的一场CTF比赛中发生了这样一件事情：我和队里另一位成员碰巧同时开始研究一道密码学题目，彼此却毫不知情。我先一步解出并提交了flag；没过多久，他也成功提交了答案，这才发现我已经提交过了。他随即明确地向我表达了不满：“It is very annoying to see after solving a task, that it was solved already”。我尝试与他沟通，但最">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-03-31T12:44:34.000Z">
-<meta property="article:modified_time" content="2025-06-30T07:38:58.414Z">
-<meta property="article:tag" content="wsl">
-<meta property="article:tag" content="sage">
-<meta property="article:tag" content="vscode">
+<meta property="article:published_time" content="2025-07-02T20:07:02.000Z">
+<meta property="article:modified_time" content="2025-07-02T21:12:08.786Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2248,7 +2245,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1751397029449),
+    lastupdate: new Date(1751490798283),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2599,7 +2596,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/31/CTF/如何在Linux_wsl里安装sage/">
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/07/02/碎碎念/CTF有感/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2620,7 +2617,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        如何在Linux/Wsl里安装sage
+        CTF有感
       </h1>
       <div class='new-meta-box'>
         
@@ -2631,10 +2628,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/CTF/">CTF</a>
+    <a class="category-link" href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a>
     
       <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-        <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+        <a href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" itemprop="url"><span itemprop="name">碎碎念</span></a>
       </span>
     
   </div>
@@ -2646,21 +2643,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  
-  
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/wsl/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>wsl</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/sage/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>sage</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/vscode/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>vscode</p></a></div>
-  <span hidden itemprop="keywords">wsl sage vscode</span>
-  
-
 
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-30T09:38:58+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-07-02T23:12:08+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 30, 2025</p>
+    <p>更新于：Jul 2, 2025</p>
   </a>
 </div>
 
@@ -2676,84 +2666,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="使用Miniforge安装sage"><a href="#使用Miniforge安装sage" class="headerlink" title="使用Miniforge安装sage"></a><strong>使用Miniforge安装sage</strong></h2><p>注意，这个方法安装的sage的版本会相对旧一些，但是整体的安装流程非常快速，一般10分钟内就可以完成。</p>
-<p>一共分成2个步骤：</p>
-<ol>
-<li>安装Miniforge（Anaconda的轻量化替代品）</li>
-<li>使用conda安装sage</li>
-<li>下载vscode的wsl版（可选）</li>
-</ol>
-<h3 id="安装Miniforge"><a href="#安装Miniforge" class="headerlink" title="安装Miniforge"></a><strong>安装Miniforge</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-<p>然后安装脚本：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash Miniforge3-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-<p>如果安装时询问你是否要把它加入 <code>.bashrc</code> ， 选择是，这样一来每次打开wsl它都会自动启动并进入base环境，会比较方便。</p>
-<p>当然如果这个自启没有设置成功，也可以手动设置：</p>
-<p>先打开<code>.bashrc</code> 编辑器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p>在文件末尾添加：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">. <span class="string">&quot;<span class="variable">$HOME</span>/miniforge3/etc/profile.d/conda.sh&quot;</span></span><br><span class="line">conda activate base</span><br></pre></td></tr></table></figure>
-<p>然后使用<code>Ctrl + o</code>和<code>Ctrl + x</code>保存并退出。</p>
-<p>最后再运行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-<h3 id="安装sage"><a href="#安装sage" class="headerlink" title="安装sage"></a><strong>安装sage</strong></h3><p>通过</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n sage sage -c conda-forge</span><br></pre></td></tr></table></figure>
-<p>安装sage。然后每次使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate sage</span><br></pre></td></tr></table></figure>
-<p>激活sage环境并用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sage</span><br></pre></td></tr></table></figure>
-<p>打开sage。</p>
-<h3 id="下载vscode的wsl版"><a href="#下载vscode的wsl版" class="headerlink" title="下载vscode的wsl版"></a><strong>下载vscode的wsl版</strong></h3><p>由于单纯用命令行运行sage代码不太方便，并且只用sage的话有些python的命令（比如说连接服务器等）容易出问题，可以安装一个vscode的wsl版。</p>
-<p>首先在Windows里的vscode下载<code>wsl</code>的插件</p>
-<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331142857212.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331142857212.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250331142857212"></p>
-<p>之后在当前wsl的命令行里输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">code .</span><br><span class="line"><span class="comment"># 用vscode打开当前文件夹</span></span><br></pre></td></tr></table></figure>
-<p>它便会开始自动下载wsl版的vscode。</p>
-<p>下载完成后，每次启动wsl之后只需要先打开vscode：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code .</span><br></pre></td></tr></table></figure>
-<p>然后在vscode的命令行里输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate sage</span><br></pre></td></tr></table></figure>
-<p>便可以编写并运行import了sage库的python代码。</p>
-<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331143508887.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250331143508887.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250331143508887"></p>
-<div class="note warning"><p>记住要先开vscode再开启sage的环境，不然先开启了sage环境后，进到vscode里会掉回base的环境！</p></div>
-<h2 id="下载sage源码并编译"><a href="#下载sage源码并编译" class="headerlink" title="下载sage源码并编译"></a><strong>下载sage源码并编译</strong></h2><p>这种方法安装的是最新版的sage，功能会相对多很多（尤其是某些Lattice相关的功能），只不过整体流程会很长，可能会持续一个小时。（主要是编译那步需要等很久。）</p>
-<p>稍微解释一下，在sage的官网：<a target="_blank" rel="noopener" href="https://www.sagemath.org/download-linux.html">https://www.sagemath.org/download-linux.html</a></p>
-<p>可以看到：</p>
-<p><img src="/images/image-20250629234700374.png" class="lazyload" data-srcset="/images/image-20250629234700374.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250629234700374"></p>
-<p>Sage官方不再提供编译好的二进制文件了，所以我们才需要自己在本地编译。</p>
-<h3 id="准备系统环境"><a href="#准备系统环境" class="headerlink" title="准备系统环境"></a><strong>准备系统环境</strong></h3><p>使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-<p>打开<code>sources.list</code>文件并添加以下内容（或替换）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware</span><br></pre></td></tr></table></figure>
-<p>保存并退出（Ctrl+O，回车，Ctrl+X），然后执行更新：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade</span><br></pre></td></tr></table></figure>
-<h3 id="安装构建依赖"><a href="#安装构建依赖" class="headerlink" title="安装构建依赖"></a><strong>安装构建依赖</strong></h3><p>Sage 依赖大量开发工具，先装些最基本的：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install build-essential m4 perl git curl python3 gfortran libbz2-dev libssl-dev libffi-dev libsqlite3-dev libreadline-dev automake cmake</span><br></pre></td></tr></table></figure>
-<p>也可能会用到：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install pkg-config texinfo libmpfr-dev libgmp-dev libmpc-dev \</span><br><span class="line">zlib1g-dev libncurses-dev libgdbm-dev libpng-dev libcurl4-openssl-dev \</span><br><span class="line">libglpk-dev texlive texlive-latex-extra </span><br></pre></td></tr></table></figure>
-<p>建议存储够的话全都下了。</p>
-<h3 id="下载-Sage-源码"><a href="#下载-Sage-源码" class="headerlink" title="下载 Sage 源码"></a><strong>下载 Sage 源码</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/sagemath/sage.git</span><br><span class="line"><span class="built_in">cd</span> sage</span><br></pre></td></tr></table></figure>
-<h3 id="配置项目"><a href="#配置项目" class="headerlink" title="配置项目"></a><strong>配置项目</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br></pre></td></tr></table></figure>
-<p>检测你的系统工具和库，并准备 Makefile。如果缺少依赖，它会告诉你缺了什么。</p>
-<h3 id="编译-Sage"><a href="#编译-Sage" class="headerlink" title="编译 Sage"></a><strong>编译 Sage</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j$(<span class="built_in">nproc</span>)</span><br></pre></td></tr></table></figure>
-<p>有些时候编译时会报<code>cmake</code> 编译失败的错误，这时可以先跳过编译 cmake 的步骤，直接用系统自带的版本来代替 Sage 自己编译的版本：</p>
-<p>设置 Sage 使用系统的 cmake：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> SAGE_INSTALL_USE_SYSTEM_CMAKE=<span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
-<p>然后重新开始编译：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j$(<span class="built_in">nproc</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="启动-Sage"><a href="#启动-Sage" class="headerlink" title="启动 Sage"></a><strong>启动 Sage</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./sage</span><br></pre></td></tr></table></figure>
-<p>出现类似如下输出则表示成功：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SageMath version 10.7.beta7, Release Date: 2025-06-29</span><br></pre></td></tr></table></figure>
-<h3 id="加入全局环境变量（可选）"><a href="#加入全局环境变量（可选）" class="headerlink" title="加入全局环境变量（可选）"></a><strong>加入全局环境变量（可选）</strong></h3><p>你可以把 <code>./sage</code> 添加到 PATH，方便全局使用。</p>
-<p>首先编辑 <code>.bashrc</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p>在这份文件的最下方添加：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;$HOME/ctf-kali/sage:$PATH&quot;</span><br></pre></td></tr></table></figure>
-<p>然后刷新配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p>验证：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which sage</span><br></pre></td></tr></table></figure>
-<p>应该输出类似：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/archer/sage/sage</span><br></pre></td></tr></table></figure>
+    <p>在不久前的一场CTF比赛中发生了这样一件事情：我和队里另一位成员碰巧同时开始研究一道密码学题目，彼此却毫不知情。我先一步解出并提交了flag；没过多久，他也成功提交了答案，这才发现我已经提交过了。他随即明确地向我表达了不满：“It is very annoying to see after solving a task, that it was solved already”。我尝试与他沟通，但最终未能达成一致，他索性不再回消息，也停止了做题。</p>
+<p>坦白说，我觉得这本身是件小事，即使发生在我身上也不会太过在意。但这不由得让我思考：我参与CTF的目的是什么？在CTF的过程中，什么才是最重要的？或者说，相对更值得珍视的是什么？</p>
+<p>我接触CTF的契机颇有意思的：一开始被同学拉去上了网络安全这门课，并坚持完成了所有作业。这门课的作业形式基本上就是CTF题——编写脚本获取flag。后来机缘巧合，得知学校有支CTF队伍，便联系负责人加入其中。</p>
+<p>最初参与CTF时，我的动机多少有些功利（至今也未能完全摆脱这个想法）：作为纯数学专业的学生，我几乎没有任何竞赛经历和奖项，找实习时屡屡碰壁。所以我很希望可以借着这个机会多多参加比赛、争取好名次来丰富简历。然而，随着一场场比赛的进行，我渐渐发现，我在这个过程中学到了太多东西：多种语言的代码能力，高效检索信息（比如特定漏洞以及攻击手段）的能力等等…… 这些都弥足珍贵。</p>
+<p>回到解题本身，我觉得最有成就感的是得到正确flag的瞬间，但更重要的是自己成功做出来这道题的过程。在这个过程中，你可能汲取新知，也可能将过往所学付诸实践并获得成功。我觉得这个过程才是CTF中最有意义的事情，获取并提交flag，更像是成功的注脚，或是对努力的嘉奖。</p>
+<p>当然，比赛中提交flag争取分数是主要目标。但作为一个队伍，实在不必过分纠结于谁先解出。因为大家最终的目的不都是为了争取一个理想的名次吗？更何况，他人率先解题的成功，绝不意味着否定你在此过程中付出的努力和获得的成果。</p>
+<p>也不知道之后是否有机会与他解开矛盾，但这并不重要。重要的是，这次小小的冲突让我有机会停下来，认真审视自己参与 CTF 的初衷和目标。从最初为了丰富简历、提升求职竞争力，到如今更看重解题过程中的学习和成长，我的心态发生了转变。 CTF 不再仅仅是比赛，而是我学习和提升自我的一个平台。 这次经历让我明白，团队合作和共同进步远比个人名次和短暂的优胜感更有价值。即使未能获得理想的名次，只要在这个过程中持续学习、不断进步，就已经足够令人欣慰。而这份思考和成长，远比任何一个 flag 都珍贵。 我很高兴，这次经历让我在迷茫中找到了方向，而不是盲目地继续前进。</p>
 
   </div>
   
@@ -2778,10 +2697,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-31T14:44:34+02:00">
+          <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-07-02T22:07:02+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Mar 31, 2025</p>
+    <p>发布于：Jul 2, 2025</p>
   </a>
 </div>
 
@@ -2795,7 +2714,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8Linux_wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/&title=如何在Linux/Wsl里安装sage - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/07/02/%E7%A2%8E%E7%A2%8E%E5%BF%B5/CTF%E6%9C%89%E6%84%9F/&title=CTF有感 - Hexo&summary="
           
           >
           
@@ -2807,7 +2726,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8Linux_wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/&title=如何在Linux/Wsl里安装sage - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/07/02/%E7%A2%8E%E7%A2%8E%E5%BF%B5/CTF%E6%9C%89%E6%84%9F/&title=CTF有感 - Hexo&summary="
           
           >
           
@@ -2819,7 +2738,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8Linux_wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/&title=如何在Linux/Wsl里安装sage - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/07/02/%E7%A2%8E%E7%A2%8E%E5%BF%B5/CTF%E6%9C%89%E6%84%9F/&title=CTF有感 - Hexo&summary="
           
           >
           
@@ -2852,23 +2771,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/03/31/TUM%20info%20%E7%AC%94%E8%AE%B0/ERA/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>逻辑电路图</p>
-          <p class='content'>逻辑门先来认识（记）一下基础的逻辑门：
-
-注意，NAND，NOR那里的那个小圆圈代表的是取反（negation），跟最底下的Negation是一个效果。
-比如这里表达的是 $y = \neg (...</p>
-        </a>
       
-      
-        <a class='next' href='/2025/03/30/CTF/Web/HTB-Full-Stack-Conf-Writeup/'>
-          <p class='title'>HTB Full Stack Conf Writeup<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>题目描述
-（无附件）
-观察打开网页：
-
-渗透因为提示用alert，并且题目描述里提到了JavaScript，所以直接尝试最简单的JavaScript注入：
-1&lt;script&gt;aler...</p>
+        <a class='next' href='/2025/07/01/%E6%9D%82/%E5%8D%8E%E4%B8%BA-wireless-terminal-chipset-research-lab-%E9%9D%A2%E8%AF%95/'>
+          <p class='title'>华为 wireless terminal chipset research lab 面试<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>简单记录一下今天面试问到的问题以及正确答案。基本上全是在问Linear Algebra的各种问题。不过有一点我没有想到的是，他们居然会让我讲我的论文以及CTF比赛的内容。（当然，论文的部分跟我预...</p>
         </a>
       
     </div>
@@ -2907,20 +2813,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
 
-
-<section class="widget toc-wrapper desktop mobile" id="toc-div" >
-  
-  <header>
-    
-      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
-    
-  </header>
-
-
-  <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Miniforge%E5%AE%89%E8%A3%85sage"><span class="toc-number">1.</span> <span class="toc-text">使用Miniforge安装sage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Miniforge"><span class="toc-number">1.1.</span> <span class="toc-text">安装Miniforge</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85sage"><span class="toc-number">1.2.</span> <span class="toc-text">安装sage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDvscode%E7%9A%84wsl%E7%89%88"><span class="toc-number">1.3.</span> <span class="toc-text">下载vscode的wsl版</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDsage%E6%BA%90%E7%A0%81%E5%B9%B6%E7%BC%96%E8%AF%91"><span class="toc-number">2.</span> <span class="toc-text">下载sage源码并编译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.</span> <span class="toc-text">准备系统环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%9E%84%E5%BB%BA%E4%BE%9D%E8%B5%96"><span class="toc-number">2.2.</span> <span class="toc-text">安装构建依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-Sage-%E6%BA%90%E7%A0%81"><span class="toc-number">2.3.</span> <span class="toc-text">下载 Sage 源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.4.</span> <span class="toc-text">配置项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91-Sage"><span class="toc-number">2.5.</span> <span class="toc-text">编译 Sage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8-Sage"><span class="toc-number">2.6.</span> <span class="toc-text">启动 Sage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E5%85%A5%E5%85%A8%E5%B1%80%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">2.7.</span> <span class="toc-text">加入全局环境变量（可选）</span></a></li></ol></li></ol>
-  </div>
-</section>
 
   
 
@@ -3295,7 +3187,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["background/wallhaven-6dvy9w.png","background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg"];
+  let imgs = ["background/wallhaven-5g2pl7.png","background/girl_cloak_hood_984627_1280x720.jpg","background/wallhaven-6dvy9w.png"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3528,7 +3420,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/31/CTF/如何在Linux_wsl里安装sage/","name":"如何在Linux/Wsl里安装sage"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"如何在Linux/Wsl里安装sage","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8Linux_wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/31/CTF/%E5%A6%82%E4%BD%95%E5%9C%A8Linux_wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/","wordCount":0,"datePublished":"2025-03-31T12:44:34.000Z","dateModified":"2025-06-30T07:38:58.414Z","articleSection":"CTF","keywords":"wsl,sage,vscode","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/碎碎念/","name":"碎碎念"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/07/02/碎碎念/CTF有感/","name":"CTF有感"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"CTF有感","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/07/02/%E7%A2%8E%E7%A2%8E%E5%BF%B5/CTF%E6%9C%89%E6%84%9F/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/07/02/%E7%A2%8E%E7%A2%8E%E5%BF%B5/CTF%E6%9C%89%E6%84%9F/","wordCount":0,"datePublished":"2025-07-02T20:07:02.000Z","dateModified":"2025-07-02T21:12:08.786Z","articleSection":"碎碎念","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
