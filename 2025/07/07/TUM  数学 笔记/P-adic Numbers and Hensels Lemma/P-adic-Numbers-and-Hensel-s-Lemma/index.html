@@ -9,7 +9,7 @@
    
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://archer-baiyi.github.io/2025/06/30/tum  数学 笔记/p-adic numbers and hensel's lemma/p-adic-numbers-and-hensel-s-lemma/"/>
+  <link rel="canonical" href="https://archer-baiyi.github.io/2025/07/07/tum  数学 笔记/p-adic numbers and hensels lemma/p-adic-numbers-and-hensel-s-lemma/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -39,17 +39,17 @@
   <!-- 页面元数据 -->
   <title>P-adic Numbers and Hensel's Lemma - Hexo</title>
   <meta name="keywords" content="p进数,P-adic Numbers,Hensel's Lemma,null">
-  <meta desc name="description" content="编码理论相关笔记 - null - Hexo">
+  <meta desc name="description" content="hi - null - Hexo">
   
 <meta property="og:type" content="article">
 <meta property="og:title" content="P-adic Numbers and Hensel&#39;s Lemma">
-<meta property="og:url" content="https://archer-baiyi.github.io/2025/06/30/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/P-adic%20Numbers%20and%20Hensel's%20Lemma/P-adic-Numbers-and-Hensel-s-Lemma/index.html">
+<meta property="og:url" content="https://archer-baiyi.github.io/2025/07/07/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/P-adic%20Numbers%20and%20Hensels%20Lemma/P-adic-Numbers-and-Hensel-s-Lemma/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="编码理论相关笔记">
+<meta property="og:description" content="Introduction相信大家或多或少听过或者熟悉计算机里的（二进制）“补码”这个概念：比如说当我们用$(0001)_2$来表示$1$时，可以用$(1111)_2$ （$&#x3D; (1111)_2 \text{ xor } (0001)_2 + 1$）来表示$-1$。 而当我们将其转化成我们熟悉的十进制（$(1111)_2 &#x3D; \sum^{3}_{i&#x3D;0}1\cdot 2^n  &#x3D; 15$）的话，我们">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-06-30T15:23:17.000Z">
-<meta property="article:modified_time" content="2025-06-30T18:05:08.340Z">
+<meta property="article:published_time" content="2025-07-07T10:05:37.000Z">
+<meta property="article:modified_time" content="2025-07-07T10:07:01.196Z">
 <meta property="article:tag" content="p进数">
 <meta property="article:tag" content="P-adic Numbers">
 <meta property="article:tag" content="Hensel&#39;s Lemma">
@@ -2248,7 +2248,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1751628871548),
+    lastupdate: new Date(1751883155761),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2599,7 +2599,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/06/30/TUM  数学 笔记/P-adic Numbers and Hensel's Lemma/P-adic-Numbers-and-Hensel-s-Lemma/">
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/07/07/TUM  数学 笔记/P-adic Numbers and Hensels Lemma/P-adic-Numbers-and-Hensel-s-Lemma/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2631,14 +2631,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/TUM-%E6%95%B0%E5%AD%A6-%E7%AC%94%E8%AE%B0/">TUM 数学 笔记</a><span class="sep"></span><a class="category-link" href="/categories/TUM-%E6%95%B0%E5%AD%A6-%E7%AC%94%E8%AE%B0/P-adic-Numbers-and-Hensel-s-Lemma/">P-adic Numbers and Hensel's Lemma</a>
+    <a class="category-link" href="/categories/TUM-%E6%95%B0%E5%AD%A6-%E7%AC%94%E8%AE%B0/">TUM 数学 笔记</a><span class="sep"></span><a class="category-link" href="/categories/TUM-%E6%95%B0%E5%AD%A6-%E7%AC%94%E8%AE%B0/P-adic-Numbers-and-Hensels-Lemma/">P-adic Numbers and Hensels Lemma</a>
     
       <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
         <a href="/categories/TUM-%E6%95%B0%E5%AD%A6-%E7%AC%94%E8%AE%B0/" itemprop="url"><span itemprop="name">TUM 数学 笔记</span></a>
       </span>
     
       <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-        <a href="/categories/TUM-%E6%95%B0%E5%AD%A6-%E7%AC%94%E8%AE%B0/P-adic-Numbers-and-Hensel-s-Lemma/" itemprop="url"><span itemprop="name">P-adic Numbers and Hensel's Lemma</span></a>
+        <a href="/categories/TUM-%E6%95%B0%E5%AD%A6-%E7%AC%94%E8%AE%B0/P-adic-Numbers-and-Hensels-Lemma/" itemprop="url"><span itemprop="name">P-adic Numbers and Hensels Lemma</span></a>
       </span>
     
   </div>
@@ -2661,10 +2661,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-30T20:05:08+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-07-07T12:07:01+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 30, 2025</p>
+    <p>更新于：Jul 7, 2025</p>
   </a>
 </div>
 
@@ -2723,10 +2723,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-06-30T17:23:17+02:00">
+          <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-07-07T12:05:37+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jun 30, 2025</p>
+    <p>发布于：Jul 7, 2025</p>
   </a>
 </div>
 
@@ -2740,7 +2740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/06/30/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/P-adic%20Numbers%20and%20Hensel's%20Lemma/P-adic-Numbers-and-Hensel-s-Lemma/&title=P-adic Numbers and Hensel's Lemma - Hexo&summary=编码理论相关笔记"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/07/07/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/P-adic%20Numbers%20and%20Hensels%20Lemma/P-adic-Numbers-and-Hensel-s-Lemma/&title=P-adic Numbers and Hensel's Lemma - Hexo&summary="
           
           >
           
@@ -2752,7 +2752,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/06/30/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/P-adic%20Numbers%20and%20Hensel's%20Lemma/P-adic-Numbers-and-Hensel-s-Lemma/&title=P-adic Numbers and Hensel's Lemma - Hexo&summary=编码理论相关笔记"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/07/07/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/P-adic%20Numbers%20and%20Hensels%20Lemma/P-adic-Numbers-and-Hensel-s-Lemma/&title=P-adic Numbers and Hensel's Lemma - Hexo&summary="
           
           >
           
@@ -2764,7 +2764,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/06/30/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/P-adic%20Numbers%20and%20Hensel's%20Lemma/P-adic-Numbers-and-Hensel-s-Lemma/&title=P-adic Numbers and Hensel's Lemma - Hexo&summary=编码理论相关笔记"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/07/07/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/P-adic%20Numbers%20and%20Hensels%20Lemma/P-adic-Numbers-and-Hensel-s-Lemma/&title=P-adic Numbers and Hensel's Lemma - Hexo&summary="
           
           >
           
@@ -2797,16 +2797,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/07/01/%E6%9D%82/%E5%8D%8E%E4%B8%BA-wireless-terminal-chipset-research-lab-%E9%9D%A2%E8%AF%95/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>华为 wireless terminal chipset research lab 面试</p>
-          <p class='content'>简单记录一下今天面试问到的问题以及正确答案。基本上全是在问Linear Algebra的各种问题。不过有一点我没有想到的是，他们居然会让我讲我的论文以及CTF比赛的内容。（当然，论文的部分跟我预...</p>
-        </a>
       
-      
-        <a class='next' href='/2025/06/30/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/Coding%20Theory%20%E7%BC%96%E7%A0%81%E7%90%86%E8%AE%BA/Coding-Theory-%E7%BC%96%E7%A0%81%E7%90%86%E8%AE%BA/'>
-          <p class='title'>Coding Theory 编码理论<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>基础Shannon’s Theorem 香农理论考虑一个binary symmetric channel，其中每一位传输错误的概率为$p$。记$q := 1-p$。
-假设$C$是一个长度为$n$...</p>
+        <a class='next' href='/2025/07/04/CTF/Crypto/%E9%9B%B6%E7%9F%A5%E8%AF%86%E8%AF%81%E6%98%8E-Zero-knowledge-proof/'>
+          <p class='title'>零知识证明 (Zero-knowledge proof)<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>什么是零知识证明 (Zero-knowledge proof)A zero-knowledge proof (ZKP) is a technique that enables one party...</p>
         </a>
       
     </div>
@@ -3520,7 +3514,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/P-adic-Numbers-and-Hensel-s-Lemma/","name":"P-adic Numbers and Hensel's Lemma"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/06/30/TUM  数学 笔记/P-adic Numbers and Hensel's Lemma/P-adic-Numbers-and-Hensel-s-Lemma/","name":"P-adic Numbers and Hensel's Lemma"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"P-adic Numbers and Hensel's Lemma","description":"编码理论相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/06/30/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/P-adic%20Numbers%20and%20Hensel's%20Lemma/P-adic-Numbers-and-Hensel-s-Lemma/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/06/30/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/P-adic%20Numbers%20and%20Hensel's%20Lemma/P-adic-Numbers-and-Hensel-s-Lemma/","wordCount":8,"datePublished":"2025-06-30T15:23:17.000Z","dateModified":"2025-06-30T18:05:08.340Z","articleSection":"TUM 数学 笔记","keywords":"p进数,P-adic Numbers,Hensel's Lemma","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/P-adic-Numbers-and-Hensels-Lemma/","name":"P-adic Numbers and Hensels Lemma"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/07/07/TUM  数学 笔记/P-adic Numbers and Hensels Lemma/P-adic-Numbers-and-Hensel-s-Lemma/","name":"P-adic Numbers and Hensel's Lemma"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"P-adic Numbers and Hensel's Lemma","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/07/07/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/P-adic%20Numbers%20and%20Hensels%20Lemma/P-adic-Numbers-and-Hensel-s-Lemma/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/07/07/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/P-adic%20Numbers%20and%20Hensels%20Lemma/P-adic-Numbers-and-Hensel-s-Lemma/","wordCount":0,"datePublished":"2025-07-07T10:05:37.000Z","dateModified":"2025-07-07T10:07:01.196Z","articleSection":"TUM 数学 笔记","keywords":"p进数,P-adic Numbers,Hensel's Lemma","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
