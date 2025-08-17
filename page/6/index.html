@@ -2243,7 +2243,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1753656849049),
+    lastupdate: new Date(1755419206444),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2597,6 +2597,80 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <section class="post-list">
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/04/02/CTF/Web/HTB-SpookTastic-Writeup/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/04/02/CTF/Web/HTB-SpookTastic-Writeup/"  itemprop="url">
+        HTB SpookTastic Writeup
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        题目描述
+（有附件）
+观察打开网页：
+
+翻到最底下可以看到一个输入框：
+
+阅读一下源代码（app.py）：
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-04-02T23:56:21+02:00">2025-04-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Web/">Web</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/Web/" itemprop="url"><span itemprop="name">Web</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/04/02/CTF/Web/HTB-SpookTastic-Writeup/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -3266,80 +3340,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA加解密以及攻击方法/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/"  itemprop="url">
-        RSA加解密以及攻击方法
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        RSA加/解密首先设
-
-\varphi(m) := | \{ 1 \leq k \leq m ｜\gcd(k, m) = 1 \} |为欧拉函数（Euler’sche Phi-function）。
-RSA加密算法的初始化流程如下：
-
-选择2个很大的质数$p, q$.
-计算$n:=pq$。这里的n是公开的，$p, q$则是保密的。
-计算$\varphi(n)$。（因为我们知道$n=pq$，且$...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-03-29T20:01:56+01:00">2025-03-29</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Crypto/">Crypto</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/Crypto/" itemprop="url"><span itemprop="name">Crypto</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -3435,7 +3435,7 @@ RSA加密算法的初始化流程如下：
           <li><a class="flat-box"
             title="/categories/CTF/" href="/categories/CTF/"
             active-action="action-categoriesCTF"
-            ><div class='name'>CTF</div><div class='badge'>(52)</div></a></li>
+            ><div class='name'>CTF</div><div class='badge'>(53)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/CTF/Crypto/" href="/categories/CTF/Crypto/"
@@ -3455,7 +3455,7 @@ RSA加密算法的初始化流程如下：
           <li><a class="flat-box child"
             title="/categories/CTF/Pwn/" href="/categories/CTF/Pwn/"
             active-action="action-categoriesCTFPwn"
-            ><div class='name'>Pwn</div><div class='badge'>(12)</div></a></li>
+            ><div class='name'>Pwn</div><div class='badge'>(13)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/CTF/Reverse-Engineering/" href="/categories/CTF/Reverse-Engineering/"

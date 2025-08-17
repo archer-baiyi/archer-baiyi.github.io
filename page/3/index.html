@@ -2243,7 +2243,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1753656849049),
+    lastupdate: new Date(1755419206444),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2597,6 +2597,75 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <section class="post-list">
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/06/02/CTF/Crypto/Cyptohack-Modular-Arithmetic-Writeup/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/06/02/CTF/Crypto/Cyptohack-Modular-Arithmetic-Writeup/"  itemprop="url">
+        Cyptohack Modular_Arithmetic Writeup
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        Greatest Common Divisor题
+解直接实现一下欧几里得算法（辗转相除法）：
+12345678910def gcd(x,y):    if x == y:        return x    if x&lt;y:        return gcd(x,y-x)    else:        return gcd(y,x-y)    print(gcd(66528,529...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-06-02T11:53:03+02:00">2025-06-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Crypto/">Crypto</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/Crypto/" itemprop="url"><span itemprop="name">Crypto</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/06/02/CTF/Crypto/Cyptohack-Modular-Arithmetic-Writeup/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -3226,75 +3295,6 @@ The format string is a character string which contains two types of objects: pla
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn入门/">
-  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
-    <meta itemprop="name" content="Hexo">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
-    <meta itemprop="name" content="Hexo">
-    <meta itemprop="description" content="hi">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/05/12/CTF/Pwn/Pwn%E5%85%A5%E9%97%A8/"  itemprop="url">
-        Pwn入门
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        背景知识下面介绍一些基本的漏洞以及对应的攻击方法：
-栈溢出（Stack buffer overflow）栈溢出指的是程序向栈中某个变量中写入的字节数超过了这个变量本身所申请的字节数，因而导致与其相邻的栈中的变量的值被改变。（https://ctf-wiki.org/pwn/linux/user-mode/stackoverflow/x86/stackoverflow-basic/）
-漏洞结构...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-05-12T17:01:08+02:00">2025-05-12</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Pwn/">Pwn</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
-              <a href="/categories/CTF/Pwn/" itemprop="url"><span itemprop="name">Pwn</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/05/12/CTF/Pwn/Pwn%E5%85%A5%E9%97%A8/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -3390,7 +3390,7 @@ The format string is a character string which contains two types of objects: pla
           <li><a class="flat-box"
             title="/categories/CTF/" href="/categories/CTF/"
             active-action="action-categoriesCTF"
-            ><div class='name'>CTF</div><div class='badge'>(52)</div></a></li>
+            ><div class='name'>CTF</div><div class='badge'>(53)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/CTF/Crypto/" href="/categories/CTF/Crypto/"
@@ -3410,7 +3410,7 @@ The format string is a character string which contains two types of objects: pla
           <li><a class="flat-box child"
             title="/categories/CTF/Pwn/" href="/categories/CTF/Pwn/"
             active-action="action-categoriesCTFPwn"
-            ><div class='name'>Pwn</div><div class='badge'>(12)</div></a></li>
+            ><div class='name'>Pwn</div><div class='badge'>(13)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/CTF/Reverse-Engineering/" href="/categories/CTF/Reverse-Engineering/"
