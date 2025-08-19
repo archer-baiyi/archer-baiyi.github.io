@@ -2243,7 +2243,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1755591563572),
+    lastupdate: new Date(1755592447797),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2729,7 +2729,255 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
+            
+              <div class='post-wrapper'>
+                <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/05/19/CTF/Pwn/格式化字符串（Format-String）漏洞介绍/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+    <div class='pin'>
+      <img alt="格式化字符串（Format String）漏洞介绍" src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4cc.svg'/>
+    </div>
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title" pin itemprop="name headline">
+      <a href="/2025/05/19/CTF/Pwn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88Format-String%EF%BC%89%E6%BC%8F%E6%B4%9E%E4%BB%8B%E7%BB%8D/"  itemprop="url">
+        格式化字符串（Format String）漏洞介绍
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        我们首先来看一下什么是格式化字符串函数。
+格式化字符串函数格式化字符串（ format string）函数可以接受可变数量的参数，并将第一个参数作为格式化字符串，根据其来解析之后的参数。
+可以参考这个定义：
+The format string is a character string which contains two types of objects: plain characters...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
         
+        <time itemprop="dateCreated datePublished" datetime="2025-05-19T10:08:10+02:00">2025-05-19</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Pwn/">Pwn</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/Pwn/" itemprop="url"><span itemprop="name">Pwn</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/19/CTF/Pwn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88Format-String%EF%BC%89%E6%BC%8F%E6%B4%9E%E4%BB%8B%E7%BB%8D/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+              </div>
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            
+              <div class='post-wrapper'>
+                <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn入门/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+    <div class='pin'>
+      <img alt="Pwn入门" src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4cc.svg'/>
+    </div>
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title" pin itemprop="name headline">
+      <a href="/2025/05/12/CTF/Pwn/Pwn%E5%85%A5%E9%97%A8/"  itemprop="url">
+        Pwn入门
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        背景知识地址空间（Address space，Prozess Adressraum）地址空间可以被看作是一个巨大的 一维字节数组，在程序运行时（与它潜在的大小相比），其中只有少数位置存有数据。由于地址空间占用非常稀疏，操作系统会将其划分为大小相等的 页（Pages），其中只有被操作系统释放（映射）的页才可以被访问。
+程序从硬盘被加载到低地址空间（对应的页由操作系统或程序加载器自动提供）。
+用...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-12T17:01:08+02:00">2025-05-12</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Pwn/">Pwn</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/Pwn/" itemprop="url"><span itemprop="name">Pwn</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/12/CTF/Pwn/Pwn%E5%85%A5%E9%97%A8/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+              </div>
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            
+              <div class='post-wrapper'>
+                <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/04/03/CTF/Web/注入-Injection/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+    <div class='pin'>
+      <img alt="代码注入 Injection" src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4cc.svg'/>
+    </div>
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title" pin itemprop="name headline">
+      <a href="/2025/04/03/CTF/Web/%E6%B3%A8%E5%85%A5-Injection/"  itemprop="url">
+        代码注入 Injection
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      各种注入漏洞及方法
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-04-03T23:24:51+02:00">2025-04-03</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Web/">Web</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/Web/" itemprop="url"><span itemprop="name">Web</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/04/03/CTF/Web/%E6%B3%A8%E5%85%A5-Injection/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+              </div>
+            
           
         
           
@@ -2765,37 +3013,83 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
+            
+              <div class='post-wrapper'>
+                <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA加解密以及攻击方法/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+    <div class='pin'>
+      <img alt="RSA加解密以及攻击方法" src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4cc.svg'/>
+    </div>
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title" pin itemprop="name headline">
+      <a href="/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/"  itemprop="url">
+        RSA加解密以及攻击方法
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        RSA加/解密首先设
+
+\varphi(m) := | \{ 1 \leq k \leq m ｜\gcd(k, m) = 1 \} |为欧拉函数（Euler’sche Phi-function）。
+RSA加密算法的初始化流程如下：
+
+选择2个很大的质数$p, q$.
+计算$n:=pq$。这里的n是公开的，$p, q$则是保密的。
+计算$\varphi(n)$。（因为我们知道$n=pq$，且$...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
         
+        <time itemprop="dateCreated datePublished" datetime="2025-03-29T20:01:56+01:00">2025-03-29</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Crypto/">Crypto</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/Crypto/" itemprop="url"><span itemprop="name">Crypto</span></a>
+            </span>
           
         
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+              </div>
+            
           
         
           
