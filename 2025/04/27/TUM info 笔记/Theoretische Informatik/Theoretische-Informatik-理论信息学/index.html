@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-27T21:56:41.000Z">
-<meta property="article:modified_time" content="2025-05-12T18:33:42.106Z">
+<meta property="article:modified_time" content="2025-09-20T14:11:47.717Z">
 <meta property="article:tag" content="Theoretische Informatik">
 <meta property="article:tag" content="理论信息学">
 <meta name="twitter:card" content="summary">
@@ -1094,7 +1094,7 @@ button {
   height: 64px;
 }
 .l_header .nav-sub {
-  max-width: 1080px;
+  max-width: 1280px;
   margin: auto;
 }
 .l_header .nav-sub .title {
@@ -1676,7 +1676,7 @@ ul.list-v >li>a:hover {
   right: calc(100% - 0.5 * 16px);
 }
 #wrapper {
-  max-width: 1080px;
+  max-width: 1280px;
   margin: auto;
 }
 @media screen and (min-width: 2048px) {
@@ -1726,11 +1726,11 @@ ul.list-v >li>a:hover {
 }
 @media screen and (max-width: 2048px) {
   .l_header {
-    max-width: 1112px;
-    left: calc((100% - 1112px) * 0.5);
+    max-width: 1312px;
+    left: calc((100% - 1312px) * 0.5);
   }
 }
-@media screen and (max-width: 1112px) {
+@media screen and (max-width: 1312px) {
   .l_header {
     left: 0;
     border-radius: 0;
@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1756023210817),
+    lastupdate: new Date(1758713588504),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2722,10 +2722,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-12T20:33:42+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-09-20T16:11:47+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：May 12, 2025</p>
+    <p>更新于：Sep 20, 2025</p>
   </a>
 </div>
 
@@ -2741,7 +2741,153 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a><strong>基本概念</strong></h2><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><ul><li><p>一个<strong><code>字母表（Alphabet）</code></strong> $\Sigma$ 是一个有限集合。<br>例如：$ \{0,1\} $、ASCII、Unicode。</p></li><li><p>一个<strong><code>单词/字符串 （Wort/String）</code></strong>是由$\Sigma$中字符组成的有限序列，例如 010。</p></li><li><p>$|w|$表示单词$ w $ 的长度。</p></li><li><p><strong><code>空单词（leere Wort）</code></strong>（长度为 0 的唯一单词）用$\varepsilon$表示。</p></li><li><p>如果 $u$ 和 $v$ 是单词，则 $uv$ 表示它们的<strong><code>连接（Konkatenation）</code></strong>。</p></li><li><p>如果 $ w $ 是一个单词，那么 $w^n$ 定义为：<br>$ w^0 = \varepsilon $，并且 $ w^{n+1} = w w^n $。<br>例如：$ (ab)^3 = ababab $。</p></li><li><p>$ \Sigma^* $ 是所有由 $ \Sigma $ 中字符组成的单词的集合（Menge aller Wörter）。</p></li><li><p>其中的子集$ L \subseteq \Sigma^* $ 被称为<code>（形式）语言 （(formale) Sprache）</code>。</p></li></ul></div>
+    <h2 id="大纲-总结"><a href="#大纲-总结" class="headerlink" title="大纲/总结"></a><strong>大纲/总结</strong></h2><ul>
+<li><p><strong>2.Grundbegriffe</strong></p>
+<ul>
+<li><p><strong>2.1 Grammatiken</strong></p>
+</li>
+<li><p><strong>2.2 Die Chomsky-Hierarchie：</strong></p>
+<p>Typ 0 (Phrasenstruktur), 1 (Kontextsensitive), 2 (Kontextfreie), <strong>3 (Rechtslinear, Regulär)</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>3.Reguläre Sprachen （Typ 3）</strong></p>
+<ul>
+<li><p><strong>3.1 Deterministische endliche Automaten</strong></p>
+</li>
+<li><p><strong>3.2 Von rechtslinearen Grammatiken zu DFA (und zurück)</strong></p>
+</li>
+<li><p><strong>3.3 NFAs mit epsilon-Übergängen</strong></p>
+</li>
+<li><p><strong>3.4 Reguläre Ausdrücke</strong></p>
+</li>
+<li><p><strong>3.5 Von NFA zu RE als Lösung eines Gleichungssystems：</strong></p>
+<p>推导NFA对应的RE，以及从RE对应的NFA。</p>
+</li>
+<li><p><strong>3.6 Rechnen mit regulären Ausdrücken：</strong></p>
+<p>一些等价的RE。</p>
+</li>
+<li><p><strong>3.7 Abschlusseigenschaften regulärer Sprachen：</strong></p>
+<p>regulärer Sprachen的交并集，补集，乘集等都是regulärer的。</p>
+</li>
+<li><p><strong>3.8 Pumping Lemma：</strong></p>
+<p>Reguläre Sprache的特殊性质，可以用于证明某个Sprache不是regulär的。</p>
+</li>
+<li><p><strong>3.9 Entscheidungsverfahren：</strong></p>
+<p>以下几个问题的可解性以及复杂度：Wortproblem, Leerheitsproblem, Endlichkeitsproblem, Äquivalenzproblem。</p>
+</li>
+<li><p><strong>3.10 Minimierung endlicher Automaten：</strong></p>
+<p>每个DFA都能（利用等价类）化简到minimal。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>4.Kontextfreie Sprachen （Typ 2）</strong></p>
+<ul>
+<li><p><strong>4.1 Kontextfreie Grammatiken</strong></p>
+<p>Syntaxbaum，复习定义，新缩写：CFG （Kontextfreie Grammatik），CFL （Kontextfreie Sprache）。</p>
+</li>
+<li><p><strong>4.2 Induktive Definitionen, Syntaxbäume und Ableitungen</strong></p>
+<p>Wort的推导/生成都有一个对应的Syntaxbaum。</p>
+</li>
+<li><p><strong>4.3 Die Chomsky-Normalform</strong></p>
+<p>epsilon-Produktion，Kettenproduktion，（如何构造）Chomsky-Normalform，Greibach-Normalform。</p>
+</li>
+<li><p><strong>4.4 Das Pumping-Lemma für kontextfreie Sprachen：</strong></p>
+<p>和之前的类似，适合用于证明某个Sprache不是kontextfrei的。</p>
+</li>
+<li><p><strong>4.5 Abschlusseigenschaften：</strong></p>
+<p>Vereinigung，Konkatenation，Stern，Spiegelung后的都还是kontextfrei，但是交集，补集不一定是了。</p>
+</li>
+<li><p><strong>4.6 Algorithmen für kontextfreie Grammatiken</strong></p>
+</li>
+<li><p><strong>4.7 Der Cocke-Younger-Kasami-Algorithmus</strong></p>
+<p>CYK算法，用于验证一个单词是否属于一个文法（Grammatik）。</p>
+</li>
+<li><p><strong>4.8 Kellerautomaten</strong></p>
+</li>
+<li><p><strong>4.9 Äquivalenz von PDAs und CFGs</strong></p>
+</li>
+<li><p><strong>4.10 Deterministische Kellerautomaten</strong></p>
+</li>
+<li><p><strong>4.11 Tabellarischer Überblick</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>5. Berechenbarkeit, Entscheidbarkeit</strong></p>
+<ul>
+<li><p><strong>5.1 Der Begriff der Berechenbarkeit</strong></p>
+<p>Berechenbarkeit，Turingmaschine</p>
+</li>
+<li><p><strong>5.2 Unentscheidbarkeit des Halteproblems</strong></p>
+</li>
+<li><p><strong>5.3 Semi-Entscheidbarkeit</strong></p>
+</li>
+<li><p><strong>5.4 Die Sätze von Rice und Shapiro</strong></p>
+</li>
+<li><p><strong>5.5 Das Postsche Korrespondenzproblem</strong></p>
+</li>
+<li><p><strong>5.6 Unentscheidbare CFG-Probleme</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>6. Komplexitätstheorie</strong></p>
+<ul>
+<li><strong>6.1 Die Komplexitätsklasse P</strong></li>
+<li><strong>6.2 Die Komplexitätsklasse NP</strong></li>
+<li><strong>6.3 NP-Vollständigkeit</strong></li>
+<li><strong>6.4 Weitere NP-vollständige Probleme</strong></li>
+<li><strong>6.5 Die Unvollständigkeit der Arithmetik</strong></li>
+<li><strong>6.6 Die Entscheidbarkeit der Presburger Arithmetik</strong></li>
+</ul>
+</li>
+</ul>
+<p>需要掌握的算法：</p>
+<ul>
+<li>a</li>
+<li>Grammatik转NFA（H 3.1）</li>
+<li>NFA转DFA</li>
+<li>NFA推导regulär Ausdruck</li>
+<li>Regulär Ausdruck转epsilon-NFA（H 3.4）</li>
+<li>DFA Minimierung（Tabelle）（T 5.3 a)，H 5.3）</li>
+<li>构造regulär Ausdruck对应的Minimalautomat</li>
+<li>构造CFG的Chomsky-Normalform（T 7.1，T 7.4，H 7.1）</li>
+<li>消除Grammatik的unnützliche Symbole（T 8.1，H 8.1）</li>
+<li>CYK（CYK Tabelle）（T 8.2 b)，T 8.5，H 8.2.）</li>
+</ul>
+<p>不同Type的语言以及对应的自动机：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Typ</th>
+<th>Automat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Typ 3</td>
+<td>(Deterministischer) Endliche Autoamt / deterministic finite automaton (<strong>FA</strong>)</td>
+</tr>
+<tr>
+<td>Typ 2</td>
+<td>Kellerautomat / Pushdown Automaton (<strong>PDA</strong>)</td>
+</tr>
+<tr>
+<td>Typ 0</td>
+<td>Turingmaschinen (<strong>TM</strong>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a><strong>基本概念</strong></h2><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><ul><li><p>一个<strong><code>字母表（Alphabet）</code></strong> $\Sigma$ 是一个有限集合。<br>例如：$ \{0,1\} $、ASCII、Unicode。</p></li><li><p>一个<strong><code>单词/字符串 （Wort/String）</code></strong>是由$\Sigma$中字符组成的有限序列，例如 010。</p></li><li><p>$|w|$表示单词$ w $ 的长度。</p></li><li><p><strong><code>空单词（leere Wort）</code></strong>（长度为 0 的唯一单词）用$\varepsilon$表示。</p></li><li><p>如果 $u$ 和 $v$ 是单词，则 $uv$ 表示它们的<strong><code>连接（Konkatenation）</code></strong>。</p></li><li><p>如果 $ w $ 是一个单词，那么 $w^n$ 定义为：<br>$ w^0 = \varepsilon $，并且 $ w^{n+1} = w w^n $。<br>例如：$ (ab)^3 = ababab $。</p></li><li><p>$ \Sigma^* $ 是所有由 $ \Sigma $ 中字符组成的单词的集合（Menge aller Wörter）。</p></li><li><p>其中的子集$ L \subseteq \Sigma^* $ 被称为<code>（形式）语言 （(formale) Sprache）</code>。</p></li></ul></div>
 <p><br></p>
 <p>注意，这里的形式语言（(formale) Sprache）$L$并没有要求必须包含$\varepsilon$。</p>
 <p>来看一下简单的<strong>（形式）语言 （(formale) Sprache）的例子</strong>：</p>
@@ -2900,6 +3046,31 @@ L(G) = \{ w \in \Sigma^* | S \to_G^* w \}.</script><p><strong>例子</strong>：
 </div>
 <p><strong><code>Wortproblem</code></strong>：</p>
 <p>Gegeben: 一个文法 $G$ 和一个单词 $w \in \Sigma^*$，<br> Frage：$w$ 是否属于 $L(G)$？</p>
+<p>不同Type的语言以及对应的自动机：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Typ</th>
+<th>Automat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Typ 3</td>
+<td>(Deterministischer) Endliche Autoamt / deterministic finite automaton (<strong>FA</strong>)</td>
+</tr>
+<tr>
+<td>Typ 2</td>
+<td>Kellerautomat / Pushdown Automaton (<strong>PDA</strong>)</td>
+</tr>
+<tr>
+<td>Typ 0</td>
+<td>Turingmaschinen (<strong>TM</strong>)</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h2 id="正规语言（Regulare-Sprachen）"><a href="#正规语言（Regulare-Sprachen）" class="headerlink" title="正规语言（Reguläre Sprachen）"></a><strong>正规语言（Reguläre Sprachen）</strong></h2><p>等价关系：</p>
 <p><img src="/images/屏幕截图 2025-04-28 230311.png" class="lazyload" data-srcset="/images/屏幕截图 2025-04-28 230311.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="屏幕截图 2025-04-28 230311.png"></p>
 <h3 id="Deterministische-endliche-Automaten"><a href="#Deterministische-endliche-Automaten" class="headerlink" title="Deterministische endliche Automaten"></a><strong>Deterministische endliche Automaten</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>Ein <strong><code>deterministischer endlicher Automat</code></strong> (<em>deterministic finite automaton</em>, <strong><code>DFA</code></strong>)<br>$M = (Q, \Sigma, \delta, q_0, F)$ besteht aus</p><ul><li>einer endlichen Menge von <strong>Zuständen</strong> $Q$,</li><li>einem (endlichen) <strong>Eingabealphabet</strong> $\Sigma$,</li><li>einer (totalen!) <strong>Übergangsfunktion</strong> $\delta : Q \times \Sigma \rightarrow Q$,</li><li>einem <strong>Startzustand</strong> $q_0 \in Q$, und</li><li>einer Menge $F \subseteq Q$ von <strong>Endzuständen</strong> (akzeptierenden Zust.).</li></ul></div>
@@ -3085,7 +3256,14 @@ L(M) := \{ w \in \Sigma^* \mid \hat{\delta}(q_0, w) \in F \},</script><p>不可�
 <p><br></p>
 <p><strong>例子</strong>：</p>
 <p><img src="/images/image-20250508223407911.png" class="lazyload" data-srcset="/images/image-20250508223407911.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250508223407911"></p>
-<h3 id="Regulare-Ausdrucke-正则表达式"><a href="#Regulare-Ausdrucke-正则表达式" class="headerlink" title="Reguläre Ausdrücke 正则表达式"></a><strong>Reguläre Ausdrücke 正则表达式</strong></h3>
+<h3 id="Regulare-Ausdrucke-正则表达式"><a href="#Regulare-Ausdrucke-正则表达式" class="headerlink" title="Reguläre Ausdrücke 正则表达式"></a><strong>Reguläre Ausdrücke 正则表达式</strong></h3><h2 id="Berechenbarkeit-Entscheidbarkeit"><a href="#Berechenbarkeit-Entscheidbarkeit" class="headerlink" title="Berechenbarkeit, Entscheidbarkeit"></a><strong>Berechenbarkeit, Entscheidbarkeit</strong></h2><h3 id="Begriffe"><a href="#Begriffe" class="headerlink" title="Begriffe"></a><strong>Begriffe</strong></h3><p>图灵机 （Turing Maschine）</p>
+<p>可以这样理解：机器会（依靠一个探头 read/write head）读取一条Band上的内容，然后根据当前位置进行以下操作：</p>
+<ul>
+<li>调整当前位置</li>
+<li>改写Band当前位置的值</li>
+<li>调整探头位置（左/右/不动）</li>
+</ul>
+
   </div>
   
   
@@ -3246,7 +3424,7 @@ L(M) := \{ w \in \Sigma^* \mid \hat{\delta}(q_0, w) \in F \},</script><p>不可�
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%B3%95%EF%BC%88Grammatiken%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">文法（Grammatiken）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%94%E5%A7%86%E6%96%AF%E5%9F%BA%E4%BD%93%E7%B3%BB%EF%BC%88Chomsky-Hierarchie%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">乔姆斯基体系（Chomsky Hierarchie）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E8%AF%AD%E8%A8%80%EF%BC%88Regulare-Sprachen%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">正规语言（Reguläre Sprachen）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Deterministische-endliche-Automaten"><span class="toc-number">2.1.</span> <span class="toc-text">Deterministische endliche Automaten</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Von-rechtslinearen-Grammatiken-zu-DFA-und-zuruck"><span class="toc-number">2.2.</span> <span class="toc-text">Von rechtslinearen Grammatiken zu DFA (und zurück)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NFAs-mit-epsilon-Ubergangen"><span class="toc-number">2.3.</span> <span class="toc-text">NFAs mit $\epsilon$-Übergängen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Regulare-Ausdrucke-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">2.4.</span> <span class="toc-text">Reguläre Ausdrücke 正则表达式</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E7%BA%B2-%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">大纲&#x2F;总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%B3%95%EF%BC%88Grammatiken%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">文法（Grammatiken）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%94%E5%A7%86%E6%96%AF%E5%9F%BA%E4%BD%93%E7%B3%BB%EF%BC%88Chomsky-Hierarchie%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">乔姆斯基体系（Chomsky Hierarchie）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E8%AF%AD%E8%A8%80%EF%BC%88Regulare-Sprachen%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">正规语言（Reguläre Sprachen）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Deterministische-endliche-Automaten"><span class="toc-number">3.1.</span> <span class="toc-text">Deterministische endliche Automaten</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Von-rechtslinearen-Grammatiken-zu-DFA-und-zuruck"><span class="toc-number">3.2.</span> <span class="toc-text">Von rechtslinearen Grammatiken zu DFA (und zurück)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NFAs-mit-epsilon-Ubergangen"><span class="toc-number">3.3.</span> <span class="toc-text">NFAs mit $\epsilon$-Übergängen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Regulare-Ausdrucke-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">3.4.</span> <span class="toc-text">Reguläre Ausdrücke 正则表达式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Berechenbarkeit-Entscheidbarkeit"><span class="toc-number">4.</span> <span class="toc-text">Berechenbarkeit, Entscheidbarkeit</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Begriffe"><span class="toc-number">4.1.</span> <span class="toc-text">Begriffe</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3910,7 +4088,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/27/TUM info 笔记/Theoretische Informatik/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Theoretische Informatik 理论信息学","description":"理论信息学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/","wordCount":9,"datePublished":"2025-04-27T21:56:41.000Z","dateModified":"2025-05-12T18:33:42.106Z","articleSection":"TUM info 课程笔记","keywords":"Theoretische Informatik,理论信息学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/27/TUM info 笔记/Theoretische Informatik/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Theoretische Informatik 理论信息学","description":"理论信息学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/","wordCount":9,"datePublished":"2025-04-27T21:56:41.000Z","dateModified":"2025-09-20T14:11:47.717Z","articleSection":"TUM info 课程笔记","keywords":"Theoretische Informatik,理论信息学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

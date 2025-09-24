@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-06-30T14:00:20.000Z">
-<meta property="article:modified_time" content="2025-06-30T14:41:22.476Z">
+<meta property="article:modified_time" content="2025-09-11T13:03:46.189Z">
 <meta property="article:tag" content="编码理论">
 <meta property="article:tag" content="Coding Theory">
 <meta name="twitter:card" content="summary">
@@ -1094,7 +1094,7 @@ button {
   height: 64px;
 }
 .l_header .nav-sub {
-  max-width: 1080px;
+  max-width: 1280px;
   margin: auto;
 }
 .l_header .nav-sub .title {
@@ -1676,7 +1676,7 @@ ul.list-v >li>a:hover {
   right: calc(100% - 0.5 * 16px);
 }
 #wrapper {
-  max-width: 1080px;
+  max-width: 1280px;
   margin: auto;
 }
 @media screen and (min-width: 2048px) {
@@ -1726,11 +1726,11 @@ ul.list-v >li>a:hover {
 }
 @media screen and (max-width: 2048px) {
   .l_header {
-    max-width: 1112px;
-    left: calc((100% - 1112px) * 0.5);
+    max-width: 1312px;
+    left: calc((100% - 1312px) * 0.5);
   }
 }
-@media screen and (max-width: 1112px) {
+@media screen and (max-width: 1312px) {
   .l_header {
     left: 0;
     border-radius: 0;
@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1756023210817),
+    lastupdate: new Date(1758713588504),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2722,10 +2722,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-30T16:41:22+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-09-11T15:03:46+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 30, 2025</p>
+    <p>更新于：Sep 11, 2025</p>
   </a>
 </div>
 
@@ -2754,6 +2754,20 @@ P^*(M,n,p) := \underset{\text{all possible codes }C}{\text{min}} P_C</script><di
 <p>所以可以这样理解Shannon’s Theorem 香农定理：</p>
 <p><strong>对于每个频道（Channel）来说，$C(p)$是其传输效率（R）的上限。</strong></p>
 <p>注意到，当$p=0.5$时，$C(p) = 1 + \text{log}_2(0.5) = 1-1 = 0$ 。也就是说，当传输时每一位的准确率都是纯随机的时候，不存在任何编码使得我们可以正确地传输数据。</p>
+<h2 id="Bounds-界限"><a href="#Bounds-界限" class="headerlink" title="Bounds/界限"></a><strong>Bounds/界限</strong></h2><h3 id="Singleton-Bound"><a href="#Singleton-Bound" class="headerlink" title="Singleton Bound"></a><strong>Singleton Bound</strong></h3><div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>:</p><p>Let $q$ be a prime power and $k \leq n$ be positive integers. Let $C$ be an $[n,k]_q$ linear code. Then,</p><script type="math/tex; mode=display">d_H(C) \leq n-k+1.</script></div>
+<p><br></p>
+<h4 id="MDS-Code"><a href="#MDS-Code" class="headerlink" title="MDS Code"></a><strong>MDS Code</strong></h4><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>A code that achieves the Singleton bound is called a <strong><code>maximum distance separable (MDS) code</code></strong>.</p></div>
+<p><br></p>
+<h3 id="Hamming-bound"><a href="#Hamming-bound" class="headerlink" title="Hamming bound"></a><strong>Hamming bound</strong></h3><div class="note green"><p><strong></strong></p><p><strong>Theorem</strong> (<strong>Hamming bound</strong>):</p><p>Let $q$ be a prime power and $k \leq n$ be positive integers. Let $C$ be an $[n,k]_q$ linear code with $d_H(C) \geq d$ and let $t = \lfloor \frac{d-1}{2} \rfloor$. Then,</p><script type="math/tex; mode=display">|C| \leq \frac{q^n}{V_H(t,n,q)}</script><p>Equivalently,</p><script type="math/tex; mode=display">\begin{align*}q^k &\leq \frac{q^n}{V_H(t,n,q)}\\\Leftrightarrow q^{n-k} &\geq  V_H(t,n,q)\\\Leftrightarrow q^{n-k} &\geq  \sum^t_{i=0}\binom{n}{i}(q-1)^i\\\end{align*}</script></div>
+<p><br></p>
+<h4 id="Perfect-Code"><a href="#Perfect-Code" class="headerlink" title="Perfect Code"></a><strong>Perfect Code</strong></h4><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>Let $q$ be a prime power and $k \leq n$ be positive integers. An $[n,k,d]_q$ linear code $C$ with</p><script type="math/tex; mode=display">q^{n-k} =  V_H(\lfloor \frac{d-1}{2} \rfloor,n,q)</script><p>,i.e. achieves the Hamming bound, is called a <strong><code>perfect code</code></strong></p></div>
+<p><br></p>
+<h3 id="Gilbert-Varshamov-Bound"><a href="#Gilbert-Varshamov-Bound" class="headerlink" title="Gilbert-Varshamov Bound"></a><strong>Gilbert-Varshamov Bound</strong></h3><p>Let $A(d,n,q)$ be the largest size of any code (also non-linear) in $\mathbb{F}^n_q$ with minimum distance at least $d$.</p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong> (<strong>Hamming bound</strong>):</p><p>Let $q$ be a prime power and $n,d$ be positive integers.  Then,</p><script type="math/tex; mode=display">A(d,n,q) \geq \frac{q^n}{V_H(d-1,n,q)}</script></div>
+<p><br></p>
+<h3 id="Plotkin-Bound"><a href="#Plotkin-Bound" class="headerlink" title="Plotkin Bound"></a><strong>Plotkin Bound</strong></h3><div class="note green"><p><strong></strong></p><p><strong>Theorem</strong> (<strong>Plotkin Bound</strong>):</p><p>Let $q$ be a prime power and $k \leq n$ be positive integers. Let $C$ be an $[n,k]_q$ non-degenerate linear code. Then,</p><script type="math/tex; mode=display">d_H(C) \leq \frac{|C|}{|C|-1}n\frac{q-1}{q}.</script></div>
+<p><br></p>
+<p>The simplex code achieves this Plotkin Bound.</p>
 
   </div>
   
@@ -2916,7 +2930,7 @@ Gram Schmidt
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shannon%E2%80%99s-Theorem-%E9%A6%99%E5%86%9C%E7%90%86%E8%AE%BA"><span class="toc-number">2.</span> <span class="toc-text">Shannon’s Theorem 香农理论</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shannon%E2%80%99s-Theorem-%E9%A6%99%E5%86%9C%E7%90%86%E8%AE%BA"><span class="toc-number">2.</span> <span class="toc-text">Shannon’s Theorem 香农理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bounds-%E7%95%8C%E9%99%90"><span class="toc-number">3.</span> <span class="toc-text">Bounds&#x2F;界限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Singleton-Bound"><span class="toc-number">3.1.</span> <span class="toc-text">Singleton Bound</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MDS-Code"><span class="toc-number">3.1.1.</span> <span class="toc-text">MDS Code</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hamming-bound"><span class="toc-number">3.2.</span> <span class="toc-text">Hamming bound</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Perfect-Code"><span class="toc-number">3.2.1.</span> <span class="toc-text">Perfect Code</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gilbert-Varshamov-Bound"><span class="toc-number">3.3.</span> <span class="toc-text">Gilbert-Varshamov Bound</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plotkin-Bound"><span class="toc-number">3.4.</span> <span class="toc-text">Plotkin Bound</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3580,7 +3594,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/Coding-Theory-编码理论/","name":"Coding Theory 编码理论"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/06/30/TUM  数学 笔记/Coding Theory 编码理论/Coding-Theory-编码理论/","name":"Coding Theory 编码理论"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Coding Theory 编码理论","description":"编码理论相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/06/30/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/Coding%20Theory%20%E7%BC%96%E7%A0%81%E7%90%86%E8%AE%BA/Coding-Theory-%E7%BC%96%E7%A0%81%E7%90%86%E8%AE%BA/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/06/30/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/Coding%20Theory%20%E7%BC%96%E7%A0%81%E7%90%86%E8%AE%BA/Coding-Theory-%E7%BC%96%E7%A0%81%E7%90%86%E8%AE%BA/","wordCount":8,"datePublished":"2025-06-30T14:00:20.000Z","dateModified":"2025-06-30T14:41:22.476Z","articleSection":"TUM 数学 笔记","keywords":"编码理论,Coding Theory","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/Coding-Theory-编码理论/","name":"Coding Theory 编码理论"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/06/30/TUM  数学 笔记/Coding Theory 编码理论/Coding-Theory-编码理论/","name":"Coding Theory 编码理论"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Coding Theory 编码理论","description":"编码理论相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/06/30/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/Coding%20Theory%20%E7%BC%96%E7%A0%81%E7%90%86%E8%AE%BA/Coding-Theory-%E7%BC%96%E7%A0%81%E7%90%86%E8%AE%BA/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/06/30/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/Coding%20Theory%20%E7%BC%96%E7%A0%81%E7%90%86%E8%AE%BA/Coding-Theory-%E7%BC%96%E7%A0%81%E7%90%86%E8%AE%BA/","wordCount":8,"datePublished":"2025-06-30T14:00:20.000Z","dateModified":"2025-09-11T13:03:46.189Z","articleSection":"TUM 数学 笔记","keywords":"编码理论,Coding Theory","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
