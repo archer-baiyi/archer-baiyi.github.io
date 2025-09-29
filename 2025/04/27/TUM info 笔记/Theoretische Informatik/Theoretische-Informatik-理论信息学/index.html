@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-27T21:56:41.000Z">
-<meta property="article:modified_time" content="2025-09-20T14:11:47.717Z">
+<meta property="article:modified_time" content="2025-09-29T14:51:23.736Z">
 <meta property="article:tag" content="Theoretische Informatik">
 <meta property="article:tag" content="理论信息学">
 <meta name="twitter:card" content="summary">
@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1758960028566),
+    lastupdate: new Date(1759157500384),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2722,10 +2722,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-09-20T16:11:47+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-09-29T16:51:23+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Sep 20, 2025</p>
+    <p>更新于：Sep 29, 2025</p>
   </a>
 </div>
 
@@ -2808,6 +2808,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>CYK算法，用于验证一个单词是否属于一个文法（Grammatik）。</p>
 </li>
 <li><p><strong>4.8 Kellerautomaten</strong></p>
+<p>Pushdown Automaton （PDA）</p>
 </li>
 <li><p><strong>4.9 Äquivalenz von PDAs und CFGs</strong></p>
 </li>
@@ -2851,16 +2852,40 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 <p>需要掌握的算法：</p>
 <ul>
-<li>a</li>
-<li>Grammatik转NFA（H 3.1）</li>
-<li>NFA转DFA</li>
-<li>NFA推导regulär Ausdruck</li>
-<li>Regulär Ausdruck转epsilon-NFA（H 3.4）</li>
-<li>DFA Minimierung（Tabelle）（T 5.3 a)，H 5.3）</li>
+<li><p>第三章：</p>
+<ul>
+<li><strong>Grammatik转NFA</strong>（Satz 3.9；H 3.1，T 2.2）</li>
+<li><p><strong>NFA转DFA</strong> （Satz 3.10）</p>
+<ul>
+<li>Potenzmengenkonstruktion</li>
+</ul>
+</li>
+<li><p><strong>DFA转Grammatik</strong> （Satz 3.13）</p>
+</li>
+<li><strong>epsilon-NFA转NFA</strong>（Lemma 3.16）</li>
+<li><p><strong>NFA转regulär Ausdruck</strong></p>
+<ul>
+<li>画图（T 4.1）</li>
+<li>高斯消元/解方程/Ardens Lemma（T 4.2，H 4.1）</li>
+</ul>
+</li>
+<li><p><strong>Regulär Ausdruck转epsilon-NFA</strong>（T 3.3，H 3.4）</p>
+</li>
+<li><strong>DFA Minimierung</strong>（Tabelle）（T 5.3 a)，H 5.3）</li>
 <li>构造regulär Ausdruck对应的Minimalautomat</li>
-<li>构造CFG的Chomsky-Normalform（T 7.1，T 7.4，H 7.1）</li>
-<li>消除Grammatik的unnützliche Symbole（T 8.1，H 8.1）</li>
-<li>CYK（CYK Tabelle）（T 8.2 b)，T 8.5，H 8.2.）</li>
+</ul>
+</li>
+<li><p>第四章：</p>
+<ul>
+<li><strong>构造CFG的Chomsky-Normalform</strong>（T 7.1，T 7.4，H 7.1）</li>
+<li><strong>消除Grammatik的unnützliche Symbole</strong>（T 8.1，H 8.1）</li>
+<li><strong>CYK</strong>（CYK Tabelle，用于验证一个单词是否属于一个文法（Grammatik））（T 8.2 b)，T 8.5，H 8.2.）</li>
+<li>Grammatik转PDA（Satz 4.53，T 9.3）</li>
+<li>CFG转PDA</li>
+<li>PDA转CFG</li>
+</ul>
+</li>
+<li></li>
 </ul>
 <p>不同Type的语言以及对应的自动机：</p>
 <div class="table-container">
@@ -3818,7 +3843,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     if (imgs.length>1) {
       IntervalParallax = setInterval(function () {
         next_parallax();
-      }, '10000');
+      }, '60000');
     }
   }
 
@@ -4088,7 +4113,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/27/TUM info 笔记/Theoretische Informatik/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Theoretische Informatik 理论信息学","description":"理论信息学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/","wordCount":9,"datePublished":"2025-04-27T21:56:41.000Z","dateModified":"2025-09-20T14:11:47.717Z","articleSection":"TUM info 课程笔记","keywords":"Theoretische Informatik,理论信息学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/04/27/TUM info 笔记/Theoretische Informatik/Theoretische-Informatik-理论信息学/","name":"Theoretische Informatik 理论信息学"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Theoretische Informatik 理论信息学","description":"理论信息学相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/04/27/TUM%20info%20%E7%AC%94%E8%AE%B0/Theoretische%20Informatik/Theoretische-Informatik-%E7%90%86%E8%AE%BA%E4%BF%A1%E6%81%AF%E5%AD%A6/","wordCount":9,"datePublished":"2025-04-27T21:56:41.000Z","dateModified":"2025-09-29T14:51:23.736Z","articleSection":"TUM info 课程笔记","keywords":"Theoretische Informatik,理论信息学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
