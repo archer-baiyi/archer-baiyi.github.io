@@ -2243,7 +2243,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1760042209174),
+    lastupdate: new Date(1760219604752),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2993,13 +2993,9 @@ HTTP头注入尝...
       
         简介GDB（GNU Debugger）是 GNU 项目的调试器，主要用于调试 C/C++ 等程序。
 安装1sudo apt install gdb
-常用命令
-使用GDB打开二进制文件
-123gdb ./vuln#或者gdb -q ./vuln
--q：quiet，安静模式，不显示启动欢迎信息。
-
-运行程序
-1234runrun &lt; input.txt     # 用文件输入run &lt...
+安装Pwndbgpwndbg 是 GDB 的调试插件，提供栈/堆/寄存器上下文展示以及 cyclic、rop、heap、format 等命令，用于更高效地调试二进制漏洞。
+安装：
+12345678910# 1) 依赖sudo apt update...
       
     
   </div>
