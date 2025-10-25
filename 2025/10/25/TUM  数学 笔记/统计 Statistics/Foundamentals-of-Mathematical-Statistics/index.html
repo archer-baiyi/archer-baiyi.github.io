@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-10-25T14:44:16.000Z">
-<meta property="article:modified_time" content="2025-10-25T14:45:36.315Z">
+<meta property="article:modified_time" content="2025-10-25T21:54:26.913Z">
 <meta property="article:tag" content="统计">
 <meta property="article:tag" content="Statistics">
 <meta name="twitter:card" content="summary">
@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1761403542620),
+    lastupdate: new Date(1761429750438),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2722,7 +2722,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-10-25T16:45:36+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-10-25T23:54:26+02:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Oct 25, 2025</p>
@@ -2741,7 +2741,254 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a><strong>Intro</strong></h2>
+    <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a><strong>Intro</strong></h2><div class="note yellow"><p><strong></strong></p><p><strong>Definition (mean（平均值）)</strong>: The <strong><code>sample mean（平均值）</code></strong> of observed values $x_1,…,x_n \in \mathbb{R}$ is </p><script type="math/tex; mode=display">\bar{x}_n = \frac{1}{n}\sum^n_{i=1}x_i.</script></div>
+<p>用sample把它和概率论里的mean/expectation区分一下。</p>
+<p><br></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition (median（中位数）)</strong>: The <strong><code>sample median（中位数）</code></strong> of observed values  is </p><script type="math/tex; mode=display">x_{0.5} =\begin{cases}x_{\frac{n+1}{2}}, & \text{if $n$ odd}, \\[1em]\dfrac{1}{2}\Bigl[x_{\frac{n}{2}} + x_{\frac{n}{2}+1}\Bigr], & \text{if $n$ even},\end{cases}</script><p>with $x_1 \leq x_2 \leq … \leq x_n$ being the sorted data points.</p></div>
+<p>如果总数为基数，就取最中间的那个数；如果总数是偶数，那就取中间2个的平均值。</p>
+<p><br></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition (Statistical model 统计模型)</strong>: </p><script type="math/tex; mode=display">\mathcal{P} = \text{a set of probability distributions } P \text{ on } (X,A).</script></div>
+<p><br></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition (Parameter)</strong>: A (statistical) parameter of a statistical model $\mathcal{P}$ is a map $\gamma : \mathcal{P} \to \text{ some set }\Tau$ .</p></div>
+<p><br></p>
+<p><strong>例子：</strong></p>
+<p>- 期望值 Mean/expectation</p>
+<script type="math/tex; mode=display">
+\gamma(P) = \int x dP(x)</script><p>- Variance</p>
+<script type="math/tex; mode=display">
+\gamma(P) = \int x^2 dP(x) - (\int x dP(x))^2</script><p>- Correlations</p>
+<h2 id="Construction-of-Estimators"><a href="#Construction-of-Estimators" class="headerlink" title="Construction of Estimators"></a>Construction of Estimators</h2><div class="note yellow"><p><strong></strong></p><p><strong>Definition (Estimators)</strong>: A estimator is a function that map data to estimates of quantities of interest.</p></div>
+<p>简单来讲，estimator就是一个函数，它的定义域是数据，叫estimand，它的值域里的元素则是叫estimates。</p>
+<p><br></p>
+<h3 id="Plug-in-Estimator"><a href="#Plug-in-Estimator" class="headerlink" title="Plug-in Estimator"></a><strong>Plug-in Estimator</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition (empirical distribution)</strong>: The <strong><code>empirical distribution</code></strong> of $x_1, \ldots, x_n \in \mathbb{R}$ is the probability distribution $\hat{P}_n$ given by</p><script type="math/tex; mode=display">\hat{P}_n(A) := \frac{1}{n} \#\{ i : x_i \in A \}= \frac{1}{n} \sum_{i=1}^n \mathbf{1}_{\{ x_i \in A \}}, \qquad A \subseteq \mathbb{R}.</script></div>
+<p>一个相对离散的概率分布。</p>
+<p><br></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition (empirical distribution function (ecdf))</strong>: The <strong><code>empirical distribution function (ecdf)</code></strong> of $x_1, \ldots, x_n$is the distribution function of $\hat{P}_n$, which is</p><script type="math/tex; mode=display">\hat{F}_n(t) := \frac{1}{n} \sum_{i=1}^n \mathbf{1}_{\{ x_i \le t \}},\qquad t \in \mathbb{R}.</script></div>
+<p>一个连续的分布函数。</p>
+<p><br></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem (Glivenko—Cantelli)</strong>: If $X_1, X_2, \ldots$ are i.i.d. random variables with cdf (cumulative distribution function) $F$, then</p><script type="math/tex; mode=display">\lVert \hat{F}_n - F \rVert_\infty:= \sup_{t \in \mathbb{R}} \bigl| \hat{F}_n(t; X_1, \ldots, X_n) - F(t) \bigr|\xrightarrow{\text{a.s.}} 0.</script></div>
+<p>也就是说，当我们有足够多的样本时，这个esimator会趋近于它原本的分布。</p>
+<p><br></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>: If $U \sim Unif(0,1)$,then $X:=F^{-1}(U)$ has cdf $F$.</p></div>
+<p><br></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>: The plug-in estimator of $\gamma(F)$ is the estimator $\hat{\gamma} = \gamma(\hat{F_n})$.</p></div>
+<p><br></p>
+<p>例子：</p>
+<p>考虑期望值 $\gamma(F) = \int x dF(x)$。那么有</p>
+<script type="math/tex; mode=display">
+\gamma(\hat{F_n}) = \int x d\hat{F_n}(x) = \frac{1}{n} \sum_{i=1}^n X_i = \overline{X}_n</script><h3 id="M-Estimator"><a href="#M-Estimator" class="headerlink" title="M-Estimator"></a><strong>M-Estimator</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition (M-estimator)</strong>: An estimator $\hat{\theta}(X_1, \ldots, X_n)$ maximizing a criterion function of the form</p><script type="math/tex; mode=display">\theta \;\mapsto\; \frac{1}{n} \sum_{i=1}^n m_\theta(X_i),</script><p>where $m_\theta$ is a known function, is called an <strong><code>M-estimator</code></strong> (maximum-likelihood type).</p></div>
+<p><br></p>
+<p><strong>例子</strong>：</p>
+<p>- $\theta \in \mathbb{R}$, 如果选$m_\theta(x) = -(x - \theta)^2$，那么就会得到平均值 $\bar{X}_n$。</p>
+<p>- 选$m_\theta(x) = -|x - \theta|$，会得到中位数。</p>
+<h3 id="Method-of-Moments-MOM"><a href="#Method-of-Moments-MOM" class="headerlink" title="Method of Moments (MOM)"></a><strong>Method of Moments (MOM)</strong></h3><p>Given a parametric model for real-valued  observations</p>
+<script type="math/tex; mode=display">
+X_1,...,X_n \overset{i.i.d}{\sim}P_\theta, \ \ \theta \in \Theta \subseteq \mathbb{R}^k</script><p>consider the moments </p>
+<script type="math/tex; mode=display">
+\mu_j(\theta) = E_\theta [X^j_i] \text{ for } j=1,...,k.</script><p>If it exists then the $j$-th moment may be estimated by</p>
+<script type="math/tex; mode=display">
+\hat{\mu}_j = \frac{1}{n}\sum^n_{i=1}X^j_i.</script><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>: The MOM estimator $\hat{\theta}$ is the value of $\theta$ that solves the equation system</p><script type="math/tex; mode=display">\mu_j(\theta) = \hat{\mu}_j, \ \ j =1,...,k.</script></div>
+<script type="math/tex; mode=display">
+E_\theta [X^j_i] = \frac{1}{n}\sum^n_{i=1}X^j_i.</script><p><br></p>
+<p><strong>例子（高斯）：</strong></p>
+<p>Suppose $P_\theta = \mathcal{N}(\mu, \sigma^2)$ with mean and variance unknown.So,</p>
+<script type="math/tex; mode=display">
+\theta = (\mu, \sigma^2) \in \Theta = \mathbb{R} \times (0,\infty).</script><p>The density:</p>
+<script type="math/tex; mode=display">
+p_\theta(x)
+= \frac{1}{\sqrt{2\pi\sigma^2}}
+\exp\left\{
+-\frac{1}{2\sigma^2} (x - \mu)^2
+\right\},
+\qquad x \in \mathbb{R}.</script><p>需要解的方程组：</p>
+<script type="math/tex; mode=display">
+\mu_1(\theta)
+= \mathbb{E}_\theta[X_1]
+= \mu
+\;\stackrel{!}{=}\;
+\overline{X}_n,</script><script type="math/tex; mode=display">
+\mu_2(\theta)
+= \mathrm{Var}_\theta[X_1] + \big(\mathbb{E}_\theta[X_1]\big)^2
+= \sigma^2 + \mu^2
+\;\stackrel{!}{=}\;
+\hat{\mu}_2.</script><p>最后得到sample mean以及empirical variance：</p>
+<script type="math/tex; mode=display">
+\hat{\mu} = \overline{X}_n,</script><script type="math/tex; mode=display">
+\hat{\sigma}^2
+= \hat{\mu}_2 - (\overline{X}_n)^2
+= \frac{1}{n} \sum_{i=1}^n X_i^2
+- \left( \frac{1}{n} \sum_{i=1}^n X_i \right)^2
+= \frac{1}{n} \sum_{i=1}^n (X_i - \overline{X}_n)^2.</script><h3 id="Maximum-Likelihood-Estimator-MLE"><a href="#Maximum-Likelihood-Estimator-MLE" class="headerlink" title="Maximum Likelihood Estimator (MLE)"></a><strong>Maximum Likelihood Estimator (MLE)</strong></h3><p>Consider a parametric model for the observation</p>
+<script type="math/tex; mode=display">
+X \sim P_\theta, \qquad \theta \in \Theta \subseteq \mathbb{R}^k.</script><p>Assume the model $\mathcal{P} = \{ P_\theta : \theta \in \Theta \}$ is dominated by a $\sigma$-finite measure $\nu$, i.e., $P_\theta \ll \nu$ for all $\theta \in \Theta$, and so we have densities</p>
+<script type="math/tex; mode=display">
+p_\theta(x) = \frac{\mathrm{d} P_\theta}{\mathrm{d} \nu}(x), \qquad x \in \mathcal{X}.</script><p>（这个so的结论是概率论里的结论。）</p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>: The function $L_x(\theta) = p_\theta(x)$ is the <strong><code>likelihood function</code></strong> of model $\mathcal{P}$ for the data $x$.</p></div>
+<p>有密度函数直接套密度函数（density function）。</p>
+<p><br></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>: The <strong><code>maximum likelihood estimate (MLE)</code></strong> of $\theta$ is</p><script type="math/tex; mode=display">\hat{\theta} = \arg \max_{\theta \in \Theta} L_x(\theta).</script></div>
+<p>If $\hat{\theta}(X)$ is a measurable function of the observation $X$, then $\hat{\theta}(X)$ is called <strong><code>maximum likelihood estimator (MLE)</code></strong> of $\theta$.</p>
+<p><br></p>
+<p>只不过我们通常其实会考虑所谓的 <strong><code>log -likelihood function</code></strong></p>
+<script type="math/tex; mode=display">
+\ell_x (\theta) = \text{log}L_x(\theta).</script><p>这样做有2点好处：</p>
+<ul>
+<li>可以避免numerical overflow；</li>
+<li>更方便计算。（比如说如果$L_x$本身是product的形式，那$l_x$则会变成sum的形式。）</li>
+</ul>
+<p><strong>例子（高斯）：</strong></p>
+<p>Suppose $X_1, \ldots, X_n$ i.i.d. $\mathcal{N}(\mu, \sigma^2)$, so $\theta = (\mu, \sigma^2) \in \mathbb{R} \times (0,\infty)$.</p>
+<p>Assume $n \ge 2$, so that $\frac{1}{n} \sum_{i=1}^n (X_i - \overline{X}_n)^2 &gt; 0<br>\quad \text{a.s.}$.</p>
+<p>The log -likelihood function：</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\ell_X(\theta)
+&= \sum_{i=1}^n \log \left(
+\frac{1}{\sqrt{2\pi \sigma^2}}
+\exp\left\{ -\frac{1}{2\sigma^2}(X_i - \mu)^2 \right\}
+\right) \\
+&= -\frac{n}{2}\log(2\pi)
+- \frac{n}{2}\log(\sigma^2)
+- \frac{1}{2\sigma^2} \sum_{i=1}^n (X_i - \mu)^2.
+\end{align*}</script><p>不难得到：</p>
+<script type="math/tex; mode=display">
+\hat{\mu}
+= \arg\min_{\mu \in \mathbb{R}} \sum_{i=1}^n (X_i - \mu)^2
+= \overline{X}_n,</script><script type="math/tex; mode=display">
+\hat{\sigma}^2
+= \arg\min_{\sigma^2 > 0}
+\left[
+\log(\sigma^2)
++ \frac{1}{\sigma^2} \cdot \frac{1}{n}
+\sum_{i=1}^n (X_i - \overline{X}_n)^2
+\right]
+= \frac{1}{n} \sum_{i=1}^n (X_i - \overline{X}_n)^2.</script><h3 id="贝叶斯估计（Bayes-Estimators）"><a href="#贝叶斯估计（Bayes-Estimators）" class="headerlink" title="贝叶斯估计（Bayes Estimators）"></a><strong>贝叶斯估计（Bayes Estimators）</strong></h3><p>在之前的构造里，所有参数都取决于我们拿到的数据，完全不受我们任何经验/前置知识的影响。</p>
+<p>但我们现在希望修改这个模式：我们希望最后得到的参数同时取决于数据以及我们的经验/先前的判断。</p>
+<p><strong><code>贝叶斯推断（Bayesian Inference）</code></strong>的流程：</p>
+<p>1. 把先前的常数值$\theta$当作random variable（随机变量），并选择一个<strong><code>prior distribution</code></strong>（<strong><code>先验分布</code></strong>，即我们观察数据前的做出的判断）。</p>
+<p>2. 把$P_\theta$ 当作 the conditional distribution of $X$ given $\theta$。</p>
+<p>3. 在观察到了数据 $x$ 之后，做统计推断时，看 $\theta$ 的<strong><code>后验分布（posterior distribution）</code></strong>，也就是 “在观测到 $X = x$ 之后，$\theta$ 的条件分布”。</p>
+<p>Consider an observation modeled as $X\sim P_\theta, \theta \in \Theta \subseteq \mathbb{R}.$</p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem (Bayes theorem)</strong>: Suppose the prior distribution has density $\pi$ w.r.t. a measure $\nu$ and<br>$P_\theta \ll \nu \ \ \forall \theta$ with densities $p_\theta(x) = p(x \mid \theta)$.</p><p>Then the posterior distribution has density (w.r.t. $\nu$):</p><script type="math/tex; mode=display">p(\theta \mid x)= \frac{p(x \mid \theta)\,\pi(\theta)}{p(x)} ,</script><p>where</p><script type="math/tex; mode=display">p(x) = \int_\Theta p(x \mid \theta)\,\pi(\theta)\, \mathrm{d}\nu(\theta)</script><p>is the prior predictive density of $X$.</p></div>
+<p><br></p>
+<p><strong>Bayes estimators</strong> of $\theta$ are obtained as characteristics of the posterior distribution.<br>Most frequently, one considers the <strong><code>posterior mean</code></strong>:</p>
+<script type="math/tex; mode=display">
+\hat{\theta}
+= \mathbb{E}[\theta \mid X = x]
+= \int \theta \cdot p(\theta \mid x) \,\mathrm{d}\nu(\theta).</script><p><strong>例子（高斯）：</strong></p>
+<p>Assume $X_1, \ldots, X_n$ i.i.d.\ $\mathcal{N}(\mu, \sigma^2)$ <strong>with $\sigma^2 &gt; 0$ known</strong>. We select as prior distribution $\mu \sim \mathcal{N}(m, \tau^2)$ so</p>
+<script type="math/tex; mode=display">
+\pi(\mu)
+= \frac{1}{\sqrt{2\pi\tau^2}}
+\exp\!\left(
+-\frac{1}{2\tau^2}(\mu - m)^2
+\right).</script><p>The likelihood function is equal to</p>
+<script type="math/tex; mode=display">
+L_X(\mu)
+= \prod_{i=1}^n \frac{1}{\sqrt{2\pi\sigma^2}}
+\exp\!\left(
+-\frac{1}{2\sigma^2} (X_i - \mu)^2
+\right).</script><p>The posterior density is</p>
+<script type="math/tex; mode=display">
+p(\mu \mid X)
+\propto L_X(\mu)\,\pi(\mu)
+\propto
+\exp\!\left(
+-\frac{1}{2\sigma^2} \sum_{i=1}^n (X_i - \mu)^2
+-\frac{1}{2\tau^2} (\mu - m)^2
+\right)
+\qquad
+\text{(quadratic in $\mu$)}.</script><p>We recognize that the posterior distribution will be a normal distribution.<br>More precisely,</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+p(\mu \mid X)
+&\propto
+\exp\!\left\{
+-\frac{1}{2\sigma^2}
+\Bigl(
+n\cdot \mu^2 - 2\mu \sum_{i=1}^n X_i
+\Bigr)
+-\frac{1}{2\tau^2}(\mu^2 - 2\mu m)
+\right\}\\
+&=
+\exp\!\left\{
+\Bigl(
+-\frac{n}{2\sigma^2} - \frac{1}{2\tau^2}
+\Bigr)\mu^2
+-2\mu
+\Bigl(
+-\frac{n\overline{X}_n}{2\sigma^2}
+- \frac{m}{2\tau^2}
+\Bigr)
+\right\}\\
+&=
+\exp\!\left\{
+a \mu^2 - 2 b \mu
+\right\},
+\end{align*}</script><p>where</p>
+<script type="math/tex; mode=display">
+a = -\frac{n}{2\sigma^2} - \frac{1}{2\tau^2},
+\qquad
+b = \frac{n\overline{X}_n}{2\sigma^2} - \frac{m}{2\tau^2}.</script><p>We conclude that since $p(\mu \mid X) \propto \exp\{ a \cdot (\mu - b/a)^2 \}$,<br>it holds that $p(\mu \mid X)$ is the density of a normal distribution with mean and variance:</p>
+<script type="math/tex; mode=display">
+\mathbb{E}[\mu \mid X] = \frac{b}{a},
+\qquad
+\mathrm{Var}[\mu \mid X] = -\frac{1}{2a}.</script><p><strong>The posterior mean is a convex combination of $\overline{X}_n$ and the prior mean $m$:</strong></p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\mathbb{E}[\mu \mid X]
+= \frac{b}{a}
+&= \frac{\frac{n\overline{X}_n}{2\sigma^2} - \frac{m}{2\tau^2}}
+      {-\frac{n}{2\sigma^2} - \frac{1}{2\tau^2}}\\
+&= \overline{X}_n \cdot
+  \frac{n/\sigma^2}{n/\sigma^2 + 1/\tau^2}
++ m \cdot
+  \frac{1/\tau^2}{n/\sigma^2 + 1/\tau^2}\\
+&= \overline{X}_n \cdot
+  \frac{\tau^2}{\tau^2 + \sigma^2/n}
++ m \cdot
+  \frac{\sigma^2/n}{\tau^2 + \sigma^2/n}.
+\end{align*}</script><p>当我们设：</p>
+<script type="math/tex; mode=display">
+\lambda = \frac{\tau^2}{\tau^2 + \sigma^2/n}</script><p>则有：</p>
+<script type="math/tex; mode=display">
+\mathbb{E}[\mu \mid X] = \lambda \cdot\overline{X}_n + (1-\lambda)m.</script><p>注意到当n趋近于无穷时，$\lambda$会趋近于1。<strong>也就是说，当n越大，最后算出来的mean就会越取决于我们拿到的数据。反之，n越小，则会更取决于我们的先验知识。</strong></p>
+<h3 id="Mean-Square-Error-Bias-and-Variance"><a href="#Mean-Square-Error-Bias-and-Variance" class="headerlink" title="Mean Square Error, Bias and Variance"></a><strong>Mean Square Error, Bias and Variance</strong></h3><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>: The <strong><code>mean square error</code></strong> is defined as</p><script type="math/tex; mode=display">\mathrm{MSE}_\theta[\hat{\theta}]:= \mathbb{E}_\theta \big[ (\hat{\theta} - \theta)^2 \big]= \int_{\mathcal{X}} (\hat{\theta}(x) - \theta)^2 \, \mathrm{d}P_\theta(x).</script></div>
+<p><br></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>: The mean square error decomposes as</p><script type="math/tex; mode=display">\mathrm{MSE}_\theta[\hat{\theta}]= \big( \mathrm{Bias}_\theta[\hat{\theta}] \big)^2+ \mathrm{Var}_\theta[\hat{\theta}],</script><p>where $\mathrm{Bias}_\theta[\hat{\theta}]:= \mathbb{E}_\theta[\hat{\theta}] -\theta$ is the <strong><code>bias</code></strong> of $\hat{\theta}.$</p></div>
+<p>Proof:</p>
+<p>Write $\mathrm{MSE}_\theta[\hat{\theta}]<br>= \mathbb{E}_\theta<br>\Big[<br>\big(\hat{\theta} - \mathbb{E}_\theta[\hat{\theta}] + \mathbb{E}_\theta[\hat{\theta}] - \theta \big)^2 \Big] $ and expand</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\mathrm{MSE}_\theta[\hat{\theta}]
+&= \mathbb{E}_\theta
+\Big[
+\big(\hat{\theta} - \mathbb{E}_\theta[\hat{\theta}]\big)^2
+\Big]
++ \mathbb{E}_\theta
+\Big[
+\big(\mathbb{E}_\theta[\hat{\theta}] - \theta\big)^2
+\Big]
++ 2 \, \mathbb{E}_\theta
+\Big[
+\big(\hat{\theta} - \mathbb{E}_\theta[\hat{\theta}]\big)
+\big(\mathbb{E}_\theta[\hat{\theta}] - \theta\big)
+\Big].\\
+&= \mathrm{Var}_\theta[\hat{\theta}]
++ \big(\mathrm{Bias}_\theta[\hat{\theta}]\big)^2
++ 2 \cdot \mathrm{Bias}_\theta[\hat{\theta}]
+\cdot
+\underbrace{
+\mathbb{E}_\theta
+\big[
+\hat{\theta} - \mathbb{E}_\theta[\hat{\theta}]
+\big]
+}_{=0}\\
+&= \mathrm{Var}_\theta[\hat{\theta}]
++ \big(\mathrm{Bias}_\theta[\hat{\theta}]\big)^2.
+\end{align*}</script><p><span style="float:right;">$\square$</span></p>
+<p><br></p>
+
   </div>
   
   
@@ -2893,7 +3140,7 @@ Basics</p>
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Intro"><span class="toc-number">1.</span> <span class="toc-text">Intro</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Intro"><span class="toc-number">1.</span> <span class="toc-text">Intro</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Construction-of-Estimators"><span class="toc-number">2.</span> <span class="toc-text">Construction of Estimators</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Plug-in-Estimator"><span class="toc-number">2.1.</span> <span class="toc-text">Plug-in Estimator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#M-Estimator"><span class="toc-number">2.2.</span> <span class="toc-text">M-Estimator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Method-of-Moments-MOM"><span class="toc-number">2.3.</span> <span class="toc-text">Method of Moments (MOM)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maximum-Likelihood-Estimator-MLE"><span class="toc-number">2.4.</span> <span class="toc-text">Maximum Likelihood Estimator (MLE)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%BC%B0%E8%AE%A1%EF%BC%88Bayes-Estimators%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">贝叶斯估计（Bayes Estimators）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mean-Square-Error-Bias-and-Variance"><span class="toc-number">2.6.</span> <span class="toc-text">Mean Square Error, Bias and Variance</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3557,7 +3804,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/统计-Statistics/","name":"统计 Statistics"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/10/25/TUM  数学 笔记/统计 Statistics/Foundamentals-of-Mathematical-Statistics/","name":"Foundamentals of Mathematical Statistics"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Foundamentals of Mathematical Statistics","description":"统计相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E7%BB%9F%E8%AE%A1%20Statistics/Foundamentals-of-Mathematical-Statistics/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E7%BB%9F%E8%AE%A1%20Statistics/Foundamentals-of-Mathematical-Statistics/","wordCount":6,"datePublished":"2025-10-25T14:44:16.000Z","dateModified":"2025-10-25T14:45:36.315Z","articleSection":"TUM 数学 笔记","keywords":"统计,Statistics","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/统计-Statistics/","name":"统计 Statistics"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/10/25/TUM  数学 笔记/统计 Statistics/Foundamentals-of-Mathematical-Statistics/","name":"Foundamentals of Mathematical Statistics"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Foundamentals of Mathematical Statistics","description":"统计相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E7%BB%9F%E8%AE%A1%20Statistics/Foundamentals-of-Mathematical-Statistics/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E7%BB%9F%E8%AE%A1%20Statistics/Foundamentals-of-Mathematical-Statistics/","wordCount":6,"datePublished":"2025-10-25T14:44:16.000Z","dateModified":"2025-10-25T21:54:26.913Z","articleSection":"TUM 数学 笔记","keywords":"统计,Statistics","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
