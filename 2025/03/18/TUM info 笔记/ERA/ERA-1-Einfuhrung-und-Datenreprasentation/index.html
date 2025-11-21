@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1763680707426),
+    lastupdate: new Date(1763685680015),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2299,11 +2299,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <!-- Custom Files headEnd end-->
 </head>
   <body itemscope itemtype="https://schema.org.cn/WebPage">
-    <!-- import body_begin begin-->
-    <!-- import body_begin end-->
-    <!-- Custom Files bodyBegin begin-->
     
-    <!-- Custom Files bodyBegin end-->
     <header itemscope itemtype="https://schema.org.cn/WPHeader" id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
@@ -3529,10 +3525,49 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
     </div>
-    <!-- import body_end begin-->
-    <!-- import body_end end-->
-    <!-- Custom Files bodyEnd begin-->
     
-    <!-- Custom Files bodyEnd end-->
-  </body>
+    <script>
+      (function() {
+        // 定义修复核心逻辑
+        function checkAndFixTOC() {
+          var tocDiv = document.getElementById('toc-div');
+          
+          if (tocDiv) {
+            // 1. 检查 TOC 里面是不是真的有内容（防止把空目录显示出来）
+            var tocList = tocDiv.querySelector('ol.toc');
+            var hasContent = tocList && tocList.children.length > 0;
+            
+            // 2. 如果有内容，但被隐藏了 (display: none)，则强制显示
+            // 这里检查内联样式 style.display，因为它优先级最高
+            if (hasContent && tocDiv.style.display === 'none') {
+              console.log('Volantis Fix: 检测到目录被误杀，正在强制复活...');
+              
+              // 使用 cssText 赋予最高优先级 !important
+              tocDiv.style.cssText = "display: block !important; opacity: 1 !important; visibility: visible !important;";
+              
+              // 3. 告诉主题重新计算布局（防止侧边栏塌陷）
+              window.dispatchEvent(new Event('resize'));
+              window.dispatchEvent(new Event('scroll'));
+              
+              // 4. 重启目录高亮监听
+              if (typeof listenSidebarTOC === 'function') {
+                listenSidebarTOC();
+              }
+            }
+          }
+        }
+
+        // 策略 A: 监听解密事件 (依然保留，作为第一道防线)
+        window.addEventListener('hexo-blog-encrypt:success', function() {
+          checkAndFixTOC();
+          setTimeout(checkAndFixTOC, 200); // 补刀
+        });
+
+        // 策略 B: 暴力轮询 (每 1 秒检查一次，作为终极防线)
+        // 只要你在当前页面，这个定时器就会一直巡逻，确保目录不会莫名其妙消失
+        setInterval(checkAndFixTOC, 1000);
+        
+      })();
+    </script>
+    </body>
 </html>
