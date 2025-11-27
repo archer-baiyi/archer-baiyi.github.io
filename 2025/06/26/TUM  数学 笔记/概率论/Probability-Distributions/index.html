@@ -38,20 +38,21 @@
   <!-- feed -->
   <!-- 页面元数据 -->
   <title>Probability Distributions - Hexo</title>
-  <meta name="keywords" content="概率论,Probability Theory,null">
-  <meta desc name="description" content="各种概率分部 - null - Hexo">
+  <meta name="keywords" content="概率论,Probability Theory,distribution,null">
+  <meta desc name="description" content="常见概率分部 - null - Hexo">
   
 <meta property="og:type" content="article">
 <meta property="og:title" content="Probability Distributions">
 <meta property="og:url" content="https://archer-baiyi.github.io/2025/06/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/Probability-Distributions/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="各种概率分部">
+<meta property="og:description" content="常见概率分部">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-06-26T15:05:33.000Z">
-<meta property="article:modified_time" content="2025-06-26T19:24:43.028Z">
+<meta property="article:modified_time" content="2025-11-27T02:00:20.841Z">
 <meta property="article:tag" content="概率论">
 <meta property="article:tag" content="Probability Theory">
+<meta property="article:tag" content="distribution">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2247,7 +2248,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1764168386802),
+    lastupdate: new Date(1764208853531),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2710,18 +2711,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>概率论</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Probability-Theory/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Probability Theory</p></a></div>
-  <span hidden itemprop="keywords">概率论 Probability Theory</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>概率论</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Probability-Theory/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Probability Theory</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/distribution/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>distribution</p></a></div>
+  <span hidden itemprop="keywords">概率论 Probability Theory distribution</span>
   
 
 
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-26T21:24:43+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-11-27T03:00:20+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 26, 2025</p>
+    <p>更新于：Nov 27, 2025</p>
   </a>
 </div>
 
@@ -2737,7 +2738,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="Normal-Distribution"><a href="#Normal-Distribution" class="headerlink" title="Normal Distribution"></a><strong>Normal Distribution</strong></h2><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>For $\mu \in \mathbb{R}$ and $\sigma &gt; 0$, we call a distribution with the density function</p><script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x - \mu)^2}{2\sigma^2}}, \quad x \in \mathbb{R},</script><p>the <strong><code>normal distribution</code></strong> $N(\mu, \sigma^2)$. </p><p>For $\mu = 0$ and $\sigma^2 = 1$, this reduces to the density</p><script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}, \quad x \in \mathbb{R},</script><p>of the <strong><code>standard normal distribution</code></strong> $N(0, 1)$.</p></div>
+    <h2 id="Normal-Distribution"><a href="#Normal-Distribution" class="headerlink" title="Normal Distribution"></a><strong>Normal Distribution</strong></h2><p><strong>参数:</strong> $\mu$ (均值), $\sigma^2$ (方差)</p>
+<p><strong>Probability density function (PDF):</strong></p>
+<script type="math/tex; mode=display">
+f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \quad -\infty < x < \infty</script><p><strong>Cumulative Distribution Function (CDF):</strong></p>
+<p>正态分布的CDF没有初等函数的封闭解析式。</p>
+<script type="math/tex; mode=display">
+F(x) = \Phi\left(\frac{x-\mu}{\sigma}\right) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(t-\mu)^2}{2\sigma^2}} dt</script><p><strong>Expectation:</strong></p>
+<script type="math/tex; mode=display">
+E[X] = \mu</script><p><strong>Variance:</strong></p>
+<script type="math/tex; mode=display">
+\text{Var}(X) = \sigma^2</script><p><strong>Moments:</strong></p>
+<script type="math/tex; mode=display">
+E[(X-\mu)^n] = \begin{cases} 0 & \text{if } n \text{ is odd} \\ \sigma^n (n-1)!! & \text{if } n \text{ is even} \end{cases}</script><p>$(n-1)!! = (n-1)(n-3)\cdots 3 \cdot 1$ 是双阶乘</p>
+<p><strong>Moment generating function:</strong></p>
+<script type="math/tex; mode=display">
+M_X(t) = e^{\mu t + \frac{1}{2}\sigma^2 t^2}</script><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>:</p><p>For $\mu \in \mathbb{R}$ and $\sigma &gt; 0$, we call a distribution with the density function</p><script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x - \mu)^2}{2\sigma^2}}, \quad x \in \mathbb{R},</script><p>the <strong><code>normal distribution</code></strong> $N(\mu, \sigma^2)$. </p><p>For $\mu = 0$ and $\sigma^2 = 1$, this reduces to the density</p><script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}, \quad x \in \mathbb{R},</script><p>of the <strong><code>standard normal distribution</code></strong> $N(0, 1)$.</p></div>
 <p><br></p>
 <div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>:</p><p>For $\mu \in \mathbb{R}$ and $\sigma &gt; 0$, the function</p><script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x - \mu)^2}{2\sigma^2}}, \quad x \in \mathbb{R},</script><p>is indeed a density function.</p></div>
 <p><br></p>
@@ -2808,6 +2824,122 @@ I = \sqrt{2\pi}, \quad \text{and therefore} \quad \int_{\mathbb{R}} f(x) \, dx =
 \end{aligned}</script><p>Finally, we have </p>
 <script type="math/tex; mode=display">
 \mathrm{Var}(X)  = \int_{-\infty}^{\infty} x^2 f(x) \, dx - \mu^2 = \sigma^2 + \mu^2 - \mu^2 = \sigma^2</script><p>.<span style="float:right;">$\square$</span></p>
+<h2 id="Bernoulli-Distribution-伯努利分布"><a href="#Bernoulli-Distribution-伯努利分布" class="headerlink" title="Bernoulli Distribution 伯努利分布"></a><strong>Bernoulli Distribution 伯努利分布</strong></h2><p><strong>参数:</strong> $p$ (成功概率, $0 \le p \le 1$)</p>
+<p><strong>Probability mass function (PMF):</strong></p>
+<script type="math/tex; mode=display">
+P(X=k) = p^k (1-p)^{1-k}, \quad k \in \{0, 1\}</script><p><strong>Cumulative Distribution Function (CDF):</strong></p>
+<script type="math/tex; mode=display">
+F(x) = \begin{cases} 0 & x < 0 \\ 1-p & 0 \le x < 1 \\ 1 & x \ge 1 \end{cases}</script><p><strong>Expectation:</strong></p>
+<script type="math/tex; mode=display">
+E[X] = p</script><p><strong>Variance:</strong></p>
+<script type="math/tex; mode=display">
+\text{Var}(X) = p(1-p)</script><p><strong>Moments:</strong></p>
+<script type="math/tex; mode=display">
+E[X^n] = p \quad (n \ge 1)</script><p><strong>Moment generating function:</strong></p>
+<script type="math/tex; mode=display">
+M_X(t) = 1 - p + pe^t</script><h2 id="Binomial-Distribution-二项分布"><a href="#Binomial-Distribution-二项分布" class="headerlink" title="Binomial Distribution 二项分布"></a><strong>Binomial Distribution 二项分布</strong></h2><p><strong>参数:</strong> $n$ (试验次数), $p$ (成功概率)</p>
+<p><strong>Probability mass function (PMF):</strong></p>
+<script type="math/tex; mode=display">
+P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \dots, n</script><p><strong>Cumulative Distribution Function (CDF):</strong></p>
+<script type="math/tex; mode=display">
+F(x) = \sum_{i=0}^{\lfloor x \rfloor} \binom{n}{i} p^i (1-p)^{n-i}</script><p><strong>Expectation:</strong></p>
+<script type="math/tex; mode=display">
+E[X] = np</script><p><strong>Variance:</strong></p>
+<script type="math/tex; mode=display">
+\text{Var}(X) = np(1-p)</script><p><strong>Moments:</strong></p>
+<script type="math/tex; mode=display">
+E[X^2] = n(n-1)p^2 + np</script><p><strong>Moment generating function:</strong></p>
+<script type="math/tex; mode=display">
+M_X(t) = (1 - p + pe^t)^n</script><h2 id="Poisson-Distribution-泊松分布"><a href="#Poisson-Distribution-泊松分布" class="headerlink" title="Poisson Distribution 泊松分布"></a><strong>Poisson Distribution 泊松分布</strong></h2><p><strong>参数:</strong> $\lambda$ (单位时间/面积内的平均发生率, $\lambda &gt; 0$)</p>
+<p><strong>Probability mass function (PMF):</strong></p>
+<script type="math/tex; mode=display">
+P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots</script><p><strong>Cumulative Distribution Function (CDF):</strong></p>
+<script type="math/tex; mode=display">
+F(x) = e^{-\lambda} \sum_{i=0}^{\lfloor x \rfloor} \frac{\lambda^i}{i!}</script><p><strong>Expectation:</strong></p>
+<script type="math/tex; mode=display">
+E[X] = \lambda</script><p><strong>Variance:</strong></p>
+<script type="math/tex; mode=display">
+\text{Var}(X) = \lambda</script><p><strong>Moments:</strong></p>
+<script type="math/tex; mode=display">
+E[X^2] = \lambda^2 + \lambda</script><p><strong>Moment generating function:</strong></p>
+<script type="math/tex; mode=display">
+M_X(t) = e^{\lambda(e^t - 1)}</script><h2 id="Geometric-Distribution-几何分布"><a href="#Geometric-Distribution-几何分布" class="headerlink" title="Geometric Distribution 几何分布"></a><strong>Geometric Distribution 几何分布</strong></h2><p>参数: $p$ (成功概率)。此处定义为<strong>第 $k$ 次试验首次成功</strong> (Support: $1, 2, \dots$)</p>
+<p><strong>Probability mass function (PMF):</strong></p>
+<script type="math/tex; mode=display">
+P(X=k) = (1-p)^{k-1}p, \quad k = 1, 2, \dots</script><p><strong>Cumulative Distribution Function (CDF):</strong></p>
+<script type="math/tex; mode=display">
+F(x) = \begin{cases} 0 & x < 1 \\ 1 - (1-p)^{\lfloor x \rfloor} & x \ge 1 \end{cases}</script><p><strong>Expectation:</strong></p>
+<script type="math/tex; mode=display">
+E[X] = \frac{1}{p}</script><p><strong>Variance:</strong></p>
+<script type="math/tex; mode=display">
+\text{Var}(X) = \frac{1-p}{p^2}</script><p><strong>Moments:</strong></p>
+<p>涉及到多重对数函数，无简单的初等函数通项。通常使用递推公式：</p>
+<script type="math/tex; mode=display">
+E[X^n] = \frac{1}{p} \sum_{k=0}^{n-1} \binom{n}{k} E[X^k] (1-p)</script><script type="math/tex; mode=display">
+E[X^2] = \frac{2-p}{p^2}</script><p><strong>Moment generating function:</strong></p>
+<script type="math/tex; mode=display">
+M_X(t) = \frac{pe^t}{1 - (1-p)e^t}, \quad \text{for } t < -\ln(1-p)</script><h2 id="Uniform-Distribution-均匀分布"><a href="#Uniform-Distribution-均匀分布" class="headerlink" title="Uniform Distribution 均匀分布"></a><strong>Uniform Distribution 均匀分布</strong></h2><p><strong>参数:</strong> $a, b$ (区间端点, $a &lt; b$)</p>
+<p><strong>Probability density function (PDF):</strong></p>
+<script type="math/tex; mode=display">
+f(x) = \begin{cases} \frac{1}{b-a} & a \le x \le b \\ 0 & \text{otherwise} \end{cases}</script><p><strong>Cumulative Distribution Function (CDF):</strong></p>
+<script type="math/tex; mode=display">
+F(x) = \begin{cases} 0 & x < a \\ \frac{x-a}{b-a} & a \le x < b \\ 1 & x \ge b \end{cases}</script><p><strong>Expectation:</strong></p>
+<script type="math/tex; mode=display">
+E[X] = \frac{a+b}{2}</script><p><strong>Variance:</strong></p>
+<script type="math/tex; mode=display">
+\text{Var}(X) = \frac{(b-a)^2}{12}</script><p><strong>Moments:</strong></p>
+<script type="math/tex; mode=display">
+E[X^n] = \frac{b^{n+1} - a^{n+1}}{(n+1)(b-a)}</script><p><strong>Moment generating function:</strong></p>
+<script type="math/tex; mode=display">
+M_X(t) = \frac{e^{tb} - e^{ta}}{t(b-a)}, \quad t \neq 0</script><h2 id="Exponential-Distribution-指数分布"><a href="#Exponential-Distribution-指数分布" class="headerlink" title="Exponential Distribution 指数分布"></a><strong>Exponential Distribution 指数分布</strong></h2><p><strong>参数:</strong> $\lambda$ (率参数, $\lambda &gt; 0$)</p>
+<p><strong>Probability density function (PDF):</strong></p>
+<script type="math/tex; mode=display">
+f(x) = \begin{cases} \lambda e^{-\lambda x} & x \ge 0 \\ 0 & x < 0 \end{cases}</script><p><strong>Cumulative Distribution Function (CDF):</strong></p>
+<script type="math/tex; mode=display">
+F(x) = \begin{cases} 1 - e^{-\lambda x} & x \ge 0 \\ 0 & x < 0 \end{cases}</script><p><strong>Expectation:</strong></p>
+<script type="math/tex; mode=display">
+E[X] = \frac{1}{\lambda}</script><p><strong>Variance:</strong></p>
+<script type="math/tex; mode=display">
+\text{Var}(X) = \frac{1}{\lambda^2}</script><p><strong>Moments:</strong></p>
+<script type="math/tex; mode=display">
+E[X^n] = \frac{n!}{\lambda^n}</script><p><strong>Moment generating function:</strong></p>
+<script type="math/tex; mode=display">
+M_X(t) = \frac{\lambda}{\lambda - t}, \quad t < \lambda</script><h2 id="Gamma-Distribution-伽玛分布"><a href="#Gamma-Distribution-伽玛分布" class="headerlink" title="Gamma Distribution 伽玛分布"></a><strong>Gamma Distribution 伽玛分布</strong></h2><p><strong>参数:</strong> $\alpha$ (形状参数 shape), $\beta$ (率参数 rate, sometimes $\theta = 1/\beta$ is used as scale)</p>
+<p><strong>Probability density function (PDF):</strong></p>
+<script type="math/tex; mode=display">
+f(x) = \frac{\beta^\alpha}{\Gamma(\alpha)} x^{\alpha-1} e^{-\beta x}, \quad x > 0</script><p><strong>Cumulative Distribution Function (CDF):</strong></p>
+<script type="math/tex; mode=display">
+F(x) = \frac{\gamma(\alpha, \beta x)}{\Gamma(\alpha)}</script><p>其中 $\gamma(s, x) = \int_0^x t^{s-1} e^{-t} dt$。</p>
+<p><strong>Expectation:</strong></p>
+<script type="math/tex; mode=display">
+E[X] = \frac{\alpha}{\beta}</script><p><strong>Variance:</strong></p>
+<script type="math/tex; mode=display">
+\text{Var}(X) = \frac{\alpha}{\beta^2}</script><p><strong>Moments:</strong></p>
+<script type="math/tex; mode=display">
+E[X^n] = \frac{\Gamma(\alpha+n)}{\beta^n \Gamma(\alpha)} = \frac{\alpha(\alpha+1)\cdots(\alpha+n-1)}{\beta^n}</script><p><strong>Moment generating function:</strong></p>
+<script type="math/tex; mode=display">
+M_X(t) = \left( \frac{\beta}{\beta - t} \right)^\alpha, \quad t < \beta</script><h2 id="R"><a href="#R" class="headerlink" title="R"></a><strong>R</strong></h2><p>在 R 语言中，处理概率分布有一套非常标准的<strong>前缀命名规则</strong>。对于每种分布（比如 <code>norm</code>），都有 4 个核心函数：</p>
+<ul>
+<li><strong><code>d</code></strong> (Density): 概率密度/质量函数 (PDF/PMF), e.g., <code>dnorm</code></li>
+<li><strong><code>p</code></strong> (Probability): 累积分布函数 (CDF), e.g., <code>pnorm</code></li>
+<li><strong><code>q</code></strong> (Quantile): 分位数函数 (CDF 的反函数), e.g., <code>qnorm</code></li>
+<li><strong><code>r</code></strong> (Random): 生成随机数, e.g., <code>rnorm</code></li>
+</ul>
+<h3 id="一、离散型分布-Discrete"><a href="#一、离散型分布-Discrete" class="headerlink" title="一、离散型分布 (Discrete)"></a><strong>一、离散型分布 (Discrete)</strong></h3><h4 id="1-Bernoulli-amp-Binomial-伯努利与二项分布"><a href="#1-Bernoulli-amp-Binomial-伯努利与二项分布" class="headerlink" title="1. Bernoulli &amp; Binomial (伯努利与二项分布)"></a><strong>1. Bernoulli &amp; Binomial (伯努利与二项分布)</strong></h4><p>R 中没有专门的 <code>bernoulli</code> 函数，伯努利分布就是 <code>size = 1</code> 的二项分布。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参数设定: n=10次试验, p=0.5成功率</span></span><br><span class="line">n <span class="operator">&lt;-</span> 10</span><br><span class="line">p <span class="operator">&lt;-</span> 0.5</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. PMF (Density): 恰好成功 5 次的概率 P(X=5)</span></span><br><span class="line">dbinom<span class="punctuation">(</span>x <span class="operator">=</span> <span class="number">5</span><span class="punctuation">,</span> size <span class="operator">=</span> n<span class="punctuation">,</span> prob <span class="operator">=</span> p<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. CDF (Probability): 成功次数 &lt;= 5 的概率 P(X&lt;=5)</span></span><br><span class="line">pbinom<span class="punctuation">(</span>q <span class="operator">=</span> <span class="number">5</span><span class="punctuation">,</span> size <span class="operator">=</span> n<span class="punctuation">,</span> prob <span class="operator">=</span> p<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. Quantile: 累积概率达到 0.95 时的成功次数</span></span><br><span class="line">qbinom<span class="punctuation">(</span>p <span class="operator">=</span> <span class="number">0.95</span><span class="punctuation">,</span> size <span class="operator">=</span> n<span class="punctuation">,</span> prob <span class="operator">=</span> p<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. Random: 模拟 5 组实验，每组试验 n 次</span></span><br><span class="line">rbinom<span class="punctuation">(</span>n <span class="operator">=</span> <span class="number">5</span><span class="punctuation">,</span> size <span class="operator">=</span> n<span class="punctuation">,</span> prob <span class="operator">=</span> p<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 特例：伯努利分布 (size = 1)</span></span><br><span class="line">rbinom<span class="punctuation">(</span>n <span class="operator">=</span> <span class="number">10</span><span class="punctuation">,</span> size <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span> prob <span class="operator">=</span> <span class="number">0.5</span><span class="punctuation">)</span> <span class="comment"># 生成 10 个 0 或 1</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-Poisson-Distribution-泊松分布"><a href="#2-Poisson-Distribution-泊松分布" class="headerlink" title="2. Poisson Distribution (泊松分布)"></a><strong>2. Poisson Distribution (泊松分布)</strong></h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参数设定: lambda = 4</span></span><br><span class="line">lam <span class="operator">&lt;-</span> 4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. PMF: 发生 3 次的概率 P(X=3)</span></span><br><span class="line">dpois<span class="punctuation">(</span>x <span class="operator">=</span> <span class="number">3</span><span class="punctuation">,</span> lambda <span class="operator">=</span> lam<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. CDF: 发生次数 &lt;= 3 的概率 P(X&lt;=3)</span></span><br><span class="line">ppois<span class="punctuation">(</span>q <span class="operator">=</span> <span class="number">3</span><span class="punctuation">,</span> lambda <span class="operator">=</span> lam<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. Random: 生成 10 个符合泊松分布的随机数</span></span><br><span class="line">rpois<span class="punctuation">(</span>n <span class="operator">=</span> <span class="number">10</span><span class="punctuation">,</span> lambda <span class="operator">=</span> lam<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-Geometric-Distribution-几何分布"><a href="#3-Geometric-Distribution-几何分布" class="headerlink" title="3. Geometric Distribution (几何分布)"></a><strong>3. Geometric Distribution (几何分布)</strong></h4><p>R 中的几何分布定义为<strong>失败次数</strong> ($X \in \{0, 1, \dots\}$)，直到第一次成功。</p>
+<ul>
+<li>如果使用的是 $X \in \{1, 2, \dots\}$ (第 $k$ 次首次成功)，则 R 中的 <code>x</code> 应该是 <code>k-1</code>。</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参数: p = 0.2</span></span><br><span class="line">prob <span class="operator">&lt;-</span> 0.2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. PMF: 在第 5 次试验首次成功 (意味着前 4 次失败)</span></span><br><span class="line"><span class="comment"># 公式: P(X=5 in math definition) -&gt; dgeom(4, p)</span></span><br><span class="line">dgeom<span class="punctuation">(</span>x <span class="operator">=</span> <span class="number">4</span><span class="punctuation">,</span> prob <span class="operator">=</span> prob<span class="punctuation">)</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. CDF: 在第 5 次及以前成功的概率</span></span><br><span class="line">pgeom<span class="punctuation">(</span>q <span class="operator">=</span> <span class="number">4</span><span class="punctuation">,</span> prob <span class="operator">=</span> prob<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. Random: 生成 10 个随机样本 (返回的是失败次数)</span></span><br><span class="line">rgeom<span class="punctuation">(</span>n <span class="operator">=</span> <span class="number">10</span><span class="punctuation">,</span> prob <span class="operator">=</span> prob<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="二、连续型分布-Continuous"><a href="#二、连续型分布-Continuous" class="headerlink" title="二、连续型分布 (Continuous)"></a><strong>二、连续型分布 (Continuous)</strong></h3><h4 id="4-Uniform-Distribution-均匀分布"><a href="#4-Uniform-Distribution-均匀分布" class="headerlink" title="4. Uniform Distribution (均匀分布)"></a><strong>4. Uniform Distribution (均匀分布)</strong></h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参数: 区间 [a, b] -&gt; min=0, max=10</span></span><br><span class="line">a <span class="operator">&lt;-</span> 0</span><br><span class="line">b <span class="operator">&lt;-</span> 10</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. PDF: 在 x=5 处的密度 (对于均匀分布是常数 1/(b-a))</span></span><br><span class="line">dunif<span class="punctuation">(</span>x <span class="operator">=</span> <span class="number">5</span><span class="punctuation">,</span> <span class="built_in">min</span> <span class="operator">=</span> a<span class="punctuation">,</span> <span class="built_in">max</span> <span class="operator">=</span> b<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. CDF: P(X &lt;= 5)</span></span><br><span class="line">punif<span class="punctuation">(</span>q <span class="operator">=</span> <span class="number">5</span><span class="punctuation">,</span> <span class="built_in">min</span> <span class="operator">=</span> a<span class="punctuation">,</span> <span class="built_in">max</span> <span class="operator">=</span> b<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. Random: 生成 5 个 [0, 10] 之间的随机数</span></span><br><span class="line">runif<span class="punctuation">(</span>n <span class="operator">=</span> <span class="number">5</span><span class="punctuation">,</span> <span class="built_in">min</span> <span class="operator">=</span> a<span class="punctuation">,</span> <span class="built_in">max</span> <span class="operator">=</span> b<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h4 id="5-Exponential-Distribution-指数分布"><a href="#5-Exponential-Distribution-指数分布" class="headerlink" title="5. Exponential Distribution (指数分布)"></a><strong>5. Exponential Distribution (指数分布)</strong></h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参数: lambda (rate) = 0.5</span></span><br><span class="line">lam <span class="operator">&lt;-</span> 0.5</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. PDF: f(x) at x=2</span></span><br><span class="line">dexp<span class="punctuation">(</span>x <span class="operator">=</span> <span class="number">2</span><span class="punctuation">,</span> rate <span class="operator">=</span> lam<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. CDF: P(X &lt;= 2) = 1 - e^(-lambda * 2)</span></span><br><span class="line">pexp<span class="punctuation">(</span>q <span class="operator">=</span> <span class="number">2</span><span class="punctuation">,</span> rate <span class="operator">=</span> lam<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. Random: 生成符合指数分布的随机数</span></span><br><span class="line">rexp<span class="punctuation">(</span>n <span class="operator">=</span> <span class="number">5</span><span class="punctuation">,</span> rate <span class="operator">=</span> lam<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h4 id="6-Normal-Distribution-正态分布"><a href="#6-Normal-Distribution-正态分布" class="headerlink" title="6. Normal Distribution (正态分布)"></a><strong>6. Normal Distribution (正态分布)</strong></h4><p>注意：R 使用标准差 <code>sd</code> ($\sigma$) 作为参数，而不是方差 ($\sigma^2$)。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参数: mean=0, sd=1 (标准正态)</span></span><br><span class="line">mu <span class="operator">&lt;-</span> 0</span><br><span class="line">sigma <span class="operator">&lt;-</span> 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. PDF: f(x)</span></span><br><span class="line">dnorm<span class="punctuation">(</span>x <span class="operator">=</span> <span class="number">1.96</span><span class="punctuation">,</span> mean <span class="operator">=</span> mu<span class="punctuation">,</span> sd <span class="operator">=</span> sigma<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. CDF: P(X &lt;= 1.96) ≈ 0.975</span></span><br><span class="line">pnorm<span class="punctuation">(</span>q <span class="operator">=</span> <span class="number">1.96</span><span class="punctuation">,</span> mean <span class="operator">=</span> mu<span class="punctuation">,</span> sd <span class="operator">=</span> sigma<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. Quantile: 查表逆运算，P(X &lt;= z) = 0.975，求 z</span></span><br><span class="line">qnorm<span class="punctuation">(</span>p <span class="operator">=</span> <span class="number">0.975</span><span class="punctuation">,</span> mean <span class="operator">=</span> mu<span class="punctuation">,</span> sd <span class="operator">=</span> sigma<span class="punctuation">)</span> <span class="comment"># 结果约为 1.96</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. Random: 生成正态分布数据</span></span><br><span class="line">rnorm<span class="punctuation">(</span>n <span class="operator">=</span> <span class="number">10</span><span class="punctuation">,</span> mean <span class="operator">=</span> mu<span class="punctuation">,</span> sd <span class="operator">=</span> sigma<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-Gamma-Distribution-伽玛分布"><a href="#7-Gamma-Distribution-伽玛分布" class="headerlink" title="7. Gamma Distribution (伽玛分布)"></a><strong>7. Gamma Distribution (伽玛分布)</strong></h4><p>R 支持 <code>rate</code> ($\beta$) 或 <code>scale</code> ($1/\beta$) 参数。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参数: alpha (shape) = 2, beta (rate) = 0.5</span></span><br><span class="line">alpha <span class="operator">&lt;-</span> 2</span><br><span class="line">beta <span class="operator">&lt;-</span> 0.5</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. PDF: f(x)</span></span><br><span class="line">dgamma<span class="punctuation">(</span>x <span class="operator">=</span> <span class="number">4</span><span class="punctuation">,</span> shape <span class="operator">=</span> alpha<span class="punctuation">,</span> rate <span class="operator">=</span> beta<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. CDF: F(x)</span></span><br><span class="line">pgamma<span class="punctuation">(</span>q <span class="operator">=</span> <span class="number">4</span><span class="punctuation">,</span> shape <span class="operator">=</span> alpha<span class="punctuation">,</span> rate <span class="operator">=</span> beta<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. Random</span></span><br><span class="line">rgamma<span class="punctuation">(</span>n <span class="operator">=</span> <span class="number">10</span><span class="punctuation">,</span> shape <span class="operator">=</span> alpha<span class="punctuation">,</span> rate <span class="operator">=</span> beta<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
 
   </div>
   
@@ -2849,7 +2981,7 @@ I = \sqrt{2\pi}, \quad \text{and therefore} \quad \int_{\mathbb{R}} f(x) \, dx =
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/06/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/Probability-Distributions/&title=Probability Distributions - Hexo&summary=各种概率分部"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/06/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/Probability-Distributions/&title=Probability Distributions - Hexo&summary=常见概率分部"
           
           >
           
@@ -2861,7 +2993,7 @@ I = \sqrt{2\pi}, \quad \text{and therefore} \quad \int_{\mathbb{R}} f(x) \, dx =
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/06/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/Probability-Distributions/&title=Probability Distributions - Hexo&summary=各种概率分部"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/06/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/Probability-Distributions/&title=Probability Distributions - Hexo&summary=常见概率分部"
           
           >
           
@@ -2873,7 +3005,7 @@ I = \sqrt{2\pi}, \quad \text{and therefore} \quad \int_{\mathbb{R}} f(x) \, dx =
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/06/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/Probability-Distributions/&title=Probability Distributions - Hexo&summary=各种概率分部"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/06/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/Probability-Distributions/&title=Probability Distributions - Hexo&summary=常见概率分部"
           
           >
           
@@ -2971,7 +3103,7 @@ Gram Schmidt
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Normal-Distribution"><span class="toc-number">1.</span> <span class="toc-text">Normal Distribution</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Normal-Distribution"><span class="toc-number">1.</span> <span class="toc-text">Normal Distribution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bernoulli-Distribution-%E4%BC%AF%E5%8A%AA%E5%88%A9%E5%88%86%E5%B8%83"><span class="toc-number">2.</span> <span class="toc-text">Bernoulli Distribution 伯努利分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binomial-Distribution-%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83"><span class="toc-number">3.</span> <span class="toc-text">Binomial Distribution 二项分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poisson-Distribution-%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83"><span class="toc-number">4.</span> <span class="toc-text">Poisson Distribution 泊松分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Geometric-Distribution-%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="toc-number">5.</span> <span class="toc-text">Geometric Distribution 几何分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Uniform-Distribution-%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83"><span class="toc-number">6.</span> <span class="toc-text">Uniform Distribution 均匀分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exponential-Distribution-%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83"><span class="toc-number">7.</span> <span class="toc-text">Exponential Distribution 指数分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gamma-Distribution-%E4%BC%BD%E7%8E%9B%E5%88%86%E5%B8%83"><span class="toc-number">8.</span> <span class="toc-text">Gamma Distribution 伽玛分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#R"><span class="toc-number">9.</span> <span class="toc-text">R</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%A6%BB%E6%95%A3%E5%9E%8B%E5%88%86%E5%B8%83-Discrete"><span class="toc-number">9.1.</span> <span class="toc-text">一、离散型分布 (Discrete)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Bernoulli-amp-Binomial-%E4%BC%AF%E5%8A%AA%E5%88%A9%E4%B8%8E%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83"><span class="toc-number">9.1.1.</span> <span class="toc-text">1. Bernoulli &amp; Binomial (伯努利与二项分布)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Poisson-Distribution-%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83"><span class="toc-number">9.1.2.</span> <span class="toc-text">2. Poisson Distribution (泊松分布)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Geometric-Distribution-%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="toc-number">9.1.3.</span> <span class="toc-text">3. Geometric Distribution (几何分布)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%BF%9E%E7%BB%AD%E5%9E%8B%E5%88%86%E5%B8%83-Continuous"><span class="toc-number">9.2.</span> <span class="toc-text">二、连续型分布 (Continuous)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Uniform-Distribution-%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83"><span class="toc-number">9.2.1.</span> <span class="toc-text">4. Uniform Distribution (均匀分布)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Exponential-Distribution-%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83"><span class="toc-number">9.2.2.</span> <span class="toc-text">5. Exponential Distribution (指数分布)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Normal-Distribution-%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="toc-number">9.2.3.</span> <span class="toc-text">6. Normal Distribution (正态分布)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Gamma-Distribution-%E4%BC%BD%E7%8E%9B%E5%88%86%E5%B8%83"><span class="toc-number">9.2.4.</span> <span class="toc-text">7. Gamma Distribution (伽玛分布)</span></a></li></ol></li></ol></li></ol>
   </div>
 </section>
 
@@ -3635,7 +3767,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/概率论-Probability-Theory/","name":"概率论 Probability Theory"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/06/26/TUM  数学 笔记/概率论/Probability-Distributions/","name":"Probability Distributions"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Probability Distributions","description":"各种概率分部","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/06/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/Probability-Distributions/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/06/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/Probability-Distributions/","wordCount":6,"datePublished":"2025-06-26T15:05:33.000Z","dateModified":"2025-06-26T19:24:43.028Z","articleSection":"TUM 数学 笔记","keywords":"概率论,Probability Theory","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/概率论-Probability-Theory/","name":"概率论 Probability Theory"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/06/26/TUM  数学 笔记/概率论/Probability-Distributions/","name":"Probability Distributions"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Probability Distributions","description":"常见概率分部","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/06/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/Probability-Distributions/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/06/26/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E8%AE%BA/Probability-Distributions/","wordCount":6,"datePublished":"2025-06-26T15:05:33.000Z","dateModified":"2025-11-27T02:00:20.841Z","articleSection":"TUM 数学 笔记","keywords":"概率论,Probability Theory,distribution","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
