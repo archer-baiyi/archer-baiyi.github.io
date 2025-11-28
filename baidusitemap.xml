@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://archer-baiyi.github.io/2025/11/27/CTF/Writeup/Platypwn-2025-CTF-Writeup/</loc>
+    <lastmod>2025-11-28</lastmod>
+  </url>
+  <url>
     <loc>https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2025-11-28</lastmod>
   </url>
@@ -14,10 +18,6 @@
   </url>
   <url>
     <loc>https://archer-baiyi.github.io/2025/03/31/CTF/Crypto/%E5%A6%82%E4%BD%95%E5%9C%A8Linux_wsl%E9%87%8C%E5%AE%89%E8%A3%85sage/</loc>
-    <lastmod>2025-11-27</lastmod>
-  </url>
-  <url>
-    <loc>https://archer-baiyi.github.io/2025/11/27/CTF/Writeup/Platypwn-2025-CTF-Writeup/</loc>
     <lastmod>2025-11-27</lastmod>
   </url>
   <url>
