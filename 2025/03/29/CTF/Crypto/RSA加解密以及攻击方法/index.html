@@ -37,22 +37,22 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>RSA加解密以及攻击方法 - Hexo</title>
-  <meta name="keywords" content="CTF,RSA,Fermat,PEM,CRT,null">
+  <title>RSA加解密，漏洞以及攻击方法 - Hexo</title>
+  <meta name="keywords" content="CTF,RSA,sage,PEM,CRT,null">
   <meta desc name="description" content="hi - null - Hexo">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="RSA加解密以及攻击方法">
+<meta property="og:title" content="RSA加解密，漏洞以及攻击方法">
 <meta property="og:url" content="https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="RSA加&#x2F;解密首先设  \varphi(m) :&#x3D; | \{ 1 \leq k \leq m ｜\gcd(k, m) &#x3D; 1 \} |为欧拉函数（Euler’sche Phi-function）。 RSA加密算法的初始化流程如下：  选择2个很大的质数$p, q$. 计算$n:&#x3D;pq$。这里的n是公开的，$p, q$则是保密的。 计算$\varphi(n)$。（因为我们知道$n&#x3D;pq$，且$p,">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-29T19:01:56.000Z">
-<meta property="article:modified_time" content="2025-11-28T13:19:56.445Z">
+<meta property="article:modified_time" content="2025-12-02T12:45:25.710Z">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="RSA">
-<meta property="article:tag" content="Fermat">
+<meta property="article:tag" content="sage">
 <meta property="article:tag" content="PEM">
 <meta property="article:tag" content="CRT">
 <meta name="twitter:card" content="summary">
@@ -2250,7 +2250,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1764579938592),
+    lastupdate: new Date(1764679565103),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2680,7 +2680,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        RSA加解密以及攻击方法
+        RSA加解密，漏洞以及攻击方法
       </h1>
       <div class='new-meta-box'>
         
@@ -2713,18 +2713,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CTF/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>CTF</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/RSA/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>RSA</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Fermat/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Fermat</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/PEM/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>PEM</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CRT/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>CRT</p></a></div>
-  <span hidden itemprop="keywords">CTF RSA Fermat PEM CRT</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CTF/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>CTF</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/RSA/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>RSA</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/sage/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>sage</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/PEM/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>PEM</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CRT/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>CRT</p></a></div>
+  <span hidden itemprop="keywords">CTF RSA sage PEM CRT</span>
   
 
 
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-11-28T14:19:56+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-02T13:45:25+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Nov 28, 2025</p>
+    <p>更新于：Dec 2, 2025</p>
   </a>
 </div>
 
@@ -2942,7 +2942,7 @@ m = \Bigl((c_1^x \cdot c_2^y) \mod n \Bigl)</script><p>因为：</p>
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/&title=RSA加解密以及攻击方法 - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/&title=RSA加解密，漏洞以及攻击方法 - Hexo&summary="
           
           >
           
@@ -2954,7 +2954,7 @@ m = \Bigl((c_1^x \cdot c_2^y) \mod n \Bigl)</script><p>因为：</p>
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/&title=RSA加解密以及攻击方法 - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/&title=RSA加解密，漏洞以及攻击方法 - Hexo&summary="
           
           >
           
@@ -2966,7 +2966,7 @@ m = \Bigl((c_1^x \cdot c_2^y) \mod n \Bigl)</script><p>因为：</p>
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/&title=RSA加解密以及攻击方法 - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/&title=RSA加解密，漏洞以及攻击方法 - Hexo&summary="
           
           >
           
@@ -3734,7 +3734,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Crypto/","name":"Crypto"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA加解密以及攻击方法/","name":"RSA加解密以及攻击方法"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"RSA加解密以及攻击方法","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/","wordCount":0,"datePublished":"2025-03-29T19:01:56.000Z","dateModified":"2025-11-28T13:19:56.445Z","articleSection":"CTF","keywords":"CTF,RSA,Fermat,PEM,CRT","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Crypto/","name":"Crypto"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA加解密以及攻击方法/","name":"RSA加解密，漏洞以及攻击方法"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"RSA加解密，漏洞以及攻击方法","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/","wordCount":0,"datePublished":"2025-03-29T19:01:56.000Z","dateModified":"2025-12-02T12:45:25.710Z","articleSection":"CTF","keywords":"CTF,RSA,sage,PEM,CRT","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
