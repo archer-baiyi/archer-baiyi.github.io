@@ -37,13 +37,13 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Tag: rsa - Hexo</title>
+  <title>Tag: RSA - Hexo</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="hi - null - Hexo">
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://archer-baiyi.github.io/tags/rsa/index.html">
+<meta property="og:url" content="https://archer-baiyi.github.io/tags/RSA/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="hi">
 <meta property="og:locale" content="en_US">
@@ -2243,7 +2243,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1765376733227),
+    lastupdate: new Date(1765669103849),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2661,6 +2661,84 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+            <div class='post-wrapper'>
+              <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/03/29/CTF/Crypto/RSA加解密以及攻击方法/">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
+    <meta itemprop="name" content="Hexo">
+    <meta itemprop="description" content="hi">
+  </span>
+  
+  
+    <div class='pin'>
+      <img alt="RSA加解密，漏洞以及攻击方法" src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4cc.svg'/>
+    </div>
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title" pin itemprop="name headline">
+      <a href="/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/"  itemprop="url">
+        RSA加解密，漏洞以及攻击方法
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        RSA加/解密首先设
+
+\varphi(m) := | \{ 1 \leq k \leq m ｜\gcd(k, m) = 1 \} |为欧拉函数（Euler’sche Phi-function）。
+RSA加密算法的初始化流程如下：
+
+选择2个很大的质数$p, q$.
+计算$n:=pq$。这里的n是公开的，$p, q$则是保密的。
+计算$\varphi(n)$。（因为我们知道$n=pq$，且$...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-03-29T20:01:56+01:00">2025-03-29</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Crypto/">Crypto</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+            </span>
+          
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
+              <a href="/categories/CTF/Crypto/" itemprop="url"><span itemprop="name">Crypto</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/03/29/CTF/Crypto/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+            </div>
+          
+        
       
     
     
@@ -2668,7 +2746,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="https://schema.org.cn/Article" >
-  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/11/27/CTF/Crypto/RSACtfTool，RSA攻击工具/">
+  <link itemprop="mainEntityOfPage" href="https://archer-baiyi.github.io/2025/04/07/CTF/Crypto/HTB-RSAisEasy-Writeup/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2686,19 +2764,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/11/27/CTF/Crypto/RSACtfTool%EF%BC%8CRSA%E6%94%BB%E5%87%BB%E5%B7%A5%E5%85%B7/"  itemprop="url">
-        RSACtfTool，RSA攻击工具
+      <a href="/2025/04/07/CTF/Crypto/HTB-RSAisEasy-Writeup/"  itemprop="url">
+        HTB-RSAisEasy-Writeup
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
       
-        RSACtfTool是一个开源的 Python 工具，可以高效地自动化攻击和破解由弱参数生成的RSA 密钥。
-它集成了大量针对 RSA 算法漏洞的攻击脚本，并且会自动查询FactorDB。不过它通常需要依赖SageMath或GMP等库。
-安装/配置GitHub链接：
-https://github.com/RsaCtfTool/RsaCtfTool
-1. 安装系统级依赖在克隆代码之前，必须先安...
+        题目
+附件：
+123456789101112131415161718192021222324#!/usr/bin/env python3from Crypto.Util.number import bytes_to_long, getPrimefrom secrets import flag1, flag2from os import urandomflag1 = bytes_to_long...
       
     
   </div>
@@ -2706,7 +2782,7 @@ https://github.com/RsaCtfTool/RsaCtfTool
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-11-27T21:23:17+01:00">2025-11-27</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-04-07T22:51:41+02:00">2025-04-07</time>
         
           <span class="dot"></span>
           <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/Crypto/">Crypto</a>
@@ -2723,7 +2799,7 @@ https://github.com/RsaCtfTool/RsaCtfTool
       </div>
       
         <div>
-          <a class='readmore' href='/2025/11/27/CTF/Crypto/RSACtfTool%EF%BC%8CRSA%E6%94%BB%E5%87%BB%E5%B7%A5%E5%85%B7/' itemprop="url">
+          <a class='readmore' href='/2025/04/07/CTF/Crypto/HTB-RSAisEasy-Writeup/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2734,6 +2810,8 @@ https://github.com/RsaCtfTool/RsaCtfTool
 </div>
 
           </div>
+        
+      
         
       
     
@@ -3583,7 +3661,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/tags/rsa/","name":"rsa"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/tags/RSA/","name":"RSA"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
