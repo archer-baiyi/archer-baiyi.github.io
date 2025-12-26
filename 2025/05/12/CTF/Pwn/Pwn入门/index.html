@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-05-12T15:01:08.000Z">
-<meta property="article:modified_time" content="2025-12-25T20:18:57.367Z">
+<meta property="article:modified_time" content="2025-12-26T00:07:29.868Z">
 <meta property="article:tag" content="Pwn">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2246,7 +2246,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1766695293983),
+    lastupdate: new Date(1766707789234),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2724,10 +2724,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-25T21:18:57+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-26T01:07:29+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>Last UpdatedDec 25, 2025</p>
+    <p>Last UpdatedDec 26, 2025</p>
   </a>
 </div>
 
@@ -2765,6 +2765,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
     <p><strong>本篇文章主要介绍x86-64架构的64位程序下的pwn漏洞以及利用思路。</strong></p>
+<p>（很多背景知识，安全性检查以及介绍工具功能的内容可能一开始完全看不懂，但是可以不用太在意。先知道有这么个东西，在后面看到需要相关知识/命令的时候再回来看就好。）</p>
 <h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a><strong>背景知识</strong></h2><h3 id="地址空间（Address-space，Prozess-Adressraum）"><a href="#地址空间（Address-space，Prozess-Adressraum）" class="headerlink" title="地址空间（Address space，Prozess Adressraum）"></a><strong>地址空间（Address space，Prozess Adressraum）</strong></h3><p><strong>地址空间</strong>可以被看作是一个巨大的 <strong>一维字节数组</strong>，在程序运行时（与它潜在的大小相比），其中只有少数位置存有数据。由于地址空间占用非常稀疏，操作系统会将其划分为大小相等的 <strong>页（Pages）</strong>，其中只有被操作系统释放（映射）的页才可以被访问。</p>
 <p>程序从硬盘被加载到低地址空间（对应的页由操作系统或程序加载器自动提供）。</p>
 <p>用于执行的机器代码存放在 <strong>文本段（Text Segment）</strong> 中，静态初始化的变量和字符串常量存放在 <strong>数据段（Data Segment）</strong> 中。静态变量如果在程序开始时尚未被赋值，则会放在 <strong>BSS 段</strong> 中，并由操作系统填充为零字节。</p>
@@ -2775,15 +2776,121 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><strong>堆（Heap）</strong>：用于动态分配的变量。</li>
 </ul>
 <p>栈在每次函数调用时会扩展一个 <strong>栈帧（Stack Frame）</strong>。在栈帧的内存区域中存储有当前函数的局部变量，以及一些管理信息，例如 <strong>返回地址</strong>。返回地址记录了当前执行的函数是从哪一个程序地址被调用的。随着函数调用深度的增加，栈会从高地址向低地址方向增长。</p>
-<p>当需要在函数执行完毕后变量仍然存在时，就必须使用 <strong>堆</strong> 来进行动态内存分配（因为栈上的变量会在函数返回时自动释放）。在这种情况下，程序可以通过 <strong>libc 提供的分配器</strong> 使用 <strong>malloc</strong> 函数向系统申请内存。如果可能，分配器会返回对程序启动时预留的堆区域的引用；如果堆空间不足，分配器会通过 <strong>mmap 系统调用</strong> 向操作系统请求一个新的 MMap 段，并返回对该段的引用。</p>
-<p>C 标准库（libc）除了包含内存分配器之外，还提供了许多常用函数，以便简化与操作系统的交互。</p>
-<p>在程序执行过程中，如果访问了一个无效的地址（即未映射的页），操作系统会向程序发送一个 <strong>段错误（Segmentation Fault）</strong> 信号。如果程序没有对此进行处理，就会导致程序终止。</p>
+<p>当需要在函数执行完毕后变量仍然存在时，就必须使用<strong>堆</strong>来进行动态内存分配（因为栈上的变量会在函数返回时自动释放）。在这种情况下，程序可以通过<strong>libc 提供的分配器</strong>使用<strong>malloc</strong>函数向系统申请内存。如果可能，分配器会返回对程序启动时预留的堆区域的引用；如果堆空间不足，分配器会通过 <strong>mmap 系统调用</strong> 向操作系统请求一个新的 MMap 段，并返回对该段的引用。</p>
 <p><img src="/images/image-20250818000141067.png" class="lazyload" data-srcset="/images/image-20250818000141067.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250818000141067"></p>
-<h3 id="X86汇编"><a href="#X86汇编" class="headerlink" title="X86汇编"></a><strong>X86汇编</strong></h3><p>按 SysV x64 ABI，函数前三个参数放在 <code>rdi, rsi, rdx</code>。所以</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pop rdi ; ret</span><br><span class="line">pop rsi ; ret</span><br><span class="line">pop rdx ; ret</span><br></pre></td></tr></table></figure>
-<p>会起到设置参数的作用。（将指定参数存入寄存器。）</p>
-<p><code>pop rbp</code> 则是会把栈顶的 8 字节弹到寄存器 <code>rbp</code>，同时 <code>rsp += 8</code>。</p>
-<h3 id="gadget"><a href="#gadget" class="headerlink" title="gadget"></a><strong>gadget</strong></h3><h2 id="安全性检查"><a href="#安全性检查" class="headerlink" title="安全性检查"></a><strong>安全性检查</strong></h2><p>我们可以使用<code>checksec</code>命令检查一份二进制文件的安全性.</p>
+<p><br></p>
+<p>C 标准库（libc）除了包含内存分配器之外，还提供了许多常用函数，以便简化与操作系统的交互。</p>
+<p>代码（文本段）是静止的，但动态库（libc）的地址每次运行时可能都会变（ASLR），或者在程序写好时根本不知道它在哪里。那程序是如何找到<code>printf</code>或<code>system</code>的真实地址的呢？</p>
+<p>这个时候就需要PLT和GOT了：</p>
+<ul>
+<li><strong>PLT (Procedure Linkage Table - 过程链接表)</strong>：<ul>
+<li>存放在<strong>.plt 段</strong>（类似于文本段，是<strong>只读、可执行</strong>的代码）。</li>
+<li>指向GOT（记录的函数的GOT地址）</li>
+</ul>
+</li>
+<li><strong>GOT (Global Offset Table - 全局偏移表)</strong>：<ul>
+<li>存放在<strong>.got.plt 段</strong>（属于数据段的一部分，是<strong>可读、可写</strong>的数据）。</li>
+<li>初始时指向PLT，解析后指向libc</li>
+</ul>
+</li>
+</ul>
+<p>Linux 为了启动速度，默认不会一开始就把所有函数的地址都填好，而是真正用到的时候才去找实际地址。这个过程叫<strong>延迟绑定</strong>。</p>
+<p>延迟绑定主要分为2种过程：</p>
+<p><strong>过程一：首次调用（符号解析阶段）</strong></p>
+<p>当程序第一次尝试调用共享库中的函数（如 <code>printf</code>）时，由于地址尚未解析，执行流程如下：</p>
+<ol>
+<li><strong>调用 PLT 存根 (Call PLT Stub)</strong> 程序 <code>.text</code> 段执行 <code>call printf@plt</code> 指令，将控制流转移至 <code>.plt</code> 段中对应的 <code>printf</code> 存根代码。</li>
+<li><strong>间接跳转 (Indirect Jump)</strong> PLT 存根执行第一条指令 <code>jmp *printf@GOT</code>。这是一条间接跳转指令，目标地址从全局偏移表（<code>.got.plt</code>）的对应条目中读取。</li>
+<li><strong>回落至 PLT (Fallthrough)</strong> 在初始化状态下，<code>.got.plt</code> 中存储的地址并非函数的真实地址，而是 <strong>PLT 存根中下一条指令的地址</strong>（即紧随上述 <code>jmp</code> 指令之后的地址）。因此，执行流并未跳转至外部，而是继续执行 PLT 存根中的剩余代码。</li>
+<li><strong>准备重定位参数 (Prepare Relocation)</strong> PLT 存根将该符号在重定位表中的索引（Relocation Index）压入栈中，随后跳转至 PLT 的公共头部（PLT[0]）。</li>
+<li><strong>调用动态链接器 (Invoke Dynamic Linker)</strong> PLT[0] 将链接映射结构（link_map）压入栈，并调用动态链接器的解析函数（通常为 <code>_dl_runtime_resolve</code>）。</li>
+<li><strong>符号解析与地址回填 (Resolution &amp; Patching)</strong> <code>_dl_runtime_resolve</code> 遍历依赖库的导出符号表，查找 <code>printf</code> 的实际虚拟地址（例如 <code>0x7ffff7a0d123</code>）。找到后，它执行两个操作：<ul>
+<li><strong>执行函数</strong>：调用目标函数。</li>
+<li><strong>更新 GOT</strong>：将查找到的真实地址写入 <code>.got.plt</code> 中对应的条目，覆盖原有的回落地址。</li>
+</ul>
+</li>
+</ol>
+<p><strong>过程二：后续调用（直接执行阶段）</strong></p>
+<p>当程序再次执行 <code>call printf@plt</code> 时，由于 GOT 表项已被更新，流程简化如下：</p>
+<ol>
+<li><strong>调用 PLT 存根 (Call PLT Stub)</strong> 程序再次执行 <code>call printf@plt</code>，跳转至 <code>.plt</code> 段。</li>
+<li><strong>间接跳转至目标 (Direct Redirection)</strong> PLT 存根再次执行 <code>jmp *printf@GOT</code>。此时，系统从 <code>.got.plt</code> 中读取到的已是 <code>printf</code> 的真实地址（<code>0x7ffff7a0d123</code>）。</li>
+<li><strong>控制流转移 (Control Transfer)</strong> CPU 直接跳转至共享库中的 <code>printf</code> 函数入口执行，不再触发动态链接器的解析过程。</li>
+</ol>
+<p><br></p>
+<p><strong>更详细的地址空间结构图示：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">高地址 (High Address) (通常是 0x7fffffffffff)</span><br><span class="line">            |</span><br><span class="line">+---------------------------+</span><br><span class="line">|    Kernel Space           | (内核空间 - 用户态无法直接访问)</span><br><span class="line">+---------------------------+</span><br><span class="line">|    Command Line Args      | (argv pointers)</span><br><span class="line">|    Environment Vars       | (envp pointers)</span><br><span class="line">+---------------------------+ &lt;--- [Stack Base / 栈底]</span><br><span class="line">|                           |</span><br><span class="line">|          Stack            | (栈)</span><br><span class="line">|       (Grows Down)        | 用于局部变量、函数参数、返回地址</span><br><span class="line">|            |              |</span><br><span class="line">|            v              |</span><br><span class="line">+---------------------------+ &lt;--- [RSP / 栈顶]</span><br><span class="line">|                           |</span><br><span class="line">|        (Random Gap)       | (随机偏移，用于 ASLR)</span><br><span class="line">|                           |</span><br><span class="line">+---------------------------+</span><br><span class="line">|                           |</span><br><span class="line">|   Memory Mapping Segment  | &lt;--- [MMap 段]</span><br><span class="line">|   (Shared Libraries)      | 动态链接库 (libc.so, ld-linux.so)</span><br><span class="line">|                           | </span><br><span class="line">|   +-------------------+   |</span><br><span class="line">|   |   libc.so .text   |   |</span><br><span class="line">|   | (printf的真实位置)  |   |</span><br><span class="line">|   +-------------------+   |</span><br><span class="line">|                           |</span><br><span class="line">+---------------------------+</span><br><span class="line">|                           |</span><br><span class="line">|       (Random Gap)        |</span><br><span class="line">|                           |</span><br><span class="line">+---------------------------+</span><br><span class="line">|            ^              |</span><br><span class="line">|            |              |</span><br><span class="line">|          Heap             | (堆)</span><br><span class="line">|       (Grows Up)          | 用于 malloc/new 分配的内存</span><br><span class="line">|                           |</span><br><span class="line">+---------------------------+ &lt;--- [Heap Base]</span><br><span class="line">|                           |</span><br><span class="line">|        .bss Segment       | (未初始化数据段)</span><br><span class="line">|  (Block Started by Symbol)| 全局变量 int global_var; (默认 0)</span><br><span class="line">|                           |</span><br><span class="line">+---------------------------+</span><br><span class="line">|                           |</span><br><span class="line">|       .data Segment       | (已初始化数据段)</span><br><span class="line">|                           | 全局变量 int flag = 1;</span><br><span class="line">|                           |</span><br><span class="line">+---------------------------+</span><br><span class="line">|                           |</span><br><span class="line">|      .got.plt Section     | &lt;--- [GOT 表] (Data Segment的一部分)</span><br><span class="line">|   (Global Offset Table)   |</span><br><span class="line">|                           |</span><br><span class="line">|                           |</span><br><span class="line">|                           |</span><br><span class="line">+---------------------------+</span><br><span class="line">|                           |</span><br><span class="line">|        .plt Section       | &lt;--- [PLT 表] (Text Segment的一部分)</span><br><span class="line">|  (Procedure Linkage Table)|</span><br><span class="line">|                           |</span><br><span class="line">+---------------------------+</span><br><span class="line">|                           |</span><br><span class="line">|       .text Segment       | &lt;--- [代码段] </span><br><span class="line">|      (Binary Code)        |</span><br><span class="line">|                           | main 函数在这里</span><br><span class="line">|                           |</span><br><span class="line">+---------------------------+</span><br><span class="line">|                           |</span><br><span class="line">|       Read-Only Data      | (.rodata) 字符串常量，比如说&quot;Hello World&quot;</span><br><span class="line">+---------------------------+</span><br><span class="line">            |</span><br><span class="line">            | (0x00400000 左右，如果是 PIE 则随机)</span><br><span class="line">            |</span><br><span class="line">      低地址 (Low Address) (0x000000000000)</span><br></pre></td></tr></table></figure>
+<p>如果开启了ASLR（下面会讲），那么Stack Base (栈基址)、MMap Base (映射区基址)、Heap Base (堆基址)在每次程序运行的时候都是随机的地址。</p>
+<p><br></p>
+<p>在程序执行过程中，如果访问了一个无效的地址（即未映射的页），操作系统会向程序发送一个 <strong>段错误（Segmentation Fault）</strong> 信号。如果程序没有对此进行处理，就会导致程序终止。</p>
+<h3 id="X86汇编"><a href="#X86汇编" class="headerlink" title="X86汇编"></a><strong>X86汇编</strong></h3><p>因为汇编设计的内容太多了，这里没法全都讲，所以大家自己找点其他的资料学一学。</p>
+<p>但是并不是说不懂汇编就完全没法做和理解pwn题，所以也可以边学pwn边学汇编，这样有实际例子的情况下也可用更好更高效地掌握汇编。</p>
+<p><br></p>
+<p>下面主要提一些比较重要的点：</p>
+<p><strong>Linux x64(System V AMD64 ABI)传参顺序：</strong></p>
+<ol>
+<li><strong><code>RDI</code></strong> (第 1 参数)。</li>
+<li><strong><code>RSI</code></strong> (第 2 参数)</li>
+<li><strong><code>RDX</code></strong> (第 3 参数)</li>
+<li><strong><code>RCX</code></strong> (第 4 参数)</li>
+<li><strong><code>R8</code></strong> (第 5 参数)</li>
+<li><strong><code>R9</code></strong> (第 6 参数)</li>
+<li>后续的参数会被存在栈上</li>
+</ol>
+<p>其他的常用寄存器：</p>
+<ul>
+<li><strong>RIP (Instruction Pointer)</strong><ul>
+<li>定义：指向<strong>下一条</strong>要执行的指令地址。</li>
+<li>PWN意义：当函数执行<code>ret</code>时，CPU 会把那个地址弹给 RIP。</li>
+</ul>
+</li>
+<li><strong>RSP (Stack Pointer)</strong><ul>
+<li>定义：永远指向栈顶。</li>
+<li>PWN意义：<code>push</code>和<code>pop</code>都会自动修改它。</li>
+</ul>
+</li>
+<li><strong>RBP (Base Pointer)</strong><ul>
+<li>定义：栈帧的基址（底）。</li>
+<li>PWN意义：主要用于定位局部变量。配合<code>leave; ret</code>可以实现栈迁移。</li>
+</ul>
+</li>
+<li><strong>RAX (Accumulator)</strong><ul>
+<li>常规用途：算术运算结果、函数的返回值。</li>
+<li>PWN核心用途 (Syscall)： 在做ret2Syscall/SROP（利用系统调用拿 shell）时，<code>RAX</code>决定了要呼叫内核做什么。<ul>
+<li><code>RAX = 59</code> (<code>0x3b</code>) -&gt; 对应 <code>execve</code> 系统调用（运行程序）。</li>
+<li><code>RAX = 0</code> -&gt; <code>read</code></li>
+<li><code>RAX = 1</code> -&gt; <code>write</code></li>
+<li><code>RAX = 15</code> -&gt; <code>rt_sigreturn</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>特殊段寄存器：<strong>FS (Segment Register)</strong><ul>
+<li>PWN意义：在64位Linux下，Canary的值总是存在<code>fs:[0x28]</code>这个位置。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Gadget"><a href="#Gadget" class="headerlink" title="Gadget"></a><strong>Gadget</strong></h3><p><strong>Gadget</strong>是指由于<strong>代码复用攻击（Code Reuse Attack）</strong>需求，而在现有的可执行内存段（如 <code>.text</code> 段或共享库）中被分离出来的、<strong>以控制流转移指令（Control Transfer Instruction）结尾</strong>的一段机器指令序列。</p>
+<p>最常见的形式是<strong>ROP Gadget</strong>（Return-Oriented Programming Gadget），其结尾指令严格为<strong><code>ret</code> (Return)</strong>。</p>
+<p>一个标准的 Gadget 由两部分组成：</p>
+<ol>
+<li><strong>操作指令序列 (Operational Instructions)</strong>：执行实际的计算、数据传输或逻辑运算（如 <code>pop</code>, <code>mov</code>, <code>add</code>, <code>xor</code>）。</li>
+<li><strong>终结指令 (Terminator)</strong>：用于将控制权交还给攻击者控制的机制。在 ROP 中，这是 <code>ret</code> 指令。</li>
+</ol>
+<p><strong>执行原语：</strong> Gadget 并不像正常函数那样通过 <code>call</code> 调用，而是通过<strong>栈指针（RSP/ESP）</strong>作为伪指令指针来驱动。</p>
+<ul>
+<li><strong><code>ret</code> 的本质</strong>：<code>pop rip</code>。它从栈顶弹出一个值赋给 RIP（指令指针）。</li>
+<li>攻击者在栈上预先布置好一连串的地址（ROP Chain）。</li>
+<li>每一个 Gadget 执行完其逻辑后，执行 <code>ret</code>，这会导致 CPU 从栈上读取<strong>下一个 Gadget 的地址</strong>并跳转执行。</li>
+</ul>
+<p>这种机制使得 <code>RSP</code> 实际上替代了 <code>RIP</code> 的角色，而栈上的数据流变成了指令流。</p>
+<p><br></p>
+<p>常用的gadget：</p>
+<ul>
+<li><code>pop rdi ; ret</code>、<code>pop rsi ; ret</code>、<code>pop rdx ; ret</code>：设置函数的参数</li>
+<li><code>pop rbp</code>：把栈顶的8字节弹到寄存器 <code>rbp</code>，同时 <code>rsp += 8</code>。</li>
+</ul>
+<h2 id="安全性检查"><a href="#安全性检查" class="headerlink" title="安全性检查"></a><strong>安全性检查</strong></h2><p>我们可以使用<code>checksec</code>命令检查一份二进制文件的安全性.</p>
 <p>安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install checksec</span><br></pre></td></tr></table></figure>
 <p>例子：</p>
@@ -3166,7 +3273,110 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>当程序没有循环的时候我们需要将程序结束前会调用的某个函数修改成<code>main</code>的地址，使得程序会循环运行<code>main</code>函数。</p>
 <p><br></p>
 <p><strong>简单来讲，劫持控制流就是修改程序的got表里的内容，使得程序以为自己在运行函数<code>fun1</code>的时候，实际上在运行<code>fun2</code>，依次来达到目的。</strong>这种操作相对于ROP来讲会更加间接一点。在之后堆利用的部分会经常用到。</p>
-<h3 id="Stack-Canary"><a href="#Stack-Canary" class="headerlink" title="Stack Canary"></a><strong>Stack Canary</strong></h3><h2 id="格式化字符串漏洞-Format-String-Vulnerability"><a href="#格式化字符串漏洞-Format-String-Vulnerability" class="headerlink" title="格式化字符串漏洞 Format String Vulnerability"></a><strong>格式化字符串漏洞 Format String Vulnerability</strong></h2><p>我们首先来看一下什么是格式化字符串函数。</p>
+<h3 id="栈金丝雀-Stack-Canary"><a href="#栈金丝雀-Stack-Canary" class="headerlink" title="栈金丝雀/Stack Canary"></a><strong>栈金丝雀/Stack Canary</strong></h3><p>为了预防潜在的栈溢出的威胁，人们发明了名为Stack Canary（栈金丝雀）的安全机制。</p>
+<p><strong>名字的由来/历史背景：</strong></p>
+<p>在 19 世纪和 20 世纪早期，还没有先进的电子传感器。矿工下井挖掘煤矿时，最害怕的就是无色无味的一氧化碳 (CO)或瓦斯(甲烷)泄漏。一旦发现，通常为时已晚。</p>
+<p>矿工们发现，金丝雀（Canary）这种鸟类对有毒气体极其敏感。由于它们的新陈代谢很快，只要空气中有一丁点毒气，金丝雀会比人类更早出现中毒反应（停止歌唱、晕倒甚至死亡）。</p>
+<p>因此，矿工下井时会提着一个装着金丝雀的笼子，类似于一个警报器：</p>
+<ul>
+<li>只要鸟还在叫，说明环境是安全的。</li>
+<li>一旦鸟不叫了或倒下了，矿工就知道危险逼近，必须立即撤离。</li>
+</ul>
+<p><br></p>
+<p>回到计算机的部分：</p>
+<p>Stack Canary（栈金丝雀）的核心思想非常简单：<strong>在局部变量（缓冲区）和控制信息（如返回地址）之间放置一个随机生成的整数（即 Canary）。</strong></p>
+<p><strong>在函数返回之前，系统会检查这个值是否被修改。</strong>如果发生了缓冲区溢出，攻击者的数据通常是从低地址向高地址覆盖的，那么在覆盖到返回地址之前，必然会先覆盖掉 Canary。一旦系统发现 Canary 变了，就会立即终止程序，从而阻止攻击。</p>
+<p>比较有意思的是，我们可以做一个完美的对应（类似比喻的那种）：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>现实世界 (煤矿)</th>
+<th>计算机世界 (内存栈)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>矿井</td>
+<td>程序栈 (Stack)</td>
+</tr>
+<tr>
+<td>矿工</td>
+<td>返回地址 (Return Address)</td>
+</tr>
+<tr>
+<td>毒气/瓦斯</td>
+<td>缓冲区溢出数据 (Buffer Overflow)</td>
+</tr>
+<tr>
+<td>金丝雀 (Canary)</td>
+<td>Canary值 (随机整数)</td>
+</tr>
+<tr>
+<td>鸟死了</td>
+<td>Canary值被修改</td>
+</tr>
+<tr>
+<td>撤离矿井</td>
+<td>程序终止</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>开启了canary的栈布局：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">高地址 (High Address) 0xFF...</span><br><span class="line">            ^</span><br><span class="line">            |</span><br><span class="line">+-----------------------+</span><br><span class="line">|                       |</span><br><span class="line">|    Return Address     |  &lt;-- 返回地址</span><br><span class="line">|      (RIP / EIP)      |</span><br><span class="line">|                       |</span><br><span class="line">+-----------------------+</span><br><span class="line">|                       |</span><br><span class="line">|   Saved Frame Pointer |  (保存的基址指针，如 EBP/RBP)</span><br><span class="line">|                       |</span><br><span class="line">+-----------------------+</span><br><span class="line">|                       |</span><br><span class="line">|      Stack Canary     |  &lt;-- Canary</span><br><span class="line">|         随机值         |</span><br><span class="line">|                       |</span><br><span class="line">+-----------------------+</span><br><span class="line">|                       |</span><br><span class="line">|                       |</span><br><span class="line">|    Local Variables    |  &lt;-- [溢出源头] buf</span><br><span class="line">|    (Buffer / Array)   |</span><br><span class="line">|                       |</span><br><span class="line">|                       |</span><br><span class="line">+-----------------------+</span><br><span class="line">            |</span><br><span class="line">            v</span><br><span class="line">低地址 (Low Address) 0x00...</span><br></pre></td></tr></table></figure>
+<p>此外还有一点，在 Linux (GCC/glibc) 以及大多数现代操作系统的实现中，x86/x64架构下的Stack Canary的<strong>最低位（Least Significant Byte, LSB）</strong> 几乎总是被强制设置为<strong><code>0x00</code></strong>。</p>
+<p>（因为x86/x64是小端序 (Little-Endian) 架构，所以最低位会被存在低地址，也就是上面结构里离局部变量最近的那位。）</p>
+<p>这个 <code>0x00</code> 主要有两个防御目的，特别是针对 C 语言中常见的字符串操作函数：</p>
+<ol>
+<li><strong>防止泄漏 (Anti-Leak / Read Protection)</strong><ul>
+<li>C 语言的字符串打印函数（如 <code>printf(&quot;%s&quot;, buf)</code>, <code>puts(buf)</code>）是依靠 <code>\0</code> (0x00) 来判断字符串结束的。</li>
+<li>如果攻击者利用漏洞读取栈上的内容（例如 buffer 没有正确的结束符），程序会一直向高地址打印。</li>
+<li>当打印遇到Canary的第一个字节 <code>0x00</code> 时，打印函数会认为“字符串结束了”，立即停止。</li>
+<li>也就是说：我们只能读到填充的垃圾数据，而读不到 Canary 后面的 7 个<strong>随机字节</strong>。保护了 Canary 的秘密性。</li>
+</ul>
+</li>
+<li><strong>防止特定写入 (Anti-Overwrite / Write Protection)</strong><ul>
+<li>字符串复制函数（如 <code>strcpy</code>）遇到<code>0x00</code>会停止复制。</li>
+<li>虽然这不能完全阻止缓冲区溢出（仍可以用 <code>memcpy</code> 或 <code>read</code> 这种不看 <code>\0</code> 的函数来覆盖），但它限制了攻击者使用<code>strcpy</code>这类函数来精准修改Canary之后的返回地址而不破坏 Canary的难度。</li>
+</ul>
+</li>
+</ol>
+<p><br></p>
+<p>栈金丝雀可以非常有效地防御那种连续性的overflow漏洞/<strong>线性溢出</strong>（Linear Overflow），但是仍有些情况它是照顾不到的：</p>
+<p>1. 假如有<strong>信息泄露漏洞</strong>（比如 Format String 漏洞，或者可以越界读取 Stack 内容），那么我们就可以直接把canary的完整的值泄露出来，覆写时注意把canary部分覆写成正确的值即可。</p>
+<p><br></p>
+<p>2. 假如有<strong>数组越界写入漏洞（Out-of-Bound Write）</strong>，那么就可以指定索引写入，从而直接绕过canary来修改返回地址等内容。</p>
+<p><br></p>
+<p>3. 假如<strong>常驻主程序使用<code>fork()</code>来生成子进程</strong>处理每个连接，并处理所有逻辑，那么就可以尝试爆破canary的值。</p>
+<p><strong><code>fork()</code> 不会重新随机化 canary</strong>：父进程的 TLS/TCB（存 canary 的地方）会COW（copy on write）复制给子进程。</p>
+<p>所以<strong>所有子进程的 canary 都一样</strong>（直到父进程重启）。也就是说，<strong>每次连接的时候，canary的值都一样。</strong></p>
+<p>除此之外，进程在 <strong>exec</strong> 时才做一次 ASLR 随机化：PIE 基址、libc 基址、栈基址、canary 等都在这时确定。</p>
+<p>并且<strong><code>fork()</code> 不会重新随机化地址空间</strong>，而是把父进程当前的内存映射按COW（copy on write）原样克隆给子进程。</p>
+<p>因此，同一轮服务存活期间，所有子进程都会<strong>共享这些不变的东西</strong>：</p>
+<ul>
+<li><strong>stack canary 值</strong>（最低字节 0x00），</li>
+<li><strong>PIE / libc 的装载基址</strong>（所以代码里的绝对返回地址一致），</li>
+<li><strong>栈/堆/各段的虚拟地址布局</strong>（所以函数帧的 <strong>saved RBP</strong> 和 <strong>RET</strong> 会落在<strong>相同的虚拟地址</strong>，并且内容一致：<ul>
+<li><code>saved rbp</code> 是上个帧的栈地址；</li>
+<li><code>ret</code> 是固定的“调用点下一条指令”的地址。<br>调用序列相同 → 它们在每个子进程里都相同。）</li>
+</ul>
+</li>
+</ul>
+<p>所以说在这种情况下，我们可以根据Orcacle来一位一位地爆破canary的值：一位一位地覆盖canary的值，根据程序是否有正常执行之后的内容来判断尝试是否正确。</p>
+<p><br></p>
+<p>4. <strong>主线程生成了一个子线程来处理所有的逻辑。</strong></p>
+<p>在Linux (glibc) x86_64环境下：</p>
+<ul>
+<li><strong>主线程</strong>：栈（Stack）和 TLS（Thread Local Storage）通常在内存中相距甚远。栈在极高的内存地址向下增长，而 TLS 位于加载的库附近。</li>
+<li><strong>子线程 (pthread)</strong>：<strong>栈和 TLS 是紧邻的</strong>。<code>pthread_create</code> 会使用 <code>mmap</code> 分配一块连续的内存区域作为该线程的栈空间。</li>
+</ul>
+<p>内存视图：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">高地址 (High Address)</span><br><span class="line">+-------------------------+</span><br><span class="line">|        TLS / TCB        | (线程控制块)</span><br><span class="line">| ----------------------- |</span><br><span class="line">|           ...           |</span><br><span class="line">|   stack_guard (Master)  | &lt;-- 真正的金丝雀值 (fs:0x28)</span><br><span class="line">|           ...           |</span><br><span class="line">|        tcbhead_t        |</span><br><span class="line">+-------------------------+ &lt;--- Stack Base (初始栈顶指针 SP)</span><br><span class="line">|           ...           |</span><br><span class="line">|     Previous Frames     | (更早的函数栈帧)</span><br><span class="line">|           ...           |</span><br><span class="line">+-------------------------+</span><br><span class="line">|      Return Address     | &lt;-- 想要覆盖掉的返回地址</span><br><span class="line">+-------------------------+</span><br><span class="line">|     [ Stack Canary ]    | &lt;-- (当前函数的金丝雀)</span><br><span class="line">+-------------------------+</span><br><span class="line">|         [ buf ]         | &lt;-- 溢出点</span><br><span class="line">|                         |</span><br><span class="line">|                         |</span><br><span class="line">|                         |</span><br><span class="line">|            ^            |</span><br><span class="line">|            |            | (栈空间)</span><br><span class="line">|          Stack          |</span><br><span class="line">|                         |</span><br><span class="line">+-------------------------+ &lt;--- Stack Limit (当前栈底)</span><br><span class="line">|       Guard Page        | (保护页，触碰即导致段错误)</span><br><span class="line">+-------------------------+</span><br><span class="line">低地址 (Low Address)</span><br></pre></td></tr></table></figure>
+<p>程序退出时，会将栈里的canary值与master canary的值进行比较，如果不一样就会直接退出。</p>
+<p>所以如果可以<strong>同时覆盖掉栈里的canary和TLS中的master canary</strong>，便可以绕过canary的检测进行任意的ROP。</p>
+<p>注意：大部分指针只接受valid的值或者是<code>null</code>，所以在这种需要覆盖很多内容的情况时需要格外注意。（需要一点一点debug，非常折磨）</p>
+<h2 id="格式化字符串漏洞-Format-String-Vulnerability"><a href="#格式化字符串漏洞-Format-String-Vulnerability" class="headerlink" title="格式化字符串漏洞 Format String Vulnerability"></a><strong>格式化字符串漏洞 Format String Vulnerability</strong></h2><p>我们首先来看一下什么是格式化字符串函数。</p>
 <h3 id="格式化字符串函数"><a href="#格式化字符串函数" class="headerlink" title="格式化字符串函数"></a><strong>格式化字符串函数</strong></h3><p>格式化字符串（ format string）函数可以接受可变数量的参数，并将<strong>第一个参数作为格式化字符串，根据其来解析之后的参数</strong>。</p>
 <p>可以参考这个定义：</p>
 <p>The format string is a character string which contains two types of objects: plain characters, which are simply copied to the output channel, and conversion specifications, each of which causes conversion and printing of arguments.</p>
@@ -3548,9 +3758,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><code>numbwritten</code>：调用 <code>printf</code> 前已经输出的字节数（影响对齐/填充计算）。</li>
 <li><code>write_size</code>：原子写入粒度，<code>&#39;byte&#39;|&#39;short&#39;|&#39;int&#39;|&#39;long&#39;</code> 等。</li>
 </ul>
-<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a><strong>例题</strong></h3><ul>
-<li><a href="https://archer-baiyi.github.io/2025/05/19/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-CGfsb-Writeup/">攻防世界 CGfsb Writeup</a></li>
-</ul>
 <h2 id="堆利用-Heap-Exploitation"><a href="#堆利用-Heap-Exploitation" class="headerlink" title="堆利用/Heap Exploitation"></a><strong>堆利用/Heap Exploitation</strong></h2><p>堆利用（Heap Exploitation）和核心/最终目的是劫持分配器 (Hijacking the Allocator)，让其误以为敏感地址（如 GOT 表、栈上的返回地址、Hook 函数指针）是空闲链表里的一块普通内存，并将其分配给我们，以达到任意写入的目的。当然在此之前还需要信息泄露用于确定我们该往哪里进行写入。</p>
 <p>首先先区分一下libc和glibc：</p>
 <ul>
@@ -3790,7 +3997,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p><img src="/images/image-20251127133248009.png" class="lazyload" data-srcset="/images/image-20251127133248009.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127133248009"></p>
 <p><img src="/images/image-20251127133302587.png" class="lazyload" data-srcset="/images/image-20251127133302587.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127133302587"></p>
 <p><img src="/images/image-20251127133337054.png" class="lazyload" data-srcset="/images/image-20251127133337054.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251127133337054"></p>
-<p>现代</p>
 <h3 id="推荐工具"><a href="#推荐工具" class="headerlink" title="推荐工具"></a><strong>推荐工具</strong></h3><ul>
 <li><p><strong>forkever (by haxkor)</strong> </p>
 <ul>
@@ -3850,24 +4056,32 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ol>
 </li>
 <li><strong>Buffer Overflow</strong>：<ol>
-<li><strong>修改目标变量的值</strong>：<ol>
+<li><strong><strong>结构体字段劫持</strong></strong>：<ol>
 <li><a href="https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-hello-pwn-Writeup/">攻防世界 hello_pwn Writeup</a></li>
 </ol>
 </li>
 <li><strong>ROP</strong>：<ol>
-<li><strong>ret2libc</strong>：<ol>
-<li><a href="https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-level0-Writeup/">攻防世界 level0 Writeup</a></li>
-<li><a href="https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-level2-Writeup/">攻防世界 level2 Writeup</a></li>
-<li><a href="https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-You-know-0xDiablos-Writeup/">HTB You_know_0xDiablos Writeup</a></li>
-<li><a href="https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/TJCTF-2025-pwn-i-love-birds-Writeup/">TJCTF 2025 pwn/i-love-birds Writeup</a> </li>
-<li><a href="https://archer-baiyi.github.io/2025/08/15/CTF/Pwn/TUM-Binary-Exploitation-qualification-challenge/">TUM Binary Exploitation qualification challenge</a> （这题在利用Buffer Overflow漏洞修改返回地址的基础上多了一个需要绕过的检测。）</li>
-</ol>
-</li>
 <li><strong>ret2shellcode</strong>：<ol>
 <li><a href="https://archer-baiyi.github.io/2025/06/11/CTF/Pwn/HTB-Regularity-Writeup/">HTB Regularity Writeup</a></li>
 </ol>
 </li>
-<li>3</li>
+<li><strong>ret2text</strong>：<ol>
+<li><a href="https://archer-baiyi.github.io/2025/10/04/CTF/Pwn/CTF-show-Pwn%E5%85%A5%E9%97%A8/#Pwn38">CTF.show Pwn入门 Pwn 38</a></li>
+<li><a href="https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-level0-Writeup/">攻防世界 level0 Writeup</a></li>
+<li><a href="https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/TJCTF-2025-pwn-i-love-birds-Writeup/">TJCTF 2025 pwn/i-love-birds Writeup</a> </li>
+</ol>
+</li>
+<li><strong>ret2plt</strong>：<ol>
+<li><a href="https://archer-baiyi.github.io/2025/10/04/CTF/Pwn/CTF-show-Pwn%E5%85%A5%E9%97%A8/#Pwn40">CTF.show Pwn入门 Pwn 40</a></li>
+<li><a href="https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-level2-Writeup/">攻防世界 level2 Writeup</a> （32位程序）</li>
+<li><a href="https://archer-baiyi.github.io/2025/06/09/CTF/Pwn/HTB-You-know-0xDiablos-Writeup/">HTB You_know_0xDiablos Writeup</a> （32位程序）</li>
+</ol>
+</li>
+<li><strong>ret2libc</strong>：<ol>
+<li><a href="https://archer-baiyi.github.io/2025/10/04/CTF/Pwn/CTF-show-Pwn%E5%85%A5%E9%97%A8/#Pwn46">CTF.show Pwn入门 Pwn 46</a></li>
+</ol>
+</li>
+<li>5</li>
 </ol>
 </li>
 </ol>
@@ -3877,7 +4091,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><a href="https://archer-baiyi.github.io/2025/05/19/CTF/Pwn/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-CGfsb-Writeup/">攻防世界 CGfsb Writeup</a> （利用格式化字符串漏洞修改目标变量的值。）</li>
 </ol>
 </li>
-<li>未完待续…</li>
+<li><strong>堆利用</strong>：</li>
 </ol>
 
   </div>
@@ -4042,7 +4256,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">背景知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%EF%BC%88Address-space%EF%BC%8CProzess-Adressraum%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">地址空间（Address space，Prozess Adressraum）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#X86%E6%B1%87%E7%BC%96"><span class="toc-number">1.2.</span> <span class="toc-text">X86汇编</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gadget"><span class="toc-number">1.3.</span> <span class="toc-text">gadget</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="toc-number">2.</span> <span class="toc-text">安全性检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GDB"><span class="toc-number">3.1.</span> <span class="toc-text">GDB</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">3.1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Pwndbg"><span class="toc-number">3.1.2.</span> <span class="toc-text">安装Pwndbg</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.1.3.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E5%81%8F%E7%A7%BB"><span class="toc-number">3.1.4.</span> <span class="toc-text">确定返回地址偏移</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">3.1.5.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDA-Ghidra"><span class="toc-number">3.2.</span> <span class="toc-text">IDA&#x2F;Ghidra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pwntools"><span class="toc-number">3.3.</span> <span class="toc-text">Pwntools</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-1"><span class="toc-number">3.3.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-API%EF%BC%88%E6%8C%89%E4%BB%BB%E5%8A%A1%E5%88%86%E7%B1%BB%EF%BC%89"><span class="toc-number">3.3.2.</span> <span class="toc-text">常用 API（按任务分类）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF"><span class="toc-number">3.3.3.</span> <span class="toc-text">模板</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ropgadget"><span class="toc-number">3.4.</span> <span class="toc-text">Ropgadget</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E4%BB%A5%E5%8F%8A%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">漏洞以及利用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%A2%E5%87%BA-Buffer-Overflow"><span class="toc-number">5.</span> <span class="toc-text">溢出 Buffer Overflow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E-%E5%B8%B8%E8%A7%81%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0"><span class="toc-number">5.1.</span> <span class="toc-text">漏洞&#x2F;常见危险函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AD%97%E6%AE%B5%E5%8A%AB%E6%8C%81"><span class="toc-number">5.2.</span> <span class="toc-text">结构体字段劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ROP%EF%BC%88Return-Oriented-Programming%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">ROP（Return Oriented Programming）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2text"><span class="toc-number">5.3.1.</span> <span class="toc-text">ret2text</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2shellcode"><span class="toc-number">5.3.2.</span> <span class="toc-text">ret2shellcode</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Shellcode"><span class="toc-number">5.3.2.1.</span> <span class="toc-text">Shellcode</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ret2shellcode-1"><span class="toc-number">5.3.2.2.</span> <span class="toc-text">ret2shellcode</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2plt"><span class="toc-number">5.3.3.</span> <span class="toc-text">ret2plt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2libc"><span class="toc-number">5.3.4.</span> <span class="toc-text">ret2libc</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%AB%E6%8C%81%E6%8E%A7%E5%88%B6%E6%B5%81-Control-Flow-Hijack"><span class="toc-number">5.4.</span> <span class="toc-text">劫持控制流&#x2F;Control Flow Hijack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stack-Canary"><span class="toc-number">5.5.</span> <span class="toc-text">Stack Canary</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%BC%8F%E6%B4%9E-Format-String-Vulnerability"><span class="toc-number">6.</span> <span class="toc-text">格式化字符串漏洞 Format String Vulnerability</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0"><span class="toc-number">6.1.</span> <span class="toc-text">格式化字符串函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0-1"><span class="toc-number">6.1.1.</span> <span class="toc-text">格式化字符串函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">6.1.2.</span> <span class="toc-text">格式化字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">6.1.3.</span> <span class="toc-text">变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%BC%8F%E6%B4%9E"><span class="toc-number">6.2.</span> <span class="toc-text">格式化字符串漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%98%AF%E6%80%8E%E4%B9%88%E4%BC%A0%E8%BF%9B-printf-%E7%9A%84%EF%BC%8832-bit-%E5%92%8C-64-bit%EF%BC%89"><span class="toc-number">6.2.1.</span> <span class="toc-text">参数是怎么传进 printf 的（32-bit 和 64-bit）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#32-bit%EF%BC%88cdecl%EF%BC%89%E2%80%94%E2%80%94%E5%85%A8%E9%83%A8%E8%B5%B0%E6%A0%88"><span class="toc-number">6.2.1.1.</span> <span class="toc-text">32-bit（cdecl）——全部走栈</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#x86-64%EF%BC%88System-V-ABI%EF%BC%89%E2%80%94%E2%80%94%E5%AF%84%E5%AD%98%E5%99%A8%E4%BC%98%E5%85%88-%E6%BA%A2%E5%87%BA%E5%88%B0%E6%A0%88"><span class="toc-number">6.2.1.2.</span> <span class="toc-text">x86-64（System V ABI）——寄存器优先 + 溢出到栈</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5%E4%BB%A5%E5%8F%8A%E5%81%8F%E5%B7%AE%E5%80%BC"><span class="toc-number">6.2.2.</span> <span class="toc-text">特殊情况以及偏差值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E8%A1%A8%E7%8E%B0"><span class="toc-number">6.2.3.</span> <span class="toc-text">漏洞表现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exploit%E6%8A%80%E5%B7%A7"><span class="toc-number">6.3.</span> <span class="toc-text">Exploit技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%A0%88%E4%B8%8A%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">6.3.1.</span> <span class="toc-text">读取栈上的内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E4%BB%BB%E6%84%8F%E5%9C%B0%E5%9D%80%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">6.3.2.</span> <span class="toc-text">读取任意地址的字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%B5%81%E7%A8%8B"><span class="toc-number">6.3.2.1.</span> <span class="toc-text">一般流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%85%A5"><span class="toc-number">6.3.3.</span> <span class="toc-text">写入</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%B5%81%E7%A8%8B-1"><span class="toc-number">6.3.3.1.</span> <span class="toc-text">一般流程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%86%99-1-%E5%AD%97%E8%8A%82%EF%BC%88-hhn%EF%BC%89"><span class="toc-number">6.3.3.2.</span> <span class="toc-text">写 1 字节（%hhn）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#fmtstr-payload"><span class="toc-number">6.3.3.3.</span> <span class="toc-text">fmtstr_payload</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">6.4.</span> <span class="toc-text">例题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E5%88%A9%E7%94%A8-Heap-Exploitation"><span class="toc-number">7.</span> <span class="toc-text">堆利用&#x2F;Heap Exploitation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Glibc-2-31"><span class="toc-number">7.0.1.</span> <span class="toc-text">Glibc 2.31</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Glibc-2-41"><span class="toc-number">7.0.2.</span> <span class="toc-text">Glibc 2.41</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95"><span class="toc-number">7.1.</span> <span class="toc-text">攻击方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Fastbin-Tcache-FD-Corruption-FD-%E6%8C%87%E9%92%88%E7%AF%A1%E6%94%B9"><span class="toc-number">7.1.1.</span> <span class="toc-text">1. Fastbin&#x2F;Tcache FD Corruption (FD 指针篡改)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Size-Corruption-%E5%A4%A7%E5%B0%8F%E7%AF%A1%E6%94%B9-Overlapping-Chunks"><span class="toc-number">7.1.2.</span> <span class="toc-text">2. Size Corruption (大小篡改 &#x2F; Overlapping Chunks)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Smallbin-Consolidation-Smallbin-%E5%90%88%E5%B9%B6%E6%94%BB%E5%87%BB"><span class="toc-number">7.1.3.</span> <span class="toc-text">3. Smallbin Consolidation (Smallbin 合并攻击)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E5%B7%A5%E5%85%B7"><span class="toc-number">7.2.</span> <span class="toc-text">推荐工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="toc-number">7.3.</span> <span class="toc-text">学习资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8pwndbg%E5%91%BD%E4%BB%A4"><span class="toc-number">7.4.</span> <span class="toc-text">常用pwndbg命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%88%86%E7%B1%BB"><span class="toc-number">8.</span> <span class="toc-text">题目分类</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">背景知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%EF%BC%88Address-space%EF%BC%8CProzess-Adressraum%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">地址空间（Address space，Prozess Adressraum）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#X86%E6%B1%87%E7%BC%96"><span class="toc-number">1.2.</span> <span class="toc-text">X86汇编</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gadget"><span class="toc-number">1.3.</span> <span class="toc-text">Gadget</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="toc-number">2.</span> <span class="toc-text">安全性检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GDB"><span class="toc-number">3.1.</span> <span class="toc-text">GDB</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">3.1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Pwndbg"><span class="toc-number">3.1.2.</span> <span class="toc-text">安装Pwndbg</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.1.3.</span> <span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80%E5%81%8F%E7%A7%BB"><span class="toc-number">3.1.4.</span> <span class="toc-text">确定返回地址偏移</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">3.1.5.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDA-Ghidra"><span class="toc-number">3.2.</span> <span class="toc-text">IDA&#x2F;Ghidra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pwntools"><span class="toc-number">3.3.</span> <span class="toc-text">Pwntools</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-1"><span class="toc-number">3.3.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8-API%EF%BC%88%E6%8C%89%E4%BB%BB%E5%8A%A1%E5%88%86%E7%B1%BB%EF%BC%89"><span class="toc-number">3.3.2.</span> <span class="toc-text">常用 API（按任务分类）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF"><span class="toc-number">3.3.3.</span> <span class="toc-text">模板</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ropgadget"><span class="toc-number">3.4.</span> <span class="toc-text">Ropgadget</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E4%BB%A5%E5%8F%8A%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">漏洞以及利用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%A2%E5%87%BA-Buffer-Overflow"><span class="toc-number">5.</span> <span class="toc-text">溢出 Buffer Overflow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E-%E5%B8%B8%E8%A7%81%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0"><span class="toc-number">5.1.</span> <span class="toc-text">漏洞&#x2F;常见危险函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AD%97%E6%AE%B5%E5%8A%AB%E6%8C%81"><span class="toc-number">5.2.</span> <span class="toc-text">结构体字段劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ROP%EF%BC%88Return-Oriented-Programming%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">ROP（Return Oriented Programming）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2text"><span class="toc-number">5.3.1.</span> <span class="toc-text">ret2text</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2shellcode"><span class="toc-number">5.3.2.</span> <span class="toc-text">ret2shellcode</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Shellcode"><span class="toc-number">5.3.2.1.</span> <span class="toc-text">Shellcode</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ret2shellcode-1"><span class="toc-number">5.3.2.2.</span> <span class="toc-text">ret2shellcode</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2plt"><span class="toc-number">5.3.3.</span> <span class="toc-text">ret2plt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ret2libc"><span class="toc-number">5.3.4.</span> <span class="toc-text">ret2libc</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%AB%E6%8C%81%E6%8E%A7%E5%88%B6%E6%B5%81-Control-Flow-Hijack"><span class="toc-number">5.4.</span> <span class="toc-text">劫持控制流&#x2F;Control Flow Hijack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E9%87%91%E4%B8%9D%E9%9B%80-Stack-Canary"><span class="toc-number">5.5.</span> <span class="toc-text">栈金丝雀&#x2F;Stack Canary</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%BC%8F%E6%B4%9E-Format-String-Vulnerability"><span class="toc-number">6.</span> <span class="toc-text">格式化字符串漏洞 Format String Vulnerability</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0"><span class="toc-number">6.1.</span> <span class="toc-text">格式化字符串函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0-1"><span class="toc-number">6.1.1.</span> <span class="toc-text">格式化字符串函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">6.1.2.</span> <span class="toc-text">格式化字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">6.1.3.</span> <span class="toc-text">变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%BC%8F%E6%B4%9E"><span class="toc-number">6.2.</span> <span class="toc-text">格式化字符串漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%98%AF%E6%80%8E%E4%B9%88%E4%BC%A0%E8%BF%9B-printf-%E7%9A%84%EF%BC%8832-bit-%E5%92%8C-64-bit%EF%BC%89"><span class="toc-number">6.2.1.</span> <span class="toc-text">参数是怎么传进 printf 的（32-bit 和 64-bit）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#32-bit%EF%BC%88cdecl%EF%BC%89%E2%80%94%E2%80%94%E5%85%A8%E9%83%A8%E8%B5%B0%E6%A0%88"><span class="toc-number">6.2.1.1.</span> <span class="toc-text">32-bit（cdecl）——全部走栈</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#x86-64%EF%BC%88System-V-ABI%EF%BC%89%E2%80%94%E2%80%94%E5%AF%84%E5%AD%98%E5%99%A8%E4%BC%98%E5%85%88-%E6%BA%A2%E5%87%BA%E5%88%B0%E6%A0%88"><span class="toc-number">6.2.1.2.</span> <span class="toc-text">x86-64（System V ABI）——寄存器优先 + 溢出到栈</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5%E4%BB%A5%E5%8F%8A%E5%81%8F%E5%B7%AE%E5%80%BC"><span class="toc-number">6.2.2.</span> <span class="toc-text">特殊情况以及偏差值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E8%A1%A8%E7%8E%B0"><span class="toc-number">6.2.3.</span> <span class="toc-text">漏洞表现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exploit%E6%8A%80%E5%B7%A7"><span class="toc-number">6.3.</span> <span class="toc-text">Exploit技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%A0%88%E4%B8%8A%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">6.3.1.</span> <span class="toc-text">读取栈上的内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E4%BB%BB%E6%84%8F%E5%9C%B0%E5%9D%80%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">6.3.2.</span> <span class="toc-text">读取任意地址的字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%B5%81%E7%A8%8B"><span class="toc-number">6.3.2.1.</span> <span class="toc-text">一般流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%85%A5"><span class="toc-number">6.3.3.</span> <span class="toc-text">写入</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%B5%81%E7%A8%8B-1"><span class="toc-number">6.3.3.1.</span> <span class="toc-text">一般流程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%86%99-1-%E5%AD%97%E8%8A%82%EF%BC%88-hhn%EF%BC%89"><span class="toc-number">6.3.3.2.</span> <span class="toc-text">写 1 字节（%hhn）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#fmtstr-payload"><span class="toc-number">6.3.3.3.</span> <span class="toc-text">fmtstr_payload</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E5%88%A9%E7%94%A8-Heap-Exploitation"><span class="toc-number">7.</span> <span class="toc-text">堆利用&#x2F;Heap Exploitation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Glibc-2-31"><span class="toc-number">7.0.1.</span> <span class="toc-text">Glibc 2.31</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Glibc-2-41"><span class="toc-number">7.0.2.</span> <span class="toc-text">Glibc 2.41</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95"><span class="toc-number">7.1.</span> <span class="toc-text">攻击方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Fastbin-Tcache-FD-Corruption-FD-%E6%8C%87%E9%92%88%E7%AF%A1%E6%94%B9"><span class="toc-number">7.1.1.</span> <span class="toc-text">1. Fastbin&#x2F;Tcache FD Corruption (FD 指针篡改)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Size-Corruption-%E5%A4%A7%E5%B0%8F%E7%AF%A1%E6%94%B9-Overlapping-Chunks"><span class="toc-number">7.1.2.</span> <span class="toc-text">2. Size Corruption (大小篡改 &#x2F; Overlapping Chunks)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Smallbin-Consolidation-Smallbin-%E5%90%88%E5%B9%B6%E6%94%BB%E5%87%BB"><span class="toc-number">7.1.3.</span> <span class="toc-text">3. Smallbin Consolidation (Smallbin 合并攻击)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E5%B7%A5%E5%85%B7"><span class="toc-number">7.2.</span> <span class="toc-text">推荐工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="toc-number">7.3.</span> <span class="toc-text">学习资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8pwndbg%E5%91%BD%E4%BB%A4"><span class="toc-number">7.4.</span> <span class="toc-text">常用pwndbg命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%88%86%E7%B1%BB"><span class="toc-number">8.</span> <span class="toc-text">题目分类</span></a></li></ol>
   </div>
 </section>
 
@@ -4657,7 +4871,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Pwn/","name":"Pwn"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn入门/","name":"Pwn入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Pwn入门","description":"零基础Pwn入门","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn%E5%85%A5%E9%97%A8/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn%E5%85%A5%E9%97%A8/","wordCount":8,"datePublished":"2025-05-12T15:01:08.000Z","dateModified":"2025-12-25T20:18:57.367Z","articleSection":"CTF","keywords":"Pwn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/CTF/Pwn/","name":"Pwn"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn入门/","name":"Pwn入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Pwn入门","description":"零基础Pwn入门","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn%E5%85%A5%E9%97%A8/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/05/12/CTF/Pwn/Pwn%E5%85%A5%E9%97%A8/","wordCount":8,"datePublished":"2025-05-12T15:01:08.000Z","dateModified":"2025-12-26T00:07:29.868Z","articleSection":"CTF","keywords":"Pwn","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
