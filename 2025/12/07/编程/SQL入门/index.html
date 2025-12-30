@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-12-07T21:53:03.000Z">
-<meta property="article:modified_time" content="2025-12-29T22:15:53.806Z">
+<meta property="article:modified_time" content="2025-12-30T11:03:45.015Z">
 <meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2246,7 +2246,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1767047634006),
+    lastupdate: new Date(1767092647334),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2720,10 +2720,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-29T23:15:53+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-30T12:03:45+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>Last UpdatedDec 29, 2025</p>
+    <p>Last UpdatedDec 30, 2025</p>
   </a>
 </div>
 
@@ -2839,7 +2839,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>比如说我们想知道哪些Level的人数超过了3：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Level, <span class="built_in">COUNT</span>(<span class="operator">*</span>)</span><br><span class="line"><span class="keyword">FROM</span> Professors</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Level</span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
 <p><img src="/images/image-20251229203038546.png" class="lazyload" data-srcset="/images/image-20251229203038546.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251229203038546"></p>
-<h3 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a><strong>嵌套</strong></h3><p>假如我们想知道哪些学生的学期数在平均学期数以下，就需要拆成2步来完成</p>
+<h3 id="子查询-嵌套"><a href="#子查询-嵌套" class="headerlink" title="子查询/嵌套"></a><strong>子查询/嵌套</strong></h3><p>假如我们想知道哪些学生的学期数在平均学期数以下，就需要拆成2步来完成</p>
 <ul>
 <li><p>计算平均学期数（先生成一个子列表）</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(Semester)</span><br><span class="line"><span class="keyword">FROM</span> Students</span><br></pre></td></tr></table></figure>
@@ -2856,7 +2856,118 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Name</span><br><span class="line"><span class="keyword">FROM</span> Students, (<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(Semester) <span class="keyword">AS</span> avg_semester</span><br><span class="line">				  <span class="keyword">FROM</span> Students) avg</span><br><span class="line"><span class="keyword">WHERE</span> Semester <span class="operator">&lt;</span> avg_semester</span><br></pre></td></tr></table></figure>
 <p><img src="/images/image-20251229223919452.png" class="lazyload" data-srcset="/images/image-20251229223919452.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251229223919452"></p>
 <p>这样会高效很多。</p>
-<h2 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a><strong>窗口函数</strong></h2>
+<h3 id="WITH-AS"><a href="#WITH-AS" class="headerlink" title="WITH AS"></a><strong>WITH AS</strong></h3><p><code>WITH AS</code>的功能是<strong>在一条 SQL 里给一段子查询/临时结果起名字</strong>，后面就能像用表一样用它。</p>
+<p>注意，<code>WITH AS</code>和子查询是等价的，但是用<code>WITH AS</code>会更容易阅读和理解。</p>
+<p>基本语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> 名字(可选列名列表) <span class="keyword">AS</span> (</span><br><span class="line">  一条查询</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SELECT</span> ...</span><br><span class="line"><span class="keyword">FROM</span> 名字;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p>例子：查询C4教授的房间（先找C4教授，再查询他们的房间）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> C4Prof <span class="keyword">AS</span> (</span><br><span class="line">  <span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">FROM</span> Professors</span><br><span class="line">  <span class="keyword">WHERE</span> Level <span class="operator">=</span> <span class="string">&#x27;C4&#x27;</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">SELECT</span> Name, Room</span><br><span class="line"><span class="keyword">FROM</span> C4Prof;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p>也可以用<code>VALUES</code>临时造数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> Professors ( persnr , name , paygrade , room , salary , taxclass ) <span class="keyword">as</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">VALUES</span> 	(<span class="number">2125</span> , <span class="string">&#x27; Sokrates &#x27;</span> , <span class="string">&#x27; C4 &#x27;</span> ,<span class="number">226</span> ,<span class="number">85000</span> ,<span class="number">1</span>) ,</span><br><span class="line">		(<span class="number">2126</span> , <span class="string">&#x27; Russel &#x27;</span> , <span class="string">&#x27; C4 &#x27;</span> ,<span class="number">232</span> ,<span class="number">80000</span> ,<span class="number">3</span>) ,</span><br><span class="line">		(<span class="number">2127</span> , <span class="string">&#x27; Kopernikus &#x27;</span> , <span class="string">&#x27; C3 &#x27;</span> ,<span class="number">310</span> ,<span class="number">65000</span> ,<span class="number">5</span>) ,</span><br><span class="line">		(<span class="number">2128</span> , <span class="string">&#x27; Aristoteles &#x27;</span> , <span class="string">&#x27; C4 &#x27;</span> ,<span class="number">250</span> ,<span class="number">85000</span> ,<span class="number">1</span>) ,</span><br><span class="line">		(<span class="number">2133</span> , <span class="string">&#x27; Popper &#x27;</span> , <span class="string">&#x27; C3 &#x27;</span> ,<span class="number">52</span> ,<span class="number">68000</span> ,<span class="number">1</span>) ,</span><br><span class="line">		(<span class="number">2134</span> , <span class="string">&#x27; Augustinus &#x27;</span> , <span class="string">&#x27; C3 &#x27;</span> ,<span class="number">309</span> ,<span class="number">55000</span> ,<span class="number">5</span>) ,</span><br><span class="line">		(<span class="number">2136</span> , <span class="string">&#x27; Curie &#x27;</span> , <span class="string">&#x27; C4 &#x27;</span> ,<span class="number">36</span> ,<span class="number">95000</span> ,<span class="number">3</span>) ,</span><br><span class="line">		(<span class="number">2137</span> , <span class="string">&#x27; Kant &#x27;</span> , <span class="string">&#x27; C4 &#x27;</span> ,<span class="number">7</span> ,<span class="number">98000</span> ,<span class="number">1</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SELECT</span> persnr , name , paygrade , room , salary , taxclass</span><br><span class="line"><span class="keyword">FROM</span> Professors;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/image-20251230120003507.png" class="lazyload" data-srcset="/images/image-20251230120003507.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251230120003507"></p>
+<p><br></p>
+<p>又或者是之前这个例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Name</span><br><span class="line"><span class="keyword">FROM</span> Students, (<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(Semester) <span class="keyword">AS</span> avg_semester</span><br><span class="line">				  <span class="keyword">FROM</span> Students) avg</span><br><span class="line"><span class="keyword">WHERE</span> Semester <span class="operator">&lt;</span> avg_semester</span><br></pre></td></tr></table></figure>
+<p>改成用WITH AS就是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> avg <span class="keyword">AS</span> (<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(Semester) <span class="keyword">AS</span> avg_semester</span><br><span class="line">			 <span class="keyword">FROM</span> Students)</span><br><span class="line"><span class="keyword">SELECT</span> Name</span><br><span class="line"><span class="keyword">FROM</span> Students, avg</span><br><span class="line"><span class="keyword">WHERE</span> Semester <span class="operator">&lt;</span> avg_semester</span><br></pre></td></tr></table></figure>
+<h2 id="建表"><a href="#建表" class="headerlink" title="建表"></a><strong>建表</strong></h2><h3 id="基础-1"><a href="#基础-1" class="headerlink" title="基础"></a><strong>基础</strong></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> Students (</span><br><span class="line">  StudNr   <span class="type">INT</span>,</span><br><span class="line">  Name     <span class="type">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">  Semester <span class="type">INT</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>含义：</p>
+<ul>
+<li><code>CREATE TABLE 表名 (...)</code>：创建表</li>
+<li>括号里每行：<code>列名 数据类型</code></li>
+</ul>
+<p>常见数据类型（不同库略有差别）：</p>
+<ul>
+<li>整数：<code>INT</code> / <code>BIGINT</code></li>
+<li>小数：<code>DECIMAL(p,s)</code>（精确）/ <code>DOUBLE</code>（浮点）</li>
+<li>字符串：<code>VARCHAR(n)</code> / <code>TEXT</code></li>
+<li>日期时间：<code>DATE</code> / <code>TIMESTAMP</code></li>
+<li>布尔：<code>BOOLEAN</code></li>
+</ul>
+<h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a><strong>约束</strong></h3><p>但我们往往需要加上些条件，比如说非空，指定主键：</p>
+<ul>
+<li><p>主键<code>PRIMARY KEY</code>（唯一 + 非空）</p>
+</li>
+<li><p><code>NOT NULL</code>（不允许空）</p>
+</li>
+<li><p><code>UNIQUE</code>（不允许重复）</p>
+</li>
+<li><p><code>DEFAULT</code>（缺省值）</p>
+</li>
+<li><p><code>CHECK</code>（自定义规则）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Grade <span class="type">DECIMAL</span>(<span class="number">2</span>,<span class="number">1</span>) <span class="keyword">CHECK</span> (Grade <span class="operator">&gt;=</span> <span class="number">1.0</span> <span class="keyword">AND</span> Grade <span class="operator">&lt;=</span> <span class="number">5.0</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> Professors (</span><br><span class="line">  PersNr <span class="type">INT</span> <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">  Name   <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">  Level  <span class="type">VARCHAR</span>(<span class="number">2</span>),</span><br><span class="line">  Room   <span class="type">INT</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="CTAS"><a href="#CTAS" class="headerlink" title="CTAS"></a><strong>CTAS</strong></h3><p><strong>CREATE TABLE AS SELECT</strong>（简称 <strong>CTAS</strong>），就是用查询结果建表。</p>
+<p>例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> C4_Professors <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> PersNr, Name, Room</span><br><span class="line"><span class="keyword">FROM</span> Professors</span><br><span class="line"><span class="keyword">WHERE</span> Level <span class="operator">=</span> <span class="string">&#x27;C4&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>特点：</p>
+<ul>
+<li>新表会包含查询出来的列</li>
+<li>很多数据库会把类型推导出来</li>
+<li>约束（主键/外键/NOT NULL 等）通常<strong>不会自动带过去</strong>（不同库细节不同），需要另加</li>
+</ul>
+<h3 id="临时表（TEMP-TEMPORARY）"><a href="#临时表（TEMP-TEMPORARY）" class="headerlink" title="临时表（TEMP / TEMPORARY）"></a><strong>临时表（TEMP / TEMPORARY）</strong></h3><p>只在当前会话存在，断开就没了：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TEMP <span class="keyword">TABLE</span> tmp_top_students <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> StudNr, <span class="built_in">AVG</span>(Grade) <span class="keyword">AS</span> avg_grade</span><br><span class="line"><span class="keyword">FROM</span> test</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> StudNr;</span><br></pre></td></tr></table></figure>
+<h2 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a><strong>窗口函数</strong></h2><p>窗口函数（<strong>window function</strong>）可以把它理解成：<strong>“对每一行，都能基于‘一组相关的行’计算出一个值，但又不会把行合并掉”</strong>。</p>
+<p>和之前的分组（<code>GROUP BY</code>）的区别：</p>
+<ul>
+<li><strong>普通聚合 + GROUP BY</strong>：会把多行“压成一行”（一组只剩一行）。</li>
+<li><strong>窗口函数</strong>：每一行都还在，但可以在每一行旁边<strong>附加</strong>一个聚合/排名/累计值。</li>
+</ul>
+<p>窗口函数的典型形式是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span>窗口函数<span class="operator">&gt;</span>(...) <span class="keyword">OVER</span> (</span><br><span class="line">  <span class="keyword">PARTITION</span> <span class="keyword">BY</span> ...</span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> ...</span><br><span class="line">  <span class="operator">&lt;</span>frame<span class="operator">&gt;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>PARTITION BY ...</code>：按什么分组（每组独立算）</li>
+<li><code>ORDER BY ...</code>：组内顺序（排名/累计/相邻必备）</li>
+<li><code>Frame</code>：<code>ROWS ...</code> / <code>RANGE ...</code><ul>
+<li><code>ROWS BETWEEN 2 PRECEDING AND 2 FOLLOWING</code>（按行数滑窗）</li>
+<li><code>RANGE BETWEEN 5000 PRECEDING AND 5000 FOLLOWING</code>（按值范围滑窗）</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<p><strong>例子1：</strong>比如说我们同时想知道每个学生上的课的总数以及具体是哪些课的话，就需要：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> s.name,</span><br><span class="line">     l.Title,</span><br><span class="line">     <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> a.StudNr) <span class="keyword">AS</span> total_attended_lectures</span><br><span class="line"><span class="keyword">FROM</span> Students s, Lectures l, attend a</span><br><span class="line"><span class="keyword">WHERE</span> s.StudNr <span class="operator">=</span> a.StudNr</span><br><span class="line">  <span class="keyword">AND</span> l.LectureNr <span class="operator">=</span> a.LectureNr;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/image-20251230112006687.png" class="lazyload" data-srcset="/images/image-20251230112006687.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251230112006687"></p>
+<p>或者</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> s.name,</span><br><span class="line">       l.Title,</span><br><span class="line">       <span class="built_in">SUM</span>(<span class="number">1</span>) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> a.StudNr) <span class="keyword">AS</span> total_attended_lectures</span><br><span class="line"><span class="keyword">FROM</span> Students s, Lectures l, attend a</span><br><span class="line"><span class="keyword">WHERE</span> s.StudNr <span class="operator">=</span> a.StudNr</span><br><span class="line">  <span class="keyword">AND</span> l.LectureNr <span class="operator">=</span> a.LectureNr;</span><br></pre></td></tr></table></figure>
+<p>也是一样的效果。</p>
+<p><br></p>
+<p><strong>例子2：</strong>假如我们现在只关注现有的test表，想知道每个学生的排名：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> s.name, t.Grade, <span class="built_in">rank</span>()<span class="keyword">OVER</span> ( <span class="keyword">ORDER</span> <span class="keyword">BY</span> t.Grade <span class="keyword">ASC</span>)</span><br><span class="line"><span class="keyword">FROM</span> Students s, test t</span><br><span class="line"><span class="keyword">WHERE</span> s.StudNr <span class="operator">=</span> t.StudNr</span><br></pre></td></tr></table></figure>
+<p><img src="/images/image-20251230110235179.png" class="lazyload" data-srcset="/images/image-20251230110235179.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20251230110235179"></p>
+<p>这里的rank会自动实现跳号的功能，即如果A,B的值为1，C的值为2，那么A,B的排名都是1，C的排名会自动变成3，而不是2。</p>
+<h3 id="常用的窗口函数"><a href="#常用的窗口函数" class="headerlink" title="常用的窗口函数"></a><strong>常用的窗口函数</strong></h3><p>1）排名类：</p>
+<p>用来给每行一个名次/序号。</p>
+<ul>
+<li><code>ROW_NUMBER()</code>：每行一个唯一序号（不管并列）（1,2,3,4…）</li>
+<li><code>RANK()</code>：并列同名次，会跳号（1,1,3…）</li>
+<li><code>DENSE_RANK()</code>：并列同名次，不跳号（1,1,2…）</li>
+<li><code>PERCENT_RANK()</code>：把排名映射到 0~1（相对排名）</li>
+<li><code>CUME_DIST()</code>：累计分布（&lt;= 当前行的比例）</li>
+<li><code>NTILE(n)</code>：分桶，把排序后的行分成 n 份（比如分成 4 桶做四分位）</li>
+</ul>
+<p>2）聚合类（在<code>GROUP BY</code>里用的聚合函数也可以用在窗口上）：</p>
+<ul>
+<li><code>SUM(...) OVER (...)</code>：组内总和 / 累计和</li>
+<li><code>AVG(...) OVER (...)</code>：组内平均 / 滑动平均</li>
+<li><code>COUNT(...) OVER (...)</code>：组内计数 / 累计计数</li>
+<li><code>MIN/MAX(...) OVER (...)</code>：组内最小/最大（也可做滚动最小/最大）</li>
+</ul>
+<p>3）取相邻对象（分析趋势、做差分）</p>
+<ul>
+<li><code>LAG(x, k, default)</code>：往前第 k 行的 x（默认 k=1）</li>
+<li><code>LEAD(x, k, default)</code>：往后第 k 行的 x</li>
+<li><code>FIRST_VALUE(x)</code>：窗口内第一行的 x</li>
+<li><code>LAST_VALUE(x)</code>：窗口内最后一行的 x</li>
+<li><code>NTH_VALUE(x, n)</code>：窗口内第 n 行的 x（不是所有库都有）</li>
+</ul>
+
   </div>
   
   
@@ -3014,7 +3125,7 @@ Factorization（...</p>
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSQL%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是SQL？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-number">3.</span> <span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DISTINCT"><span class="toc-number">3.1.</span> <span class="toc-text">DISTINCT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ORDER-BY"><span class="toc-number">3.2.</span> <span class="toc-text">ORDER BY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LIMIT"><span class="toc-number">3.3.</span> <span class="toc-text">LIMIT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WHERE"><span class="toc-number">3.4.</span> <span class="toc-text">WHERE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D"><span class="toc-number">3.5.</span> <span class="toc-text">命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#COUNT"><span class="toc-number">3.6.</span> <span class="toc-text">COUNT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GROUP-BY"><span class="toc-number">3.7.</span> <span class="toc-text">GROUP BY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HAVING"><span class="toc-number">3.8.</span> <span class="toc-text">HAVING</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97"><span class="toc-number">3.9.</span> <span class="toc-text">嵌套</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">窗口函数</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSQL%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是SQL？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-number">3.</span> <span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DISTINCT"><span class="toc-number">3.1.</span> <span class="toc-text">DISTINCT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ORDER-BY"><span class="toc-number">3.2.</span> <span class="toc-text">ORDER BY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LIMIT"><span class="toc-number">3.3.</span> <span class="toc-text">LIMIT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WHERE"><span class="toc-number">3.4.</span> <span class="toc-text">WHERE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D"><span class="toc-number">3.5.</span> <span class="toc-text">命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#COUNT"><span class="toc-number">3.6.</span> <span class="toc-text">COUNT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GROUP-BY"><span class="toc-number">3.7.</span> <span class="toc-text">GROUP BY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HAVING"><span class="toc-number">3.8.</span> <span class="toc-text">HAVING</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E6%9F%A5%E8%AF%A2-%E5%B5%8C%E5%A5%97"><span class="toc-number">3.9.</span> <span class="toc-text">子查询&#x2F;嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WITH-AS"><span class="toc-number">3.10.</span> <span class="toc-text">WITH AS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E8%A1%A8"><span class="toc-number">4.</span> <span class="toc-text">建表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80-1"><span class="toc-number">4.1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A6%E6%9D%9F"><span class="toc-number">4.2.</span> <span class="toc-text">约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CTAS"><span class="toc-number">4.3.</span> <span class="toc-text">CTAS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E8%A1%A8%EF%BC%88TEMP-TEMPORARY%EF%BC%89"><span class="toc-number">4.4.</span> <span class="toc-text">临时表（TEMP &#x2F; TEMPORARY）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">窗口函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="toc-number">5.1.</span> <span class="toc-text">常用的窗口函数</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3629,7 +3740,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/编程/","name":"编程"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/12/07/编程/SQL入门/","name":"SQL入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"SQL入门","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/12/07/%E7%BC%96%E7%A8%8B/SQL%E5%85%A5%E9%97%A8/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/12/07/%E7%BC%96%E7%A8%8B/SQL%E5%85%A5%E9%97%A8/","wordCount":0,"datePublished":"2025-12-07T21:53:03.000Z","dateModified":"2025-12-29T22:15:53.806Z","articleSection":"编程","keywords":"SQL","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/编程/","name":"编程"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/12/07/编程/SQL入门/","name":"SQL入门"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"SQL入门","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/12/07/%E7%BC%96%E7%A8%8B/SQL%E5%85%A5%E9%97%A8/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/12/07/%E7%BC%96%E7%A8%8B/SQL%E5%85%A5%E9%97%A8/","wordCount":0,"datePublished":"2025-12-07T21:53:03.000Z","dateModified":"2025-12-30T11:03:45.015Z","articleSection":"编程","keywords":"SQL","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
