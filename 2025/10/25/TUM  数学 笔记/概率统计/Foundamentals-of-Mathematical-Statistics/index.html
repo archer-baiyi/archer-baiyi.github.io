@@ -37,19 +37,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Foundamentals of Mathematical Statistics - Hexo</title>
+  <title>统计 Statistics - Hexo</title>
   <meta name="keywords" content="统计,Statistics,null">
   <meta desc name="description" content="统计相关笔记 - null - Hexo">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="Foundamentals of Mathematical Statistics">
+<meta property="og:title" content="统计 Statistics">
 <meta property="og:url" content="https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/Foundamentals-of-Mathematical-Statistics/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="统计相关笔记">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-10-25T14:44:16.000Z">
-<meta property="article:modified_time" content="2025-12-27T09:59:24.479Z">
+<meta property="article:modified_time" content="2026-01-02T21:00:36.196Z">
 <meta property="article:tag" content="统计">
 <meta property="article:tag" content="Statistics">
 <meta name="twitter:card" content="summary">
@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1767194533634),
+    lastupdate: new Date(1767392695643),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2684,7 +2684,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        Foundamentals of Mathematical Statistics
+        统计 Statistics
       </h1>
       <div class='new-meta-box'>
         
@@ -2725,10 +2725,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-12-27T10:59:24+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2026-01-02T22:00:36+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>Last UpdatedDec 27, 2025</p>
+    <p>Last UpdatedJan 2, 2026</p>
   </a>
 </div>
 
@@ -3020,6 +3020,53 @@ b = \frac{n\overline{X}_n}{2\sigma^2} - \frac{m}{2\tau^2}.</script><p>We conclud
 + \big(\mathrm{Bias}_\theta[\hat{\theta}]\big)^2.
 \end{align*}</script><p><span style="float:right;">$\square$</span></p>
 <p><br></p>
+<h2 id="Sufficient-Statistics"><a href="#Sufficient-Statistics" class="headerlink" title="Sufficient Statistics"></a><strong>Sufficient Statistics</strong></h2><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>: The statistic $T$ is <strong><code>sufficient</code></strong> for model $\mathcal{P}=\{P_\theta:\theta\in\Theta\}$ if there exists a determination of the conditional distribution of $X$ given $T(X)=t$ that does not depend on $\theta$.</p></div>
+<p><br></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem (<code>Neyman’s Factorization Criterion</code>)</strong>: Let $\mathcal{P}=\{P_\theta:\theta\in\Theta\}$ be dominated by a $\sigma$-finite measure $\nu$, i.e., each $P_\theta$ has a density</p><script type="math/tex; mode=display">p_\theta(x)=\frac{dP_\theta}{d\nu}(x),\qquad \theta\in\Theta.</script><p>Then a statistic $T:\mathcal{X}\to\mathcal{Y}$ is <strong>sufficient</strong> for $\mathcal{P}$ if and only if there exist measurable non-negative functions $h$ and $g_\theta$ such that for all $\theta\in\Theta$ the density of $P_\theta$ may be given the form</p><script type="math/tex; mode=display">p_\theta(x)=g_\theta(T(x))\,h(x),\qquad x\in\mathcal{X}. \tag{3.1}</script></div>
+<p><strong>所以可以很简单地通过分解density函数来得到一个sufficient的statistic。</strong></p>
+<p><br></p>
+<div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>: A sufficient statistic $T$ is <strong><code>minimal sufficient</code></strong> if $T$ is a function of every other sufficient statistic $T’$, or more precisely if</p><script type="math/tex; mode=display">\exists\ \text{measurable map } S \text{ s.t. } T(x)=S(T'(x)) \text{ for almost every } x\in\mathcal{X}.</script><p>‘Almost every’ means that $T(x)=S(T’(x))$ for $x$ in a set $\mathcal{X}^<em>\subseteq\mathcal{X}$ with $P_\theta(\mathcal{X}^</em>)=1$ for all $\theta\in\Theta$. The existence of such a map $S$ is equivalent to</p><script type="math/tex; mode=display">T'(x)=T'(\tilde{x})\ \Longrightarrow\ T(x)=T(\tilde{x}) \qquad \forall x,\tilde{x}\in\mathcal{X}^*. \tag{3.2}</script></div>
+<p><br></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>: Let $\mathcal{P}=\{P_\theta:\theta\in\Theta\}$ be dominated by a $\sigma$-finite measure $\nu$ with densities</p><script type="math/tex; mode=display">p_\theta(x)=\frac{dP_\theta}{d\nu}(x).</script><p>Define the support $\operatorname{supp}(\mathcal{P})=\{x:\exists\,\theta\text{ with }p_\theta(x)&gt;0\}$.</p><p>Let $T$ be a statistic such that for all $x,\tilde{x}\in\operatorname{supp}(\mathcal{P})$ it holds that</p><script type="math/tex; mode=display">T(x)=T(\tilde{x})\ \Longleftrightarrow\ \exists\,c(x,\tilde{x})>0\ \forall \theta\in\Theta:\ p_\theta(x)=p_\theta(\tilde{x})\cdot c(x,\tilde{x}). \tag{3.3}</script><p>Then $T$ is <strong>minimal sufficient</strong>.</p></div>
+<p><br></p>
+<h2 id="Completeness"><a href="#Completeness" class="headerlink" title="Completeness"></a><strong>Completeness</strong></h2><div class="note green"><p><strong></strong></p><p><strong>Theorem (<code>Basu&#39;s Theorem</code>)</strong>: Let $X$ be an observation from the statistical model $\mathcal{P} = \{ P_{\theta}: \theta \in \Theta \}$ and $T$ a <strong>complete</strong> and <strong>sufficient</strong> statistic for $\theta$. If $A$ is an <strong><code>ancillary</code></strong> statistic, i.e. the distribution of $A(X)$ does not depend on $\theta$, then $A(X)$ is <strong>independent</strong> of $T(X)$.</p></div>
+<p><strong>Proof:</strong></p>
+<p>Since $A$ is ancillary, the probability</p>
+<script type="math/tex; mode=display">
+P_\theta(A(X)\in B)=P_\theta\bigl(X\in A^{-1}(B)\bigr)=c_B</script><p>will be constant with respect to $\theta$ for all $B$ in the range of $A$.<br>Since $T$ is sufficient, $E_\theta\left[\mathbf{1}_{\{A(X)\in B\}}\mid T\right]$ is a function of $T$ (independent of $\theta$).</p>
+<p>Then</p>
+<script type="math/tex; mode=display">
+E_\theta\left[P_\theta\bigl(X\in A^{-1}(B)\bigr)\right]
+= P_\theta\bigl(X\in A^{-1}(B)\bigr)
+= E_\theta\left[\mathbf{1}_{\{A(X)\in B\}}\right]
+= E_\theta\left[E_\theta\left[\mathbf{1}_{\{A(X)\in B\}}\mid T\right]\right],
+\qquad \forall \theta\in\Theta.</script><p>Hence,</p>
+<script type="math/tex; mode=display">
+E_\theta[h(T)] = 0,\qquad \forall \theta\in\Theta.</script><p>with $h(T)=P\bigl(X\in A^{-1}(B)\bigr)-E\left[\mathbf{1}_{\{A(X)\in B\}}\mid T\right].$</p>
+<p>But since $T$ is complete, this implies</p>
+<script type="math/tex; mode=display">
+0=h(T)=P_*\bigl(X\in A^{-1}(B)\bigr)-E_*\left[\mathbf{1}_{\{A(X)\in B\}}\mid T\right]
+\qquad [P\text{-a.e.}],</script><p>with $P_{\ast}$ and $E_{\ast}$ denoting to be independent of $\theta$.</p>
+<p>Let sets $B$ and $C$ be arbitrary sets from the range of $A$ and $T$, respectively.<br>Then, we have:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+P_\theta(A(X)\in B,\;T(X)\in C)
+&=E_\theta\left[\mathbf{1}_{\{A(X)\in B\}}\cdot \mathbf{1}_{\{T(X)\in C\}}\right] \\
+&=E_\theta\left[E_\theta\!\left[\mathbf{1}_{\{A(X)\in B\}}\cdot \mathbf{1}_{\{T(X)\in C\}}\mid T(X)\right]\right] \\
+&=E_\theta\left[\mathbf{1}_{\{T(X)\in C\}}\cdot E_*\!\left[\mathbf{1}_{\{A(X)\in B\}}\mid T(X)\right]\right] \\
+&=E_\theta\left[\mathbf{1}_{\{T(X)\in C\}}\cdot P_\theta\!\bigl(X\in A^{-1}(B)\bigr)\right] \\
+&=P_\theta\bigl(X\in A^{-1}(B)\bigr)\cdot E_\theta\!\left[\mathbf{1}_{\{T(X)\in C\}}\right] \\
+&=P_\theta(A(X)\in B)\cdot P_\theta(T(X)\in C),
+\end{aligned}</script><p>for all $\theta\in\Theta$, which means $A$ and $T$ are independent.</p>
+<h2 id="Exponential-Families"><a href="#Exponential-Families" class="headerlink" title="Exponential Families"></a><strong>Exponential Families</strong></h2><div class="note yellow"><p><strong></strong></p><p><strong>Definition</strong>: Let $\mathcal{P}=\{P_\theta:\theta\in\Theta\}$ be a statistical model on $(\mathcal{X},\mathcal{A})$ that is dominated by a $\sigma$-finite measure $\nu$. Suppose there are functions</p><script type="math/tex; mode=display">B:\Theta\to\mathbb{R},\qquad \eta:\Theta\to\mathbb{R}^k,</script><script type="math/tex; mode=display">T:\mathcal{X}\to\mathbb{R}^k,\qquad h:\mathcal{X}\to[0,\infty)</script><p>such that the densities $p_\theta(x)=\frac{dP_\theta}{d\nu}(x)$ are of the form</p><script type="math/tex; mode=display">p_\theta(x)=\exp\left\{\sum_{i=1}^k \eta_i(\theta)T_i(x)-B(\theta)\right\}h(x),\qquad x\in\mathcal{X}. \tag{4.1}</script><script type="math/tex; mode=display">=\exp\left\{\langle \eta(\theta),T(x)\rangle - B(\theta)\right\}h(x).</script><p>Then $\mathcal{P}$ is called a <strong>$k$<code>-dimensional exponential family</code></strong> with <strong><code>natural parameters</code></strong> $\eta(\theta)$ and <strong><code>sufficient statistic</code></strong> $T$ (recall Neyman’s criterion).</p></div>
+<div class="note green"><p><strong></strong></p><p><strong>Corollary</strong>: If $\eta(\Theta)=\{\eta(\theta):\theta\in\Theta\}\subseteq\mathbb{R}^k$ contains $k+1$ points $\eta^{(0)},\ldots,\eta^{(k)}$ s.t. $\eta^{(j)}-\eta^{(0)}$, $j=1,\ldots,k$ are linearly independent, then the sufficient statistic $T$ is minimal sufficient.</p></div>
+<div class="note yellow"><p><strong></strong></p><p>By re-parametrizing in terms of natural parameters, we may bring an exponential family into its <strong><code>canonical form</code></strong></p><script type="math/tex; mode=display">p_\eta(x)=\exp\{\langle \eta, T(x)\rangle - A(\eta)\}h(x),\qquad x\in\mathcal{X}.</script><p>We write $P_\eta$ for the distribution given by the density $p_\eta$.</p><p>The density $p_\eta(x)$ is well-defined for every vector $\eta$ in the <strong><code>natural parameter space</code></strong></p><script type="math/tex; mode=display">\mathcal{H}=\left\{\eta\in\mathbb{R}^k:\int_{\mathcal{X}}\exp\{\langle \eta,T(x)\rangle\}h(x)\,d\nu(x)<\infty\right\}.</script><p>Indeed for $\eta\in\mathcal{H}$, a well-defined density is obtained by setting</p><script type="math/tex; mode=display">A(\eta)=\log\int_{\mathcal{X}}\exp\{\langle \eta,T(x)\rangle\}h(x)\,d\nu(x).</script><p>The function $A(\eta)$ is the <strong><code>cumulant generating function</code></strong> or also <strong><code>log-Laplace transform</code></strong>.</p></div>
+<p><br></p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>:</p><script type="math/tex; mode=display">\frac{\partial}{\partial \eta_j}A(\eta)=\mathbb{E}_\eta[T_j(X)],\qquad\frac{\partial^2}{\partial \eta_j\partial \eta_k}A(\eta)=\operatorname{Cov}_\eta[T_j(X),T_k(X)].</script></div>
+<p><br></p>
+<p>有些时候可以用这个公式快速计算moments。</p>
+<div class="note green"><p><strong></strong></p><p><strong>Theorem</strong>:</p><p>1.  The natural parameter space $\mathcal{H}$ is a convex set.</p><p>2.  The cumulant generating function $A(\eta)$ is a convex function on $\mathcal{H}$. It is strictly convex if $P_\eta\neq P_{\eta’}$ for all $\eta,\eta’\in\mathcal{H}$ with $\eta\neq \eta’$.</p><p>3.  The log-likelihood function $\ell_x(\eta)=\log p_\eta(x)$ is concave on $\mathcal{H}$. It is strictly concave if $P_\eta\neq P_{\eta’}$ for all $\eta,\eta’\in\mathcal{H}$ with $\eta\neq \eta’$.</p></div>
+<p><br></p>
 
   </div>
   
@@ -3061,7 +3108,7 @@ b = \frac{n\overline{X}_n}{2\sigma^2} - \frac{m}{2\tau^2}.</script><p>We conclud
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/Foundamentals-of-Mathematical-Statistics/&title=Foundamentals of Mathematical Statistics - Hexo&summary=统计相关笔记"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/Foundamentals-of-Mathematical-Statistics/&title=统计 Statistics - Hexo&summary=统计相关笔记"
           
           >
           
@@ -3073,7 +3120,7 @@ b = \frac{n\overline{X}_n}{2\sigma^2} - \frac{m}{2\tau^2}.</script><p>We conclud
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/Foundamentals-of-Mathematical-Statistics/&title=Foundamentals of Mathematical Statistics - Hexo&summary=统计相关笔记"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/Foundamentals-of-Mathematical-Statistics/&title=统计 Statistics - Hexo&summary=统计相关笔记"
           
           >
           
@@ -3085,7 +3132,7 @@ b = \frac{n\overline{X}_n}{2\sigma^2} - \frac{m}{2\tau^2}.</script><p>We conclud
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/Foundamentals-of-Mathematical-Statistics/&title=Foundamentals of Mathematical Statistics - Hexo&summary=统计相关笔记"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/Foundamentals-of-Mathematical-Statistics/&title=统计 Statistics - Hexo&summary=统计相关笔记"
           
           >
           
@@ -3179,7 +3226,7 @@ Basics</p>
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Intro"><span class="toc-number">1.</span> <span class="toc-text">Intro</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Construction-of-Estimators"><span class="toc-number">2.</span> <span class="toc-text">Construction of Estimators</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Plug-in-Estimator"><span class="toc-number">2.1.</span> <span class="toc-text">Plug-in Estimator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#M-Estimator"><span class="toc-number">2.2.</span> <span class="toc-text">M-Estimator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Method-of-Moments-MOM"><span class="toc-number">2.3.</span> <span class="toc-text">Method of Moments (MOM)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maximum-Likelihood-Estimator-MLE"><span class="toc-number">2.4.</span> <span class="toc-text">Maximum Likelihood Estimator (MLE)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%BC%B0%E8%AE%A1%EF%BC%88Bayes-Estimators%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">贝叶斯估计（Bayes Estimators）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mean-Square-Error-Bias-and-Variance"><span class="toc-number">2.6.</span> <span class="toc-text">Mean Square Error, Bias and Variance</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Intro"><span class="toc-number">1.</span> <span class="toc-text">Intro</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Construction-of-Estimators"><span class="toc-number">2.</span> <span class="toc-text">Construction of Estimators</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Plug-in-Estimator"><span class="toc-number">2.1.</span> <span class="toc-text">Plug-in Estimator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#M-Estimator"><span class="toc-number">2.2.</span> <span class="toc-text">M-Estimator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Method-of-Moments-MOM"><span class="toc-number">2.3.</span> <span class="toc-text">Method of Moments (MOM)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maximum-Likelihood-Estimator-MLE"><span class="toc-number">2.4.</span> <span class="toc-text">Maximum Likelihood Estimator (MLE)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%BC%B0%E8%AE%A1%EF%BC%88Bayes-Estimators%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">贝叶斯估计（Bayes Estimators）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mean-Square-Error-Bias-and-Variance"><span class="toc-number">2.6.</span> <span class="toc-text">Mean Square Error, Bias and Variance</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sufficient-Statistics"><span class="toc-number">3.</span> <span class="toc-text">Sufficient Statistics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Completeness"><span class="toc-number">4.</span> <span class="toc-text">Completeness</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exponential-Families"><span class="toc-number">5.</span> <span class="toc-text">Exponential Families</span></a></li></ol>
   </div>
 </section>
 
@@ -3848,7 +3895,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/概率-统计-Probability-Statistics/","name":"概率/统计 Probability & Statistics"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/10/25/TUM  数学 笔记/概率统计/Foundamentals-of-Mathematical-Statistics/","name":"Foundamentals of Mathematical Statistics"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Foundamentals of Mathematical Statistics","description":"统计相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/Foundamentals-of-Mathematical-Statistics/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/Foundamentals-of-Mathematical-Statistics/","wordCount":6,"datePublished":"2025-10-25T14:44:16.000Z","dateModified":"2025-12-27T09:59:24.479Z","articleSection":"TUM 数学 笔记","keywords":"统计,Statistics","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/概率-统计-Probability-Statistics/","name":"概率/统计 Probability & Statistics"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/10/25/TUM  数学 笔记/概率统计/Foundamentals-of-Mathematical-Statistics/","name":"统计 Statistics"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"统计 Statistics","description":"统计相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/Foundamentals-of-Mathematical-Statistics/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/Foundamentals-of-Mathematical-Statistics/","wordCount":6,"datePublished":"2025-10-25T14:44:16.000Z","dateModified":"2026-01-02T21:00:36.196Z","articleSection":"TUM 数学 笔记","keywords":"统计,Statistics","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
