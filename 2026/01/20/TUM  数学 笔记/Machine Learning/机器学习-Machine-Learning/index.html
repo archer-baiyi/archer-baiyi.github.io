@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2026-01-20T12:14:14.000Z">
-<meta property="article:modified_time" content="2026-01-20T12:56:31.528Z">
+<meta property="article:modified_time" content="2026-01-20T17:24:11.635Z">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="Machine Learning">
 <meta name="twitter:card" content="summary">
@@ -2247,7 +2247,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1768913802939),
+    lastupdate: new Date(1768929887358),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2725,7 +2725,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2026-01-20T13:56:31+01:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2026-01-20T18:24:11+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>Last UpdatedJan 20, 2026</p>
@@ -2772,7 +2772,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script type="math/tex; mode=display">
 f : X \to Y, \ \ f(x)=y</script><p>我们一般会这样划分数据：</p>
 <p><img src="/images/image-20260120131905359.png" class="lazyload" data-srcset="/images/image-20260120131905359.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20260120131905359"></p>
-<p>我们会先设置一些参数选项，然后利用Training set来训练这些参数对应的模型，并用Validation set来测试这些对数对应模型的准确度，最后挑选一个表现最好的，去测试Test set。</p>
+<p>我们会先设置一些超参数，然后利用Training set来训练这些参数对应的模型，并用Validation set来测试这些对数对应模型的准确度，最后挑选一个表现最好的，去测试Test set。</p>
 <h2 id="Decision-Tree-决策树"><a href="#Decision-Tree-决策树" class="headerlink" title="Decision Tree 决策树"></a><strong>Decision Tree 决策树</strong></h2><p>来看一个例子：</p>
 <p><img src="/images/image-20260120132221109.png" class="lazyload" data-srcset="/images/image-20260120132221109.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20260120132221109"></p>
 <p>很自然的，我们会想到，通过前面3列内容的结果来推导出他们最后是否会来打网球。那么我们就可以进行一个类似二分查找的计算：</p>
@@ -2805,6 +2805,50 @@ i_E(t) = 1- \underset{t}{\text{max}} \ \pi_c</script><p>可以得到优化时我
 <p>而针对不同的细分（split）策略$s$（把$t$分成$t_R$和$t_L$）时，我们定义所谓的优化程度（improvement）：</p>
 <script type="math/tex; mode=display">
 \Delta i(s,t) = 1- (p_L \cdot i(t_l) + p_R \cdot i(t_R))</script><p>其中$p_L$指的是$|t_L| / |t|$。</p>
+<h3 id="停止"><a href="#停止" class="headerlink" title="停止"></a><strong>停止</strong></h3><p>可以笼统地概括成2种：</p>
+<ol>
+<li>Pre-prunning</li>
+<li>Post-prunning</li>
+</ol>
+<h4 id="Pre-prunning-预剪枝"><a href="#Pre-prunning-预剪枝" class="headerlink" title="Pre-prunning 预剪枝"></a><strong>Pre-prunning 预剪枝</strong></h4><p>就是生成的过程中判断是否停止，常见的判断条件：</p>
+<ul>
+<li>节点纯：$i(t)=0$</li>
+<li>达到最大深度</li>
+<li>分支样本数太少（阈值 $t_n$）</li>
+<li>分裂收益太小：$\Delta i(s,t) &lt; t_\Delta$</li>
+<li>验证集准确率不再提升 </li>
+</ul>
+<h4 id="Post-prunning-后剪枝"><a href="#Post-prunning-后剪枝" class="headerlink" title="Post-prunning 后剪枝"></a><strong>Post-prunning 后剪枝</strong></h4><p>先生成一个全面复杂的树，然后再修剪它：尝试把其中一颗子树替换成一片叶子节点（删掉 $t$ 的所有子孙，只保留 $t$（得到 $T\setminus T_t$）），然后验证错误率是否有变化。最后选择让验证误差下降最多的剪枝点。</p>
+<h2 id="K-Nearest-Neighbours（KNN）-K-近邻"><a href="#K-Nearest-Neighbours（KNN）-K-近邻" class="headerlink" title="K-Nearest Neighbours（KNN） K-近邻"></a><strong>K-Nearest Neighbours（KNN） K-近邻</strong></h2><p>KNN的核心思路其实很简单：物以类聚，人以群分。</p>
+<p>就是假设我们有一个未知label的点x，我们查看离它最近的几个点都是什么label，如果最近的几个点都是A，那么我们也给x判定成A。</p>
+<h3 id="1-NN"><a href="#1-NN" class="headerlink" title="1-NN"></a><strong>1-NN</strong></h3><ul>
+<li>定义一个距离的测度</li>
+<li>计算找出离x点最近的点</li>
+<li>这个点是什么label我们就给x划分成是什么label</li>
+</ul>
+<h3 id="k-NN"><a href="#k-NN" class="headerlink" title="k-NN"></a><strong>k-NN</strong></h3><p><strong>普通的：</strong></p>
+<p>设$\mathcal{N}_k(x)$为向量 $x$ 的 $k$ 个最近邻的集合，那么在分类任务中：</p>
+<script type="math/tex; mode=display">
+p(y=c \mid x, k) = \sum_{i \in \mathcal{N}_k(x)} \mathbb{1}(y_i = c),</script><script type="math/tex; mode=display">
+\hat{y} = \underset{c}{\arg \max} \, p(y = c \mid x, k)</script><p><strong>权重版：</strong></p>
+<p>设$\mathcal{N}_k(x)$为向量 $x$ 的 $k$ 个最近邻的集合，那么在分类任务中：</p>
+<script type="math/tex; mode=display">
+p(y=c \mid x, k) = \frac{1}{Z} \sum_{i \in \mathcal{N}_k(x)} \frac{1}{d(x, x_i)} \mathbb{1}(y_i = c),</script><script type="math/tex; mode=display">
+\hat{y} = \underset{c}{\arg \max} \, p(y = c \mid x, k)</script><p>其中 $Z = \sum_{i \in \mathcal{N}_k(x)} \frac{1}{d(x, x_i)}$ 是归一化常数，$d(x, x_i)$ 是 $x$ 和 $x_i$ 之间的距离度量。但常数系数对求arg max没有影响，可以忽略。</p>
+<p>注意到，每个近邻的权重$\frac{1}{d(x, x_i)}$是不一样的，距离越近的权重越高。</p>
+<p><strong>线性回归：</strong></p>
+<p>设$\mathcal{N}_k(x)$为向量 $x$ 的 $k$ 个最近邻的集合，那么：</p>
+<script type="math/tex; mode=display">
+\hat{y} = \frac{1}{Z} \sum_{i \in \mathcal{N}_k(x)} \frac{1}{d(x, x_i)} y_i</script><p>其中 $Z = \sum_{i \in \mathcal{N}_k(x)} \frac{1}{d(x, x_i)}$ 是归一化常数，$d(x, x_i)$ 是 $x$ 和 $x_i$ 之间的距离度量。</p>
+<h3 id="如何选择k"><a href="#如何选择k" class="headerlink" title="如何选择k"></a><strong>如何选择k</strong></h3><p>k这种参数被称作<strong>超参数</strong>，是事先给定的，用来控制学习过程的参数。</p>
+<p><img src="/images/image-20260120181256183.png" class="lazyload" data-srcset="/images/image-20260120181256183.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20260120181256183"></p>
+<p><strong>超参数调优过程 (Hyper-parameter tuning procedure)：</strong></p>
+<ol>
+<li>使用 <strong>训练集</strong> 训练模型（在 KNN 中即存储数据）。</li>
+<li>在 <strong>验证集</strong> 上评估不同 $k$ 值的性能，并挑选出最好的 $k$。</li>
+<li>在 <strong>测试集</strong> 上报告最终的性能。</li>
+</ol>
+<p>但是当维度升上去了，knn会变得及其复杂，需要大量的内存。</p>
 
   </div>
   
@@ -2957,7 +3001,7 @@ i_E(t) = 1- \underset{t}{\text{max}} \ \pi_c</script><p>可以得到优化时我
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decision-Tree-%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">2.</span> <span class="toc-text">Decision Tree 决策树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB-%E9%A2%84%E6%B5%8B"><span class="toc-number">2.1.</span> <span class="toc-text">分类&#x2F;预测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96-%E7%94%9F%E6%88%90"><span class="toc-number">2.2.</span> <span class="toc-text">优化&#x2F;生成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Misclassification-rate"><span class="toc-number">2.2.1.</span> <span class="toc-text">Misclassification rate</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decision-Tree-%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">2.</span> <span class="toc-text">Decision Tree 决策树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB-%E9%A2%84%E6%B5%8B"><span class="toc-number">2.1.</span> <span class="toc-text">分类&#x2F;预测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96-%E7%94%9F%E6%88%90"><span class="toc-number">2.2.</span> <span class="toc-text">优化&#x2F;生成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Misclassification-rate"><span class="toc-number">2.2.1.</span> <span class="toc-text">Misclassification rate</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%9C%E6%AD%A2"><span class="toc-number">2.3.</span> <span class="toc-text">停止</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Pre-prunning-%E9%A2%84%E5%89%AA%E6%9E%9D"><span class="toc-number">2.3.1.</span> <span class="toc-text">Pre-prunning 预剪枝</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Post-prunning-%E5%90%8E%E5%89%AA%E6%9E%9D"><span class="toc-number">2.3.2.</span> <span class="toc-text">Post-prunning 后剪枝</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#K-Nearest-Neighbours%EF%BC%88KNN%EF%BC%89-K-%E8%BF%91%E9%82%BB"><span class="toc-number">3.</span> <span class="toc-text">K-Nearest Neighbours（KNN） K-近邻</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-NN"><span class="toc-number">3.1.</span> <span class="toc-text">1-NN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#k-NN"><span class="toc-number">3.2.</span> <span class="toc-text">k-NN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9k"><span class="toc-number">3.3.</span> <span class="toc-text">如何选择k</span></a></li></ol></li></ol>
   </div>
 </section>
 
@@ -3626,7 +3670,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/机器学习-Machine-Learning/","name":"机器学习 Machine Learning"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2026/01/20/TUM  数学 笔记/Machine Learning/机器学习-Machine-Learning/","name":"机器学习 Machine Learning"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"机器学习 Machine Learning","description":"机器学习相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2026/01/20/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/Machine%20Learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2026/01/20/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/Machine%20Learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/","wordCount":8,"datePublished":"2026-01-20T12:14:14.000Z","dateModified":"2026-01-20T12:56:31.528Z","articleSection":"TUM 数学 笔记","keywords":"机器学习,Machine Learning","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/","name":"TUM 数学 笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-数学-笔记/机器学习-Machine-Learning/","name":"机器学习 Machine Learning"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2026/01/20/TUM  数学 笔记/Machine Learning/机器学习-Machine-Learning/","name":"机器学习 Machine Learning"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"机器学习 Machine Learning","description":"机器学习相关笔记","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2026/01/20/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/Machine%20Learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2026/01/20/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/Machine%20Learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/","wordCount":8,"datePublished":"2026-01-20T12:14:14.000Z","dateModified":"2026-01-20T17:24:11.635Z","articleSection":"TUM 数学 笔记","keywords":"机器学习,Machine Learning","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
