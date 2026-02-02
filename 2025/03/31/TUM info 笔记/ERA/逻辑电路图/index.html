@@ -49,7 +49,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-03-31T20:35:54.000Z">
-<meta property="article:modified_time" content="2025-04-26T18:30:34.156Z">
+<meta property="article:modified_time" content="2026-02-02T23:33:15.352Z">
 <meta property="article:tag" content="Rechnerarchitektur">
 <meta property="article:tag" content="计算机体系结构">
 <meta property="article:tag" content="逻辑电路图">
@@ -2249,7 +2249,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1769899260431),
+    lastupdate: new Date(1770075202809),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2727,10 +2727,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-26T20:30:34+02:00">
+            <div class="new-meta-item date" itemprop="dateModified" datetime="2026-02-03T00:33:15+01:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>Last UpdatedApr 26, 2025</p>
+    <p>Last UpdatedFeb 3, 2026</p>
   </a>
 </div>
 
@@ -2847,17 +2847,39 @@ s_1 &= a_0 \wedge b_0 \vee c \wedge  (a_0 \text{ xor } b_0 )\\
 <p>后续一般用这个符号指代：</p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401094118410.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401094118410.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401094118410"></p>
 <p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401094846745.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401094846745.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401094846745"></p>
-<h2 id="存储（Speichern）"><a href="#存储（Speichern）" class="headerlink" title="存储（Speichern）"></a><strong>存储（Speichern）</strong></h2><h3 id="RS-Latch-RS-FlipFlop"><a href="#RS-Latch-RS-FlipFlop" class="headerlink" title="RS-Latch / RS-FlipFlop"></a><strong>RS-Latch / RS-FlipFlop</strong></h3><p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401095059518.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401095059518.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401095059518"></p>
+<p>n-bit的选择器需要：</p>
+<ul>
+<li>3n+1个门</li>
+<li>深度为3</li>
+</ul>
+<h2 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a><strong>乘法</strong></h2><p><img src="/../images/image-20260203003145108.png" class="lazyload" data-srcset="/../images/image-20260203003145108.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20260203003145108"></p>
+<p>或者</p>
+<p><img src="/../images/image-20260203003221357.png" class="lazyload" data-srcset="/../images/image-20260203003221357.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20260203003221357"></p>
+<h2 id="存储（Speichern）"><a href="#存储（Speichern）" class="headerlink" title="存储（Speichern）"></a><strong>存储（Speichern）</strong></h2><p>假如说我们把一个门的输出再连回输入的口会发生什么呢？</p>
+<p><img src="/../images/image-20260202221855767.png" class="lazyload" data-srcset="/../images/image-20260202221855767.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20260202221855767"></p>
+<p>假设一开始a，y都是0。只要a抱持0，y自然也会保持0。但如果a变成了1的话，y也会跟着变成1，并且之后不管发生什么了都会一直是1。</p>
+<p>也就是说它实现了一个最简易的存储功能。（只要a在任何时间点变成了1，那么y就会一直记得这件事情。）</p>
+<p>当然，想要实现更完善的存储功能，我们还得加上复原的选项。</p>
+<h3 id="RS-Latch-RS-FlipFlop"><a href="#RS-Latch-RS-FlipFlop" class="headerlink" title="RS-Latch / RS-FlipFlop"></a><strong>RS-Latch / RS-FlipFlop</strong></h3><p><strong>S (Set)，R (Reset)</strong>。</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401095059518.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401095059518.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401095059518"></p>
 <p>真值表：</p>
 <script type="math/tex; mode=display">
-\begin{array}{cc|cc}
-R & S & Q(t) & \neg Q(t) \\
+\begin{array}{cc|cc|c}
+S & R & Q(t) & \neg Q(t) & \text{Behavior}\\
 \hline
-0 & 0 & Q(t) & \neg Q(t) \\
-0 & 1 & 1 & 0 \\
-1 & 0 & 0 & 1 \\
+0 & 0 & Q(t) & \neg Q(t) & \text{Speicher}\\
+1 & 0 & 1 & 0 & \text{Set}\\
+0 & 1 & 0 & 1 & \text{Reset}\\
 1 & 1 & 0 & 0 \\
-\end{array}</script><h3 id="D-Latch-D-FlipFlop"><a href="#D-Latch-D-FlipFlop" class="headerlink" title="D-Latch / D-FlipFlop"></a><strong>D-Latch / D-FlipFlop</strong></h3><p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401095635448.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401095635448.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401095635448"></p>
+\end{array}</script><p><strong>我们关心的是在某个输入固定时最终会落到的稳定态，所以计算顺序本身不是逻辑因果。</strong>以S=1，R=0的情况为例：我们可以先计算出$\neg Q(t)$一定等于0，然后再用这个结果去计算得到$Q(t)$等于1。这个时候可以把Q等于1再带进去检查$\neg Q(t)$是否等于0。</p>
+<p>相当于我们是在找一组方程式的解。</p>
+<h3 id="D-Latch-D-FlipFlop"><a href="#D-Latch-D-FlipFlop" class="headerlink" title="D-Latch / D-FlipFlop"></a><strong>D-Latch / D-FlipFlop</strong></h3><p>我们想要一个更加方便的结构：</p>
+<ul>
+<li>一个负责传输数据（q）</li>
+<li>一个负责控制这个数据是否会被写入</li>
+</ul>
+<p><strong>D(Data)，E (Enable)</strong>。</p>
+<p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401095635448.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401095635448.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401095635448"></p>
 <p>（设上面 and 的结果为S，下面 and 的结果为R，跟RS-Latch的位置一样。）</p>
 <p>真值表：</p>
 <script type="math/tex; mode=display">
@@ -2868,8 +2890,54 @@ D & E & Q(t) & \neg Q(t) & R & S\\
 1 & 0 & Q(t) & \neg Q(t) & 0 & 0\\
 0 & 1 & 0 & 1 & 1 & 0\\
 1 & 1 & 1 & 0 & 0 & 1\\
-\end{array}</script><h3 id="2-2-Bit-Speicher"><a href="#2-2-Bit-Speicher" class="headerlink" title="2*2 Bit Speicher"></a><strong>2*2 Bit Speicher</strong></h3><p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401100156550.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401100156550.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401100156550"></p>
-<p>（write位等于0代表读，等于1代表写；灰色的是选择器；上面的2个黄色部分是Adresse=0的结果，下面的是Adresse=1的。）</p>
+\end{array}</script><p>也就是说：</p>
+<ul>
+<li>当E为0时，不发生任何改变/存储</li>
+<li>当E为1时，会存储D当前的值/内容</li>
+</ul>
+<p><img src="/../images/image-20260202234958061.png" class="lazyload" data-srcset="/../images/image-20260202234958061.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20260202234958061"></p>
+<p>E=1的时候D和Q的值是一模一样的。E=0的时候就直接把Q当前的延长出去到下一个E=1就好。</p>
+<h3 id="Taktflankengesteuerte-D-Flipflops"><a href="#Taktflankengesteuerte-D-Flipflops" class="headerlink" title="Taktflankengesteuerte D-Flipflops"></a><strong>Taktflankengesteuerte D-Flipflops</strong></h3><p><img src="/../images/image-20260202234825710.png" class="lazyload" data-srcset="/../images/image-20260202234825710.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20260202234825710"></p>
+<p>假设原来CLK=0。</p>
+<p><strong>1. CLK 刚从 0 跳到 1（上升沿瞬间）</strong>：<strong>E 变为 1（打开 D-Latch）。</strong></p>
+<ul>
+<li>直接路径：CLK 立刻 = 1</li>
+<li>延迟路径：CLK_delayed 还没来得及变成 1，仍≈0<br> 所以 $\neg CLK_{delayed}\approx 1$</li>
+</ul>
+<p>于是：</p>
+<script type="math/tex; mode=display">
+E = 1 \land 1 = 1</script><p><br></p>
+<p><strong>2. 过了延迟 Δt 后</strong>：<strong>E 关掉，D-Latch 再次锁住。</strong><br> 延迟链输出终于变成 1：</p>
+<ul>
+<li>CLK_delayed = 1</li>
+<li>$\neg CLK_{delayed}=0$</li>
+</ul>
+<p>于是：</p>
+<script type="math/tex; mode=display">
+E = 1 \land 0 = 0</script><p><br></p>
+<p>3. <strong>CLK 从 1 掉到 0（下降沿）</strong>：<strong>下降沿不会产生脉冲</strong>。<br> 直接 CLK=0，则无论另一边是什么：</p>
+<script type="math/tex; mode=display">
+E=0</script><p><strong>所以就是只在CLK上升后的一小段实际内会存储D的内容。</strong></p>
+<p><img src="/../images/image-20260202235020765.png" class="lazyload" data-srcset="/../images/image-20260202235020765.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20260202235020765"></p>
+<p><strong>Clk = 0 时</strong>：</p>
+<ul>
+<li>左边 E=/Clk=1 → 左边（master）<strong>透明</strong>，N 跟随 D_in</li>
+<li>右边 E=Clk=0 → 右边（slave）<strong>锁住</strong>，Q_out 保持不变</li>
+</ul>
+<p><strong>Clk = 1 时</strong>：</p>
+<ul>
+<li>左边 E=/Clk=0 → 左边锁住，N 固定</li>
+<li>右边 E=Clk=1 → 右边透明，Q_out 跟随 N（但 N 这时是固定的）</li>
+</ul>
+<p>和之前类似的画图策略：</p>
+<ul>
+<li>先画N，因为有negation的存在，所以CLK=0时，N的部分和D的部分一模一样。</li>
+<li>再画Q。CLK=1时，Q和D一模一样。</li>
+</ul>
+<h3 id="2-2-Bit-Speicher"><a href="#2-2-Bit-Speicher" class="headerlink" title="2*2 Bit Speicher"></a><strong>2*2 Bit Speicher</strong></h3><p><img src="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401100156550.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/archer-baiyi/Picture/main/image-20250401100156550.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250401100156550"></p>
+<p>write位等于0代表读，等于1代表写；</p>
+<p>灰色的是选择器；</p>
+<p>上面的2个黄色部分是A (Adresse)=0的结果，下面的是A (Adresse)=1的。</p>
 <h3 id="Inkrementer"><a href="#Inkrementer" class="headerlink" title="Inkrementer"></a><strong>Inkrementer</strong></h3><p>自增器主要用于比如说更新程序计数器（Program counter），需要到达的效果类似：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add pc, pc, 4</span><br></pre></td></tr></table></figure>
 <p>需要2个步骤，计算加法并且存储结果。所以对应的逻辑电路为：</p>
@@ -3118,7 +3186,7 @@ D & E & Q(t) & \neg Q(t) & R & S\\
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">逻辑门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E6%B3%95%EF%BC%88Addition%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">加法（Addition）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8A%E5%8A%A0%E5%99%A8%EF%BC%88Der-Halbaddierer-%EF%BC%8CHA%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">半加器（Der Halbaddierer ，HA）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%8A%A0%E5%99%A8%EF%BC%88Der-Volladdierer-%EF%BC%8CFA%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">全加器（Der Volladdierer ，FA）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88Multiplexer%EF%BC%8CMUX%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">选择器（Multiplexer，MUX）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%EF%BC%88Speichern%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">存储（Speichern）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RS-Latch-RS-FlipFlop"><span class="toc-number">3.1.</span> <span class="toc-text">RS-Latch &#x2F; RS-FlipFlop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Latch-D-FlipFlop"><span class="toc-number">3.2.</span> <span class="toc-text">D-Latch &#x2F; D-FlipFlop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Bit-Speicher"><span class="toc-number">3.3.</span> <span class="toc-text">2*2 Bit Speicher</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Inkrementer"><span class="toc-number">3.4.</span> <span class="toc-text">Inkrementer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RISC-V-Single-Cycle-Prozessor"><span class="toc-number">4.</span> <span class="toc-text">RISC-V Single-Cycle Prozessor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RISC-V-Multicycle-Prozessor"><span class="toc-number">5.</span> <span class="toc-text">RISC-V Multicycle Prozessor</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">逻辑门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E6%B3%95%EF%BC%88Addition%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">加法（Addition）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8A%E5%8A%A0%E5%99%A8%EF%BC%88Der-Halbaddierer-%EF%BC%8CHA%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">半加器（Der Halbaddierer ，HA）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%8A%A0%E5%99%A8%EF%BC%88Der-Volladdierer-%EF%BC%8CFA%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">全加器（Der Volladdierer ，FA）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88Multiplexer%EF%BC%8CMUX%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">选择器（Multiplexer，MUX）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%98%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">乘法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%EF%BC%88Speichern%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">存储（Speichern）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RS-Latch-RS-FlipFlop"><span class="toc-number">4.1.</span> <span class="toc-text">RS-Latch &#x2F; RS-FlipFlop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Latch-D-FlipFlop"><span class="toc-number">4.2.</span> <span class="toc-text">D-Latch &#x2F; D-FlipFlop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Taktflankengesteuerte-D-Flipflops"><span class="toc-number">4.3.</span> <span class="toc-text">Taktflankengesteuerte D-Flipflops</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Bit-Speicher"><span class="toc-number">4.4.</span> <span class="toc-text">2*2 Bit Speicher</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Inkrementer"><span class="toc-number">4.5.</span> <span class="toc-text">Inkrementer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RISC-V-Single-Cycle-Prozessor"><span class="toc-number">5.</span> <span class="toc-text">RISC-V Single-Cycle Prozessor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RISC-V-Multicycle-Prozessor"><span class="toc-number">6.</span> <span class="toc-text">RISC-V Multicycle Prozessor</span></a></li></ol>
   </div>
 </section>
 
@@ -3787,7 +3855,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/ERA-计算机体系结构/","name":"ERA 计算机体系结构"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/31/TUM info 笔记/ERA/逻辑电路图/","name":"逻辑电路图"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"逻辑电路图","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/31/TUM%20info%20%E7%AC%94%E8%AE%B0/ERA/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/31/TUM%20info%20%E7%AC%94%E8%AE%B0/ERA/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/","wordCount":0,"datePublished":"2025-03-31T20:35:54.000Z","dateModified":"2025-04-26T18:30:34.156Z","articleSection":"TUM info 课程笔记","keywords":"Rechnerarchitektur,计算机体系结构,逻辑电路图,逻辑门","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","sameAs":["https://github.com/volantis-x"],"description":"hi"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://archer-baiyi.github.io/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/","name":"TUM info 课程笔记"}},{"@type":"ListItem","position":2,"item":{"@id":"https://archer-baiyi.github.io/categories/TUM-info-课程笔记/ERA-计算机体系结构/","name":"ERA 计算机体系结构"}},{"@type":"ListItem","position":3,"item":{"@id":"https://archer-baiyi.github.io/2025/03/31/TUM info 笔记/ERA/逻辑电路图/","name":"逻辑电路图"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"Hexo","url":"https://archer-baiyi.github.io/","keywords":null,"description":"hi","author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/","description":"hi"},"publisher":{"@type":"Organization","name":"Hexo","url":"https://archer-baiyi.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://archer-baiyi.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"逻辑电路图","description":"hi","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://archer-baiyi.github.io/2025/03/31/TUM%20info%20%E7%AC%94%E8%AE%B0/ERA/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/"},"author":{"@type":"Person","name":null,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://archer-baiyi.github.io/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://archer-baiyi.github.io/2025/03/31/TUM%20info%20%E7%AC%94%E8%AE%B0/ERA/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/","wordCount":0,"datePublished":"2025-03-31T20:35:54.000Z","dateModified":"2026-02-02T23:33:15.352Z","articleSection":"TUM info 课程笔记","keywords":"Rechnerarchitektur,计算机体系结构,逻辑电路图,逻辑门","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
