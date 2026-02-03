@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://archer-baiyi.github.io/2026/01/20/TUM%20info%20%E7%AC%94%E8%AE%B0/ERA/%E6%91%A9%E5%B0%94%E5%9E%8B%E7%8A%B6%E6%80%81%E6%9C%BA%E5%BB%BA%E6%A8%A1/</loc>
+    <lastmod>2026-02-03</lastmod>
+  </url>
+  <url>
     <loc>https://archer-baiyi.github.io/2025/03/31/TUM%20info%20%E7%AC%94%E8%AE%B0/ERA/%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE/</loc>
-    <lastmod>2026-02-02</lastmod>
+    <lastmod>2026-02-03</lastmod>
   </url>
   <url>
     <loc>https://archer-baiyi.github.io/2025/10/18/CTF/Pwn/TUM-Binary-Exploitation-Praktikum/</loc>
@@ -35,10 +39,6 @@
   <url>
     <loc>https://archer-baiyi.github.io/2025/10/25/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/Foundamentals-of-Mathematical-Statistics/</loc>
     <lastmod>2026-01-21</lastmod>
-  </url>
-  <url>
-    <loc>https://archer-baiyi.github.io/2026/01/20/TUM%20info%20%E7%AC%94%E8%AE%B0/ERA/%E6%91%A9%E5%B0%94%E5%9E%8B%E7%8A%B6%E6%80%81%E6%9C%BA%E5%BB%BA%E6%A8%A1/</loc>
-    <lastmod>2026-01-20</lastmod>
   </url>
   <url>
     <loc>https://archer-baiyi.github.io/2026/01/20/TUM%20%20%E6%95%B0%E5%AD%A6%20%E7%AC%94%E8%AE%B0/Machine%20Learning/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/</loc>
