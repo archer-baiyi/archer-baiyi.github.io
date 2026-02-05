@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /2025/10/18/CTF/Pwn/TUM-Binary-Exploitation-Praktikum/
-Allow: /googlecbf54c20e5418f2c.html
-Sitemap: https://archer-baiyi.github.io/sitemap.xml
